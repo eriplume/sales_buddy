@@ -68,8 +68,11 @@ Weekly Reportとして記録したコメントを要約し、月次評価シー�
 * Next.js14
 * Rails7 apiモード
 
+#### データベース
+* PostgreSQL
+
 #### API
-* oepnai API
+* oepnAI API
 
 #### ライブラリ
 * NextAuth.js
@@ -80,3 +83,7 @@ Weekly Reportとして記録したコメントを要約し、月次評価シー�
 * Taileind CSS
 * Mantine UI
 * Ant Design Charts
+
+#### インフラ
+* Vercel
+* Render
