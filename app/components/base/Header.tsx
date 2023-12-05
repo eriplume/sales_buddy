@@ -1,5 +1,5 @@
 import { Bars3Icon, CloudIcon } from "@heroicons/react/24/outline";
-import { LoginButton } from "../LoginButton";
+import UserStatus from "./UserStatus";
 
 export default function Header() {
 
@@ -19,7 +19,7 @@ export default function Header() {
           <a className="mr-5 hover:text-gray-900">Summary creation</a>
           <a className="mr-5 hover:text-gray-900">Teams</a>
         </nav>
-        <LoginButton/>
+        <UserStatus />
       </div>
     </header>
   );
