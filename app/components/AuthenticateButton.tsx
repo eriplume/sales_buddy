@@ -4,7 +4,7 @@ import  { LoginButton }  from './LoginButton'
 import { LogoutButton } from './LogoutButton';
 
 
-const AuthButton = () => {
+export default function AuthenticateButton () {
   const { data: session } = useSession();
 
   if (session) {
@@ -19,5 +19,3 @@ const AuthButton = () => {
     );
   }
 };
-
-export default AuthButton;

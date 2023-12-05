@@ -4,7 +4,7 @@ import { LoginButton } from "../LoginButton";
 export default function Header() {
 
   return (
-    <header className="text-gray-600 body-font bg-white">
+    <header className="fixed top-0 left-0 right-0 text-gray-600 body-font bg-white">
       <div className="container mx-auto flex flex-wrap p-5 items-center justify-between">
         <div className="flex items-center">
         <Bars3Icon className="w-6 h-6 md:hidden mr-2" /> {/* モバイルビューでのみアイコン表示 */}
