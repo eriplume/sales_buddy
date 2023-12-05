@@ -1,10 +1,10 @@
-import AuthenticateButton from "./components/AuthenticateButton"
+import HeaderUnauthenticate from "./components/base/HeaderUnauthenticate";
 
 export default function Home() {
   return (
     <>
-    <div className="flex justify-center items-center h-screen">
-      <AuthenticateButton/>
+    <HeaderUnauthenticate/>
+    <div className="h-screen"> 
     </div>
     </>
   )
