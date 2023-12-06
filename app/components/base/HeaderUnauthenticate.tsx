@@ -1,5 +1,5 @@
 import { Bars3Icon, CloudIcon } from "@heroicons/react/24/outline";
-import { LoginButton } from "../LoginButton";
+import  LoginButton from "../LoginButton";
 
 export default function HeaderUnauthenticate() {
 
@@ -16,5 +16,5 @@ export default function HeaderUnauthenticate() {
         <LoginButton/>
       </div>
     </header>
-  );
+  )
 }

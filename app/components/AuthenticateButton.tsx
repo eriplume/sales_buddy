@@ -1,10 +1,9 @@
 "use client"
 import { useSession } from "next-auth/react";
-import  { LoginButton }  from './LoginButton'
-import { LogoutButton } from './LogoutButton';
+import  LogoutButton  from './LogoutButton';
+import   LoginButton  from './LoginButton'
 
-
-export default function AuthenticateButton () {
+export default function AuthenticateButton() {
   const { data: session } = useSession();
 
   if (session) {
@@ -18,4 +17,4 @@ export default function AuthenticateButton () {
       <LoginButton />
     );
   }
-};
+}
