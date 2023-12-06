@@ -48,13 +48,6 @@ export const authOptions : NextAuthOptions = {
 		return false;
 	  }
 	},
-	async redirect({ url, baseUrl }) {
-	  // サインイン後にダッシュボードにリダイレクトする
-	  if (url === `${baseUrl}/`) {
-		return `${baseUrl}/dashboard`;
-	  }
-	  return baseUrl;
-	},
 	async jwt({ token, user }) {
 	  if (user) {
 	    if (user && typeof user.railsId === 'number'){
