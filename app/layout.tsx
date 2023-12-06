@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { NextAuthProvider } from '../providers/NextAuth'
 import { MantineProviderWrapper } from '../providers/MantineProvider';
 import Footer from './components/base/Footer';
+import Header from './components/base/Header';
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
       <body className='bg-gray-100'>
         <NextAuthProvider>
           <MantineProviderWrapper>
+            <Header />
             {children}
             <Footer />
           </MantineProviderWrapper>
