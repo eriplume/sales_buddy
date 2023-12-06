@@ -19,9 +19,13 @@ export default function RootLayout({
       <body className='bg-gray-100'>
         <NextAuthProvider>
           <MantineProviderWrapper>
+          <div className="flex flex-col h-screen">
             <Header />
+            <main className="flex-grow">
             {children}
+            </main>
             <Footer />
+            </div>
           </MantineProviderWrapper>
         </NextAuthProvider>
       </body>

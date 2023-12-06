@@ -14,6 +14,7 @@ export default function Auth () {
       router.push('/dashboard');
     } 
   }, [status, router]);
+  
   if (status === "loading") return <Loading size="md"/>;
 };
 
