@@ -1,10 +1,10 @@
+"use client"
 import { signOut } from 'next-auth/react';
 
-export const LogoutButton = () => {
-
+export default function LogoutButton() {
   const handleLogout = () => {
    signOut();
-  };
+  }
 
   return (
     <button
@@ -13,5 +13,5 @@ export const LogoutButton = () => {
     >
     Logout
     </button>
-  );
+  )
 }
