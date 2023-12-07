@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { NavLink } from '@mantine/core';
-import { navigationItems } from './NavigationItems';
+import { navigationItems } from './navigationItems';
 
 type DrawerContentsProps = {
   active: number;
