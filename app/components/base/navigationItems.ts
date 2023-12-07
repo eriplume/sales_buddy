@@ -8,3 +8,11 @@ export const navigationItems = [
     { label: "Teams", icon: UserGroupIcon, path: "/" },
     { label: "Help", icon: QuestionMarkCircleIcon, path: "/" },
 ];
+
+export const headerNavigationItems = [
+    { label: "Dairy Record", icon: CalculatorIcon, path: "/dairyrecord" },
+    { label: "Report", icon: PencilIcon, path: "/" },
+    { label: "Summary Creation", icon: ClipboardDocumentListIcon , path: "/" },
+    { label: "Teams", icon: UserGroupIcon, path: "/" },
+    // { label: "Help", icon: QuestionMarkCircleIcon, path: "/" },
+];
