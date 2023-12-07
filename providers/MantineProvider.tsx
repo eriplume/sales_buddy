@@ -4,7 +4,6 @@ import { Notifications } from '@mantine/notifications';
 
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
-import '@mantine/core/styles/Loader.css';
 
 type Props = {
   children?: React.ReactNode;
