@@ -1,16 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { NavLink } from '@mantine/core';
-import { HomeIcon, CalculatorIcon, PencilIcon, ClipboardDocumentListIcon, UserGroupIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
-
-const navigationItems = [
-  { label: "Home", icon: HomeIcon, path: "/dashboard" },
-  { label: "Dairy Record", icon: CalculatorIcon, path: "/dairyrecord" },
-  { label: "Report", icon: PencilIcon, path: "/" },
-  { label: "Summary Creation", icon: ClipboardDocumentListIcon , path: "/" },
-  { label: "Teams", icon: UserGroupIcon, path: "/" },
-  { label: "Help", icon: QuestionMarkCircleIcon, path: "/" },
-];
+import { navigationItems } from './NavigationItems';
 
 type DrawerContentsProps = {
   active: number;
