@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import { headerNavigationItems } from './NavigationItems';
+import { headerNavigationItems } from './navigationItems';
 
 export default function HeaderMenu() {
   const router = useRouter();
