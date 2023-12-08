@@ -72,7 +72,7 @@ Weekly Reportとして記録したコメントを要約し、月次評価シー�
 * PostgreSQL
 
 #### API
-* oepnAI API
+* openAI API
 
 #### ライブラリ
 * NextAuth.js
@@ -80,7 +80,7 @@ Weekly Reportとして記録したコメントを要約し、月次評価シー�
 * zustand
 
 #### CSSフレームワーク,　UIライブラリ
-* Taileind CSS
+* Tailwind CSS
 * Mantine UI
 * Ant Design Charts
 
