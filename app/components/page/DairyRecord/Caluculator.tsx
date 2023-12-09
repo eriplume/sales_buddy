@@ -6,6 +6,7 @@ import Datepicker from './DatePicker';
 export default function Caluculator() {
   return (
     <>
+    <div className="flex flex-col w-full max-w-lg">
       <Fieldset legend="日付を選択" className='flex w-full'>
         <div className="felx space-y-4 w-full px-2 mx-auto">
           {/* レシート内容の入力 */}
@@ -18,6 +19,7 @@ export default function Caluculator() {
           <RecordInputForm/>
         </div>
       </Fieldset>
+      </div>
     </>
   )
 }
