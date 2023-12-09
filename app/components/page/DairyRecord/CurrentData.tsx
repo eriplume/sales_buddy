@@ -1,7 +1,10 @@
-import { Button, Group } from '@mantine/core';
-import { UserIcon, CurrencyYenIcon, ClipboardDocumentListIcon, UsersIcon} from "@heroicons/react/24/outline";
+import useCalculationStore from '@/store/calculationStore';
+import { UserIcon, CurrencyYenIcon, UsersIcon} from "@heroicons/react/24/outline";
 
 export default function CurrentData() {
+
+  const { totalAmount, totalNumber, customerCount, customers } = useCalculationStore();
+
   return (
     <>
       <div className="flex flex-row justify-center w-full">
@@ -13,7 +16,7 @@ export default function CurrentData() {
           </p>
           <div className="flex flex-row items-center whitespace-nowrap">
             <h2 className="title-font font-medium text-xl text-gray-900">
-              2客
+              {customerCount}客
             </h2>
             <UsersIcon  className="w-5 h-5 font-bold ml-2" />
           </div>
@@ -27,19 +30,19 @@ export default function CurrentData() {
           </p>
           <div className="flex flex-row items-center whitespace-nowrap">
             <h2 className="title-font font-medium text-xl text-gray-900">
-              2点
+              {totalNumber}点
             </h2>
           </div>
         </div>
   
         <div className="flex flex-col justify-center py-2 px-8 border-l border-gray-200">
-          <UserIcon className="w-8 h-8 mx-auto"/>
+          <CurrencyYenIcon className="w-8 h-8 mx-auto"/>
           <p className="flex text-xs mx-auto">
             金額
           </p>
           <div className="flex flex-row items-center whitespace-nowrap">
             <h2 className="title-font font-medium text-xl text-gray-900">
-              ￥2000
+              ￥{totalAmount}
             </h2>
           </div>
         </div>
