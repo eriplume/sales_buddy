@@ -2,7 +2,7 @@ import { CloudIcon } from "@heroicons/react/24/outline";
 
 export default function Footer() {
   return (
-    <footer className="sticky bottom-0 text-gray-600 body-font bg-white">
+    <footer className="text-gray-600 body-font bg-white">
       <div className="container px-5 p-5 mx-auto flex flex-col sm:flex-row items-center">
         {/* アプリ名 + コピーライト*/}
         <div className="flex flex-row justify-center items-center">

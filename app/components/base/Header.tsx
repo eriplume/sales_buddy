@@ -4,7 +4,7 @@ import DrawerMenu from "./DrawerMenu";
 
 export default function Header() {
   return (
-    <header className="sticky top-0 text-gray-600 body-font bg-white">
+    <header className="sticky top-0 text-gray-600 body-font bg-white z-50">
       <div className="container mx-auto flex flex-wrap p-5 items-center justify-between">
         <div className="flex items-center">
         <span className="md:hidden"><DrawerMenu/></span>
