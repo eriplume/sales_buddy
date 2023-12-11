@@ -15,9 +15,12 @@ type CalculationState = {
   options: Option[];
   customerTypeCounts: Record<string, number>;
   customerLabels: string;
+  selectedDate: Date;
+  setSelectedDate: (date: Date) => void;
   addToTotal: (params: AddToTotalParams) => void;
   calculateCustomerCounts: (customers: string[]) => Record<string, number>;
   generateCustomerLabels: (customerTypeCounts: Record<string, number>) => string;
+
 };
 
 type CustomerCounts = Record<string, number>;
@@ -48,6 +51,10 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
     { value: 9, label: "その他" },
   ],
 
+  // 日付の更新
+  setSelectedDate: (date: Date) => {
+    set({ selectedDate: date });
+  },
   // 加算アクション
   addToTotal: ({ amount, number, customer }: AddToTotalParams) => {
     set((state) => {
