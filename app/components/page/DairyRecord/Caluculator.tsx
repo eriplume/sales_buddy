@@ -9,13 +9,11 @@ export default function Caluculator() {
     <div className="flex flex-col w-full max-w-lg">
       <Fieldset legend="日付を選択" className='flex w-full'>
         <div className="felx space-y-4 w-full px-2 mx-auto">
-          {/* レシート内容の入力 */}
           <Datepicker/>
         </div>
       </Fieldset>
       <Fieldset legend="レシートから値を入力" className='w-full mt-3'>
         <div className="flex space-y-4 w-full">
-          {/* レシート内容の入力 */}
           <RecordInputForm/>
         </div>
       </Fieldset>
