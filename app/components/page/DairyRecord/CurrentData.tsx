@@ -1,5 +1,5 @@
 import useCalculationStore from '@/store/calculationStore';
-import { UserIcon, CurrencyYenIcon, UsersIcon} from "@heroicons/react/24/outline";
+import { UserIcon, CurrencyYenIcon } from "@heroicons/react/24/outline";
 import ShirtIcon from '../../ui/icon/ShirtIcon';
 import CustomersHoverCard from './CustomersHoverCard';
 
@@ -19,7 +19,9 @@ export default function CurrentData() {
             <h2 className="title-font font-medium text-xl text-gray-600 mr-1">
               {count}
             </h2>
-            <CustomersHoverCard />
+            <div className="md:hidden">
+              <CustomersHoverCard />
+            </div>
           </div>
         </div>
   

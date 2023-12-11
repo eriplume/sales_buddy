@@ -1,9 +1,8 @@
-import useCalculationStore from '@/store/calculationStore';
 import { HoverCard, Text, Group, Avatar } from '@mantine/core';
 import { UsersIcon } from "@heroicons/react/24/outline";
+import CustomersList from './CustomersList';
 
 export default function CustomersHoverCard() {
-  const { customerLabels } = useCalculationStore();
   return (
     <Group justify="center">
       <HoverCard width={280} shadow="md">
@@ -14,7 +13,7 @@ export default function CustomersHoverCard() {
         </HoverCard.Target>
         <HoverCard.Dropdown>
           <Text size="xs">
-           {customerLabels}
+            <CustomersList/>
           </Text>
         </HoverCard.Dropdown>
       </HoverCard>

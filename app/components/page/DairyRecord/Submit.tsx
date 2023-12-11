@@ -12,7 +12,7 @@ export default function Submit() {
 
   return (
     <>
-      <Fieldset legend="現在入力されている合計" className='w-full mt-3 max-w-lg' style={{ overflowX: 'auto' }}>
+      <Fieldset legend="現在の合計" className='w-full mt-3 max-w-lg' style={{ overflowX: 'auto' }}>
         <div className="flex flex-col space-y-4 w-full">
           <CurrentDate/>
           <CurrentData/>
