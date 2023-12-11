@@ -1,9 +1,10 @@
 import useCalculationStore from '@/store/calculationStore';
 import { UserIcon, CurrencyYenIcon, UsersIcon} from "@heroicons/react/24/outline";
 import ShirtIcon from '../../ui/icon/ShirtIcon';
+import CustomersHoverCard from './CustomersHoverCard';
 
 export default function CurrentData() {
-  const { totalAmount, totalNumber, customerCount, customers } = useCalculationStore();
+  const { totalAmount, totalNumber,count} = useCalculationStore();
   
   return (
     <>
@@ -14,11 +15,11 @@ export default function CurrentData() {
           <p className="text-xs mx-auto text-gray-400">
             客数
           </p>
-          <div className="flex flex-row items-center whitespace-nowrap mt-2">
-            <h2 className="title-font font-medium text-xl text-gray-600">
-              {customerCount}
+          <div className="flex flex-row items-center justify-center whitespace-nowrap mt-2 h-10">
+            <h2 className="title-font font-medium text-xl text-gray-600 mr-1">
+              {count}
             </h2>
-            <UsersIcon  className="w-5 h-5 ml-2 text-gray-400" />
+            <CustomersHoverCard />
           </div>
         </div>
   
@@ -27,7 +28,7 @@ export default function CurrentData() {
           <p className="flex text-xs mx-auto text-gray-400">
             点数
           </p>
-          <div className="flex flex-row items-center justify-center whitespace-nowrap mt-2">
+          <div className="flex flex-row items-center justify-center whitespace-nowrap mt-2 h-10">
             <h2 className="title-font font-medium text-xl text-gray-600">
               {totalNumber}
             </h2>
@@ -39,9 +40,9 @@ export default function CurrentData() {
           <p className="flex text-xs mx-auto text-gray-400">
             金額
           </p>
-          <div className="flex flex-row items-center whitespace-nowrap mt-2">
+          <div className="flex flex-row items-center justify-center whitespace-nowrap mt-2 h-10">
             <h2 className="title-font font-medium text-xl text-gray-600">
-              ￥ {totalAmount}
+              {totalAmount}
             </h2>
           </div>
         </div>
