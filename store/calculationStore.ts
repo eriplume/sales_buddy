@@ -74,7 +74,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   },
 
   // クリアアクション
-  clearData: () => set({ totalAmount: 0, totalNumber: 0, count: 0, customers: [], selectedDate: new Date() }),
+  clearData: () => set({ totalAmount: 0, totalNumber: 0, count: 0, customers: [], selectedDate: new Date(), customerLabels: ''}),
 
   // customers配列を集計
   calculateCustomerCounts(customers: string[]): CustomerCounts {
