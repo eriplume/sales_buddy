@@ -18,6 +18,7 @@ type CalculationState = {
   selectedDate: Date;
   setSelectedDate: (date: Date) => void;
   addToTotal: (params: AddToTotalParams) => void;
+  submitData: () => Promise<void>;
   clearData: () => void;
   calculateCustomerCounts: (customers: string[]) => Record<string, number>;
   generateCustomerLabels: (customerTypeCounts: Record<string, number>) => string;
@@ -43,12 +44,12 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   options: [
     { value: 1, label: "主婦" },
     { value: 2, label: "OL" },
-    { value: 3, label: "若ママ" },
-    { value: 4, label: "マダム" },
+    { value: 3, label: "~30代" },
+    { value: 4, label: "~40代" },
     { value: 5, label: "アッパー" },
     { value: 6, label: "学生" },
-    { value: 7, label: "観光客" },
-    { value: 8, label: "ギフト" },
+    { value: 7, label: "ギフト" },
+    { value: 8, label: "顧客" },
     { value: 9, label: "その他" },
   ],
 
@@ -75,6 +76,27 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
 
   // クリアアクション
   clearData: () => set({ totalAmount: 0, totalNumber: 0, count: 0, customers: [], selectedDate: new Date(), customerLabels: ''}),
+
+  // 送信アクション
+  submitData: async () => {
+    const { totalAmount, totalNumber, count, customers, selectedDate } = get();
+    const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
+    const dairy_record = {
+      total_amount: totalAmount,
+      total_number: totalNumber,
+      count,
+      date: formattedDate,
+      customers: customers
+    };
+    // ... 送信ロジック ...
+    try {
+      console.log("APIルートに送信する:",dairy_record)
+      const response = await axios.post(`/api/dairyrecord`, { dairy_record });
+      console.log(response.data);
+    } catch (error) {
+      console.error("Failed to fetch", error);
+    }
+  },
 
   // customers配列を集計
   calculateCustomerCounts(customers: string[]): CustomerCounts {
