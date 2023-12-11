@@ -8,7 +8,7 @@ import CurrentDate from './CurrentDate';
 import CustomersList from './CustomersList';
 
 export default function Submit() {
-  const { clearData } = useCalculationStore();
+  const { clearData, submitData } = useCalculationStore();
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Submit() {
 
           <div className="flex justify-end mt-4 gap-3">
             <ClearButton onClick={clearData}/>
-            <SubmitButton/>
+            <SubmitButton onClick={submitData}/>
           </div>
         </div>
       </Fieldset>
