@@ -18,6 +18,7 @@ type CalculationState = {
   selectedDate: Date;
   setSelectedDate: (date: Date) => void;
   addToTotal: (params: AddToTotalParams) => void;
+  clearData: () => void;
   calculateCustomerCounts: (customers: string[]) => Record<string, number>;
   generateCustomerLabels: (customerTypeCounts: Record<string, number>) => string;
 
@@ -71,14 +72,19 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
       };
     });
   },
-  // customers配列を集計する関数
+
+  // クリアアクション
+  clearData: () => set({ totalAmount: 0, totalNumber: 0, count: 0, customers: [], selectedDate: new Date() }),
+
+  // customers配列を集計
   calculateCustomerCounts(customers: string[]): CustomerCounts {
     return customers.reduce((acc: CustomerCounts, cur: string) => {
       acc[cur] = (acc[cur] || 0) + 1;
       return acc;
     }, {} as CustomerCounts);
   },
-  // 集計した結果をラベルで表示する関数
+
+  // 集計した結果をラベル表示に変換
   generateCustomerLabels(customerTypeCounts) {
     const options = get().options; // 現在のオプションを取得
     return Object.entries(customerTypeCounts).map(([key, value]) => {

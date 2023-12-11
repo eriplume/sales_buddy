@@ -5,7 +5,7 @@ import { rem } from '@mantine/core';
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
 export default function Datepicker() {
-  const { count,setSelectedDate } = useCalculationStore();
+  const { count, selectedDate, setSelectedDate } = useCalculationStore();
 
   const isDataEntered = count !== 0;
 
@@ -23,6 +23,7 @@ export default function Datepicker() {
       leftSectionPointerEvents="none"
       size="xs"
       onChange={handleDateChange}
+      value={selectedDate}
       disabled={isDataEntered}
       valueFormat= "YYYY / MM / DD   ( ddd )"
       maxDate={new Date()}

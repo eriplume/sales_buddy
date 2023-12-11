@@ -1,9 +1,13 @@
 import { Button } from '@mantine/core';
 import { XCircleIcon } from "@heroicons/react/24/solid";
 
-export default function ClearButton() {
+type ClearButtonProps = {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+};
+
+export default function ClearButton({ onClick }: ClearButtonProps) {
   return (
-    <Button type="submit" variant="outline" color="gray" size="xs">
+    <Button type="button" variant="outline" color="gray" size="xs" onClick={onClick}>
       クリア
       <XCircleIcon className="w-5 h-5 ml-1 text-red-400" />
     </Button>
