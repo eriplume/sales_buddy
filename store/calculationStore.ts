@@ -1,12 +1,27 @@
 import { create } from 'zustand';
-import axios from 'axios'
 import dayjs from 'dayjs';
-import { showErrorNotification } from '@/utils/notifications';
-import { showSuccessNotification } from '@/utils/notifications';
 
 type Option = {
   value: number;
   label: string;
+};
+
+type CustomerCounts = Record<string, number>;
+
+type AddToTotalParams = {
+  amount: number;
+  number: number;
+  customer: string;
+};
+
+type SubmitDataType = {
+  dairy_record: {
+    total_amount: number;
+    total_number: number;
+    count: number;
+    date: string;
+  };
+  customer_counts: Record<string, number>;
 };
 
 type CalculationState = {
@@ -20,18 +35,10 @@ type CalculationState = {
   selectedDate: Date;
   setSelectedDate: (date: Date) => void;
   addToTotal: (params: AddToTotalParams) => void;
-  submitData: () => Promise<void>;
+  submitData: () => SubmitDataType;
   clearData: () => void;
   calculateCustomerCounts: (customers: string[]) => Record<string, number>;
   generateCustomerLabels: (customerTypeCounts: Record<string, number>) => string;
-};
-
-type CustomerCounts = Record<string, number>;
-
-type AddToTotalParams = {
-  amount: number;
-  number: number;
-  customer: string;
 };
 
 const useCalculationStore = create<CalculationState>((set, get) => ({
@@ -79,7 +86,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   clearData: () => set({ totalAmount: 0, totalNumber: 0, count: 0, customers: [], selectedDate: new Date(), customerLabels: ''}),
 
   // 送信アクション
-  submitData: async () => {
+  submitData: () => {
     const { totalAmount, totalNumber, count, customerTypeCounts, selectedDate } = get();
     const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
     const dairy_record = {
@@ -89,20 +96,8 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
       date: formattedDate,
     };
     const customer_counts = customerTypeCounts;
-    // ... 送信ロジック ...
-    try {
-      const response = await axios.post(`/api/dairyrecord`, { 
-        dairy_record,
-        customer_counts
-      });
 
-      // response.dataから日付を取得
-      const date = response.data.dairy_record.date;
-      showSuccessNotification(`${date}の売上を登録しました`);
-    } catch (error) {
-      showErrorNotification('送信に失敗しました。もう一度お試しください。');
-      console.error("Failed to fetch", error);
-    }
+    return { dairy_record, customer_counts };
   },
 
   // customers配列を集計
