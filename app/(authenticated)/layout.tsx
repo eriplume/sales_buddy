@@ -8,11 +8,9 @@ export default function AuthenticatedLayout({
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center min-h-screen">
         <RequireAuth>
         {children}
         </RequireAuth>
-      </div>
     </>
   )
 }
