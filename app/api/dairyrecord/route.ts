@@ -15,12 +15,13 @@ export async function POST(request: Request) {
     });
   }
 
-  // リクエストボディの解析, dairy_recordが存在するかチェック
+  // リクエストボディの解析, dairy_recordが存在するか検証のちバックエンドに送信
   const data = await request.json();
   const dairy_record = data.dairy_record;
+  const customer_counts = data.customer_counts;
 
-  if (!dairy_record) {
-    return new Response(JSON.stringify({ error: 'dairy_recordがありません' }), {
+  if (!dairy_record || !customer_counts){
+    return new Response(JSON.stringify({ error: 'dairy_recordまたはcustomer_countsがありません' }), {
         status: 400,
         headers: {
             "Content-Type": "application/json"
@@ -29,18 +30,21 @@ export async function POST(request: Request) {
   }
 
   dairy_record.user_id = session.user.railsId;
-
   const apiUrl = process.env.RAILS_API_URL
 
   try {
-    const response = await axios.post(`${apiUrl}/dairy_records`, { dairy_record });
+    const response = await axios.post(`${apiUrl}/dairy_records`, { 
+      dairy_record,
+      customer_counts
+    });
       return new Response(JSON.stringify(response.data), {
         status: 200,
         headers: {
             "Content-Type": "application/json",
         },
     });
-  } catch (error) {        
+  } catch (error) {
+    console.error("Error caught in API route:", error);       
     return new Response(JSON.stringify({ error: '予期せぬエラーが発生しました'  }), {
         status: 500,
         headers: {
