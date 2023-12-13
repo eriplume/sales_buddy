@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 import axios from 'axios'
 import dayjs from 'dayjs';
+import { showErrorNotification } from '@/utils/notifications';
+import { showSuccessNotification } from '@/utils/notifications';
 
 type Option = {
   value: number;
@@ -93,8 +95,12 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
         dairy_record,
         customer_counts
       });
-      console.log(response.data);
+
+      // response.dataから日付を取得
+      const date = response.data.dairy_record.date;
+      showSuccessNotification(`${date}の売上を登録しました`);
     } catch (error) {
+      showErrorNotification('送信に失敗しました。もう一度お試しください。');
       console.error("Failed to fetch", error);
     }
   },
