@@ -44,11 +44,11 @@ export async function POST(request: Request) {
         },
     });
   } catch (error) {
-    console.error("Error caught in API route:", error);       
+    console.error(error); 
     return new Response(JSON.stringify({ error: '予期せぬエラーが発生しました'  }), {
         status: 500,
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
     });
   }
