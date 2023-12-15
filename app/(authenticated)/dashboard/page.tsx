@@ -1,5 +1,5 @@
 "use client"
-import Calender from "@/app/components/page/DashBoard/Calendar";
+import CalenderArea from "@/app/components/page/DashBoard/CalenderArea";
 import ThisWeek from "@/app/components/page/DashBoard/ThisWeek";
 import { useFetchData } from "@/lib/useFetchData";
 
@@ -12,9 +12,7 @@ export default function Dashboard() {
       <div className="p-7 shadow-md">
         <ThisWeek/>
       </div>
-      <div className="bg-white p-7 shadow-md">
-        <Calender/>
-      </div>
+      <CalenderArea/>
     </div>
     </>
   )
