@@ -1,10 +1,10 @@
 "use client"
 import { useMemo } from 'react';
-import { useDisclosure } from '@mantine/hooks';
-import { DatePicker } from '@mantine/dates';
-import dayjs from 'dayjs';
+import { formatDate } from '@/utils/dateUtils';
 import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
+import { useDisclosure } from '@mantine/hooks';
+import { DatePicker } from '@mantine/dates';
 import SalesModal from './SalesModal';
 import SalesIndicator from './SalesIndicator';
 
@@ -25,14 +25,14 @@ export default function Calender() {
   const selectedSalesRecord = useMemo(() => {
     if (selectedDate) {
       // dayjsを使って日付をフォーマット
-      const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
+      const formattedDate = formatDate(selectedDate)
       return salesRecords.find((record) => record.date === formattedDate);
     }
     return null;
   }, [selectedDate, salesRecords]);
 
   // 売上記録が存在する日付の配列を作成
-  const salesDates = salesRecords.map(record => dayjs(record.date).format('YYYY-MM-DD'));
+  const salesDates = salesRecords.map(record => formatDate(record.date));
 
   // Calender.js 内での使用
   const renderDay = (date: Date) => {

@@ -2,7 +2,7 @@ import { SalesRecord } from '@/types/SalesRecord';
 import { Modal } from '@mantine/core';
 import DayRecord from './DayRecord';
 import NotDayRecord from './NotDayRecord';
-import dayjs from 'dayjs';
+import { formatDateLayout } from '@/utils/dateUtils';
 
 type SalesModalProps = {
     opened: boolean;
@@ -18,7 +18,7 @@ export default function SalesModal({ opened, close, selectedSalesRecord, selecte
       return (
         <>
           <div className='flex flex-row items-center w-full px-4 py-1 font-bold text-gray-500'>
-            {dayjs(selectedDate).format('YYYY / MM / DD ( ddd )')}
+            {formatDateLayout(selectedDate)}
           </div>
         </>
       );

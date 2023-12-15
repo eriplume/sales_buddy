@@ -1,12 +1,11 @@
 import useCalculationStore from '@/store/calculationStore';
-import dayjs from 'dayjs';
 import { FlagIcon } from "@heroicons/react/24/solid";
+import { formatDateLayout } from '@/utils/dateUtils';
 
 export default function CurrentDate() {
-    const { selectedDate } = useCalculationStore();
+  const { selectedDate } = useCalculationStore();
 
-  // 日付のフォーマットを表示用にする
-  const formattedSelectedDate = dayjs(selectedDate).format("YYYY / MM / DD   ( ddd )");
+  const formattedSelectedDate = formatDateLayout(selectedDate);
 
   return (
     <div className="flex flex-row justify-center items-center w-full">

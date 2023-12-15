@@ -1,5 +1,5 @@
+import { formatDate } from '@/utils/dateUtils';
 import { Indicator } from '@mantine/core';
-import dayjs from 'dayjs';
 
 type SalesIndicatorProps = {
     date: Date;
@@ -7,7 +7,7 @@ type SalesIndicatorProps = {
 };
 
 export default function SalesIndicator({ date, salesDates }:SalesIndicatorProps ) {
-  const dateString = dayjs(date).format('YYYY-MM-DD');
+  const dateString = formatDate(date)
   const isSaleDay = salesDates.includes(dateString);
 
   return (

@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import dayjs from 'dayjs';
+import { formatDate } from '@/utils/dateUtils';
 
 type Option = {
   value: number;
@@ -88,7 +88,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   // 送信アクション
   submitData: () => {
     const { totalAmount, totalNumber, count, customerTypeCounts, selectedDate } = get();
-    const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
+    const formattedDate = formatDate(selectedDate)
     const dairy_record = {
       total_amount: totalAmount,
       total_number: totalNumber,
