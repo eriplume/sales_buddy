@@ -12,29 +12,25 @@ export default function Calender() {
   const [opened, { open, close }] = useDisclosure(false);
   const { selectedDate, setSelectedDate } = useCalculationStore();
   const { salesRecords } = useDashboardStore((state) => ({ salesRecords: state.salesRecords }));
+  const { salesDates } = useDashboardStore((state) => ({ salesDates: state.salesDates }));
 
 
   const handleDateChange = (date: Date | null) => {
     if (date !== null) {
       setSelectedDate(date);
     }
-    open(); // モーダルを開く
+    open();
   };
 
   // 選択された日付に対応する売上記録を取得
   const selectedSalesRecord = useMemo(() => {
     if (selectedDate) {
-      // dayjsを使って日付をフォーマット
       const formattedDate = formatDate(selectedDate)
-      return salesRecords.find((record) => record.date === formattedDate);
+      return salesRecords.find((record) => record.date === formattedDate) || null;;
     }
     return null;
   }, [selectedDate, salesRecords]);
 
-  // 売上記録が存在する日付の配列を作成
-  const salesDates = salesRecords.map(record => formatDate(record.date));
-
-  // Calender.js 内での使用
   const renderDay = (date: Date) => {
     return <SalesIndicator date={date} salesDates={salesDates} />;
   };
