@@ -1,7 +1,9 @@
 "use client"
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react';
 import axios from 'axios'
 import useCalculationStore from '@/store/calculationStore';
+import useDashboardStore from '@/store/dashboardStore';
 import CurrentData from './CurrentData';
 import ClearButton from '../../ui/ClearButton';
 import SubmitButton from '../../ui/SubmitButton';
@@ -12,8 +14,11 @@ import { showErrorNotification } from '@/utils/notifications';
 import { showSuccessNotification } from '@/utils/notifications';
 
 export default function Submit() {
-  const { clearData, submitData } = useCalculationStore();
   const router = useRouter()
+  const { data: session } = useSession();
+  const railsUserId = session?.user?.railsId;
+  const { clearData, submitData } = useCalculationStore();
+  const { fetchData } = useDashboardStore((state) => ({fetchData: state.fetchData,}));
 
   const handleSubmit = async () => {
     const { dairy_record, customer_counts } = submitData();
@@ -35,7 +40,10 @@ export default function Submit() {
       const date = response.data.dairy_record.date;
       showSuccessNotification(`${date}の売上を登録しました`);
       clearData();
-      router.push('/dashboard'); 
+      if (railsUserId !== undefined) {
+        fetchData(railsUserId, true);
+      }
+      router.push('/dashboard');
     } catch (error) {
       showErrorNotification('送信に失敗しました。もう一度お試しください。');
       console.error("Failed to fetch", error);
