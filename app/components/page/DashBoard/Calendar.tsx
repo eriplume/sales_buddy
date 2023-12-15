@@ -1,15 +1,12 @@
 "use client"
-
 import { useMemo } from 'react';
 import { useDisclosure } from '@mantine/hooks';
-import { DatePicker, DatePickerProps } from '@mantine/dates';
-import { Modal } from '@mantine/core';
-import { Indicator } from '@mantine/core';
+import { DatePicker } from '@mantine/dates';
 import dayjs from 'dayjs';
 import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
-import DayRecord from './DayRecord';
-import NotDayRecord from './NotDayRecord';
+import SalesModal from './SalesModal';
+import SalesIndicator from './SalesIndicator';
 
 export default function Calender() {
   const [opened, { open, close }] = useDisclosure(false);
@@ -17,8 +14,10 @@ export default function Calender() {
   const { salesRecords } = useDashboardStore((state) => ({ salesRecords: state.salesRecords }));
 
 
-  const handleDateChange = (date: any) => {
-    setSelectedDate(date);
+  const handleDateChange = (date: Date | null) => {
+    if (date !== null) {
+      setSelectedDate(date);
+    }
     open(); // モーダルを開く
   };
 
@@ -32,26 +31,23 @@ export default function Calender() {
     return null;
   }, [selectedDate, salesRecords]);
 
-  // モーダルの中身を決定する関数
-  const renderModalContent = () => {
-  if (selectedSalesRecord) {
-    return <><DayRecord record={selectedSalesRecord} /></>;
-  } else {
-    return <><NotDayRecord /></>;
-  }
-};
+  // 売上記録が存在する日付の配列を作成
+  const salesDates = salesRecords.map(record => dayjs(record.date).format('YYYY-MM-DD'));
+
+  // Calender.js 内での使用
+  const renderDay = (date: Date) => {
+    return <SalesIndicator date={date} salesDates={salesDates} />;
+  };
 
   return (
     <>
-    <DatePicker allowDeselect onChange={handleDateChange} />
-
-    <Modal
+      <DatePicker allowDeselect onChange={handleDateChange} renderDay={renderDay} maxDate={new Date()}/>
+      <SalesModal 
         opened={opened}
-        onClose={close}
-        centered
-      >
-        {renderModalContent()}
-    </Modal>
+        close={close}
+        selectedSalesRecord={selectedSalesRecord}
+        selectedDate={selectedDate}
+      />
     </>
   );
 }
