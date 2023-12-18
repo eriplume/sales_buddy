@@ -83,7 +83,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   },
 
   // クリアアクション
-  clearData: () => set({ totalAmount: 0, totalNumber: 0, count: 0, customers: [], customerLabels: ''}),
+  clearData: () => set({ totalAmount: 0, totalNumber: 0, count: 0, customers: [], customerLabels: '', customerTypeCounts: {} }),
 
   // 送信アクション
   submitData: () => {
