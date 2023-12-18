@@ -1,3 +1,5 @@
+"use client"
+import { useEffect } from 'react';
 import { z } from 'zod';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
@@ -18,7 +20,7 @@ const schema  = z.object({
 });
 
 export default function RecordInputForm () {
-  const { addToTotal, options } = useCalculationStore();
+  const { addToTotal, options, fetchOptions } = useCalculationStore();
 
   const form = useForm({
     initialValues: {
@@ -33,6 +35,10 @@ export default function RecordInputForm () {
     addToTotal(values);
     form.reset();
   };
+
+  useEffect(() => {
+    fetchOptions();
+  }, [fetchOptions]);
 
   return (
     <>
