@@ -36,6 +36,7 @@ type CalculationState = {
   setSelectedDate: (date: Date) => void;
   addToTotal: (params: AddToTotalParams) => void;
   submitData: () => SubmitDataType;
+  fetchOptions: () => Promise<void>;
   clearData: () => void;
   calculateCustomerCounts: (customers: string[]) => Record<string, number>;
   generateCustomerLabels: (customerTypeCounts: Record<string, number>) => string;
@@ -49,17 +50,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   customers: [], // 選択された客層 ['1', '2', '1'] 
   customerLabels: '', // 表示用に変換 "主婦: 2、 OL: 1"
   selectedDate: new Date(),
-  options: [
-    { value: 1, label: "主婦" },
-    { value: 2, label: "OL" },
-    { value: 3, label: "~30代" },
-    { value: 4, label: "~40代" },
-    { value: 5, label: "アッパー" },
-    { value: 6, label: "学生" },
-    { value: 7, label: "ギフト" },
-    { value: 8, label: "顧客" },
-    { value: 9, label: "その他" },
-  ],
+  options: [],
 
   // 日付の更新
   setSelectedDate: (date: Date) => {
@@ -98,6 +89,20 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
     const customer_counts = customerTypeCounts;
 
     return { dairy_record, customer_counts };
+  },
+
+  fetchOptions: async () => {
+    try {
+      const response = await fetch(`/api/customer_types`);
+
+      if (!response.ok) { throw new Error('サーバーエラー'); }
+
+      const optionsData = await response.json();
+      set({ options: optionsData });
+      
+    } catch (error) {
+      console.error("Failed to fetch options", error);
+    }
   },
 
   // customers配列を集計
