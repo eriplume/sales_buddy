@@ -1,81 +1,61 @@
 "use client"
-import { Stepper, rem } from '@mantine/core';
 import { useState } from 'react';
+import { Alert } from '@mantine/core';
 import { Button } from '@mantine/core';
-
+import axios from 'axios'
 import Target from './Target';
 import Report from './Report';
 import Confirmation from './Confirmation';
-import { PencilIcon, FireIcon, CheckCircleIcon, ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
+import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import StepperIcon from './StepperIcon';
+import useWeeklyStore from '@/store/weeklyStore';
 
 export default function StepForm() {
+
+  const { validateTarget, validateContent } = useWeeklyStore();
 
   //アクティブなステップの管理
   const [active, setActive] = useState(0);
 
-  const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
-  const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+  function validateStep(step :number) {
+    switch (step) {
+      case 0:
+        return {
+          success: validateContent().success,
+          errorMessage: '1〜200文字でレポートを入力してください'
+        };
+      case 1:
+        return {
+          success: validateTarget().success,
+          errorMessage: '0は設定できません！'
+        };
+      default:
+        return { success: true, errorMessage: '' };
+    }
+  }
 
-  // ステップ１フォームの入力値を管理するstate
-  const [content, setContent] = useState('');
+  const nextStep = () => {
+    const validationResult = validateStep(active);
 
-  // ステップ2フォームの入力値を管理するstate
-  const [target, setTarget] = useState(0);
-
-    //入力内容の送信状態
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const [highestStepVisited, setHighestStepVisited] = useState(active);
-
-  const handleStepChange = (nextStep :any) => {
-    const isOutOfBounds = nextStep > 3 || nextStep < 0;
-
-    if (isOutOfBounds) {
+    if (!validationResult.success) {
+      alert(validationResult.errorMessage);
       return;
     }
-
-    setActive(nextStep);
-    setHighestStepVisited((hSC) => Math.max(hSC, nextStep));
+    
+    setActive((current) => (current < 3 ? current + 1 : current));
   };
+
+  const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+
+  //入力内容の送信状態
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
     <>
       <div>
         {/* ステッパー */}
-        <div className="pb-5 px-5 md:hidden">
-          <Stepper active={active} onStepClick={setActive} size="xs" color='#60a5fa'>
-            <Stepper.Step  />
-            <Stepper.Step  />
-            <Stepper.Step  />
-          </Stepper>
-        </div>
-
-        <div className="p-4 mb-2 hidden md:block">
-          <Stepper
-            active={active}
-            onStepClick={setActive}
-            color='#60a5fa'
-            size="md"
-          >
-            <Stepper.Step
-              icon={<PencilIcon style={{ width: rem(18), height: rem(18) }} />}
-              label="Step 1"
-              description="今週の振り返り"
-            />
-            <Stepper.Step
-              icon={<FireIcon style={{ width: rem(24), height: rem(24) }} />}
-              label="Step 2"
-              description="次週の目標"
-            />
-            <Stepper.Step
-              icon={<CheckCircleIcon style={{ width: rem(24), height: rem(24) }} />}
-              label="Step 3"
-              description="確認して登録"
-            />
-          </Stepper>
-        </div>
-
+          <StepperIcon active={active}/>
 
         {/* コンテンツ */}
         <div>
@@ -86,7 +66,7 @@ export default function StepForm() {
           )}
           {active === 1 && (
             <div className='flex flex-col justify-center'>
-              <Target/>
+              <Target />
             </div>
           )}
           {active === 2 && (
@@ -111,7 +91,7 @@ export default function StepForm() {
               <PaperAirplaneIcon className="w-5 h-5 ml-1 text-blue-400" />
             </Button>
           ) : (
-            <Button size="sm" variant="outline" color="gray" onClick={nextStep}>
+            <Button size="sm" variant="outline" color="gray" >
               登録
               <PaperAirplaneIcon className="w-5 h-5 ml-1 text-blue-400" />
             </Button>

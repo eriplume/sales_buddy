@@ -1,28 +1,18 @@
 import { Textarea } from '@mantine/core';
-import { z } from 'zod';
-import { useForm } from '@mantine/form';
-import { zodResolver } from 'mantine-form-zod-resolver';
-
-const schema  = z.object({
-  content: z.string().min(1,  { message: '必ず入力してください' }),
-});
+import useWeeklyStore from '@/store/weeklyStore';
 
 export default function ReportInputForm() {
 
-  const form = useForm({
-    initialValues: {
-      content: '',
-    },
-    validate: zodResolver(schema),
-  });
+  const { content, setContent } = useWeeklyStore();
 
   return (
     <>
       <div className="flex justify-center items-center w-full">
         <form className='w-full'>
           <Textarea
-          {...form.getInputProps('content')}
-            placeholder="今週の振り返り。200字以内で入力してください"
+            value={content}
+            onChange={(e) => setContent(e.currentTarget.value)}
+            placeholder="今週の振り返りを200字以内で入力してください"
             label="週間レポート"
             size="xs"
             withAsterisk

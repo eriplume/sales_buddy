@@ -1,38 +1,16 @@
 import { NumberInput } from '@mantine/core';
-import { useRouter } from 'next/navigation';
-import { z } from 'zod';
-import { useForm } from '@mantine/form';
-import { zodResolver } from 'mantine-form-zod-resolver';
-
-type targetValues = {
-  target: number;
-};
-
-const schema  = z.object({
-  target: z.number().min(1,  { message: '0より大きな値を入力してください' }),
-});
-
+import useWeeklyStore from '@/store/weeklyStore';
 
 export default function TargetInputForm() {
-  const router = useRouter()
-
-  const form = useForm({
-    initialValues: {
-      target: 0,
-    },
-    validate: zodResolver(schema),
-  });
-
-  const handleSubmit = async (values: targetValues) => {
-    console.log(values)
-  };
+  const { target, setTarget } = useWeeklyStore();
 
   return (
     <>
       <div className="flex justify-center items-center w-full">
-        <form onSubmit={form.onSubmit(handleSubmit)} className='w-full'>
+        <div className='w-full'>
           <NumberInput
-          {...form.getInputProps('target')}
+            value={target}
+            onChange={(value) => setTarget(Number(value))}
             label="目標金額（万）"
             placeholder="100万円"
             suffix="万円"
@@ -40,7 +18,7 @@ export default function TargetInputForm() {
             withAsterisk
             min={0}
           />
-        </form>
+        </div>
       </div>
     </>
   );
