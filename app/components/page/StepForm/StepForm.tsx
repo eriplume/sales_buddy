@@ -10,6 +10,7 @@ import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import StepperIcon from './StepperIcon';
 import useWeeklyStore from '@/store/weeklyStore';
+import { showErrorNotification } from '@/utils/notifications';
 
 export default function StepForm() {
 
@@ -39,7 +40,7 @@ export default function StepForm() {
     const validationResult = validateStep(active);
 
     if (!validationResult.success) {
-      alert(validationResult.errorMessage);
+      showErrorNotification(validationResult.errorMessage, '入力内容を確認してください');
       return;
     }
     
