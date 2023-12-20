@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react';
+import { useRouter } from 'next/navigation'
 import { Button } from '@mantine/core';
 import axios from 'axios'
 import Target from './Target';
@@ -10,10 +11,11 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import StepperIcon from './StepperIcon';
 import useWeeklyStore from '@/store/weeklyStore';
 import { showErrorNotification } from '@/utils/notifications';
+import { showSuccessNotification } from '@/utils/notifications';
 
 export default function StepForm() {
-
-  const { validateTarget, validateContent } = useWeeklyStore();
+  const router = useRouter()
+  const { validateTarget, validateContent, getWeeklyReportData, getWeeklyTargetData } = useWeeklyStore();
 
   //アクティブなステップの管理
   const [active, setActive] = useState(0);
@@ -37,16 +39,30 @@ export default function StepForm() {
 
   const nextStep = () => {
     const validationResult = validateStep(active);
-
     if (!validationResult.success) {
       showErrorNotification(validationResult.errorMessage, '入力内容を確認してください');
       return;
     }
-    
     setActive((current) => (current < 3 ? current + 1 : current));
   };
 
   const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
+
+  const handleSubmit = async () => {
+    const { weekly_report } = getWeeklyReportData();
+    const { weekly_target } = getWeeklyTargetData();
+    
+    try {
+      const response = await axios.post(`/api/weeklyreport`, { weekly_report });
+
+      await axios.post(`/api/weeklytarget`, { weekly_target } )
+      showSuccessNotification(`登録しました`);
+      router.push('/dashboard');
+    } catch (error) {
+      showErrorNotification('送信に失敗しました。もう一度お試しください。');
+      console.error("Failed to fetch", error);
+    }
+  };
 
   //入力内容の送信状態
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -91,18 +107,18 @@ export default function StepForm() {
               <PaperAirplaneIcon className="w-5 h-5 ml-1 text-blue-400" />
             </Button>
           ) : (
-            <Button size="sm" variant="outline" color="gray" >
+            <Button size="sm" variant="outline" color="gray" onClick={handleSubmit}>
               登録
               <PaperAirplaneIcon className="w-5 h-5 ml-1 text-blue-400" />
             </Button>
           ))}
 
-          {isSubmitted && (
+          {/* {isSubmitted && (
             <Button size="sm" variant="outline" color="#9ca3af" onClick={prevStep}>
               <ArrowUturnLeftIcon className="w-4 h-4 mr-1 text-gray-400" />
               ダッシュボードに戻る
             </Button>
-          )}
+          )} */}
         </div>
       </div>
     </>

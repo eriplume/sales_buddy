@@ -8,22 +8,22 @@ const targetSchema = z.object({
   target: z.number().min(1).max(200),
 });
 const contentSchema = z.object({
-  content: z.string().min(1).max(200),
+  content: z.string().min(1).max(300) .refine(content => content.trim().length > 0),
 });
 
 const initialReportDateRange = getReportDateRange();
 const initialTargetDateRange = getTargetDateRange();
 
-export type WeeklyReportData = {
+type WeeklyReportData = {
   weekly_report: {
     content: string;
     start_date: string;
     end_date: string;
-  };
+  }
 };
 
-export type WeeklyTargetData = {
-  weekly_target: {
+type WeeklyTargetData = {
+  weekly_target : {
     target: number;
     start_date: string;
     end_date: string;
@@ -58,23 +58,21 @@ const useWeeklyStore = create<WeeklyState>((set, get) => ({
   validateTarget: () => targetSchema.safeParse({ target: get().target }),
   getWeeklyReportData: () => {
     const { content, contentDateRange } = get();
-    return {
-      weekly_report: {
-        content,
-        start_date: formatDate(contentDateRange[0]),
-        end_date: formatDate(contentDateRange[1]),
-      }
-    };
+    const weekly_report = {
+      content,
+      start_date: formatDate(contentDateRange[0]),
+      end_date: formatDate(contentDateRange[1]),
+    }
+    return { weekly_report };
   },
   getWeeklyTargetData: () => {
     const { target, targetDateRange } = get();
-    return {
-      weekly_target: {
-        target: target * 10000, // 万単位に変換
-        start_date: formatDate(targetDateRange[0]),
-        end_date: formatDate(targetDateRange[1]),
-      }
+    const weekly_target = {
+      target: target * 10000, // 万単位に変換
+      start_date: formatDate(targetDateRange[0]),
+      end_date: formatDate(targetDateRange[1]),
     };
+    return { weekly_target };
   },
 }));
   

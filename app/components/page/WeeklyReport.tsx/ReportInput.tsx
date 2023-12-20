@@ -13,7 +13,7 @@ export default function ReportInputForm() {
             value={content}
             onChange={(e) => setContent(e.currentTarget.value)}
             placeholder="今週の振り返り"
-            description="200字以内で入力してください"
+            description="300字以内で入力してください"
             label="週間レポート"
             size="xs"
             withAsterisk
