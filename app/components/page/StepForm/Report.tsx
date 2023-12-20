@@ -1,8 +1,7 @@
-import WeekPicker from '../WeeklyTarget/WeekPicker'
-import { getTargetDateRange } from '@/utils/dateUtils';
+import ReportRangeInput from '../WeeklyReport.tsx/RepotRangeInput';
 import ReportInputForm from '../WeeklyReport.tsx/ReportInput';
-import { PencilIcon } from '@heroicons/react/24/outline';
 import WeekRecordHoverCard from '../WeeklyReport.tsx/WeekRecordHover';
+import { PencilIcon } from '@heroicons/react/24/outline';
 
 export default function Report() {
   return (
@@ -14,7 +13,7 @@ export default function Report() {
       </div>
       
       <div className="flex space-y-3 w-full p-2 mx-auto">
-        <WeekPicker initialValue={getTargetDateRange()}/>
+        <ReportRangeInput />
       </div>
 
       <div className="flex space-y-3 w-full mx-auto">

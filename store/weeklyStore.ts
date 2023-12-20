@@ -1,5 +1,7 @@
 import { create } from 'zustand';
 import { z, ZodError } from 'zod';
+import { getReportDateRange } from '@/utils/dateUtils';
+import { getTargetDateRange } from '@/utils/dateUtils';
 
 // バリデーションスキーマ定義
 const targetSchema = z.object({
@@ -12,19 +14,30 @@ const contentSchema = z.object({
 type WeeklyState = {
   content: string;
   target: number;
+  contentDateRange: [Date, Date];
+  targetDateRange: [Date, Date];
   setContent: (content: string) => void;
   setTarget: (target: number) => void;
+  setContentDateRange: (range: [Date , Date]) => void;
+  setTargetDateRange: (range: [Date, Date]) => void;
   validateContent: () => { success: boolean; data?: any; error?: ZodError };
   validateTarget: () => { success: boolean; data?: any; error?: ZodError };
 };
+
+const initialReportDateRange = getReportDateRange();
+const initialTargetDateRange = getTargetDateRange();
   
 const useWeeklyStore = create<WeeklyState>((set, get) => ({
   content: '',
   target: 0,
+  contentDateRange: initialReportDateRange,
+  targetDateRange: initialTargetDateRange,
   setContent: (content) => set({ content }),
   setTarget: (target) => set({ target }),
+  setContentDateRange: (range) => set({ contentDateRange: range }),
+  setTargetDateRange: (range) => set({ targetDateRange: range }),
   validateContent: () => contentSchema.safeParse({ content: get().content }),
   validateTarget: () => targetSchema.safeParse({ target: get().target }),
-}))
+}));
   
 export default useWeeklyStore ;
