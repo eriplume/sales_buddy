@@ -8,8 +8,8 @@ export default function Report() {
     <div className="flex flex-col w-full mx-auto max-w-lg bg-white px-10 pb-10 pt-6 shadow-sm rounded">
 
       <div className="flex flex-row justify-center items-center w-full border-b pb-2 mb-2 md:hidden">
-        <PencilIcon className="w-5 h-5 text-gray-500 mr-2"/>
-        <span className="mx-1 text-sm text-gray-500">今週の振り返りを入力</span>
+        <PencilIcon className="w-6 h-6 text-gray-500 mr-2"/>
+        <span className="mx-1 text-sm text-gray-700">今週の振り返りを入力</span>
       </div>
       
       <div className="flex space-y-3 w-full p-2 mx-auto">
@@ -20,7 +20,7 @@ export default function Report() {
         <div className="flex w-full p-2 mx-auto justify-start md:justify-center">
           <div className='flex flex-col md:flex-row w-60 md:w-full h-18 md:h-10 items-start md:items-center'>
             
-            <div className='flex flex-row items-center text-sm text-gray-500'>
+            <div className='flex flex-row items-center text-sm text-gray-700'>
               <div className="mr-1">
                 予算達成率:
               </div>
@@ -32,7 +32,7 @@ export default function Report() {
               </div>
             </div>
 
-            <div className='flex flex-row items-center text-sm text-gray-500'>
+            <div className='flex flex-row items-center text-sm text-gray-700'>
               <div className="md:pl-2 md:border-l border-gray-400">
                 詳しい実績を見る
               </div>

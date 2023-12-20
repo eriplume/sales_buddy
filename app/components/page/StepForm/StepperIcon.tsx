@@ -1,5 +1,5 @@
 import { Stepper, rem } from '@mantine/core';
-import { PencilIcon, FireIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
+import { PencilIcon, FireIcon, CheckBadgeIcon } from "@heroicons/react/24/outline";
 
 export default function StepperIcon({ active } :any) {
   return (
@@ -29,7 +29,7 @@ export default function StepperIcon({ active } :any) {
             description="次週の目標"
           />
           <Stepper.Step
-            icon={<CheckCircleIcon style={{ width: rem(24), height: rem(24) }} />}
+            icon={<CheckBadgeIcon style={{ width: rem(24), height: rem(24) }} />}
             label="Step 3"
             description="確認して登録"
           />
