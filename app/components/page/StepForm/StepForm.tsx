@@ -1,6 +1,5 @@
 "use client"
 import { useState } from 'react';
-import { Alert } from '@mantine/core';
 import { Button } from '@mantine/core';
 import axios from 'axios'
 import Target from './Target';
@@ -24,12 +23,12 @@ export default function StepForm() {
       case 0:
         return {
           success: validateContent().success,
-          errorMessage: '1〜200文字でレポートを入力してください'
+          errorMessage: '1〜200文字で週間レポートを入力してください'
         };
       case 1:
         return {
           success: validateTarget().success,
-          errorMessage: '0は設定できません！'
+          errorMessage: '目標金額に0は設定できません'
         };
       default:
         return { success: true, errorMessage: '' };

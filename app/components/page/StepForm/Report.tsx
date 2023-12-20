@@ -48,7 +48,7 @@ export default function Report() {
 
       <div className="flex flex-row justify-center items-center w-full">
         <div className="flex w-full p-2 mx-aut justify-center">
-          <div className="w-60 md:w-full h-40 overflow-auto">
+          <div className="w-60 md:w-full h-48 overflow-auto">
             <ReportInputForm/>
           </div>
         </div>

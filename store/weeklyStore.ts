@@ -3,7 +3,7 @@ import { z, ZodError } from 'zod';
 
 // バリデーションスキーマ定義
 const targetSchema = z.object({
-  target: z.number().min(1),
+  target: z.number().min(1).max(200),
 });
 const contentSchema = z.object({
   content: z.string().min(1).max(200),

@@ -12,12 +12,13 @@ export default function ReportInputForm() {
           <Textarea
             value={content}
             onChange={(e) => setContent(e.currentTarget.value)}
-            placeholder="今週の振り返りを200字以内で入力してください"
+            placeholder="今週の振り返り"
+            description="200字以内で入力してください"
             label="週間レポート"
             size="xs"
             withAsterisk
             autosize
-            minRows={6}
+            minRows={7}
             maxRows={7}
           />
         </form>

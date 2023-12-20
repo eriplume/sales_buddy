@@ -13,10 +13,12 @@ export default function TargetInputForm() {
             onChange={(value) => setTarget(Number(value))}
             label="目標金額（万）"
             placeholder="100万円"
+            description="1~200で入力してください"
             suffix="万円"
             size="xs"
             withAsterisk
             min={0}
+            max={200}
           />
         </div>
       </div>
