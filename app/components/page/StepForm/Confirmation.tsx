@@ -5,13 +5,13 @@ import { CheckBadgeIcon, CalendarIcon } from "@heroicons/react/24/outline";
 export default function Confirmation() {
 
   const { target, getWeeklyReportData, getWeeklyTargetData } = useWeeklyStore();
-  const weeklyReportData = getWeeklyReportData();
-  const weeklyTargetData = getWeeklyTargetData();
+  const { weekly_report } = getWeeklyReportData();
+  const { weekly_target } = getWeeklyTargetData();
 
-  const reportStartDate = formatDateMD(weeklyReportData.weekly_report.start_date)
-  const reportEndDate = formatDateMD(weeklyReportData.weekly_report.end_date)
-  const targetStartDate = formatDateMD(weeklyTargetData.weekly_target.start_date)
-  const targetEndDate = formatDateMD(weeklyTargetData.weekly_target.end_date)
+  const reportStartDate = formatDateMD(weekly_report.start_date)
+  const reportEndDate = formatDateMD(weekly_report.end_date)
+  const targetStartDate = formatDateMD(weekly_target.start_date)
+  const targetEndDate = formatDateMD(weekly_target.end_date)
 
   return (
     <div className="flex flex-col w-full mx-auto max-w-lg bg-white px-10 pb-10 pt-6 shadow-sm rounded">
@@ -29,7 +29,7 @@ export default function Confirmation() {
             <div className='text-sm text-gray-700'>{reportStartDate} ~ {reportEndDate}</div>
           </div>
           <div className="bg-white border w-60 md:w-full h-32 overflow-auto text-xs p-2">
-            {weeklyReportData.weekly_report.content}
+            {weekly_report.content}
           </div>
         </div>
       </div>
