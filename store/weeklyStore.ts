@@ -43,6 +43,7 @@ type WeeklyState = {
   validateTarget: () => { success: boolean; data?: any; error?: ZodError };
   getWeeklyReportData: () => WeeklyReportData;
   getWeeklyTargetData: () => WeeklyTargetData;
+  clearData: () => void;
 };
   
 const useWeeklyStore = create<WeeklyState>((set, get) => ({
@@ -68,12 +69,13 @@ const useWeeklyStore = create<WeeklyState>((set, get) => ({
   getWeeklyTargetData: () => {
     const { target, targetDateRange } = get();
     const weekly_target = {
-      target: target * 10000, // 万単位に変換
+      target: target * 10000,
       start_date: formatDate(targetDateRange[0]),
       end_date: formatDate(targetDateRange[1]),
     };
     return { weekly_target };
   },
+  clearData: () => set({ content: '', target: 0, contentDateRange: initialReportDateRange, targetDateRange: initialTargetDateRange }),
 }));
   
 export default useWeeklyStore ;
