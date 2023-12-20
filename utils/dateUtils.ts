@@ -11,11 +11,26 @@ export const formatDateLayout = (date :Date) => {
   return dayjs(date).format("YYYY / MM / DD   ( ddd )");
 };
 
+export const getStartOfWeek = (date :Date) => {
+  return dayjs(date).startOf('isoWeek').toDate();
+}
+
+export const getEndOfWeek = (date :Date) => {
+  return dayjs(date).endOf('isoWeek').toDate();
+}
+
 export const getTargetDateRange = (): [Date, Date] => {
-  const today = dayjs();
-  const todayPlusTwoDays = today.add(2, 'day');
-  const startOfWeek = todayPlusTwoDays.startOf('isoWeek').toDate();
-  const endOfWeek = todayPlusTwoDays.endOf('isoWeek').toDate();
+  const todayPlusTwoDays = dayjs().add(2, 'day').toDate();
+  const startOfWeek = getStartOfWeek(todayPlusTwoDays)
+  const endOfWeek = getEndOfWeek(todayPlusTwoDays)
+
+  return [startOfWeek, endOfWeek];
+};
+
+export const getReportDateRange = (): [Date, Date] => {
+  const todayMinusFourDays = dayjs().subtract(4, 'day').toDate();
+  const startOfWeek = getStartOfWeek(todayMinusFourDays)
+  const endOfWeek = getEndOfWeek(todayMinusFourDays)
 
   return [startOfWeek, endOfWeek];
 };
