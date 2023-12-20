@@ -11,6 +11,10 @@ export const formatDateLayout = (date :Date) => {
   return dayjs(date).format("YYYY / MM / DD   ( ddd )");
 };
 
+export const formatDateMD = (date :string) => {
+  return dayjs(date).format("MM/DD");
+};
+
 export const getStartOfWeek = (date :Date) => {
   return dayjs(date).startOf('isoWeek').toDate();
 }
