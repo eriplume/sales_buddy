@@ -37,14 +37,26 @@ export default function Confirmation() {
       <div className="flex space-y-4 w-full mx-auto">
         <div className="flex flex-col w-full p-2 mx-auto justify-center">
           <div className='flex flex-row ml-1 items-center'>
-            <div className='text-sm text-gray-700 mr-1'>次週の目標 :</div>
-            <CalendarIcon className="w-4 h-4 text-gray-500 mx-1"/>
-            <div className='text-sm text-gray-700'>{targetStartDate} ~ {targetEndDate}</div>
+            <div className='text-sm text-gray-700 mr-1'>
+              次週の目標 :
+            </div>
+            {target !== 0 && (
+              <div className='flex flex-row'>
+                <CalendarIcon className="w-4 h-4 text-gray-500 mx-1"/>
+                <div className='text-sm text-gray-700'>{targetStartDate} ~ {targetEndDate}</div>
+              </div>
+            )}
           </div>
           <div className="bg-white w-60 md:w-full h-10 text-sm p-2">
-              <div className="text-xl text-gray-800">
-                {target} 万
-              </div>
+          {target !== 0 ? (
+            <div className="text-xl text-gray-800">
+              {target} 万
+            </div>
+          ):(
+            <div className="text-lg text-gray-800">
+              登録をスキップします
+            </div>
+          )}
           </div>
         </div>
       </div>
