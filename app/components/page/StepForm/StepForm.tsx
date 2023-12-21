@@ -67,19 +67,18 @@ export default function StepForm() {
       return;
     }
 
-    try {
-      if (target !== 0) {
+    if (target !== 0) {
+      try {
         await axios.post(`/api/weeklytarget`, { weekly_target });
+        showSuccessNotification(`登録しました`);
+      } catch (error) {
+        showSuccessNotification(`レポートを登録しました`);  
+        showErrorNotification('お手数ですが目標設定ページより再度登録してください', '目標の登録に失敗しました');
+        console.error("Failed to send weekly target", error);
       }
-    } catch (error) {
-      showSuccessNotification(`レポートを登録しました`);
-      showErrorNotification('お手数ですが目標設定ページより再度登録してください', '目標の登録に失敗しました');
-      console.error("Failed to send weekly target", error);
-      router.push('/dashboard');
-      clearData();
-      return; 
+    } else {
+      showSuccessNotification(`登録しました`);
     }
-    showSuccessNotification(`登録しました`);
     router.push('/dashboard');
     clearData();
   };
