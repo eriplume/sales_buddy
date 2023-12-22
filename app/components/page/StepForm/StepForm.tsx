@@ -13,6 +13,7 @@ import StepperIcon from './StepperIcon';
 import useWeeklyStore from '@/store/weeklyStore';
 import { showErrorNotification } from '@/utils/notifications';
 import { showSuccessNotification } from '@/utils/notifications';
+import { showCautionNotification } from '@/utils/notifications';
 
 export default function StepForm() {
   const router = useRouter()
@@ -52,7 +53,7 @@ export default function StepForm() {
   const handleSkip = () => {
     setActive(2);
     setTarget(0);
-    showErrorNotification('目標の入力をスキップしました');
+    showCautionNotification('目標の入力をスキップしました');
   }
 
   const handleSubmit = async () => {
