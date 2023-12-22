@@ -17,7 +17,7 @@ export default function Submit() {
   const { data: session } = useSession();
   const railsUserId = session?.user?.railsId;
   const { clearData, submitData } = useCalculationStore();
-  const { fetchData } = useDashboardStore((state) => ({fetchData: state.fetchData,}));
+  const { fetchSalesRecord } = useDashboardStore((state) => ({fetchSalesRecord: state.fetchSalesRecord,}));
 
   const handleSubmit = async () => {
     const { dairy_record, customer_counts } = submitData();
@@ -40,7 +40,7 @@ export default function Submit() {
       showSuccessNotification(`${date}の売上を登録しました`);
       clearData();
       if (railsUserId !== undefined) {
-        fetchData(railsUserId, true);
+        fetchSalesRecord(railsUserId, true);
       }
       router.push('/dashboard');
     } catch (error) {
