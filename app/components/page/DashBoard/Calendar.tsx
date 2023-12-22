@@ -1,4 +1,5 @@
 "use client"
+import { useFetchData } from '@/lib/useFetchData';
 import { useMemo } from 'react';
 import { formatDate } from '@/utils/dateUtils';
 import useCalculationStore from '@/store/calculationStore';
@@ -9,6 +10,8 @@ import SalesModal from './SalesModal';
 import SalesIndicator from './SalesIndicator';
 
 export default function Calender() {
+  useFetchData();
+  
   const [opened, { open, close }] = useDisclosure(false);
   const { selectedDate, setSelectedDate } = useCalculationStore();
   const { salesRecords } = useDashboardStore((state) => ({ salesRecords: state.salesRecords }));

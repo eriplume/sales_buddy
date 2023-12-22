@@ -1,6 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
+import { useFetchData } from '@/lib/useFetchData';
 import axios from 'axios'
 import useWeeklyStore from '@/store/weeklyStore';
 import { showErrorNotification, showSuccessNotification, showCautionNotification } from '@/utils/notifications';
@@ -14,6 +15,7 @@ import SkipButton from '../../ui/button/SkipButton';
 import SubmitButton from '../../ui/button/SubmitButton';
 
 export default function StepForm() {
+  useFetchData();
   const router = useRouter()
   const { target, setTarget, clearData, validateTarget, validateContent, getWeeklyReportData, getWeeklyTargetData } = useWeeklyStore();
 

@@ -1,9 +1,13 @@
 "use client"
+import { useFetchResisterdDay } from '@/lib/useFetchData';
 import { Fieldset } from '@mantine/core';
 import RecordInputForm from './RecordInputForm';
 import Datepicker from './DatePicker';
 
 export default function Caluculator() {
+
+  useFetchResisterdDay();
+
   return (
     <>
     <div className="flex flex-col w-full max-w-lg">
