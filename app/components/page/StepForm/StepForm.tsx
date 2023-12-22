@@ -1,24 +1,22 @@
 "use client"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { Button } from '@mantine/core';
 import axios from 'axios'
+import useWeeklyStore from '@/store/weeklyStore';
+import { showErrorNotification, showSuccessNotification, showCautionNotification } from '@/utils/notifications';
 import Target from './Target';
 import Report from './Report';
 import Confirmation from './Confirmation';
-import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
-import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
-import { ForwardIcon } from "@heroicons/react/24/solid";
 import StepperIcon from './StepperIcon';
-import useWeeklyStore from '@/store/weeklyStore';
-import { showErrorNotification } from '@/utils/notifications';
-import { showSuccessNotification } from '@/utils/notifications';
+import BackButton from '../../ui/button/BackButton';
+import NextButton from '../../ui/button/NextButton';
+import SkipButton from '../../ui/button/SkipButton';
+import SubmitButton from '../../ui/button/SubmitButton';
 
 export default function StepForm() {
   const router = useRouter()
   const { target, setTarget, clearData, validateTarget, validateContent, getWeeklyReportData, getWeeklyTargetData } = useWeeklyStore();
 
-  //アクティブなステップの管理
   const [active, setActive] = useState(0);
 
   function validateStep(step :number) {
@@ -52,7 +50,7 @@ export default function StepForm() {
   const handleSkip = () => {
     setActive(2);
     setTarget(0);
-    showErrorNotification('目標の入力をスキップしました');
+    showCautionNotification('目標の入力をスキップしました');
   }
 
   const handleSubmit = async () => {
@@ -67,19 +65,18 @@ export default function StepForm() {
       return;
     }
 
-    try {
-      if (target !== 0) {
+    if (target !== 0) {
+      try {
         await axios.post(`/api/weeklytarget`, { weekly_target });
+        showSuccessNotification(`登録しました`);
+      } catch (error) {
+        showSuccessNotification(`レポートを登録しました`);  
+        showErrorNotification('お手数ですが目標設定ページより再度登録してください', '目標の登録に失敗しました');
+        console.error("Failed to send weekly target", error);
       }
-    } catch (error) {
-      showSuccessNotification(`レポートを登録しました`);
-      showErrorNotification('お手数ですが目標設定ページより再度登録してください', '目標の登録に失敗しました');
-      console.error("Failed to send weekly target", error);
-      router.push('/dashboard');
-      clearData();
-      return; 
+    } else {
+      showSuccessNotification(`登録しました`);
     }
-    showSuccessNotification(`登録しました`);
     router.push('/dashboard');
     clearData();
   };
@@ -88,7 +85,7 @@ export default function StepForm() {
     <>
       <div>
         {/* ステッパー */}
-          <StepperIcon active={active}/>
+        <StepperIcon active={active}/>
 
         {/* コンテンツ */}
         <div>
@@ -111,36 +108,23 @@ export default function StepForm() {
 
         {/* ボタン */}
         <div className='flex flex-col md:flex-row justify-center pt-2'>
-
           { active == 1 && (
             <div className="flex justify-center md:justify-end mt-4">
-              <Button size="sm" variant="outline" color="#9ca3af" onClick={handleSkip}>
-                <ForwardIcon className="w-4 h-4 mr-1 text-gray-400" />
+              <SkipButton size='sm' onClick={handleSkip}>
                 目標設定をスキップする
-              </Button>
+              </SkipButton>
             </div>
           )}
-
           <div className="flex flex-row justify-center mt-4 gap-3 md:px-4">
-          { active > 0 && (
-            <Button size="sm" variant="outline" color="#9ca3af" onClick={prevStep}>
-              <ArrowUturnLeftIcon className="w-4 h-4 mr-1 text-gray-400" />
-              戻る
-            </Button>
-          )}
-
-          {active < 2 ? (
-            <Button size="sm" variant="outline" color="gray" onClick={nextStep}>
-              次へ
-              <PaperAirplaneIcon className="w-5 h-5 ml-1 text-blue-400" />
-            </Button>
-          ) : (
-            <Button size="sm" variant="outline" color="gray" onClick={handleSubmit}>
-              登録
-              <PaperAirplaneIcon className="w-5 h-5 ml-1 text-blue-400" />
-            </Button>
-          )}
-        </div>
+            { active > 0 && (
+              <BackButton size='sm' onClick={prevStep}/>
+            )}
+            {active < 2 ? (
+              <NextButton size='sm' onClick={nextStep}/>
+            ) : (
+              <SubmitButton size='sm' onClick={handleSubmit}/>
+            )}
+          </div>
         </div>
       </div>
     </>

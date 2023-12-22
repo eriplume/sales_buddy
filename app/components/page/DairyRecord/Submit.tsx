@@ -4,14 +4,13 @@ import { useSession } from 'next-auth/react';
 import axios from 'axios'
 import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
+import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import CurrentData from './CurrentData';
-import ClearButton from '../../ui/ClearButton';
-import SubmitButton from '../../ui/SubmitButton';
+import ClearButton from '../../ui/button/ClearButton';
+import SubmitButton from '../../ui/button/SubmitButton';
 import CurrentDate from './CurrentDate';
 import CustomersList from './CustomersList';
 import { Fieldset } from '@mantine/core';
-import { showErrorNotification } from '@/utils/notifications';
-import { showSuccessNotification } from '@/utils/notifications';
 
 export default function Submit() {
   const router = useRouter()
@@ -62,9 +61,9 @@ export default function Submit() {
             <CustomersList/>
           </div>
 
-          <div className="flex justify-end mt-4 gap-3">
-            <ClearButton onClick={clearData}/>
-            <SubmitButton onClick={handleSubmit}/>
+          <div className="flex justify-center mt-4 gap-4">
+            <ClearButton size="sm" onClick={clearData}/>
+            <SubmitButton size="sm" type="submit" onClick={handleSubmit}/>
           </div>
         </div>
       </Fieldset>

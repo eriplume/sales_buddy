@@ -15,3 +15,11 @@ export function showSuccessNotification(message: string, title?: string) {
     message,
   });
 }
+
+export function showCautionNotification(message: string, title?: string) {
+  showNotification({
+    title,
+    message,
+    color: 'yellow',
+  });
+}

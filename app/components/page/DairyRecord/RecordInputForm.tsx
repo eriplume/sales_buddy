@@ -4,8 +4,8 @@ import { z } from 'zod';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import useCalculationStore from '@/store/calculationStore';
-import { NumberInput, Select, Button } from '@mantine/core';
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import { NumberInput, Select } from '@mantine/core';
+import PlusButton from '../../ui/button/PlusButton';
 
 type FormValues = {
   number: number;
@@ -79,11 +79,8 @@ export default function RecordInputForm () {
             }))}
           />
 
-          <div className="flex justify-end mt-4">
-            <Button type="submit" variant="outline" color="gray" size="xs">
-              加算する
-              <PlusCircleIcon className="w-5 h-5 ml-1 text-blue-400" />
-            </Button>
+          <div className="flex justify-center mt-4">
+            <PlusButton size="sm" type="submit">加算する</PlusButton>
           </div>
         </form>
       </div>
