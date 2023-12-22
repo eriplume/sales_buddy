@@ -1,7 +1,7 @@
+import { ResisteredDateRange } from '@/types';
 import dayjs from 'dayjs';
 import isoWeek from 'dayjs/plugin/isoWeek';
 dayjs.extend(isoWeek);
-
 
 export const formatDate = (date :Date) => {
   return dayjs(date).format('YYYY-MM-DD');
@@ -37,4 +37,16 @@ export const getReportDateRange = (): [Date, Date] => {
   const endOfWeek = getEndOfWeek(todayMinusFourDays)
 
   return [startOfWeek, endOfWeek];
+};
+
+export const isDateInRanges = (date: Date, ranges: ResisteredDateRange[]): boolean => {
+  const checkDate = dayjs(date);
+
+  return ranges.some(range => {
+    const startDate = dayjs(range.startDate);
+    const endDate = dayjs(range.endDate);
+
+    // checkDate が startDate と endDate の間にあるかチェック
+    return checkDate.isAfter(startDate.subtract(1, 'day')) && checkDate.isBefore(endDate.add(1, 'day'));
+  });
 };
