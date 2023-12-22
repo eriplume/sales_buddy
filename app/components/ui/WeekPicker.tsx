@@ -6,10 +6,11 @@ import { rem } from '@mantine/core';
 type WeekPickerProps = {
   value: [Date, Date];
   handleChange: (newValue: [Date | null, Date | null]) => void;
-  excludeDate: (date: Date) => boolean
+  excludeDate: (date: Date) => boolean;
+  maxDate?: Date;
 }
 
-export default function WeekPicker({ value, excludeDate, handleChange}:WeekPickerProps) {
+export default function WeekPicker({ value, excludeDate, handleChange, maxDate }:WeekPickerProps) {
 
   const icon = <CalendarIcon style={{ width: rem(18), height: rem(18) }}/>;
 
@@ -27,6 +28,7 @@ export default function WeekPicker({ value, excludeDate, handleChange}:WeekPicke
         withAsterisk
         className='w-full'
         excludeDate={excludeDate}
+        maxDate={maxDate}
       />
   </>
   );

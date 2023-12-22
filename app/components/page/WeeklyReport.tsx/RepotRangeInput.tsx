@@ -20,9 +20,11 @@ export default function ReportRangeInput() {
     }
   };
 
+  const maxDate = getEndOfWeek(new Date());
+
   const excludeDate = (date: Date) => {
     return isDateInRanges(date, registeredReportRanges);
   };
 
-  return <WeekPicker value={contentDateRange} handleChange={handleChange} excludeDate={excludeDate}/>
+  return <WeekPicker value={contentDateRange} handleChange={handleChange} excludeDate={excludeDate} maxDate={maxDate}/>
 }
