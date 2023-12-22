@@ -1,4 +1,4 @@
-import { SalesRecord } from '@/types/SalesRecord';
+import { SalesRecord } from '@/types';
 import { Modal } from '@mantine/core';
 import DayRecord from './DayRecord';
 import NotDayRecord from './NotDayRecord';

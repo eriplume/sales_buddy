@@ -1,4 +1,4 @@
-import { SalesRecord } from "@/types/SalesRecord";
+import { SalesRecord } from "@/types";
 import {  CurrencyYenIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon,UserIcon } from "@heroicons/react/24/solid";
 
