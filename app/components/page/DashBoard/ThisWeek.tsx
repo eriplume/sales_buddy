@@ -22,9 +22,9 @@ export default function ThisWeek() {
             <WeeklyRingProgress value={progressPercent}/>
             <WeeklyProgress target={target} amount={thisWeekAmount}/>
           </div>
-          <div className="flex items-center text-md text-gray-700 mt-2">
+          <div className="flex items-end text-md text-gray-700 mt-2">
             <div className="flex flex-row items-end">
-              <ForwardIcon className="w-7 h-7 text-sky-800 mr-2" />
+              <ForwardIcon className="w-8 h-8 text-sky-800 mr-2"/>
               <div className="hidden md:block">目標達成まで残り... </div>
               <div className="md:hidden">目標まで残り... </div>
               <div className="text-2xl font-bold">{formatCurrency(progress)}</div>

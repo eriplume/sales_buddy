@@ -12,7 +12,7 @@ export default function DayRecord({ record }: DayRecordProps) {
 
   return (
     <>
-      <div className="px-5 pb-2">
+      <div className="p-4 border-t-8">
         <div className="flex items-center text-gray-700">
           <CurrencyYenIcon className="w-6 h-6 text-sky-800 mr-2" />
           売上金額
