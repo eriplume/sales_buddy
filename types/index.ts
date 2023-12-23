@@ -23,3 +23,8 @@ export type ResisteredDateRange = {
     startDate: string;
     endDate: string;
 };
+
+export type ProgressData = {
+    progress: number;
+    progressPercent: number;
+};

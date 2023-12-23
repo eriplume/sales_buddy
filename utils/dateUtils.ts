@@ -50,3 +50,10 @@ export const isDateInRanges = (date: Date, ranges: ResisteredDateRange[]): boole
     return checkDate.isAfter(startDate.subtract(1, 'day')) && checkDate.isBefore(endDate.add(1, 'day'));
   });
 };
+
+// 今週の開始日と終了日を取得する関数
+export const getThisWeekRange = () => {
+  const start = formatDate(getStartOfWeek(new Date()));
+  const end = formatDate(getEndOfWeek(new Date()));
+  return { start, end };
+};

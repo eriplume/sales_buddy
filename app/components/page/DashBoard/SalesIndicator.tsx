@@ -11,7 +11,7 @@ export default function SalesIndicator({ date, salesDates }:SalesIndicatorProps 
   const isSaleDay = salesDates.includes(dateString);
 
   return (
-    <Indicator size={6} color="#93c5fd" offset={-5} disabled={!isSaleDay}>
+    <Indicator size={6} color="#93c5fd" offset={-5} disabled={!isSaleDay} position="top-center">
       {date.getDate()}
     </Indicator>
   )

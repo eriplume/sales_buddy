@@ -1,6 +1,8 @@
 import { SalesRecord } from "@/types";
+import { formatCurrency } from "@/utils/currencyUtils";
 import {  CurrencyYenIcon } from "@heroicons/react/24/outline";
-import { ShoppingBagIcon,UserIcon } from "@heroicons/react/24/solid";
+import { ShoppingBagIcon,UserIcon,UsersIcon } from "@heroicons/react/24/solid";
+import { SolidShirtIcon } from "../../ui/icon/ShirtIcon";
 
 type DayRecordProps = {
   record: SalesRecord;
@@ -8,27 +10,37 @@ type DayRecordProps = {
 
 export default function DayRecord({ record }: DayRecordProps) {
 
-  const formatCurrency = (amount :number) => {
-    return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(amount);
-  }
-
   return (
     <>
-      <div className="p-4 border-t">
-        <div className="mb-2 flex items-center text-gray-700">
-          <CurrencyYenIcon className="w-6 h-6 text-gray-500 mr-2" />
-          売上金額：
-          <span>{formatCurrency(record.total_amount)}</span>
+      <div className="px-5 pb-2">
+        <div className="flex items-center text-gray-700">
+          <CurrencyYenIcon className="w-6 h-6 text-sky-800 mr-2" />
+          売上金額
         </div>
-        <div className="mb-2 flex items-center text-gray-700">
-          <UserIcon className="w-6 h-6 text-gray-500 mr-2" />
-          客単価：
-          <span>{formatCurrency(record.average_spend)} （客数: {record.count}）</span>
+        <div className="py-1 ml-8 text-lg text-gray-700 font-bold">{formatCurrency(record.total_amount)}</div>
+        <div className="flex flex-row items-center text-gray-700 border-t mt-2 pt-3">
+          <UserIcon className="w-6 h-6 text-sky-800 mr-2" />
+          客単価
         </div>
-        <div className="mb-2 flex items-center text-gray-700">
-          <ShoppingBagIcon className="w-6 h-6 text-gray-500 mr-2" />
-          セット率：
-          <span>{record.set_rate} （点数: {record.total_number}）</span>
+        <div className="flex flex-row">
+          <div className="py-1 ml-8 text-gray-700 text-lg font-bold">{formatCurrency(record.average_spend)}</div>
+          <div className="flex flex-row items-center py-1 ml-8 text-lg font-bold text-gray-600">
+            <p className="px-4">/</p>
+            <div><UsersIcon  className="w-5 h-5 text-gray-600 mr-2"/></div>
+            <p>{record.total_number} 人</p>
+          </div>
+        </div>
+        <div className="flex items-center text-gray-700 border-t mt-2 pt-3">
+          <ShoppingBagIcon className="w-6 h-6 text-sky-800 mr-2"/>
+          セット率
+        </div>
+        <div className="flex flex-row">
+          <div className="py-1 ml-8 text-gray-700 text-lg font-bold">{record.set_rate.toFixed(1)}</div>
+          <div className="flex flex-row items-center py-1 ml-8 text-lg font-bold text-gray-600">
+            <p className="px-4">/</p>
+            <div><SolidShirtIcon className="w-5 h-5 text-gray-600 mr-2" /></div>
+            <p>{record.total_number} 点</p>
+          </div>
         </div>
       </div>
     </>

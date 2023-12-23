@@ -1,39 +1,31 @@
 import { create } from 'zustand';
-import { SalesRecord, WeeklyTarget, WeeklyReport } from '@/types';
-import { ResisteredDateRange } from '@/types';
-import { getStartOfWeek, getEndOfWeek, formatDate } from '@/utils/dateUtils';
+import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange } from '@/types';
+import { getThisWeekRange } from '@/utils/dateUtils';
 
 type DashboardState = {
+  lastFetchedUserId: number | null;
   salesRecords: SalesRecord[];
   salesDates: string[];
-  lastFetchedUserId: number | null;
-  thisWeekRecord: SalesRecord[];
   weeklyReports: WeeklyReport[];
+  registeredReportRanges: ResisteredDateRange[];
   weeklyTargets: WeeklyTarget[];
+  registeredTargetRanges: ResisteredDateRange[];
+  thisWeekRecord: SalesRecord[];
   thisWeekTarget: number | null;
   thisWeekAmount: number;
-  registeredReportRanges: ResisteredDateRange[];
-  registeredTargetRanges: ResisteredDateRange[];
   fetchSalesRecord: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyReport: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyTarget: (userId: number, force?: boolean) => Promise<void>;
-  getThisWeekProgress: () => number | null;
-};
-
-// 今週の開始日と終了日を取得する関数
-const getThisWeekRange = () => {
-  const start = formatDate(getStartOfWeek(new Date()));
-  const end = formatDate(getEndOfWeek(new Date()));
-  return { start, end };
+  getThisWeekProgress: () => ProgressData;
 };
 
 const useDashboardStore = create<DashboardState>((set, get) => ({
+  lastFetchedUserId: null,
   salesRecords: [],
   salesDates: [], // 売上記録の日付データ
-  lastFetchedUserId: null,
   weeklyReports: [],
-  weeklyTargets: [],
   registeredReportRanges: [], // 登録したレポートの日付データ
+  weeklyTargets: [],
   registeredTargetRanges: [], // 登録した目標の日付データ
   thisWeekRecord: [],
   thisWeekAmount: 0,
@@ -103,14 +95,14 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
     }
   },
   getThisWeekProgress: () => {
-    const thisWeekTarget = get().thisWeekTarget;
-    const thisWeekAmount = get().thisWeekAmount;
-    if (thisWeekTarget!==null) {
-      const progress = thisWeekTarget - thisWeekAmount;
-      return progress >= 0 ? progress : 0; // 目標を超えた場合は0を返す
-    } else {
-      return null;
-    }
+    const thisWeekAmount = get().thisWeekAmount || 0; // null の場合は 0 にする
+    const thisWeekTarget = get().thisWeekTarget || 0; // null の場合は 0 にする
+    const progress = thisWeekTarget > 0 ? thisWeekTarget - thisWeekAmount : 0;
+    const progressPercent = thisWeekTarget > 0 ? (thisWeekAmount / thisWeekTarget) * 100 : 0;
+    return {
+      progress: progress >= 0 ? progress : 0, // 目標を超えた場合は 0 を返す
+      progressPercent
+    };
   },
 }))
 

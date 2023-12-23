@@ -1,10 +1,6 @@
-"use client"
-import { useRouter } from 'next/navigation'
-import { Button } from '@mantine/core';
-import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
+import RouterButton from "../../ui/button/RouterButton"
 
 export default function NotDayRecord() {
-  const router = useRouter()
   return (
     <>
       <div className="p-4 border-t">
@@ -12,10 +8,7 @@ export default function NotDayRecord() {
           <p>売上データがありません。</p>
           <p>売上を記録しますか？</p>
         </div>
-        <Button type="submit" variant="outline" color="gray" size="sm" onClick={() => router.push('/dairyrecord')}>
-          記録しにいく
-          <CursorArrowRaysIcon className="w-6 h-6 ml-1 text-blue-400" />
-        </Button>
+        <RouterButton size="sm" path="/dairyrecord">登録する</RouterButton>
       </div>
     </>
   )

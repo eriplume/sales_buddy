@@ -1,6 +1,6 @@
 import useCalculationStore from '@/store/calculationStore';
 import { UserIcon, CurrencyYenIcon } from "@heroicons/react/24/outline";
-import ShirtIcon from '../../ui/icon/ShirtIcon';
+import { ShirtIcon } from '../../ui/icon/ShirtIcon';
 import CustomersHoverCard from './CustomersHoverCard';
 
 export default function CurrentData() {
@@ -9,7 +9,6 @@ export default function CurrentData() {
   return (
     <>
       <div className="flex flex-row justify-center w-full">
-
         <div className="flex flex-col justify-center py-2 px-8">
           <UserIcon className="w-8 h-8 mx-auto text-gray-500"/>
           <p className="text-xs mx-auto text-gray-400">
@@ -24,7 +23,6 @@ export default function CurrentData() {
             </div>
           </div>
         </div>
-  
         <div className="flex flex-col justify-center py-2 px-8 border-l border-gray-200">
           <ShirtIcon className="w-8 h-8 mx-auto text-gray-500"/>
           <p className="flex text-xs mx-auto text-gray-400">
@@ -36,7 +34,6 @@ export default function CurrentData() {
             </h2>
           </div>
         </div>
-  
         <div className="flex flex-col justify-center py-2 px-8 border-l border-gray-200">
           <CurrencyYenIcon className="w-8 h-8 mx-auto text-gray-500"/>
           <p className="flex text-xs mx-auto text-gray-400">
@@ -48,7 +45,6 @@ export default function CurrentData() {
             </h2>
           </div>
         </div>
-
       </div>
     </>
   )
