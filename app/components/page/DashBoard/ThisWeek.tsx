@@ -1,19 +1,35 @@
 'use client'
 import useDashboardStore from "@/store/dashboardStore";
+import WeeklyRingProgress from "./WeeklyRingProgress";
+import WeeklyProgress from "./WeeklyProgress";
+import { ForwardIcon } from "@heroicons/react/24/outline";
 
 export default function ThisWeek() {
 
+  const formatCurrency = (amount :number) => {
+    return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(amount);
+  }
+
   const { thisWeekTarget, thisWeekAmount } = useDashboardStore();
-  const thisWeekProgress = useDashboardStore((state) => state.getThisWeekProgress());
+  const { progress, progressPercent } = useDashboardStore((state) => state.getThisWeekProgress());
+
+  const target = thisWeekTarget !== null ? thisWeekTarget / 10000 : 0;
+
     return (
       <>
-        <div className="flex flex-col justify-center items-center w-fll h-20 px-6">
-          <p>ダッシュボードです。アンニョン</p>
-          <h2>
-            今週の目標: {thisWeekTarget !== null ? thisWeekTarget : "まだ登録されていません"}
-          </h2>
-          <h2>現在の売上: {thisWeekAmount}</h2>
-          <h2>目標まであと: {thisWeekProgress}</h2>
+        <div className="flex flex-col justify-center items-center p-7">
+          <div className="flex flex-row items-center">
+            <WeeklyRingProgress value={progressPercent}/>
+            <WeeklyProgress target={target} amount={thisWeekAmount}/>
+          </div>
+          <div className="flex items-center text-md text-gray-700 mt-2">
+            <div className="flex flex-row items-end">
+              <ForwardIcon className="w-7 h-7 text-sky-800 mr-2" />
+              <div className="hidden md:block">目標達成まで残り... </div>
+              <div className="md:hidden">目標まで残り... </div>
+              <div className="text-2xl font-bold">{formatCurrency(progress)}</div>
+            </div>
+          </div>
         </div>
       </>
     );
