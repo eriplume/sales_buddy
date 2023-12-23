@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/utils/currencyUtils";
 import RouterButton from "../../ui/button/RouterButton";
 import { ArrowTrendingUpIcon, FlagIcon } from "@heroicons/react/24/solid";
 
@@ -8,10 +9,6 @@ type WeeklyProgressProps = {
 
 export default function WeeklyProgress({ target, amount }:WeeklyProgressProps ) {
 
-  const formatCurrency = (amount :number) => {
-    return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(amount);
-  }
-
   return (
     <>
       <div className="p-2">
@@ -20,7 +17,7 @@ export default function WeeklyProgress({ target, amount }:WeeklyProgressProps ) 
           今週の目標
         </div>
         {target !== 0 ? (
-          <div className="py-1 text-lg font-bold">￥{target}万</div>
+          <div className="py-1 ml-1 text-lg font-bold">￥{target}万</div>
         ) : (
           <div className="pt-2 pb-1 ml-1">
             <RouterButton size="xs" path="/weekly">登録する</RouterButton>
