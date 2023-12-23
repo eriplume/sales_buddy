@@ -23,7 +23,7 @@ export default function WeeklyProgress({ target, amount }:WeeklyProgressProps ) 
             <RouterButton size="xs" path="/weekly">登録する</RouterButton>
           </div>
         )}
-        <div className="flex items-center text-gray-700 border-t mt-2 pt-2">
+        <div className="flex items-center text-gray-700 border-t-2 mt-2 pt-2">
           <ArrowTrendingUpIcon className="w-6 h-6 text-sky-800 mr-2" />
           現在の売上
         </div>
