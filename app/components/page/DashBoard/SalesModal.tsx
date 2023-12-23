@@ -1,8 +1,8 @@
+import { formatDateLayout } from '@/utils/dateUtils';
 import { SalesRecord } from '@/types';
 import { Modal } from '@mantine/core';
 import DayRecord from './DayRecord';
 import NotDayRecord from './NotDayRecord';
-import { formatDateLayout } from '@/utils/dateUtils';
 
 type SalesModalProps = {
     opened: boolean;
@@ -17,8 +17,8 @@ export default function SalesModal({ opened, close, selectedSalesRecord, selecte
     if (selectedDate) {
       return (
         <>
-          <div className='flex flex-row items-center w-full px-4 py-1 font-bold text-gray-500'>
-            {formatDateLayout(selectedDate)}
+          <div className='flex flex-row items-start w-full py-4 pr-20 mr-16 mb-1 pl-1 text-xl font-bold text-gray-700 border-b-8'>
+            <div className='flex w-full mr-12 ml-4'>{formatDateLayout(selectedDate)}</div>
           </div>
         </>
       );
