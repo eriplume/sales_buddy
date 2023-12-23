@@ -1,9 +1,11 @@
 "use client"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
+import { useSession } from 'next-auth/react';
 import { useFetchData } from '@/lib/useFetchData';
 import axios from 'axios'
 import useWeeklyStore from '@/store/weeklyStore';
+import useDashboardStore from '@/store/dashboardStore';
 import { showErrorNotification, showSuccessNotification, showCautionNotification } from '@/utils/notifications';
 import Target from './Target';
 import Report from './Report';
@@ -17,7 +19,10 @@ import SubmitButton from '../../ui/button/SubmitButton';
 export default function StepForm() {
   useFetchData();
   const router = useRouter()
+  const { data: session } = useSession();
+  const railsUserId = session?.user?.railsId;
   const { target, setTarget, clearData, validateTarget, validateContent, getWeeklyReportData, getWeeklyTargetData } = useWeeklyStore();
+  const { fetchWeeklyTarget } = useDashboardStore((state) => ({fetchWeeklyTarget: state.fetchWeeklyTarget}));
 
   const [active, setActive] = useState(0);
 
@@ -78,6 +83,9 @@ export default function StepForm() {
       }
     } else {
       showSuccessNotification(`登録しました`);
+    }
+    if (railsUserId !== undefined) {
+      fetchWeeklyTarget(railsUserId, true);
     }
     router.push('/dashboard');
     clearData();
