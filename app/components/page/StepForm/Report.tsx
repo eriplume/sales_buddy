@@ -2,6 +2,7 @@ import ReportRangeInput from '../WeeklyReport.tsx/RepotRangeInput';
 import ReportInputForm from '../WeeklyReport.tsx/ReportInput';
 import WeekRecordHoverCard from '../WeeklyReport.tsx/WeekRecordHover';
 import { PencilIcon } from '@heroicons/react/24/outline';
+import Achievements from './Achievements';
 
 export default function Report() {
   return (
@@ -16,34 +17,7 @@ export default function Report() {
         <ReportRangeInput />
       </div>
 
-      <div className="flex space-y-3 w-full mx-auto">
-        <div className="flex w-full p-2 mx-auto justify-start md:justify-center">
-          <div className='flex flex-col md:flex-row w-60 md:w-full h-18 md:h-10 items-start md:items-center'>
-            
-            <div className='flex flex-row items-center text-sm text-gray-700'>
-              <div className="mr-1">
-                予算達成率:
-              </div>
-              <div className="text-lg text-gray-800">
-                100
-              </div>
-              <div className="mr-3 ml-1">
-                %
-              </div>
-            </div>
-
-            <div className='flex flex-row items-center text-sm text-gray-700'>
-              <div className="md:pl-2 md:border-l border-gray-400">
-                詳しい実績を見る
-              </div>
-              <div className="ml-2">
-                <WeekRecordHoverCard />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
+      <Achievements/>
 
       <div className="flex flex-row justify-center items-center w-full">
         <div className="flex w-full p-2 mx-aut justify-center">
