@@ -16,12 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='bg-gray-100'>
+      <body>
         <NextAuthProvider>
           <MantineProviderWrapper>
             <div className="flex flex-col h-screen">
               <Header />
-              <main>
+              <main className='bg-gray-100'>
                 {children}
               </main>
               <Footer />
