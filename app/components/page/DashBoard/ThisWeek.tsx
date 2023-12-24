@@ -24,7 +24,11 @@ export default function ThisWeek() {
               <ForwardIcon className="w-8 h-8 text-sky-800 mr-2"/>
               <div className="hidden md:block">目標達成まで残り... </div>
               <div className="md:hidden">目標まで残り... </div>
-              <div className="text-2xl font-bold">{formatCurrency(progress)}</div>
+              {progress < 0 ? (
+                <div className="text-2xl font-bold">{formatCurrency(0)}</div>
+              ) : (
+                <div className="text-2xl font-bold">{formatCurrency(progress)}</div>
+              )}
             </div>
           </div>
         </div>

@@ -11,8 +11,12 @@ type DashboardState = {
   weeklyTargets: WeeklyTarget[];
   registeredTargetRanges: ResisteredDateRange[];
   thisWeekRecord: SalesRecord[];
-  thisWeekTarget: number | null;
   thisWeekAmount: number;
+  thisWeekNumber: number;
+  thisWeekCount: number;
+  thisWeekTarget: number | null;
+  thisWeekSet: number;
+  thisWeekAverage: number;
   fetchSalesRecord: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyReport: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyTarget: (userId: number, force?: boolean) => Promise<void>;
@@ -29,7 +33,11 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   registeredTargetRanges: [], // 登録した目標の日付データ
   thisWeekRecord: [],
   thisWeekAmount: 0,
+  thisWeekNumber: 0,
+  thisWeekCount: 0,
   thisWeekTarget: 0,
+  thisWeekSet: 0,
+  thisWeekAverage: 0,
 
   fetchSalesRecord: async (userId, force = false) => {
     if (force || get().lastFetchedUserId !== userId || get().salesRecords.length === 0) {
@@ -42,12 +50,20 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
           record.date >= start && record.date <= end
         );
         const thisWeekAmount = thisWeekRecord.reduce((sum, record) => sum + record.total_amount, 0);
+        const thisWeekNumber = thisWeekRecord.reduce((sum, record) => sum + record.total_number, 0);
+        const thisWeekCount = thisWeekRecord.reduce((sum, record) => sum + record.count, 0);
+        const thisWeekSet = thisWeekCount > 0 ? thisWeekNumber / thisWeekCount : 0;
+        const thisWeekAverage = thisWeekCount > 0 ? thisWeekAmount / thisWeekCount : 0;
         set({
           salesRecords: data, 
           salesDates: dates, 
           lastFetchedUserId: userId,
           thisWeekRecord,
           thisWeekAmount,
+          thisWeekNumber,
+          thisWeekCount,
+          thisWeekSet,
+          thisWeekAverage,
         });
       } catch (error) {
         console.error("Failed to fetch", error);
@@ -100,7 +116,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
     const progress = thisWeekTarget > 0 ? thisWeekTarget - thisWeekAmount : 0;
     const progressPercent = thisWeekTarget > 0 ? (thisWeekAmount / thisWeekTarget) * 100 : 0;
     return {
-      progress: progress >= 0 ? progress : 0, // 目標を超えた場合は 0 を返す
+      progress,
       progressPercent
     };
   },
