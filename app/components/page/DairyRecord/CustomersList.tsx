@@ -6,7 +6,7 @@ export default function CustomersList() {
   const { customerLabels } = useCalculationStore();
 
   return (
-    <div className="flex flex-row justify-center items-center w-fll h-20 px-6">
+    <div className="flex flex-row justify-center items-center w-full h-20 px-6">
       {customerLabels.length > 0 ? (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 w-full">
           {customerLabels.split('、').map((label, index) => (

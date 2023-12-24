@@ -11,7 +11,7 @@ export default function ClearButton({ size, type, onClick }: ClearButtonProps) {
   return (
     <Button size={size} type={type} variant="outline" color="#9ca3af" onClick={onClick}>
       クリア
-      <XCircleIcon className="w-5 h-5 ml-1 text-red-400" />
+      <XCircleIcon className="w-5 h-5 ml-1" />
     </Button>
   )
 }

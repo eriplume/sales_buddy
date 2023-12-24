@@ -1,6 +1,8 @@
 'use client'
 import useDashboardStore from "@/store/dashboardStore";
 import WeekRecordHoverCard from '../WeeklyReport.tsx/WeekRecordHover';
+import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
+import { ActionIcon, Button } from '@mantine/core';
 
 export default function Achievements() {
 
@@ -15,7 +17,7 @@ export default function Achievements() {
           <div className="mr-1">
             予算達成率:
           </div>
-          <div className="text-lg font-bold text-sky-800">
+          <div className="text-lg font-bold text-blue-400">
             {progressPercent.toFixed(1)}
           </div>
           <div className="mr-3 ml-1">
@@ -28,7 +30,9 @@ export default function Achievements() {
             詳しい実績を見る
           </div>
           <div className="ml-2">
-            <WeekRecordHoverCard />
+            <ActionIcon variant="white" size="lg" color="#60a5fa" aria-label="Settings" className="shadow-md hover:mt-1">
+              <CursorArrowRaysIcon className="w-8 h-8 p-1"/>
+            </ActionIcon>
           </div>
         </div>
 

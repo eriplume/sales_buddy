@@ -1,14 +1,11 @@
 'use client'
+import { formatCurrency } from "@/utils/currencyUtils";
 import useDashboardStore from "@/store/dashboardStore";
 import WeeklyRingProgress from "./WeeklyRingProgress";
 import WeeklyProgress from "./WeeklyProgress";
 import { ForwardIcon } from "@heroicons/react/24/outline";
 
 export default function ThisWeek() {
-
-  const formatCurrency = (amount :number) => {
-    return new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'JPY' }).format(amount);
-  }
 
   const { thisWeekTarget, thisWeekAmount } = useDashboardStore();
   const { progress, progressPercent } = useDashboardStore((state) => state.getThisWeekProgress());
