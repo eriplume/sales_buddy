@@ -10,9 +10,9 @@ type SkipButtonProps = {
 
 export default function SkipButton({ size, type, onClick, children }: SkipButtonProps) {
   return (
-    <Button size={size} type={type} variant="outline" color="#9ca3af" onClick={onClick}>
+    <Button size={size} type={type} variant="outline" color="#9ca3af" onClick={onClick} className='hover:shadow-md'>
       {children}
-      <ForwardIcon className="w-5 h-5 ml-2 text-yellow-300" />
+      <ForwardIcon className="w-6 h-6 ml-2 text-blue-300" />
     </Button>
   )
 }

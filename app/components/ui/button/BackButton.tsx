@@ -9,7 +9,7 @@ type BackButtonProps = {
 
 export default function BackButton({ size, type, onClick }: BackButtonProps) {
   return (
-    <Button size={size} type={type} variant="outline" color="#9ca3af" onClick={onClick}>
+    <Button size={size} type={type} variant="outline" color="#9ca3af" onClick={onClick} className='hover:shadow-md'>
       <ChevronDoubleLeftIcon className="w-5 h-5 mr-2 text-gray-600" />
       戻る
     </Button>

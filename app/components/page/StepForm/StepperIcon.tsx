@@ -5,7 +5,7 @@ export default function StepperIcon({ active } :any) {
   return (
     <>
       <div className="pb-5 px-5 md:hidden">
-        <Stepper active={active} size="xs" color='#60a5fa'>
+        <Stepper active={active} size="xs" color='#93c5fd'>
           <Stepper.Step  />
           <Stepper.Step  />
           <Stepper.Step  />
@@ -15,7 +15,7 @@ export default function StepperIcon({ active } :any) {
       <div className="p-4 mb-2 hidden md:block">
         <Stepper
           active={active}
-          color='#60a5fa'
+          color='#93c5fd'
           size="md"
         >
           <Stepper.Step

@@ -9,9 +9,9 @@ type NextButtonProps = {
 
 export default function NextButton({ size, type, onClick }: NextButtonProps) {
   return (
-    <Button size={size} type={type} variant="outline" color="#9ca3af" onClick={onClick}>
+    <Button size={size} type={type} variant="filled" color="#93c5fd" onClick={onClick} className='hover:shadow-md'>
       次へ
-      <ChevronDoubleRightIcon className="w-5 h-5 ml-2 text-blue-400" />
+      <ChevronDoubleRightIcon className="w-5 h-5 ml-2" />
     </Button>
   )
 }
