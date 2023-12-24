@@ -1,6 +1,6 @@
 import useCalculationStore from '@/store/calculationStore';
-import { FlagIcon } from "@heroicons/react/24/solid";
 import { formatDateLayout } from '@/utils/dateUtils';
+import { CalendarIcon } from "@heroicons/react/24/outline";
 
 export default function CurrentDate() {
   const { selectedDate } = useCalculationStore();
@@ -9,8 +9,10 @@ export default function CurrentDate() {
 
   return (
     <div className="flex flex-row justify-center items-center w-full">
-        <FlagIcon className="w-5 h-5 text-gray-500 mr-2"/>
-        { formattedSelectedDate }
+      <div className="flex flex-row items-center border-b-4 border-gray-100 p-1">
+        <CalendarIcon className="w-6 h-6 text-gray-500 mr-2 ml-4"/>
+        <div className='text-lg mr-4'>{ formattedSelectedDate }</div>
+      </div>
     </div>
   )
 }

@@ -17,7 +17,7 @@ export default function SalesModal({ opened, close, selectedSalesRecord, selecte
     if (selectedDate) {
       return (
         <>
-          <div className='flex flex-row items-start w-full py-4 pr-20 mr-16 mb-1 pl-1 text-xl font-bold text-gray-700 border-b-8'>
+          <div className='flex flex-row items-start w-full pt-4 pr-22 mr-16 mb-1 pl-1 text-xl font-bold text-gray-700'>
             <div className='flex w-full mr-12 ml-4'>{formatDateLayout(selectedDate)}</div>
           </div>
         </>
