@@ -14,7 +14,7 @@ export default function DrawerMenu() {
   if(session)
     return (
       <>
-        <Drawer opened={opened} onClose={close} size="md">
+        <Drawer opened={opened} onClose={close} size="xs">
           <DrawerContents active={active} setActive={setActive} onClose={close}/>
         </Drawer >
   
