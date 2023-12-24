@@ -7,14 +7,14 @@ import BurgerIcon from './BurgerIcon';
 import DrawerContents from './DrawerContents';
 
 export default function DrawerMenu() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [opened, { open, close }] = useDisclosure(false);
   const [active, setActive] = useState(0); 
 
   if(session)
     return (
       <>
-        <Drawer opened={opened} onClose={close} size="xs">
+        <Drawer opened={opened} onClose={close} size="md">
           <DrawerContents active={active} setActive={setActive} onClose={close}/>
         </Drawer >
   
