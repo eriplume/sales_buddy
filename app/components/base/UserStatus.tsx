@@ -13,13 +13,13 @@ export default function UserStatus () {
   }
 
   return session ? (
-    <>
-    <HeaderMenu />
-    <ProfileDropdown
-      image={session.user.image} 
-      name={session.user.name} 
-    />
-    </>
+    <div className="flex items-center md:mr-4 mr-1">
+      <HeaderMenu />
+      <ProfileDropdown
+        image={session.user.image} 
+        name={session.user.name} 
+      />
+    </div>
   ) : (
     <div className="w-24 sm:w-32">
       <LoginButton/>

@@ -7,7 +7,7 @@ import BurgerIcon from './BurgerIcon';
 import DrawerContents from './DrawerContents';
 
 export default function DrawerMenu() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [opened, { open, close }] = useDisclosure(false);
   const [active, setActive] = useState(0); 
 

@@ -6,7 +6,7 @@ export default function HeaderMenu() {
   const router = useRouter();
   return (
     <>
-      <nav className="hidden md:flex md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex-wrap items-center text-base justify-center">
+      {/* <nav className="hidden md:flex md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex-wrap items-center text-base justify-center">
         {headerNavigationItems.map((item, index) => (
           <a
             key={index}
@@ -17,7 +17,7 @@ export default function HeaderMenu() {
             {item.label}
           </a>
         ))}
-      </nav>
+      </nav> */}
     </>
   )
 }
