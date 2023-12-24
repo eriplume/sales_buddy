@@ -27,7 +27,7 @@ export default function DayRecord({ record }: DayRecordProps) {
           <div className="flex flex-row items-center py-1 ml-8 text-lg font-bold text-gray-600">
             <p className="px-4">/</p>
             <div><UsersIcon  className="w-5 h-5 text-gray-600 mr-2"/></div>
-            <p>{record.total_number} 人</p>
+            <p>{record.count} 人</p>
           </div>
         </div>
         <div className="flex items-center text-gray-700 border-t mt-2 pt-3">
