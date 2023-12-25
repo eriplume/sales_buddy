@@ -8,12 +8,12 @@ import { DatePicker } from '@mantine/dates';
 import CalendarIndicator from '../../ui/CalendarIndicator';
 import CalendarModal from './CalendarModal';
 import JobRecord from './JobRecord';
+import JobsInput from './JobsInput';
 
 export default function JobsCalender() {
   useFetchJobs();
   
-  const [opened, { open, close }] = useDisclosure(false);
-
+  const [ opened, { open, close } ] = useDisclosure(false);
   const [ selectedDate, setSelectedDate ] = useState<Date | null>(null);
   const { jobsRecords } = useDashboardStore((state) => ({ jobsRecords: state.jobsRecords }));
   const { jobsDates } = useDashboardStore((state) => ({ jobsDates: state.jobsDates }));
@@ -30,13 +30,12 @@ export default function JobsCalender() {
     }
   };
 
-  // 選択された日付に対応するJobを取得
-  const selectedJobsRecord = useMemo(() => {
+  const selectedJobsRecords = useMemo(() => {
     if (selectedDate) {
-      const formattedDate = formatDate(selectedDate)
-      return jobsRecords.find((record) => record.date === formattedDate) || null;;
+      const formattedDate = formatDate(selectedDate);
+      return jobsRecords.filter((record) => record.date === formattedDate);
     }
-    return null;
+    return [];
   }, [selectedDate, jobsRecords]);
   
   const renderDay = (date: Date) => {
@@ -44,14 +43,11 @@ export default function JobsCalender() {
   };
 
   const renderModalContent = () => {
-    if (selectedJobsRecord) {
-      return <JobRecord record={selectedJobsRecord} />;
-      // return <p>業務記録</p>
-    } else {
-      return <p>登録フォーム</p>
-    }
+    return selectedJobsRecords.length > 0 
+      ? <JobRecord records={selectedJobsRecords} /> 
+      : <JobsInput />;
   };
-
+  
   return (
     <>
       <DatePicker allowDeselect onChange={handleDateChange} renderDay={renderDay} maxDate={new Date()} value={null}/>
