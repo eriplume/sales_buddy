@@ -28,3 +28,8 @@ export type ProgressData = {
     progress: number;
     progressPercent: number;
 };
+
+export type JobRecord = {
+    job: string;
+    date: string;
+};
