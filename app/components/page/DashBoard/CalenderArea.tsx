@@ -1,13 +1,43 @@
-import Calender from "./Calendar"
+"use client"
+import SalesCalender from "./SalesCalendar"
+import { Tabs } from '@mantine/core';
+import { TriangleIcon } from "../../ui/icon/Triangle";
+import JobsCalender from "./JobsCalendar";
 
 export default function CalenderArea() {
   return (
-    <div className="bg-white p-7 shadow-md rounded-md flex flex-col">
-      <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
-        <span className="text-xs text-blue-300 mr-1">⚫︎</span>
-        <span className="text-xs">売上記録した日</span>
+    <Tabs variant="outline" defaultValue="sales">
+      <Tabs.List>
+        <div className="bg-white text-gray-500 rounded-sm">
+          <Tabs.Tab value="sales" leftSection={<TriangleIcon className="w-3 h-3 text-blue-300"/>}>
+            <div className="text-xs p-1">売上記録</div>
+          </Tabs.Tab>
+        </div>
+        <div className="bg-white text-gray-500">
+          <Tabs.Tab value="jobs" leftSection={<TriangleIcon className="w-3 h-3 text-yellow-200"/>}>
+          <div className="text-xs p-1">業務記録</div>
+          </Tabs.Tab>
+        </div>
+      </Tabs.List>
+
+    <Tabs.Panel value="sales">
+      <div className="bg-white px-7 pt-4 pb-7 shadow-md flex flex-col">
+        <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
+          <span className="text-xs text-blue-300 mr-1">⚫︎</span>
+          <span className="text-xs">売上を記録した日</span>
+        </div>
+        <SalesCalender/>
       </div>
-      <Calender/>
-    </div>
+    </Tabs.Panel>
+    <Tabs.Panel value="jobs">
+      <div className="bg-white px-7 pt-4 pb-7 shadow-md flex flex-col">
+        <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
+          <span className="text-xs text-yellow-300 mr-1">⚫︎</span>
+          <span className="text-xs">業務を記録した日</span>
+        </div>
+        <JobsCalender/>
+      </div>
+    </Tabs.Panel>
+  </Tabs>
   )
 }
