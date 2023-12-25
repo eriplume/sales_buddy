@@ -19,6 +19,7 @@ type DashboardState = {
   thisWeekAverage: number;
   jobsRecords: JobRecord[];
   jobsDates: string[];
+  jobsList: string[];
   fetchSalesRecord: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyReport: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyTarget: (userId: number, force?: boolean) => Promise<void>;
@@ -42,7 +43,8 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   thisWeekSet: 0,
   thisWeekAverage: 0,
   jobsRecords: [],
-  jobsDates: [], // 売上記録の日付データ
+  jobsDates: [], 
+  jobsList: [],
   fetchSalesRecord: async (userId, force = false) => {
     if (force || get().lastFetchedUserId !== userId || get().salesRecords.length === 0) {
       try {
@@ -130,10 +132,12 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
         const response = await fetch(`/api/jobrecord`);
         const data: JobRecord[] = await response.json();
         const dates = data.map(record => record.date);
+        const jobs = data.map(record => record.job);
         set({
           jobsRecords: data, 
           jobsDates: dates, 
           lastFetchedUserId: userId,
+          jobsList: jobs,
         });
       } catch (error) {
         console.error("Failed to fetch", error);

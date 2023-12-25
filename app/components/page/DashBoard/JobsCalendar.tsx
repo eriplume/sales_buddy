@@ -8,7 +8,7 @@ import { DatePicker } from '@mantine/dates';
 import CalendarIndicator from '../../ui/CalendarIndicator';
 import CalendarModal from './CalendarModal';
 import JobRecord from './JobRecord';
-import JobsInput from './JobsInput';
+import NotJobRecord from './NotJobRecord';
 
 export default function JobsCalender() {
   useFetchJobs();
@@ -45,7 +45,7 @@ export default function JobsCalender() {
   const renderModalContent = () => {
     return selectedJobsRecords.length > 0 
       ? <JobRecord records={selectedJobsRecords} /> 
-      : <JobsInput />;
+      : <NotJobRecord selectedDate={selectedDate} close={close} />;
   };
   
   return (
