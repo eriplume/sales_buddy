@@ -45,7 +45,7 @@ export default function Achievements() {
                 size="lg"
                 color="#60a5fa"
                 aria-label="Settings" 
-                className="shadow-md hover:-translate-y-1 hover:text-sky-700 transition-transform"
+                className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform"
                 onClick={open}
               >
                 <CursorArrowRaysIcon className="w-8 h-8 p-1"/>
