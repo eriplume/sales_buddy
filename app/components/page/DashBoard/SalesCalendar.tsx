@@ -1,15 +1,17 @@
 "use client"
-import { useFetchData } from '@/lib/useFetchData';
 import { useMemo } from 'react';
+import { useFetchData } from '@/lib/useFetchData';
 import { formatDate } from '@/utils/dateUtils';
 import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
 import { useDisclosure } from '@mantine/hooks';
 import { DatePicker } from '@mantine/dates';
-import SalesModal from './SalesModal';
-import SalesIndicator from './SalesIndicator';
+import CalendarIndicator from '../../ui/CalendarIndicator';
+import DayRecord from './DayRecord';
+import NotDayRecord from './NotDayRecord';
+import CalendarModal from './CalendarModal';
 
-export default function Calender() {
+export default function SalesCalender() {
   useFetchData();
   
   const [opened, { open, close }] = useDisclosure(false);
@@ -17,12 +19,15 @@ export default function Calender() {
   const { salesRecords } = useDashboardStore((state) => ({ salesRecords: state.salesRecords }));
   const { salesDates } = useDashboardStore((state) => ({ salesDates: state.salesDates }));
 
-
   const handleDateChange = (date: Date | null) => {
     if (date !== null) {
       setSelectedDate(date);
     }
     open();
+  };
+
+  const renderModalContent = () => {
+    return selectedSalesRecord ? <DayRecord record={selectedSalesRecord} /> : <NotDayRecord />;
   };
 
   // 選択された日付に対応する売上記録を取得
@@ -35,17 +40,18 @@ export default function Calender() {
   }, [selectedDate, salesRecords]);
 
   const renderDay = (date: Date) => {
-    return <SalesIndicator date={date} salesDates={salesDates} />;
+    return <CalendarIndicator date={date} rendarDate={salesDates} color="#93c5fd"/>;
   };
 
   return (
     <>
-      <DatePicker allowDeselect onChange={handleDateChange} renderDay={renderDay} maxDate={new Date()}/>
-      <SalesModal 
+      <DatePicker allowDeselect onChange={handleDateChange} renderDay={renderDay} maxDate={new Date()} value={null}/>
+      <CalendarModal 
         opened={opened}
         close={close}
-        selectedSalesRecord={selectedSalesRecord}
         selectedDate={selectedDate}
+        renderModalContent={renderModalContent}
+        size="auto"
       />
     </>
   );

@@ -1,17 +1,15 @@
 import { formatDateLayout } from '@/utils/dateUtils';
-import { SalesRecord } from '@/types';
 import { Modal } from '@mantine/core';
-import DayRecord from './DayRecord';
-import NotDayRecord from './NotDayRecord';
 
-type SalesModalProps = {
+type CalendarModalProps = {
     opened: boolean;
     close: () => void;
-    selectedSalesRecord: SalesRecord | null;
     selectedDate: Date | null;
+    renderModalContent: () => React.ReactNode;
+    size: "xs" | "sm" | "md" | "lg" | "xl" | "auto";
 };
 
-export default function SalesModal({ opened, close, selectedSalesRecord, selectedDate }: SalesModalProps) {
+export default function CalendarModal({ opened, close, size, selectedDate, renderModalContent }: CalendarModalProps) {
 
   const renderModalTitle = () => {
     if (selectedDate) {
@@ -25,20 +23,13 @@ export default function SalesModal({ opened, close, selectedSalesRecord, selecte
     }
   };
 
-  const renderModalContent = () => {
-    if (selectedSalesRecord) {
-      return <DayRecord record={selectedSalesRecord} />;
-    } else {
-      return <NotDayRecord />;
-    }
-  };
-
   return (
     <Modal
       opened={opened}
       onClose={close}
       title={renderModalTitle()}
       centered
+      size={size}
     >
       {renderModalContent()}
     </Modal>

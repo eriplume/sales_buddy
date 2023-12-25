@@ -30,3 +30,15 @@ export const useFetchResisterdDay = () => {
     }
   }, [railsUserId, fetchSalesRecord]);
 }
+
+export const useFetchJobs = () => {
+  const { data: session } = useSession();
+  const railsUserId = session?.user?.railsId;
+  const fetchJobsRecord = useDashboardStore((state) => state.fetchJobsRecord);
+
+  useEffect(() => {
+    if (railsUserId) {
+      fetchJobsRecord(railsUserId);
+    }
+  }, [railsUserId, fetchJobsRecord]);
+}

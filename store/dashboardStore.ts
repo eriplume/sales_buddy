@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange } from '@/types';
+import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange, JobRecord } from '@/types';
 import { getThisWeekRange } from '@/utils/dateUtils';
 
 type DashboardState = {
@@ -17,9 +17,12 @@ type DashboardState = {
   thisWeekTarget: number | null;
   thisWeekSet: number;
   thisWeekAverage: number;
+  jobsRecords: JobRecord[];
+  jobsDates: string[];
   fetchSalesRecord: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyReport: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyTarget: (userId: number, force?: boolean) => Promise<void>;
+  fetchJobsRecord: (userId: number, force?: boolean) => Promise<void>;
   getThisWeekProgress: () => ProgressData;
 };
 
@@ -38,7 +41,8 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   thisWeekTarget: 0,
   thisWeekSet: 0,
   thisWeekAverage: 0,
-
+  jobsRecords: [],
+  jobsDates: [], // 売上記録の日付データ
   fetchSalesRecord: async (userId, force = false) => {
     if (force || get().lastFetchedUserId !== userId || get().salesRecords.length === 0) {
       try {
@@ -119,6 +123,22 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
       progress,
       progressPercent
     };
+  },
+  fetchJobsRecord: async (userId, force = false) => {
+    if (force || get().lastFetchedUserId !== userId || get().jobsRecords.length === 0) {
+      try {
+        const response = await fetch(`/api/jobrecord`);
+        const data: JobRecord[] = await response.json();
+        const dates = data.map(record => record.date);
+        set({
+          jobsRecords: data, 
+          jobsDates: dates, 
+          lastFetchedUserId: userId,
+        });
+      } catch (error) {
+        console.error("Failed to fetch", error);
+      }
+    }
   },
 }))
 
