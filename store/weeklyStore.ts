@@ -5,10 +5,10 @@ import { getTargetDateRange } from '@/utils/dateUtils';
 import { formatDate } from '@/utils/dateUtils';
 
 const targetSchema = z.object({
-  target: z.number().min(1).max(200),
+  target: z.number().min(1, "目標は0で登録できません").max(200),
 });
 const contentSchema = z.object({
-  content: z.string().min(1).max(300) .refine(content => content.trim().length > 0),
+  content: z.string().min(1, "レポートを入力してください").max(300, "300文字以内で入力してください").refine(content => content.trim().length > 0, "空白は無効です"),
 });
 
 const initialReportDateRange = getReportDateRange();

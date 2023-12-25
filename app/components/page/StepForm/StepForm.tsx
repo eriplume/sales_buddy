@@ -26,21 +26,43 @@ export default function StepForm() {
 
   const [active, setActive] = useState(0);
 
+  function validateContentStep() {
+    const validationResult = validateContent();
+    if (!validationResult.success) {
+      return { success: false, errorMessage: validationResult.error?.issues[0].message };
+    }
+    return { success: true, errorMessage: '' };
+  }
+
+  function validateTargetStep() {
+  const validationResult = validateTarget();
+  if (!validationResult.success) {
+    return { success: false, errorMessage: validationResult.error?.issues[0].message };
+  }
+  return { success: true, errorMessage: '' };
+}
+
   function validateStep(step :number) {
+    let validationResult;
+    let errorMessage = '';
+
     switch (step) {
       case 0:
-        return {
-          success: validateContent().success,
-          errorMessage: '1〜300文字で週間レポートを入力してください'
-        };
+        validationResult = validateContent();
+        if (!validationResult.success) {
+          errorMessage = validationResult.error?.issues[0].message || '正しく入力してください';
+        }
+        break;
       case 1:
-        return {
-          success: validateTarget().success,
-          errorMessage: '目標金額に0は設定できません'
-        };
+        validationResult = validateTarget();
+        if (!validationResult.success) {
+          errorMessage = validationResult.error?.issues[0].message || '正しく入力してください';
+        }
+        break;
       default:
-        return { success: true, errorMessage: '' };
+        errorMessage = '';
     }
+    return { success: validationResult ? validationResult.success : false, errorMessage };
   }
 
   const nextStep = () => {
