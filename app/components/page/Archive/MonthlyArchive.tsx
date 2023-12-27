@@ -6,6 +6,7 @@ import useDashboardStore from "@/store/dashboardStore";
 import MonthlyRecord from "./MonthlyRecord";
 import WeeklyRecord from "./WeeklyRecord";
 import MonthPicker from "../../ui/MonthPicker";
+import { TriangleIcon } from "../../ui/icon/Triangle";
 
 export default function MonthlyArchive() {
   const { salesRecords } = useDashboardStore();
@@ -26,11 +27,24 @@ export default function MonthlyArchive() {
 
   return (
     <>
-    <MonthPicker value={value} setValue={setValue} />
+    <div className="flex flex-col justify-center w-full max-w-lg py-7 bg-white rounded-sm">
 
-    <MonthlyRecord amount={monthlyAmount} number={monthlyNumber} count={monthlyCount} setRate={monthlySetRate} average={monthlyAverage}/>
+      <div className="flex flex-row justify-start pl-9">
+        <TriangleIcon className="w-4 h-4 mr-1 ml-2 text-blue-300" />
+        <div className='text-xs text-gray-500'>月を選択</div>
+      </div>
 
-    <WeeklyRecord monthRecords={filteredSalesRecords} />
+      <div className="flex flex-col w-full justify-center items-center px-7"> 
+        <div className="w-full items-center max-w-md p-2 md:px-3">
+          <MonthPicker value={value} setValue={setValue} />
+        </div>
+      </div>
+
+      <MonthlyRecord amount={monthlyAmount} number={monthlyNumber} count={monthlyCount} setRate={monthlySetRate} average={monthlyAverage}/>
+
+    </div>
+
+    {/* <WeeklyRecord monthRecords={filteredSalesRecords} /> */}
 
     </>
   )
