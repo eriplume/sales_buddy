@@ -14,7 +14,7 @@ type MonthlyRecordProps = {
 export default function MonthlyRecord({amount, number, count, setRate, average} :MonthlyRecordProps) {
   return (
     <>
-      <div className="flex flex-row justify-center items-center px-7">
+      <div className="flex flex-row justify-center items-center px-7 md:px-12">
         <div className="w-1/3">
           <div className='flex flex-col justify-center items-center text-gray-400 p-5'>
             <CurrencyYenIcon className="w-8 h-8"/>
@@ -37,7 +37,7 @@ export default function MonthlyRecord({amount, number, count, setRate, average} 
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-end items-center px-10 mr-2 text-lg text-gray-500">
+      <div className="flex flex-row justify-end items-center px-10 md:px-12 mr-2 text-lg text-gray-500">
         <div>total：</div>
         <div className="flex flex-row ml-1">
           <UsersIcon className="w-7 h-7 p-1 text-gray-400" />
