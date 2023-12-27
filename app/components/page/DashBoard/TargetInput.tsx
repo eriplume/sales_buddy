@@ -40,6 +40,8 @@ export default function TargetInput({close} :TargetInputProps) {
         showErrorNotification('目標の登録に失敗しました');
         console.error("Failed to send weekly target", error);
       }
+    } else {
+      showErrorNotification('目標を入力してください');
     }
   };
 
