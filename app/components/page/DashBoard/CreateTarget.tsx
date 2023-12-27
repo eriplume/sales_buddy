@@ -9,7 +9,7 @@ export default function CreateTarget() {
 
   return (
     <>
-      <Button size="xs" variant="outline" color="#64748b" onClick={open}>
+      <Button size="xs" variant="outline" color="#94a3b8" onClick={open} className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
         登録する
         <CursorArrowRaysIcon className="w-5 h-5 ml-1 text-blue-400" />
       </Button>

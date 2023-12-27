@@ -62,6 +62,10 @@ export const getWeekHead = (date :string) => {
   return dayjs(date).startOf('isoWeek').format('MM / DD');
 }
 
+export const getweekEndDate = (date :string) => {
+  return dayjs(date).add(6, 'day').format('MM / DD');
+}
+
 export const formatDateMD = (date :string) => {
   return dayjs(date).format("MM/DD");
 };

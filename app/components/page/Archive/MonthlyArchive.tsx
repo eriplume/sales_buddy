@@ -1,13 +1,18 @@
 "use client"
 import { useState } from "react";
+import { useFetchResisterdDay } from "@/lib/useFetchData";
 import { formatDateYM } from "@/utils/dateUtils";
 import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import useDashboardStore from "@/store/dashboardStore";
 import MonthlyRecord from "./MonthlyRecord";
-import WeeklyRecord from "./WeeklyRecord";
+import WeeklyArchive from "./WeeklyArchive";
 import MonthPicker from "../../ui/MonthPicker";
+import { TriangleIcon } from "../../ui/icon/Triangle";
 
 export default function MonthlyArchive() {
+
+  useFetchResisterdDay();
+
   const { salesRecords } = useDashboardStore();
   const [value, setValue] = useState<Date | null>(new Date());
 
@@ -17,6 +22,8 @@ export default function MonthlyArchive() {
     const recordMonth = record.date.substring(0, 7); 
     return recordMonth === targetMonth;
   });
+
+  const numberOfDays = filteredSalesRecords.length;
   
   const monthlyAmount = calculateTotal(filteredSalesRecords, 'total_amount');
   const monthlyNumber = calculateTotal(filteredSalesRecords, 'total_number');
@@ -24,14 +31,25 @@ export default function MonthlyArchive() {
   const monthlySetRate = calculateSetRate(monthlyNumber, monthlyCount);
   const monthlyAverage = calculateAverage(monthlyAmount, monthlyCount);
 
+
   return (
     <>
-    <MonthPicker value={value} setValue={setValue} />
+    <div className="flex flex-col justify-center w-full max-w-lg py-7 bg-white rounded-md">
 
-    <MonthlyRecord amount={monthlyAmount} number={monthlyNumber} count={monthlyCount} setRate={monthlySetRate} average={monthlyAverage}/>
+      <div className="flex flex-row justify-start px-7 pt-2 md:px-12">
+        <TriangleIcon className="w-4 h-4 mr-1 ml-4 text-blue-300" />
+        <div className='text-sm text-gray-800'>月を選択</div>
+      </div>
 
-    <WeeklyRecord monthRecords={filteredSalesRecords} />
+      <div className="flex flex-col w-full justify-center items-center px-7 md:px-12"> 
+        <div className="w-full items-center max-w-md px-3 py-2">
+          <MonthPicker value={value} setValue={setValue} />
+        </div>
+      </div>
 
+      <MonthlyRecord amount={monthlyAmount} number={monthlyNumber} count={monthlyCount} setRate={monthlySetRate} average={monthlyAverage} days={numberOfDays}/>
+      <WeeklyArchive monthRecords={filteredSalesRecords} />
+    </div>    
     </>
   )
 }

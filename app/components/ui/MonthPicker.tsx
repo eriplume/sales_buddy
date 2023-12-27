@@ -14,8 +14,8 @@ export default function MonthPicker({value, setValue} :MonthPickerProps ) {
     <MonthPickerInput
       leftSection={icon}
       leftSectionPointerEvents="none"
-      label="Pick date"
       placeholder="Pick date"
+      valueFormat= "YYYY年 MM月"
       value={value}
       onChange={setValue}
     />

@@ -1,5 +1,5 @@
 import { HoverCard, Text, Group, ActionIcon  } from '@mantine/core';
-import { UsersIcon } from "@heroicons/react/24/outline";
+import { CursorArrowRaysIcon } from "@heroicons/react/24/outline";
 import CustomersList from './CustomersList';
 
 export default function CustomersHoverCard() {
@@ -7,8 +7,8 @@ export default function CustomersHoverCard() {
     <Group justify="center">
       <HoverCard width={280} shadow="md">
         <HoverCard.Target>
-          <ActionIcon variant="light" size="lg" color="#60a5fa" radius="xl" aria-label="Settings" className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
-            <UsersIcon className="w-10 h-10 m-1 p-1"/>
+          <ActionIcon variant="outline" size="lg" color="#e2e8f0" radius="md" aria-label="Settings" className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
+            <CursorArrowRaysIcon className="w-5 h-5 text-blue-300 hover:text-sky-700"/>
           </ActionIcon>
         </HoverCard.Target>
         <HoverCard.Dropdown>
