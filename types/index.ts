@@ -19,6 +19,15 @@ export type WeeklyReport = {
     end_date: string;
 };
 
+export type WeeklyRecord = {
+    amount: number;
+    number: number;
+    count: number;
+    setRate: number;
+    average: number;
+    weekEnd: string;
+};
+
 export type ResisteredDateRange = {
     startDate: string;
     endDate: string;
