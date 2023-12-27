@@ -37,12 +37,12 @@ export default function Submit() {
 
       // response.dataから日付を取得
       const date = response.data.dairy_record.date;
-      showSuccessNotification(`${date}の売上を登録しました`);
-      clearData();
       if (railsUserId !== undefined) {
         fetchSalesRecord(railsUserId, true);
       }
       router.push('/dashboard');
+      showSuccessNotification(`${date}の売上を登録しました`);
+      clearData();
     } catch (error) {
       showErrorNotification('送信に失敗しました。もう一度お試しください。');
       console.error("Failed to fetch", error);
