@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange, JobRecord } from '@/types';
 import { getThisWeekRange } from '@/utils/dateUtils';
+import { calculateTotal, calculateSetRate, calculateAverage } from '@/utils/calculateUtils';
 
 type DashboardState = {
   lastFetchedUserId: number | null;
@@ -55,11 +56,11 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
         const thisWeekRecord = data.filter(record => 
           record.date >= start && record.date <= end
         );
-        const thisWeekAmount = thisWeekRecord.reduce((sum, record) => sum + record.total_amount, 0);
-        const thisWeekNumber = thisWeekRecord.reduce((sum, record) => sum + record.total_number, 0);
-        const thisWeekCount = thisWeekRecord.reduce((sum, record) => sum + record.count, 0);
-        const thisWeekSet = thisWeekCount > 0 ? thisWeekNumber / thisWeekCount : 0;
-        const thisWeekAverage = thisWeekCount > 0 ? thisWeekAmount / thisWeekCount : 0;
+        const thisWeekAmount = calculateTotal(thisWeekRecord, 'total_amount');
+        const thisWeekNumber = calculateTotal(thisWeekRecord, 'total_number');
+        const thisWeekCount = calculateTotal(thisWeekRecord, 'count');
+        const thisWeekSet = calculateSetRate(thisWeekNumber, thisWeekCount);
+        const thisWeekAverage = calculateAverage(thisWeekAmount, thisWeekCount);
         set({
           salesRecords: data, 
           salesDates: dates, 
