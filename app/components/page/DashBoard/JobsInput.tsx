@@ -47,12 +47,12 @@ export default function JobsInput({data, jobs, setJobs}: JobsInputProps) {
       />
       <div className='flex flex-row ml-2'>
         <div>
-          <ActionIcon variant="filled" color="#93c5fd" size="lg" onClick={addData} className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
+          <ActionIcon variant="outline" color="#93c5fd" size="lg" onClick={addData} className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
             <PlusIcon className='w-12 h-12 p-1' />
           </ActionIcon>
         </div>
         <div className='ml-2'>
-          <ActionIcon variant="filled" color="#cbd5e1" size="lg" onClick={clearData} className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
+          <ActionIcon variant="outline" color="#cbd5e1" size="lg" onClick={clearData} className="shadow-md hover:translate-y-1 hover:text-gray-500 transition-transform">
             <TrashIcon className='w-12 h-12 p-1' />
           </ActionIcon>
         </div>

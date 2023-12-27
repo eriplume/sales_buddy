@@ -41,14 +41,14 @@ export default function Achievements() {
             <div className="md:pl-2 md:border-l border-gray-400">詳しい実績をみる</div>
             <div className="ml-2">
               <ActionIcon
-                variant="white"
+                variant="outline"
                 size="lg"
-                color="#60a5fa"
+                color="#e2e8f0"
                 aria-label="Settings" 
                 className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform"
                 onClick={open}
               >
-                <CursorArrowRaysIcon className="w-8 h-8 p-1"/>
+                <CursorArrowRaysIcon className="w-8 h-8 p-1 text-blue-300 hover:text-sky-700"/>
               </ActionIcon>
             </div>
           </div>
