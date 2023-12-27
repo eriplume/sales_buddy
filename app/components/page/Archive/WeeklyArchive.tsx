@@ -1,15 +1,15 @@
 import { SalesRecord, WeeklyRecord } from "@/types";
 import { getWeekHead, getweekEndDate, sortData } from "@/utils/dateUtils";
 import { calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
-import { formatCurrency } from "@/utils/currencyUtils";
 import { Accordion } from '@mantine/core';
-import { CheckBadgeIcon, ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
+import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
+import WeeklyRecordContents from "./WeeklyRecordContents";
 
 type WeeklyRecordProps = {
   monthRecords: SalesRecord[];
 };
 
-export default function WeeklyRecord({monthRecords} :WeeklyRecordProps) {
+export default function WeeklyArchive({monthRecords} :WeeklyRecordProps) {
 
   const weeklyData = monthRecords.reduce<Record<string, WeeklyRecord>>((acc, record) => {
     const weekHead = getWeekHead(record.date);
@@ -37,17 +37,19 @@ export default function WeeklyRecord({monthRecords} :WeeklyRecordProps) {
             
             <Accordion.Item key={weekKey} value={weekKey}>
               <Accordion.Control
-                icon={ <ClipboardDocumentListIcon className="w-6 h-6 text-blue-300"/>
+                icon={ <ClipboardDocumentListIcon className="w-6 h-6 ml-2 text-blue-300"/>
                 }
               >
                 {weekKey} 〜 {weeklyData[weekKey].weekEnd}
               </Accordion.Control>
               <Accordion.Panel>
-                <div>金額: {formatCurrency(weeklyData[weekKey].amount)}</div>
-                <div>点数: {weeklyData[weekKey].number}</div>
-                <div>客数: {weeklyData[weekKey].count}</div>
-                <div>セット率: {weeklyData[weekKey].setRate.toFixed(1)}</div>
-                <div>客単価: {formatCurrency(weeklyData[weekKey].average)}</div>
+                <WeeklyRecordContents 
+                  amount={weeklyData[weekKey].amount} 
+                  number={weeklyData[weekKey].number}
+                  count={weeklyData[weekKey].count}
+                  setRate={weeklyData[weekKey].setRate}
+                  average={weeklyData[weekKey].average}
+                  />
               </Accordion.Panel>
             </Accordion.Item>
           ))}
