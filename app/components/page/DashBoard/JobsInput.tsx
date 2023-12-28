@@ -44,10 +44,11 @@ export default function JobsInput({data, jobs, setJobs}: JobsInputProps) {
         data={filteredData}
         value={value}
         onChange={setValue}
+        disabled={jobs.length >= 3}
       />
       <div className='flex flex-row ml-2'>
         <div>
-          <ActionIcon variant="outline" color="#93c5fd" size="lg" onClick={addData} className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
+          <ActionIcon variant="outline" color="#93c5fd" disabled={jobs.length >= 3} size="lg" onClick={addData} className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform">
             <PlusIcon className='w-12 h-12 p-1' />
           </ActionIcon>
         </div>
