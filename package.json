@@ -22,6 +22,7 @@
     "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
+    "recharts": "^2.10.3",
     "sharp": "^0.33.0",
     "zod": "^3.22.4",
     "zustand": "^4.4.7"
