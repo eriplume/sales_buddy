@@ -34,7 +34,7 @@ export default function MonthlyArchive() {
 
   return (
     <>
-    <div className="flex flex-col justify-center w-full max-w-lg py-7 bg-white rounded-md">
+    <div className="flex flex-col justify-center w-full max-w-lg pt-4 pb-7 md:py-7 bg-white rounded-md">
 
       <div className="flex flex-row justify-start px-7 pt-2 md:px-12">
         <TriangleIcon className="w-4 h-4 mr-1 ml-4 text-blue-300" />
