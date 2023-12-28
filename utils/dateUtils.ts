@@ -59,15 +59,19 @@ export const getThisWeekRange = () => {
 
 // string型で受け取る
 export const getWeekHead = (date :string) => {
-  return dayjs(date).startOf('isoWeek').format('MM / DD');
+  return dayjs(date).startOf('isoWeek').format('YYYY-MM-DD');
 }
 
 export const getweekEndDate = (date :string) => {
-  return dayjs(date).add(6, 'day').format('MM / DD');
+  return dayjs(date).endOf('isoWeek').format('YYYY-MM-DD');
 }
 
 export const formatDateMD = (date :string) => {
   return dayjs(date).format("MM/DD");
+};
+
+export const formatDateLayoutMD = (date :string) => {
+  return dayjs(date).format("MM / DD");
 };
 
 export const sortData = (data: Record<string, any>) => {
