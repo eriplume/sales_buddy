@@ -23,7 +23,7 @@ export default function NotJobRecord({ selectedDate, close } :NotJobRecordProps)
   const { fetchJobsRecord } = useDashboardStore((state) => ({fetchJobsRecord: state.fetchJobsRecord}));
 
   const handleSubmit = async () => {
-    if (selectedDate !== null && jobs.length !== 0 ) {
+    if (selectedDate !== null && jobs.length !== 0 && jobs.length < 4 ) {
       try {
         await axios.post(`/api/jobrecord`, {
           job_record: {
