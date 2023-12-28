@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useSession } from 'next-auth/react';
 import { getThisWeekRange, formatDateMD } from "@/utils/dateUtils";
 import { showSuccessNotification, showErrorNotification } from "@/utils/notifications";
 import useWeeklyStore from '@/store/weeklyStore';
@@ -13,8 +12,6 @@ type TargetInputProps = {
 };
 
 export default function TargetInput({close} :TargetInputProps) {
-  const { data: session } = useSession();
-  const railsUserId = session?.user?.railsId;
   const { target, clearData } = useWeeklyStore();
   const { fetchWeeklyTarget } = useDashboardStore((state) => ({fetchWeeklyTarget: state.fetchWeeklyTarget}));
   const { start, end } = getThisWeekRange();
@@ -31,9 +28,7 @@ export default function TargetInput({close} :TargetInputProps) {
           },
         });
         showSuccessNotification(`登録しました`);
-        if (railsUserId !== undefined) {
-          fetchWeeklyTarget(railsUserId, true);
-        }
+        fetchWeeklyTarget(true);
         close();
         clearData();
       } catch (error) {

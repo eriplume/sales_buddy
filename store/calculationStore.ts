@@ -1,10 +1,6 @@
 import { create } from 'zustand';
 import { formatDate } from '@/utils/dateUtils';
-
-type Option = {
-  value: number;
-  label: string;
-};
+import { Option } from '@/types';
 
 type CustomerCounts = Record<string, number>;
 
@@ -21,7 +17,7 @@ type SubmitDataType = {
     count: number;
     date: string;
   };
-  customer_counts: Record<string, number>;
+  customer_counts: CustomerCounts;
 };
 
 type CalculationState = {
@@ -92,6 +88,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   },
 
   fetchOptions: async () => {
+    if (get().options.length === 0) {
     try {
       const response = await fetch(`/api/customer_types`);
 
@@ -103,7 +100,8 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
     } catch (error) {
       console.error("Failed to fetch options", error);
     }
-  },
+  }
+},
 
   // customers配列を集計
   calculateCustomerCounts(customers: string[]): CustomerCounts {

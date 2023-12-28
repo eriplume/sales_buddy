@@ -1,6 +1,5 @@
 "use client"
 import { useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react';
 import axios from 'axios'
 import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
@@ -14,8 +13,6 @@ import { Fieldset } from '@mantine/core';
 
 export default function Submit() {
   const router = useRouter()
-  const { data: session } = useSession();
-  const railsUserId = session?.user?.railsId;
   const { clearData, submitData } = useCalculationStore();
   const { fetchSalesRecord } = useDashboardStore((state) => ({fetchSalesRecord: state.fetchSalesRecord,}));
 
@@ -37,9 +34,7 @@ export default function Submit() {
 
       // response.dataから日付を取得
       const date = response.data.dairy_record.date;
-      if (railsUserId !== undefined) {
-        fetchSalesRecord(railsUserId, true);
-      }
+      fetchSalesRecord(true);
       router.push('/dashboard');
       showSuccessNotification(`${date}の売上を登録しました`);
       clearData();

@@ -1,6 +1,5 @@
 "use client"
 import { useState } from 'react';
-import { useSession } from 'next-auth/react';
 import axios from 'axios'
 import useDashboardStore from '@/store/dashboardStore';
 import { formatDate } from '@/utils/dateUtils';
@@ -18,8 +17,6 @@ type  NotJobRecordProps = {
 export default function NotJobRecord({ selectedDate, close } :NotJobRecordProps) {
   const [ jobs, setJobs ] = useState<string[]>([]);
   const { jobsList } = useDashboardStore();
-  const { data: session } = useSession();
-  const railsUserId = session?.user?.railsId;
   const { fetchJobsRecord } = useDashboardStore((state) => ({fetchJobsRecord: state.fetchJobsRecord}));
 
   const handleSubmit = async () => {
@@ -32,9 +29,7 @@ export default function NotJobRecord({ selectedDate, close } :NotJobRecordProps)
           },
         });
         showSuccessNotification(`登録しました`);
-        if (railsUserId !== undefined) {
-          fetchJobsRecord(railsUserId, true);
-        }
+        fetchJobsRecord(true);
         close();
         setJobs([]);
       } catch (error) {
