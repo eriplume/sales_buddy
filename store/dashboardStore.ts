@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange, JobRecord } from '@/types';
+import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange, JobRecord, CustomersRecord } from '@/types';
 import { getThisWeekRange } from '@/utils/dateUtils';
 import { calculateTotal, calculateSetRate, calculateAverage } from '@/utils/calculateUtils';
 
@@ -21,11 +21,13 @@ type DashboardState = {
   jobsRecords: JobRecord[];
   jobsDates: string[];
   jobsList: string[];
+  customersRecord: CustomersRecord;
   fetchSalesRecord: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyReport: (userId: number, force?: boolean) => Promise<void>;
   fetchWeeklyTarget: (userId: number, force?: boolean) => Promise<void>;
   fetchJobsRecord: (userId: number, force?: boolean) => Promise<void>;
   getThisWeekProgress: () => ProgressData;
+  fetchCustomersRecord: (userId: number, force?: boolean) => Promise<void>;
 };
 
 const useDashboardStore = create<DashboardState>((set, get) => ({
@@ -46,6 +48,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   jobsRecords: [],
   jobsDates: [], 
   jobsList: [],
+  customersRecord: {},
   fetchSalesRecord: async (userId, force = false) => {
     if (force || get().lastFetchedUserId !== userId || get().salesRecords.length === 0) {
       try {
@@ -139,6 +142,19 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
           jobsDates: dates, 
           lastFetchedUserId: userId,
           jobsList: jobs,
+        });
+      } catch (error) {
+        console.error("Failed to fetch", error);
+      }
+    }
+  },
+  fetchCustomersRecord: async (userId, force = false) => {
+    if (force || get().lastFetchedUserId !== userId || get().jobsRecords.length === 0) {
+      try {
+        const response = await fetch(`/api/customers`);
+        const data: CustomersRecord = await response.json();
+        set({
+          customersRecord: data
         });
       } catch (error) {
         console.error("Failed to fetch", error);

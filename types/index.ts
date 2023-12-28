@@ -42,3 +42,5 @@ export type JobRecord = {
     job: string;
     date: string;
 };
+
+export type CustomersRecord = Record<number, number>;
