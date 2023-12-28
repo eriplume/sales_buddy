@@ -41,13 +41,19 @@ export default function MonthlyArchive() {
         <div className='text-sm text-gray-800'>月を選択</div>
       </div>
 
-      <div className="flex flex-col w-full justify-center items-center px-7 md:px-12"> 
+      <div className="flex flex-col w-full justify-center items-center px-5 md:px-12"> 
         <div className="w-full items-center max-w-md px-3 py-2">
           <MonthPicker value={value} setValue={setValue} />
         </div>
       </div>
 
       <MonthlyRecord amount={monthlyAmount} number={monthlyNumber} count={monthlyCount} setRate={monthlySetRate} average={monthlyAverage} days={numberOfDays}/>
+
+      <div className="flex flex-row justify-start px-7 pt-5 pb-2 md:px-12">
+        <TriangleIcon className="w-4 h-4 mr-1 ml-4 text-blue-300" />
+        <div className='text-sm text-gray-800'>各週のデータ</div>
+      </div>
+
       <WeeklyArchive monthRecords={filteredSalesRecords} />
     </div>    
     </>

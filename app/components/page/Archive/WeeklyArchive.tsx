@@ -33,7 +33,7 @@ export default function WeeklyArchive({monthRecords} :WeeklyRecordProps) {
 
   return (
     <>
-      <div className="px-9 pt-4">
+      <div className="px-7 md:px-12">
         <Accordion variant="contained">
           {sortedWeeklyData.map(weekKey => (
             

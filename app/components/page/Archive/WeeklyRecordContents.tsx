@@ -25,8 +25,8 @@ export default function WeeklyRecordContents({ amount, number, count, setRate, a
       </div>
       <div className="flex flex-row">
         <div className="py-1 ml-8 text-gray-700 text-md font-bold">{setRate.toFixed(1)}</div>
-        <div className="flex flex-row items-center py-1 ml-8 text-lg font-bold text-gray-600">
-          <p className="px-4">/</p>
+        <div className="flex flex-row items-center py-1 text-lg font-bold text-gray-600">
+          <p className="px-4 md:px-5">/</p>
           <div><SolidShirtIcon className="w-5 h-5 text-gray-600 mr-2" /></div>
           <p>{number} 点</p>
         </div>
@@ -37,8 +37,8 @@ export default function WeeklyRecordContents({ amount, number, count, setRate, a
       </div>
       <div className="flex flex-row">
         <div className="py-1 ml-8 text-gray-700 text-md font-bold">{formatCurrency(average)}</div>
-        <div className="flex flex-row items-center py-1 ml-8 text-lg font-bold text-gray-600">
-          <p className="px-4">/</p>
+        <div className="flex flex-row items-center py-1 text-lg font-bold text-gray-600">
+          <p className="px-2 md:px-5">/</p>
           <div><UsersIcon  className="w-5 h-5 text-gray-600 mr-2"/></div>
           <p>{count} 人</p>
         </div>
