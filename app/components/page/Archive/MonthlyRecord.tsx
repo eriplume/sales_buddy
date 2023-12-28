@@ -38,7 +38,7 @@ export default function MonthlyRecord({amount, number, count, setRate, average, 
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-center md:justify-end items-center px-10 md:px-12 md:mr-5 text-md md:text-lg text-gray-600">
+      <div className="flex flex-row justify-center md:justify-end items-center px-10 md:px-12 md:mr-5 text-md md:text-lg text-gray-600 pb-4">
         <div className='text-gray-700 font-bold'>{days}</div>
         <div className='text-gray-700 ml-1'>days</div>
         <div className='text-gray-700 ml-2'>total：</div>
