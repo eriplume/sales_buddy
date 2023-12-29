@@ -82,7 +82,7 @@ Weekly Reportとして記録したコメントを要約し、月次評価シー�
 #### CSSフレームワーク,　UIライブラリ
 * Tailwind CSS
 * Mantine UI
-* Ant Design Charts
+* Recharts
 
 #### インフラ
 * Vercel
