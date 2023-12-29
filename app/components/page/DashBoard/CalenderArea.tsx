@@ -21,7 +21,7 @@ export default function CalenderArea() {
       </Tabs.List>
 
     <Tabs.Panel value="sales">
-      <div className="bg-white px-7 pt-4 pb-7 shadow-md flex flex-col">
+      <div className="bg-white px-7 pt-4 pb-7 shadow-md rounded-b-md border-x flex flex-col">
         <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
           <span className="text-xs text-blue-300 mr-1">⚫︎</span>
           <span className="text-xs">売上を記録した日</span>
@@ -30,7 +30,7 @@ export default function CalenderArea() {
       </div>
     </Tabs.Panel>
     <Tabs.Panel value="jobs">
-      <div className="bg-white px-7 pt-4 pb-7 shadow-md flex flex-col">
+      <div className="bg-white px-7 pt-4 pb-7 shadow-md rounded-b-md border-x flex flex-col">
         <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
           <span className="text-xs text-yellow-300 mr-1">⚫︎</span>
           <span className="text-xs">業務を記録した日</span>

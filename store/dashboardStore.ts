@@ -14,7 +14,7 @@ type DashboardState = {
   thisWeekAmount: number;
   thisWeekNumber: number;
   thisWeekCount: number;
-  thisWeekTarget: number | null;
+  thisWeekTarget: number;
   thisWeekSet: number;
   thisWeekAverage: number;
   jobsRecords: JobRecord[];
@@ -94,7 +94,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
       set({ 
         weeklyTargets: data, 
         registeredTargetRanges, 
-        thisWeekTarget: thisWeekTarget ? thisWeekTarget.target : null
+        thisWeekTarget: thisWeekTarget ? thisWeekTarget.target : 0
       });
       } catch (error) {
         console.error("Failed to fetch", error);
@@ -127,7 +127,6 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
     };
   },
   fetchJobsRecord: async (force = false) => {
-    console.log("fetchJobsRecord called");
     if (force || get().jobsRecords.length === 0) {
       try {
         const response = await fetch(`/api/jobrecord`);

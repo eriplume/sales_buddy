@@ -25,7 +25,7 @@ export const getEndOfWeek = (date :Date) => {
 }
 
 export const getTargetDateRange = (): [Date, Date] => {
-  const todayPlusTwoDays = dayjs().add(3, 'day').toDate();
+  const todayPlusTwoDays = dayjs().add(7, 'day').toDate();
   const startOfWeek = getStartOfWeek(todayPlusTwoDays)
   const endOfWeek = getEndOfWeek(todayPlusTwoDays)
 
@@ -33,7 +33,7 @@ export const getTargetDateRange = (): [Date, Date] => {
 };
 
 export const getReportDateRange = (): [Date, Date] => {
-  const todayMinusFourDays = dayjs().subtract(4, 'day').toDate();
+  const todayMinusFourDays = dayjs().toDate();
   const startOfWeek = getStartOfWeek(todayMinusFourDays)
   const endOfWeek = getEndOfWeek(todayMinusFourDays)
 
