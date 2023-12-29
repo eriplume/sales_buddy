@@ -13,13 +13,13 @@ const renderActiveShape = (props :any) => {
   const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;
   return (
     <g>
-      <text x={cx} y={cy - 12} dy={8} textAnchor="middle" fill="#6b7280">
+      <text x={cx} y={cy - 13} dy={8} textAnchor="middle" fill="#6b7280">
         {payload.name}
       </text>
       <text x={cx - 22} y={cy + 10} dy={8} textAnchor="middle" fill="#6b7280">
         {`${value}客`}
       </text>
-      <text x={cx + 25} y={cy + 10} dy={8} textAnchor="middle" fill="#6b7280">
+      <text x={cx + 25} y={cy + 10} dy={8} textAnchor="middle" fill="#1f2937">
         {`${(percent * 100).toFixed(1)}%`}
       </text>
       <Sector
