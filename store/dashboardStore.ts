@@ -127,7 +127,6 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
     };
   },
   fetchJobsRecord: async (force = false) => {
-    console.log("fetchJobsRecord called");
     if (force || get().jobsRecords.length === 0) {
       try {
         const response = await fetch(`/api/jobrecord`);

@@ -30,7 +30,6 @@ export const useFetchForCalculator = () => {
 export const useFetchJobs = () => {
   const fetchJobsRecord = useDashboardStore((state) => state.fetchJobsRecord);
   useEffect(() => {
-    console.log("useFetchJobs: fetching jobs record");
     fetchJobsRecord();
   }, [fetchJobsRecord]);
 }
@@ -38,10 +37,12 @@ export const useFetchJobs = () => {
 export const useFetchForCustomersGraph = () => {
   const fetchCustomersRecord = useDashboardStore((state) => state.fetchCustomersRecord);
   const fetchOptions = useCalculationStore((state) => state.fetchOptions); 
+  const fetchSalesRecord = useDashboardStore((state) => state.fetchSalesRecord);
   useEffect(() => {
     fetchOptions();
     fetchCustomersRecord();
-  }, [fetchCustomersRecord, fetchOptions])
+    fetchSalesRecord();
+  }, [fetchCustomersRecord, fetchOptions, fetchSalesRecord])
 }
 
 export const useFetchForArchive = () => {
