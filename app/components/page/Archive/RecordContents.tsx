@@ -11,7 +11,7 @@ type WeeklyRecordContents = {
   average: number;
 }
 
-export default function WeeklyRecordContents({ amount, number, count, setRate, average}: WeeklyRecordContents) {
+export default function RecordContents({ amount, number, count, setRate, average}: WeeklyRecordContents) {
   return (
     <div className="p-2">
       <div className="flex items-center text-gray-700">

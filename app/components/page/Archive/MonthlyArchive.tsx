@@ -5,9 +5,10 @@ import { formatDateYM } from "@/utils/dateUtils";
 import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import useDashboardStore from "@/store/dashboardStore";
 import MonthlyRecord from "./MonthlyRecord";
-import WeeklyArchive from "./WeeklyArchive";
+import RecordList from "./RecordList";
 import MonthPicker from "../../ui/MonthPicker";
 import { TriangleIcon } from "../../ui/icon/Triangle";
+
 
 export default function MonthlyArchive() {
 
@@ -54,7 +55,7 @@ export default function MonthlyArchive() {
         <div className='text-sm text-gray-800'>各週のデータ</div>
       </div>
 
-      <WeeklyArchive monthRecords={filteredSalesRecords} />
+      <RecordList monthRecords={filteredSalesRecords} />
     </div>    
     </>
   )
