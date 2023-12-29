@@ -16,7 +16,7 @@ export default function page() {
         </div>
 
         <div className="flex flex-col sm:flex-row w-full max-w-lg pb-2 bg-white rounded-b-md shadow-b-sm">
-          <div className='md:w-3/4 md:pl-8 mx-auto'>
+          <div className='md:w-3/4 md:pl-8 ml-6 mr-5 md:ml-0 md:mr-0'>
             <CustomersPie colors={pieColors}/>
           </div>
           <div className='md:w-1/4 mx-auto  pl-2 mb-5'>
