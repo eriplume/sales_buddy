@@ -1,6 +1,5 @@
 import ReportRangeInput from '../WeeklyReport.tsx/RepotRangeInput';
 import ReportInputForm from '../WeeklyReport.tsx/ReportInput';
-import WeekRecordHoverCard from '../WeeklyReport.tsx/WeekRecordHover';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import Achievements from './Achievements';
 
