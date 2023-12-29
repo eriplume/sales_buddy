@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { useFetchResisterdDay } from "@/lib/useFetchData";
+import { useFetchForArchive } from "@/lib/useFetchData";
 import { formatDateYM } from "@/utils/dateUtils";
 import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import useDashboardStore from "@/store/dashboardStore";
@@ -11,7 +11,7 @@ import { TriangleIcon } from "../../ui/icon/Triangle";
 
 export default function MonthlyArchive() {
 
-  useFetchResisterdDay();
+  useFetchForArchive();
 
   const { salesRecords } = useDashboardStore();
   const [value, setValue] = useState<Date | null>(new Date());

@@ -1,12 +1,12 @@
 "use client"
-import { useFetchResisterdDay } from '@/lib/useFetchData';
+import { useFetchForCalculator } from '@/lib/useFetchData';
 import { Fieldset } from '@mantine/core';
 import RecordInputForm from './RecordInputForm';
 import Datepicker from './DatePicker';
 
 export default function Caluculator() {
 
-  useFetchResisterdDay();
+  useFetchForCalculator();
 
   return (
     <>
