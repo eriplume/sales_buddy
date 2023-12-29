@@ -3,20 +3,9 @@ import { useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import useDashboardStore from '@/store/dashboardStore';
 import useCalculationStore from '@/store/calculationStore';
-import { useFetchCustomerRecords } from '@/lib/useFetchData';
+import { useFetchForCustomersGraph } from '@/lib/useFetchData';
 
-// const data = [
-//   { name: '主婦', value: 25 },
-//   { name: 'OL', value: 15 },
-//   { name: '~30代', value: 10 },
-//   { name: '〜50代', value: 5 },
-//   { name: '学生', value: 5 },
-//   { name: '顧客', value: 7 },
-//   { name: 'ギフト', value: 3 },
-//   { name: 'その他', value: 30 },
-// ];
-
-const COLORS = [ '#0369a1', '#60a5fa','#93c5fd','#bfdbfe', '#dbeafe','#cbd5e1', '#e0e7ff','#c7d2fe'];
+const COLORS = ['#60a5fa', '#93c5fd','#bfdbfe', '#cbd5e1', '#94a3b8', '#075985', '#0369a1', '#0284c7','#3b82f6' ];
 
 const renderActiveShape = (props :any) => {
   const RADIAN = Math.PI / 180;
@@ -65,7 +54,7 @@ const renderActiveShape = (props :any) => {
 };
 
 export default function CustomersPie() {
-  useFetchCustomerRecords();
+  useFetchForCustomersGraph();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const { options } = useCalculationStore();
@@ -83,23 +72,27 @@ export default function CustomersPie() {
   };
 
   return (
-    <PieChart width={800} height={400}>
-      <Pie
-        activeIndex={activeIndex}
-        activeShape={renderActiveShape}
-        data={chartData}
-        cx={400}
-        cy={200}
-        innerRadius={60}
-        outerRadius={80}
-        fill="#8884d8"
-        dataKey="value"
-        onMouseEnter={onPieEnter}
-      >
-        {chartData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-    </PieChart>
+
+
+      <div style={{ width: '100%', height: 300 }}>
+        <ResponsiveContainer>
+          <PieChart>
+            <Pie
+              activeIndex={activeIndex}
+              activeShape={renderActiveShape}
+              data={chartData}
+              innerRadius={60}
+              outerRadius={80}
+              fill="#8884d8"
+              dataKey="value"
+              onMouseEnter={onPieEnter}
+            >
+              {chartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
   );
 }
