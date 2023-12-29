@@ -3,13 +3,13 @@ import { getWeekHead, getweekEndDate, sortData, formatDateLayoutMD } from "@/uti
 import { calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import { Accordion } from '@mantine/core';
 import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
-import WeeklyRecordContents from "./WeeklyRecordContents";
+import RecordContents from "./RecordContents";
 
 type WeeklyRecordProps = {
   monthRecords: SalesRecord[];
 };
 
-export default function WeeklyArchive({monthRecords} :WeeklyRecordProps) {
+export default function RecordList({monthRecords} :WeeklyRecordProps) {
 
   const weeklyData = monthRecords.reduce<Record<string, WeeklyRecord>>((acc, record) => {
     const weekHead = getWeekHead(record.date);
@@ -35,26 +35,28 @@ export default function WeeklyArchive({monthRecords} :WeeklyRecordProps) {
     <>
       <div className="px-7 md:px-12">
         <Accordion variant="contained">
-          {sortedWeeklyData.map(weekKey => (
-            
-            <Accordion.Item key={weekKey} value={weekKey}>
-              <Accordion.Control
-                icon={ <ClipboardDocumentListIcon className="w-6 h-6 ml-2 text-blue-300"/>
-                }
-              >
-                {formatDateLayoutMD(weekKey)} 〜 {formatDateLayoutMD(weeklyData[weekKey].weekEnd)}
-              </Accordion.Control>
-              <Accordion.Panel>
-                <WeeklyRecordContents 
-                  amount={weeklyData[weekKey].amount} 
-                  number={weeklyData[weekKey].number}
-                  count={weeklyData[weekKey].count}
-                  setRate={weeklyData[weekKey].setRate}
-                  average={weeklyData[weekKey].average}
-                  />
-              </Accordion.Panel>
-            </Accordion.Item>
-          ))}
+          {sortedWeeklyData.length > 0 ? (
+            sortedWeeklyData.map(weekKey => (
+              <Accordion.Item key={weekKey} value={weekKey}>
+                <Accordion.Control
+                  icon={ <ClipboardDocumentListIcon className="w-6 h-6 ml-2 text-blue-300"/>}
+                >
+                  {formatDateLayoutMD(weekKey)} 〜 {formatDateLayoutMD(weeklyData[weekKey].weekEnd)}
+                </Accordion.Control>
+                <Accordion.Panel>
+                  <RecordContents 
+                    amount={weeklyData[weekKey].amount} 
+                    number={weeklyData[weekKey].number}
+                    count={weeklyData[weekKey].count}
+                    setRate={weeklyData[weekKey].setRate}
+                    average={weeklyData[weekKey].average}
+                    />
+                </Accordion.Panel>
+              </Accordion.Item>
+            ))
+          ) : (
+            <div className="text-center text-gray-500 py-5">売上が登録されていません</div>
+          )}
         </Accordion>
       </div>
     </>
