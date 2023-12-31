@@ -9,7 +9,8 @@ import ClearButton from '../../ui/button/ClearButton';
 import SubmitButton from '../../ui/button/SubmitButton';
 import CurrentDate from './CurrentDate';
 import CustomersList from './CustomersList';
-import { Fieldset } from '@mantine/core';
+import { Tabs } from '@mantine/core';
+import { TriangleIcon } from '../../ui/icon/Triangle';
 
 export default function Submit() {
   const router = useRouter()
@@ -46,22 +47,35 @@ export default function Submit() {
 
   return (
     <>
-      <Fieldset legend="現在の合計" className='w-full mt-3 max-w-lg' style={{ overflowX: 'auto' }}>
-        <div className="flex flex-col space-y-4 w-full">
-          <CurrentDate/>
-          <CurrentData/>
-
-          {/* md以上のみ表示 */}
-          <div className="hidden md:block"> 
-            <CustomersList/>
+      <Tabs variant="outline" defaultValue="sales" className='w-full mt-3 max-w-lg'>
+        <Tabs.List>
+          <div className="bg-white text-gray-500 rounded-sm">
+            <Tabs.Tab value="sales" leftSection={<TriangleIcon className="w-3 h-3 ml-2 text-blue-300"/>}>
+              <div className='flex flex-row mt-1 mr-2'>
+                <div className="text-xs mr-1">STEP3.</div>
+                <div className="text-xs text-gray-800">現在の合計値</div>
+              </div>
+            </Tabs.Tab>
           </div>
-
-          <div className="flex justify-center mt-4 gap-4">
-            <ClearButton size="sm" onClick={clearData}/>
-            <SubmitButton size="sm" type="submit" onClick={handleSubmit}/>
+          <div className="bg-white text-gray-500"></div>
+        </Tabs.List>
+        <Tabs.Panel value="sales">
+          <div className="bg-white px-7 pb-3 shadow-md rounded-b-sm border-x flex flex-col">
+            <div className="flex flex-col px-2 pb-3 pt-5 space-y-5 w-full">
+              <CurrentDate/>
+              <CurrentData/>
+              {/* md以上のみ表示 */}
+              <div className="hidden md:block"> 
+                <CustomersList/>
+              </div>
+              <div className="flex justify-center mt-4 gap-4">
+                <ClearButton size="sm" onClick={clearData}/>
+                <SubmitButton size="sm" type="submit" onClick={handleSubmit}/>
+              </div>
+            </div>
           </div>
-        </div>
-      </Fieldset>
+        </Tabs.Panel>
+      </Tabs>
     </>
   )
 }

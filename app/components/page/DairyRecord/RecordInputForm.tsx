@@ -38,7 +38,7 @@ export default function RecordInputForm () {
   return (
     <>
       <div className="flex justify-center items-center w-full">
-        <form onSubmit={form.onSubmit(handleSubmit)} className='w-full mx-auto px-2'>
+        <form onSubmit={form.onSubmit(handleSubmit)} className='w-full'>
           <NumberInput
             {...form.getInputProps('number')}
             label="点数"
@@ -74,8 +74,8 @@ export default function RecordInputForm () {
             }))}
           />
 
-          <div className="flex justify-center mt-4">
-            <PlusButton size="sm" type="submit">加算する</PlusButton>
+          <div className="flex justify-end mt-4">
+            <PlusButton size="xs" type="submit">加算する</PlusButton>
           </div>
         </form>
       </div>

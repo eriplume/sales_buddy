@@ -9,6 +9,8 @@ import MonthPicker from "../../ui/MonthPicker"
 import ReportList from "./ReportList";
 import CreateInfo from "./CreateInfo";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
+import HelpMordal from "../../ui/HelpMordal";
+import HelpPage from "./HelpPage";
 
 export default function ReportArchive() {
   useFetchForReport();
@@ -53,9 +55,12 @@ export default function ReportArchive() {
 
       <ReportList reportsList={filteredWeeklyReports} />
 
-      <div className="flex flex-row justify-start px-7 pt-6 pb-4 md:px-12">
+      <div className="flex flex-row justify-start px-7 pt-6 pb-4 md:px-12 items-center">
         <TriangleIcon className="w-4 h-4 mr-1 ml-4 text-blue-300" />
-        <div className='text-sm text-gray-800'>月間レポートを作成しますか？</div>
+        <div className='text-sm text-gray-800 mr-2'>月間レポートを作成しますか？</div>
+        <HelpMordal>
+          <HelpPage/>
+        </HelpMordal>
       </div>
 
       <CreateInfo />
