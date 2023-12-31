@@ -17,7 +17,7 @@ type AchievementsDetailProps = {
 export default function AchievementsDetail({amount, number, count, set, average, progressPercent, progress} :AchievementsDetailProps) {
 
   return (
-    <div className="p-4 border-t-8"> 
+    <div className="p-4 border-t-4"> 
       <div className="flex flex-row items-center text-gray-700">
         <FlagIcon className="w-6 h-6 text-sky-800 mr-2" />
         目標達成率

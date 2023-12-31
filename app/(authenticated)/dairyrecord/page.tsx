@@ -1,5 +1,6 @@
 import Caluculator from "@/app/components/page/DairyRecord/Caluculator";
 import Submit from "@/app/components/page/DairyRecord/Submit";
+import HelpMordal from "@/app/components/ui/HelpMordal";
 
 export default function DairyRecordPage() {
     return (

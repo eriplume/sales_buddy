@@ -5,6 +5,20 @@ import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
 export default function HelpMordal({children}: any) {
   const [opened, { open, close }] = useDisclosure(false);
+
+  const renderModalTitle = () => {
+      return (
+        <>
+          <div className='flex flex-row items-start w-full pt-4 pr-22 mr-16 mb-1 text-md font-bold text-gray-600'>
+            <div className='flex w-full mr-12 ml-2 items-center'>
+              <QuestionMarkCircleIcon  className="w-8 h-8 text-gray-500 mr-2" />
+              使い方
+            </div>
+          </div>
+        </>
+      );
+  };
+
   return (
     <>
       <ActionIcon
@@ -18,7 +32,7 @@ export default function HelpMordal({children}: any) {
       >
         <QuestionMarkCircleIcon className="w-7 h-7 text-gray-400 hover:text-sky-700"/>
       </ActionIcon>
-      <Modal opened={opened} onClose={close} centered size="auto">
+      <Modal opened={opened} onClose={close} title={renderModalTitle()} centered size="auto">
         {children}
       </Modal>
     </>

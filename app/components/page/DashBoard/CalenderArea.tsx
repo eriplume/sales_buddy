@@ -3,6 +3,8 @@ import SalesCalender from "./SalesCalendar"
 import { Tabs } from '@mantine/core';
 import { TriangleIcon } from "../../ui/icon/Triangle";
 import JobsCalender from "./JobsCalendar";
+import HelpMordal from "../../ui/HelpMordal";
+import HelpPage from "./HelpPage";
 
 export default function CalenderArea() {
   return (
@@ -17,6 +19,11 @@ export default function CalenderArea() {
           <Tabs.Tab value="jobs" leftSection={<TriangleIcon className="w-3 h-3 text-yellow-200"/>}>
           <div className="text-xs p-1">業務記録</div>
           </Tabs.Tab>
+        </div>
+        <div className="mx-8 mt-1">
+          <HelpMordal>
+            <HelpPage />
+          </HelpMordal>
         </div>
       </Tabs.List>
 
