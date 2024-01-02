@@ -1,18 +1,7 @@
-import { HomeIcon, CalculatorIcon, PencilIcon, ClipboardDocumentListIcon, UserGroupIcon, QuestionMarkCircleIcon } from "@heroicons/react/24/outline";
+import { CalculatorIcon, ClipboardDocumentListIcon, BookOpenIcon } from "@heroicons/react/24/outline";
 
 export const navigationItems = [
-    { label: "Home", icon: HomeIcon, path: "/dashboard" },
-    { label: "Dairy Record", icon: CalculatorIcon, path: "/dairyrecord" },
-    { label: "Report", icon: PencilIcon, path: "/weekly" },
-    { label: "Summary Creation", icon: ClipboardDocumentListIcon , path: "/" },
-    { label: "Teams", icon: UserGroupIcon, path: "/" },
-    { label: "Help", icon: QuestionMarkCircleIcon, path: "/" },
-];
-
-export const headerNavigationItems = [
-    { label: "Dairy Record", icon: CalculatorIcon, path: "/dairyrecord" },
-    { label: "Report", icon: PencilIcon, path: "/weekly" },
-    { label: "Summary Creation", icon: ClipboardDocumentListIcon , path: "/" },
-    { label: "Teams", icon: UserGroupIcon, path: "/" },
-    // { label: "Help", icon: QuestionMarkCircleIcon, path: "/" },
+    { label: "売上記録", icon: CalculatorIcon, path: "/dairyrecord" },
+    { label: "週間レポート", icon: BookOpenIcon, path: "/weekly" },
+    { label: "月間レポート", icon: ClipboardDocumentListIcon , path: "/report" },
 ];

@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Viewport } from 'next'
 import { NextAuthProvider } from '../providers/NextAuth'
 import { MantineProviderWrapper } from '../providers/MantineProvider';
-import Footer from './components/base/Footer';
 import Header from './components/base/Header';
 import './globals.css'
 
@@ -31,7 +30,6 @@ export default function RootLayout({
               <main className='bg-gray-100'>
                 {children}
               </main>
-              <Footer />
             </div>
           </MantineProviderWrapper>
         </NextAuthProvider>
