@@ -1,7 +1,7 @@
 "use client"
 import { useSession } from "next-auth/react";
-import ProfileDropdown from "./ProfileDropdown";
 import Loading from "../ui/Loading";
+import UserImage from "../ui/UserImage";
 
 export default function FooterUserStatus() {
   const { data: session, status } = useSession();
@@ -12,7 +12,7 @@ export default function FooterUserStatus() {
 
   return session ? (
     <div className="flex items-center md:mr-4 mr-1">
-      <ProfileDropdown
+      <UserImage
         image={session.user.image} 
         name={session.user.name} 
       />
