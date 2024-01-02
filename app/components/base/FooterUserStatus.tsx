@@ -1,10 +1,9 @@
 "use client"
 import { useSession } from "next-auth/react";
-import  LoginButton  from "../LoginButton";
-import ProfileDropdown from "./ProfileDropdown";
 import Loading from "../ui/Loading";
+import UserImage from "../ui/UserImage";
 
-export default function UserStatus () {
+export default function FooterUserStatus() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
@@ -12,17 +11,13 @@ export default function UserStatus () {
   }
 
   return session ? (
-    <div className="flex items-center md:mr-4 mr-1 hidden md:block">
-      <ProfileDropdown
+    <div className="flex items-center md:mr-4 mr-1">
+      <UserImage
         image={session.user.image} 
         name={session.user.name} 
       />
     </div>
   ) : (
-    <div className="w-24 sm:w-32">
-      <LoginButton/>
-    </div>
+    null
   )
 }
-
-
