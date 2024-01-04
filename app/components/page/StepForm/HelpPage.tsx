@@ -11,7 +11,7 @@ export default function HelpPage() {
         <div className="py-1 ml-8 text-sm text-gray-700 pb-2">
           <p>今週の振り返りを入力しましょう。</p>
           <p>⚠️ 実績は『今週のみ』確認可能です。</p>
-          <p>⚠️ 先週以降の実績はダッシュボードより確認してください。</p>
+          <p>⚠️ 先週以前の実績はダッシュボードより確認してください。</p>
         </div>
 
         <div className="flex items-center text-gray-700 underline border-t pt-2">
