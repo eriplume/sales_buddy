@@ -47,20 +47,15 @@ export default function Submit() {
 
   return (
     <>
-      <Tabs variant="outline" defaultValue="sales" className='w-full mt-3 max-w-lg'>
-        <Tabs.List>
-          <div className="bg-white text-gray-500 rounded-sm">
-            <Tabs.Tab value="sales" leftSection={<TriangleIcon className="w-3 h-3 ml-2 text-blue-300"/>}>
-              <div className='flex flex-row mt-1 mr-2'>
-                <div className="text-xs mr-1">STEP3.</div>
-                <div className="text-xs text-gray-800">現在の合計値</div>
-              </div>
-            </Tabs.Tab>
+      <div className='w-full mt-3 max-w-lg bg-white text-gray-500 rounded-sm border pt-3 md:mt-5 shadow-md'>
+        <div className="flex flex-row items-center px-6">
+          <TriangleIcon className="w-4 h-4 text-blue-300 mr-2"/>
+          <div className='flex flex-row mt-1 mr-2'>
+            <div className="text-xs mr-1">STEP3.</div>
+            <div className="text-xs text-gray-800 mr-16">現在の合計値</div>
           </div>
-          <div className="bg-white text-gray-500"></div>
-        </Tabs.List>
-        <Tabs.Panel value="sales">
-          <div className="bg-white px-7 pb-3 shadow-md rounded-b-sm border-x flex flex-col">
+        </div>
+          <div className="bg-white px-7 pb-3 flex flex-col">
             <div className="flex flex-col px-2 pb-3 pt-5 space-y-5 w-full">
               <CurrentDate/>
               <CurrentData/>
@@ -74,8 +69,7 @@ export default function Submit() {
               </div>
             </div>
           </div>
-        </Tabs.Panel>
-      </Tabs>
+      </div>
     </>
   )
 }
