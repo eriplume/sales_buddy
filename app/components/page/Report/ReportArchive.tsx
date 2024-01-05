@@ -21,7 +21,6 @@ export default function ReportArchive() {
 
   const targetMonth = formatDateYM(value);
 
-
   const filteredWeeklyReports = weeklyReports.filter(report => {
     const reportMonth = report.start_date.substring(0, 7); 
     return reportMonth === targetMonth;
@@ -63,7 +62,7 @@ export default function ReportArchive() {
         </HelpMordal>
       </div>
 
-      <CreateInfo />
+      <CreateInfo reportsList={filteredWeeklyReports} targetMonth={targetMonth}/>
     </div>  
   )
 }
