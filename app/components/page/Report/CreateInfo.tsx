@@ -37,7 +37,7 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
         console.error("Failed", error);
       }
     } else {
-      showErrorNotification('レポートが３週以上必要です');
+      showErrorNotification('レポートが３週分以上必要です');
     }
   };
 
