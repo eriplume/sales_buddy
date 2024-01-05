@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from 'axios'
 import { WeeklyReport } from '@/types';
 import { Button } from '@mantine/core';
@@ -40,7 +40,7 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
     }
   };
 
-  const saveSummary = async () => {
+  const saveSummary = useCallback(async () => {
     if (summaryData !== null) {
       try {
         await axios.post(`/api/monthlyreport`, {
@@ -56,13 +56,13 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
         return;
       }
     };
-  }
+  }, [summaryData, targetMonth]);
 
   useEffect(() => {
     if (!isLoading && summaryData) {
       saveSummary();
     }
-  }, [isLoading, summaryData]);
+  }, [isLoading, summaryData, saveSummary]);
 
   return (
     <>
