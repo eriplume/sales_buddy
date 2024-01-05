@@ -1,24 +1,15 @@
-"use client"
-import { useState, useEffect } from 'react';
 import { Radio, Group, Button} from '@mantine/core';
 import { TriangleIcon } from '../../ui/icon/Triangle';
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
-export default function AlertSelect() {
-  const [checked, setChecked] = useState(false);
+type AlertSelectProps = {
+  handleUpdate: () => Promise<void>;
+  checked: boolean;
+  setChecked: (checked: boolean) => void;
+  currentSetting: boolean;
+}
 
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const response = await fetch(`/api/setting`);
-        const data = await response.json();
-        setChecked(data.notifications);
-      } catch (error) {
-        console.error('通知設定の取得に失敗しました', error);
-      }
-    };
-    fetchNotifications();
-  }, []);
+export default function AlertSelect({handleUpdate, checked, setChecked, currentSetting} :AlertSelectProps) {
 
   const label = () => {
     return (
@@ -30,6 +21,8 @@ export default function AlertSelect() {
       </>
     );
   };
+
+  const isButtonDisabled = checked === currentSetting;
 
   return (
     <>
@@ -44,7 +37,7 @@ export default function AlertSelect() {
           <Radio value="true" label="ON" color="#93c5fd"/>
           <Radio value="false" label="OFF" color="#93c5fd"/>
           <div>
-            <Button variant='outline' size="xs" color='#9ca3af'>
+            <Button variant='outline' size="xs" color='#9ca3af' onClick={handleUpdate} disabled={isButtonDisabled}>
               更新
               <ArrowPathIcon className="w-5 h-5 ml-2 text-blue-400" />
             </Button>
