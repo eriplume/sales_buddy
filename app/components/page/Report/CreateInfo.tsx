@@ -59,7 +59,7 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
         return;
       }
     };
-  }, [summaryData, targetMonth]);
+  }, [summaryData, targetMonth, fetchMonthlyReport]);
 
   useEffect(() => {
     if (!isLoading && summaryData) {
