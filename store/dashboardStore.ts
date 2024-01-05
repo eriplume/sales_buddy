@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange, JobRecord, CustomersRecord } from '@/types';
+import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange, JobRecord, CustomersRecord, MonthlyReport } from '@/types';
 import { getThisWeekRange } from '@/utils/dateUtils';
 import { calculateTotal, calculateSetRate, calculateAverage } from '@/utils/calculateUtils';
 
@@ -10,6 +10,7 @@ type DashboardState = {
   registeredReportRanges: ResisteredDateRange[];
   weeklyTargets: WeeklyTarget[];
   registeredTargetRanges: ResisteredDateRange[];
+  monthlyReports: MonthlyReport[];
   thisWeekRecord: SalesRecord[];
   thisWeekAmount: number;
   thisWeekNumber: number;
@@ -24,6 +25,7 @@ type DashboardState = {
   fetchSalesRecord: (force?: boolean) => Promise<void>;
   fetchWeeklyReport: (force?: boolean) => Promise<void>;
   fetchWeeklyTarget: (force?: boolean) => Promise<void>;
+  fetchMonthlyReport:(force?: boolean) => Promise<void>;
   fetchJobsRecord: (force?: boolean) => Promise<void>;
   getThisWeekProgress: () => ProgressData;
   fetchCustomersRecord: (force?: boolean) => Promise<void>;
@@ -36,6 +38,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   registeredReportRanges: [], // 登録したレポートの日付データ
   weeklyTargets: [],
   registeredTargetRanges: [], // 登録した目標の日付データ
+  monthlyReports: [],
   thisWeekRecord: [],
   thisWeekAmount: 0,
   thisWeekNumber: 0,
@@ -151,6 +154,17 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
         set({
           customersRecord: data
         });
+      } catch (error) {
+        console.error("Failed to fetch", error);
+      }
+    }
+  },
+  fetchMonthlyReport: async (force = false) => {
+    if (force || get().monthlyReports.length === 0) {
+      try {
+        const response = await fetch(`/api/monthlyreport`);
+        const data: MonthlyReport[] = await response.json();
+        set({ monthlyReports: data});
       } catch (error) {
         console.error("Failed to fetch", error);
       }
