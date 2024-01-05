@@ -1,11 +1,15 @@
-"use client"
-import { useState } from 'react';
 import { Radio, Group, Button} from '@mantine/core';
 import { TriangleIcon } from '../../ui/icon/Triangle';
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
-export default function AlertSelect() {
-  const [checked, setChecked] = useState(false);
+type AlertSelectProps = {
+  handleUpdate: () => Promise<void>;
+  checked: boolean;
+  setChecked: (checked: boolean) => void;
+  currentSetting: boolean;
+}
+
+export default function AlertSelect({handleUpdate, checked, setChecked, currentSetting} :AlertSelectProps) {
 
   const label = () => {
     return (
@@ -18,24 +22,28 @@ export default function AlertSelect() {
     );
   };
 
+  const isButtonDisabled = checked === currentSetting;
+
   return (
     <>
-    <Radio.Group
-      name="select"
-      label={label()}
-      description="ONにすると毎週日曜日にお知らせします"
-    >
-      <Group mt="xs">
-        <Radio value="true" label="ON" color="#93c5fd"/>
-        <Radio value="false" label="OFF" color="#93c5fd"/>
-        <div className=''>
-      <Button variant='outline' size="xs" color='#9ca3af'>
-        更新
-        <ArrowPathIcon className="w-5 h-5 ml-2 text-blue-400" />
-    </Button>
-      </div>
-      </Group>
-    </Radio.Group>
+      <Radio.Group
+        name="select"
+        label={label()}
+        description="ONにすると毎週日曜日にお知らせします"
+        value={checked ? 'true' : 'false'}
+        onChange={(value) => setChecked(value === 'true')}
+      >
+        <Group mt="xs">
+          <Radio value="true" label="ON" color="#93c5fd"/>
+          <Radio value="false" label="OFF" color="#93c5fd"/>
+          <div>
+            <Button variant='outline' size="xs" color='#9ca3af' onClick={handleUpdate} disabled={isButtonDisabled}>
+              更新
+              <ArrowPathIcon className="w-5 h-5 ml-2 text-blue-400" />
+            </Button>
+          </div>
+        </Group>
+      </Radio.Group>
     </>
   )
 }

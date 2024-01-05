@@ -1,16 +1,53 @@
-import { TriangleIcon } from "../../ui/icon/Triangle"
+"use client"
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import AlertSelect from "./AlertSelect";
+import axios from 'axios'
+import { showSuccessNotification, showErrorNotification } from "@/utils/notifications";
+import { TriangleIcon } from "../../ui/icon/Triangle"
 import { BellAlertIcon } from "@heroicons/react/24/outline";
+import AlertSelect from "./AlertSelect";
 
 export default function Steps() {
+  const [checked, setChecked] = useState(false);
+  const [currentSetting, setCurrentSetting] = useState(false);
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const response = await fetch(`/api/setting`);
+        const data = await response.json();
+        setChecked(data.notifications);
+        setCurrentSetting(data.notifications);
+      } catch (error) {
+        console.error('通知設定の取得に失敗しました', error);
+      }
+    };
+    fetchNotifications();
+  }, []);
+
+  const handleUpdate = async () => {
+    try {
+      await axios.patch(`/api/setting`, {
+        user: {
+          notifications: checked,
+        },
+      });
+      showSuccessNotification(`更新しました`);
+      setCurrentSetting(checked);
+    } catch (error) {
+      showErrorNotification('更新に失敗しました');
+      console.error("Failed to send weekly target", error);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center w-full max-w-lg">
         <div className='flex justify-end pr-5 pb-2 pt-4'>
           <div className='flex flex-row text-gray-600 text-sm items-center'>
             <BellAlertIcon className="w-4 h-4 mr-1" />
-            <div>現在の設定：OFF</div>
+            <div>現在の設定：</div>
+            <div className='text-gray-700 font-bold'>{currentSetting ? 'ON' : 'OFF'}</div>
           </div>
         </div>
         <div className="bg-white rounded-md py-5 pl-7">
@@ -29,7 +66,7 @@ export default function Steps() {
             </a>
           </div>
           <div className="flex py-5 pl-4">
-            <AlertSelect/>
+            <AlertSelect handleUpdate={handleUpdate} checked={checked} setChecked={setChecked} currentSetting={currentSetting}/>
           </div>
         </div>
       </div>  
