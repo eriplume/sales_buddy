@@ -19,6 +19,11 @@ export type WeeklyReport = {
   end_date: string;
 };
 
+export type MonthlyReport = {
+  content: string;
+  month: string;
+};
+
 export type WeeklyRecord = {
   amount: number;
   number: number;

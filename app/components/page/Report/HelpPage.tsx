@@ -9,7 +9,7 @@ export default function HelpPage() {
           週間レポート一覧
         </div>
         <div className="py-1 ml-8 text-sm text-gray-700 pb-2">
-          <p>登録した過去の週間レポートを月ごとに表示します。</p>
+          <p>登録した過去の週間レポートを月毎に表示します。</p>
           <p>各レポートはコピーボタンでコピー可能です。</p>
         </div>
 
@@ -18,7 +18,8 @@ export default function HelpPage() {
           月間レポートの作成について
         </div>
         <div className="py-1 ml-8 text-sm text-gray-700 pb-2">
-          <p>週間レポートを３週分以上登録したら, それを元に月間レポートを自動で作成します。</p>
+          <p>週間レポートを要約し月間レポートを自動で作成します。</p>
+          <p className="text-red-400">⚠️ 月間レポートの作成には3週分以上の週間レポートが必要です。</p>
         </div>  
       </div>
     </>
