@@ -3,7 +3,7 @@ import PieItemList from '@/app/components/page/CustomerGraph/PieItemList'
 import CustomersPie from '@/app/components/page/CustomerGraph/CustomersPie';
 import RecordedDate from '@/app/components/page/CustomerGraph/RecordedDate';
 
-const pieColors = ['#60a5fa', '#93c5fd','#bfdbfe', '#cbd5e1', '#94a3b8', '#075985', '#0369a1', '#0284c7','#3b82f6' ];
+const pieColors = ['#0284c7','#3b82f6','#60a5fa', '#93c5fd','#bfdbfe', '#cbd5e1', '#94a3b8', '#075985', '#0369a1'];
 
 export default function page() {
   return (

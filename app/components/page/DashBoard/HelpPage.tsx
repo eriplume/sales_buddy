@@ -18,8 +18,8 @@ export default function HelpPage() {
           売上記録カレンダー
         </div>
         <div className="py-1 ml-8 text-sm text-gray-700 pb-2">
-          <p>日付を選択して記録した日の売上データを確認 or その日の売上データを記録できます。</p>
-          <p>記録する度にアプリ内の各コンテンツに反映されます。</p>
+          <p>日付を選択して売上データを記録 or 確認。</p>
+          <p>記録する度に売上データがアプリ内の各コンテンツに反映されます。</p>
         </div>
 
         <div className="flex items-center text-gray-700 border-t underline pt-2">
@@ -27,7 +27,7 @@ export default function HelpPage() {
           業務記録カレンダー
         </div>
         <div className="py-1 ml-8 text-sm text-gray-700 pb-2">
-          <p>日付を選択して記録した日の業務データを確認 or その日行った業務を記録できます。</p>
+          <p>日付を選択して行った業務を記録 or 確認。</p>
           <p>一度入力した業務は記憶されるので２度目からはサクサク入力！</p>
         </div>         
       </div>

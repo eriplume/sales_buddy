@@ -48,7 +48,7 @@ export default function FooterMenu() {
 
   return (
     <>
-      <footer className="flex flex-row sticky bottom-0 text-gray-600 bg-white z-40 px-3 py-2 md:hidden">
+      <footer className="flex flex-row sticky bottom-0 text-gray-600 bg-white z-40 px-3 py-2 border-t md:hidden">
         <div className="w-1/4 p-2">
           <div className='flex flex-col justify-center items-center text-gray-400' onClick={handleClick}>
             <HomeIcon className="w-7 h-8"/>

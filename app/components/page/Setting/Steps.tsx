@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import axios from 'axios'
-import { showSuccessNotification, showErrorNotification } from "@/utils/notifications";
+import { showSuccessNotification, showErrorNotification, showCautionNotification } from "@/utils/notifications";
 import { TriangleIcon } from "../../ui/icon/Triangle"
 import { BellAlertIcon } from "@heroicons/react/24/outline";
 import AlertSelect from "./AlertSelect";
@@ -26,17 +26,21 @@ export default function Steps() {
   }, []);
 
   const handleUpdate = async () => {
-    try {
-      await axios.patch(`/api/setting`, {
-        user: {
-          notifications: checked,
-        },
-      });
-      showSuccessNotification(`更新しました`);
-      setCurrentSetting(checked);
-    } catch (error) {
-      showErrorNotification('更新に失敗しました');
-      console.error("Failed to send weekly target", error);
+    if (checked !== currentSetting) {
+      try {
+        await axios.patch(`/api/setting`, {
+          user: {
+            notifications: checked,
+          },
+        });
+        showSuccessNotification(`更新しました`);
+        setCurrentSetting(checked);
+      } catch (error) {
+        showErrorNotification('更新に失敗しました');
+        console.error("Failed to send weekly target", error);
+      }
+    } else {
+      showCautionNotification('設定されています')
     }
   };
 
@@ -50,7 +54,7 @@ export default function Steps() {
             <div className='text-gray-700 font-bold'>{currentSetting ? 'ON' : 'OFF'}</div>
           </div>
         </div>
-        <div className="bg-white rounded-md py-5 pl-7">
+        <div className="bg-white rounded-md py-7 pl-7">
           <div className="flex flex-row justify-start pt-3">
             <TriangleIcon className="w-5 h-5 mr-2 ml-4 text-gray-400" />
             <div className='text-sm text-gray-800'>通知には友達追加が必要です</div>
