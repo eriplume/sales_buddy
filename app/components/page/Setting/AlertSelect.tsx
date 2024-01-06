@@ -22,7 +22,6 @@ export default function AlertSelect({handleUpdate, checked, setChecked, currentS
     );
   };
 
-  const isButtonDisabled = checked === currentSetting;
   const icon = <ArrowPathIcon className='w-5 h-5 text-blue-400' />;
 
   return (
@@ -38,7 +37,7 @@ export default function AlertSelect({handleUpdate, checked, setChecked, currentS
           <Radio value="true" label="ON" color="#93c5fd"/>
           <Radio value="false" label="OFF" color="#93c5fd"/>
           <div>
-            <Button variant='outline' size="xs" color='#9ca3af' rightSection={icon} onClick={handleUpdate} disabled={isButtonDisabled}>
+            <Button variant='outline' size="xs" color='#9ca3af' rightSection={icon} onClick={handleUpdate}>
               更新
             </Button>
           </div>
