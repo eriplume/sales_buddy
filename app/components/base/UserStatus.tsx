@@ -1,8 +1,9 @@
 "use client"
 import { useSession } from "next-auth/react";
-import  LoginButton  from "../LoginButton";
 import ProfileDropdown from "./ProfileDropdown";
 import Loading from "../ui/Loading";
+import LoginIcon from "../ui/LoginIcon";
+
 
 export default function UserStatus () {
   const { data: session, status } = useSession();
@@ -19,8 +20,8 @@ export default function UserStatus () {
       />
     </div>
   ) : (
-    <div className="w-24 sm:w-32">
-      <LoginButton/>
+    <div className="flex items-center lg:mr-8 mr-3">
+      <LoginIcon />
     </div>
   )
 }
