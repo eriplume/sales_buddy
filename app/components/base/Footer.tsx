@@ -1,4 +1,6 @@
-import { CloudIcon } from "@heroicons/react/24/outline";
+import Image from 'next/image';
+import logoImage from "@/public/logo.png";
+import HangerIcon from '../ui/icon/hangerIcon';
 
 export default function Footer() {
   return (
@@ -7,10 +9,13 @@ export default function Footer() {
         {/* アプリ名 + コピーライト*/}
         <div className="flex flex-row justify-center items-center">
           <a className="flex title-font font-medium items-center justify-center text-gray-900 text-xs mr-2">
-            <span className="text-sm">sales buddy</span>
-            <CloudIcon className="w-4 h-4 ml-1" />
+            <Image alt="logo" src={logoImage} width={40}height={40} priority/>
+            <div className="flex flex-row items-center">
+              <div className="text-sm ml-1">sales buddy</div>
+              <HangerIcon className='h-5 w-5 text-gray-800 ml-1'/>
+            </div>
           </a>
-          <p className="text-xs text-gray-500 mb-0 md:pl-4 md:border-l border-gray-400">© 2023 의류 개인 판매 관리 —</p>
+          <p className="text-xs text-gray-500 mb-0 md:pl-4 md:border-l border-gray-400">© 2023 sales buddy —</p>
         </div>
 
         {/* 2行目: リンク */}
