@@ -1,6 +1,6 @@
 import UserStatus from "./UserStatus";
 import DrawerMenu from "./DrawerMenu";
-import HangerIcon from '../ui/icon/hangerIcon';
+import HangerIcon from '../ui/icon/HangerIcon';
 
 export default function Header() {
   return (

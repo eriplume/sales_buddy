@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import logoImage from "@/public/logo.png";
-import HangerIcon from '../ui/icon/hangerIcon';
+import HangerIcon from '../ui/icon/HangerIcon';
 
 export default function Footer() {
   return (
