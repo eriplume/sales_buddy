@@ -87,3 +87,6 @@ Weekly Reportとして記録したコメントを要約し、月次評価シー�
 #### インフラ
 * Vercel
 * Render
+
+### バックエンド
+https://github.com/eriplume/sales_buddy_backend.git
