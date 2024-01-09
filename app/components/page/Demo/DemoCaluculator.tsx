@@ -1,16 +1,15 @@
 "use client"
-import { useFetchForCalculator } from '@/lib/useFetch';
-import useDashboardStore from '@/store/dashboardStore';
+import { useFetchForDemo } from '@/lib/useFetch';
+import { salesDatesDemo } from './DemoData';
 import { Tabs } from '@mantine/core';
 import { TriangleIcon } from '../../ui/icon/Triangle';
 import HelpMordal from '../../ui/HelpMordal';
-import RecordInputForm from './RecordInputForm';
-import Datepicker from './DatePicker';
-import HelpPage from './HelpPage';
+import Datepicker from '../DairyRecord/DatePicker';
+import HelpPage from '../DairyRecord/HelpPage';
+import RecordInputForm from '../DairyRecord/RecordInputForm';
 
-export default function Caluculator() {
-  useFetchForCalculator();
-  const { salesDates } = useDashboardStore((state) => ({ salesDates: state.salesDates }));
+export default function DemoCaluculator() {
+  useFetchForDemo();
 
   return (
     <>
@@ -35,7 +34,7 @@ export default function Caluculator() {
           <Tabs.Panel value="sales">
             <div className="bg-white px-7 pb-3 shadow-md rounded-b-sm border-x flex flex-col">
               <div className="w-full px-3 pb-2 pt-4">
-                <Datepicker salesDates={salesDates} />
+                <Datepicker salesDates={salesDatesDemo}/>
               </div>
             </div>
           </Tabs.Panel>

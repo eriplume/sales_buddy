@@ -9,7 +9,6 @@ import ClearButton from '../../ui/button/ClearButton';
 import SubmitButton from '../../ui/button/SubmitButton';
 import CurrentDate from './CurrentDate';
 import CustomersList from './CustomersList';
-import { Tabs } from '@mantine/core';
 import { TriangleIcon } from '../../ui/icon/Triangle';
 
 export default function Submit() {
@@ -61,7 +60,7 @@ export default function Submit() {
               <CurrentData/>
               {/* md以上のみ表示 */}
               <div className="hidden md:block"> 
-                <CustomersList/>
+                <CustomersList />
               </div>
               <div className="flex justify-center mt-4 gap-4">
                 <ClearButton size="sm" onClick={clearData}/>
