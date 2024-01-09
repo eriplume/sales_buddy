@@ -166,3 +166,6 @@ export const jobsDatesDemo = jobsRecordsDemo.map(record => record.date);
 
 // 登録された業務付付の一覧
 export const jobsListDemo = jobsRecordsDemo.map(record => record.job);
+
+// 客層タイプ集計
+export const customersRecordsDemo = {"1":10,"2":6,"3":4,"4":5,"7":2,"8":8}
