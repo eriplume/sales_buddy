@@ -3,22 +3,22 @@ import { useState } from 'react';
 import { useSession } from "next-auth/react";
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer } from '@mantine/core';
-import BurgerIcon from './BurgerIcon';
+import { Burger } from '@mantine/core';
 import DrawerContents from './DrawerContents';
 
 export default function DrawerMenu() {
   const { data: session } = useSession();
-  const [opened, { open, close }] = useDisclosure(false);
+  const [opened, { toggle }] = useDisclosure();
   const [active, setActive] = useState(0); 
 
   if(session)
     return (
       <>
-        <Drawer opened={opened} onClose={close} size="sm">
-          <DrawerContents active={active} setActive={setActive} onClose={close}/>
-        </Drawer >
+        <Drawer opened={opened} onClose={toggle}>
+          <DrawerContents active={active} setActive={setActive} onClose={toggle}/>
+        </Drawer>
   
-        <BurgerIcon open={open}/>
+        <Burger opened={opened} onClick={toggle} className="w-6 h-6 mr-2 ml-1 md:ml-4" aria-label="Toggle navigation"/>
       </>
     );
 }
