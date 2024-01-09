@@ -13,12 +13,15 @@ export default function UserStatus () {
   }
 
   return session ? (
-    <div className="flex items-center md:mr-4 mr-1 hidden md:block">
-      <ProfileDropdown
-        image={session.user.image} 
-        name={session.user.name} 
-      />
-    </div>
+    <>
+      <div className="flex items-center md:mr-4 mr-1 hidden md:block">
+        <ProfileDropdown
+          image={session.user.image} 
+          name={session.user.name} 
+        />
+      </div>
+      <div className="md:hidden" style={{ width: 32, height: 32, visibility: 'hidden' }}></div>
+    </>
   ) : (
     <div className="flex items-center lg:mr-8 mr-3">
       <LoginIcon />
