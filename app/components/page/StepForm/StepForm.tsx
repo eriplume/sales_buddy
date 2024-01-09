@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { useFetchForWeekly } from '@/lib/useFetchData';
+import { useFetchForWeekly } from '@/lib/useFetch';
 import axios from 'axios'
 import useWeeklyStore from '@/store/weeklyStore';
 import useDashboardStore from '@/store/dashboardStore';

@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
-import { useFetchForCustomersGraph } from '@/lib/useFetchData';
+import { useFetchForCustomersGraph } from '@/lib/useFetch';
 import useDashboardStore from '@/store/dashboardStore';
 import useCalculationStore from '@/store/calculationStore';
 

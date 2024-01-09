@@ -1,6 +1,6 @@
 "use client"
 import { useMemo } from 'react';
-import { useFetchData } from '@/lib/useFetchData';
+import { useFetchData } from '@/lib/useFetch';
 import { formatDate } from '@/utils/dateUtils';
 import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
@@ -27,7 +27,7 @@ export default function SalesCalender() {
   };
 
   const renderModalContent = () => {
-    return selectedSalesRecord ? <DayRecord record={selectedSalesRecord} /> : <NotDayRecord />;
+    return selectedSalesRecord ? <DayRecord record={selectedSalesRecord} /> : <NotDayRecord path="/dairyrecord"/>;
   };
 
   // 選択された日付に対応する売上記録を取得

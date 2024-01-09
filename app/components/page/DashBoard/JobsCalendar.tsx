@@ -1,6 +1,6 @@
 "use client"
 import { useMemo, useState } from 'react';
-import { useFetchJobs } from '@/lib/useFetchData';
+import { useFetchJobs } from '@/lib/useFetch';
 import { formatDate } from '@/utils/dateUtils';
 import useDashboardStore from '@/store/dashboardStore';
 import { useDisclosure } from '@mantine/hooks';

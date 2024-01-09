@@ -71,3 +71,10 @@ export const useFetchForReport = () => {
     fetchMonthlyReport();
   }, [fetchWeeklyReport, fetchMonthlyReport]);
 }
+
+export const useFetchForDemo = () => {
+  const fetchOptions = useCalculationStore((state) => state.fetchOptions);
+  useEffect(() => {
+    fetchOptions();
+  }, [fetchOptions]);
+}

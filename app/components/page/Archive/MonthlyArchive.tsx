@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { useFetchForArchive } from "@/lib/useFetchData";
+import { useFetchForArchive } from "@/lib/useFetch";
 import { formatDateYM } from "@/utils/dateUtils";
 import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import useDashboardStore from "@/store/dashboardStore";
