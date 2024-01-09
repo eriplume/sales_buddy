@@ -1,5 +1,6 @@
 "use client"
 import Image from 'next/image';
+import { useRouter } from 'next/navigation'
 import { Carousel } from '@mantine/carousel';
 import noteImage from "@/public/note.png";
 import welcomeImage from "@/public/mobile_logo.png";
@@ -9,6 +10,8 @@ import LoginButton from '../../LoginButton';
 import { ChatBubbleLeftEllipsisIcon, ChevronDoubleDownIcon, FaceSmileIcon, HandThumbUpIcon, LightBulbIcon, PencilIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function Introduction() {
+  const router = useRouter()
+
   return (
     <>
       <section className="text-gray-600 body-font max-w-xs md:max-w-2xl lg:max-w-4xl bg-white rounded-sm shadow-md">
@@ -30,7 +33,12 @@ export default function Introduction() {
                 </div>
                 <div className="flex justify-center mb-4">
                   <LoginButton/>
-                  <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-1 px-6 focus:outline-none hover:bg-gray-200 rounded-lg text-md items-center">お試し</button>
+                  <button
+                    onClick={() => router.push('/dashboard_s')}
+                    className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-1 px-6 focus:outline-none hover:bg-gray-200 rounded-lg text-md items-center"
+                  >
+                    お試し
+                  </button>
                 </div>
               </div>
             </div>
@@ -120,7 +128,12 @@ export default function Introduction() {
                   <p className="text-sm md:text-md lg:text-lg font-bold">アプリを覗いてみる？</p>
                 </div>
                 <div className="flex justify-center mb-3 md:ml-5">
-                  <button className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-7 focus:outline-none hover:bg-gray-200 rounded-lg text-sm items-center">お試しページへ</button>
+                  <button 
+                    onClick={() => router.push('/dashboard_s')}
+                    className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-7 focus:outline-none hover:bg-gray-200 rounded-lg text-sm items-center"
+                  >
+                    お試しページへ
+                  </button>
                 </div>
               </div>
             </div>
