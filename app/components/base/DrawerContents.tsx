@@ -1,7 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { NavLink } from '@mantine/core';
-import { navigationItems } from './navigationItems';
 import { HomeIcon, PencilIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import UserStatus from './UserStatus';
 import ProfileDrawer from './ProfileDrawer';
@@ -10,9 +9,12 @@ type DrawerContentsProps = {
   active: number;
   setActive: (index: number) => void;
   onClose: () => void;
+  navigationItems: any[];
+  dashboardPath: string;
+  teamsPath: string;
 };
 
-export default function DrawerContents({ active, setActive, onClose }: DrawerContentsProps) {
+export default function DrawerContents({ active, setActive, onClose, dashboardPath, teamsPath, navigationItems }: DrawerContentsProps) {
   const router = useRouter()
 
   const handleNavLinkClick = (index: number, path: string) => {
@@ -28,7 +30,7 @@ export default function DrawerContents({ active, setActive, onClose }: DrawerCon
         color="gray"
         leftSection={<HomeIcon className="w-6 h-6 ml-1 text-gray-500" />}
         active={active === -1}
-        onClick={() => handleNavLinkClick(-1, '/dashboard')}
+        onClick={() => handleNavLinkClick(-1, dashboardPath)}
       />
 
       <NavLink
@@ -53,7 +55,7 @@ export default function DrawerContents({ active, setActive, onClose }: DrawerCon
         color="gray"
         leftSection={<UserGroupIcon className="w-6 h-6 ml-1 text-gray-500" />}
         active={active === -3}
-        onClick={() => handleNavLinkClick(-2, '/dashboard')}
+        onClick={() => handleNavLinkClick(-2, teamsPath)}
         className='mt-1'
       />
 

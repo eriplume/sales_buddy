@@ -11,8 +11,12 @@ export default function UnauthenticatedLayout({
 
   return (
     <>
-      <AlertDemo/>
-      <DemoMenu/>
+      <div className="md:sticky top-5 w-full z-30">
+        <AlertDemo/>
+      </div>
+      <div className="md:sticky top-12 w-full z-30">
+        <DemoMenu/>
+      </div>
       {children}
       <Footer />
       <DemoFooterMenu />
