@@ -2,7 +2,7 @@ import { formatCurrency } from "@/utils/currencyUtils";
 import { ForwardIcon } from "@heroicons/react/24/outline";
 import WeeklyRingProgress from "../DashBoard/WeeklyRingProgress";
 import WeeklyProgress from "../DashBoard/WeeklyProgress";
-import ContentsLink from "../DashBoard/ContentsLink";
+import { ContentsLinkDemo } from "../DashBoard/ContentsLink";
 
 const progress = 175000;
 const progressPercent = 65;
@@ -26,7 +26,7 @@ export default function DemoProgressArea() {
           </div>
         </div>
       </div>
-      <ContentsLink/>
+      <ContentsLinkDemo />
     </div>
   )
 }

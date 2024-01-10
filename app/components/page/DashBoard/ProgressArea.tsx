@@ -1,4 +1,4 @@
-import ContentsLink from './ContentsLink'
+import { ContentsLink } from './ContentsLink'
 import ThisWeek from './ThisWeek'
 
 export default function ProgressArea() {
