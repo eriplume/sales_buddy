@@ -6,7 +6,7 @@ import noteImage from "@/public/note.png";
 import welcomeImage from "@/public/mobile_logo.png";
 import ladyImage from "@/public/lady.png";
 import startImage from "@/public/login_tap.png";
-import LoginButton from '../../LoginButton';
+import LoginButton from '../../ui/LoginButton';
 import { ChatBubbleLeftEllipsisIcon, ChevronDoubleDownIcon, FaceSmileIcon, HandThumbUpIcon, LightBulbIcon, PencilIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 export default function Introduction() {
