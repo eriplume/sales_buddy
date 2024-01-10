@@ -10,7 +10,7 @@ export default function Header() {
         <div className="flex items-center">
           <div className="flex flex-row items-center">
             <div className='absolute top-1 left-8 lg:ml-8'>
-              <Image className="object-cover rounded" alt="bg" src={bgImage} width={65} height={65} priority/>
+              <Image className="object-cover" alt="bg" src={bgImage} width={63} height={63} priority/>
             </div>
             <div className="ml-4 lg:ml-12 text-xl lg:text-2xl font-bold absolute top-0 left-12 py-5">sales buddy</div>
           </div>
