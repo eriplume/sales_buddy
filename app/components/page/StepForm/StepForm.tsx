@@ -23,22 +23,6 @@ export default function StepForm() {
   const { fetchWeeklyReport } = useDashboardStore((state) => ({fetchWeeklyReport: state.fetchWeeklyReport}));
   const [active, setActive] = useState(0);
 
-  function validateContentStep() {
-    const validationResult = validateContent();
-    if (!validationResult.success) {
-      return { success: false, errorMessage: validationResult.error?.issues[0].message };
-    }
-    return { success: true, errorMessage: '' };
-  }
-
-  function validateTargetStep() {
-  const validationResult = validateTarget();
-  if (!validationResult.success) {
-    return { success: false, errorMessage: validationResult.error?.issues[0].message };
-  }
-  return { success: true, errorMessage: '' };
-}
-
   function validateStep(step :number) {
     let validationResult;
     let errorMessage = '';
