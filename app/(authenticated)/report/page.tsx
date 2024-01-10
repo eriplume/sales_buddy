@@ -1,5 +1,5 @@
 import ReportArchive from "@/app/components/page/Report/ReportArchive"
-import Breadcrumbs from "@/app/components/ui/Breadcrumbs"
+import { Breadcrumbs } from "@/app/components/ui/Breadcrumbs"
 
 export default function page() {
   return (

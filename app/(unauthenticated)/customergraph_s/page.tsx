@@ -1,5 +1,5 @@
 import { salesDatesDemo, customersRecordsDemo } from '@/app/components/page/Demo/DemoData';
-import Breadcrumbs from '@/app/components/ui/Breadcrumbs'
+import { BreadcrumbsDemo } from '@/app/components/ui/Breadcrumbs'
 import { PencilIcon, UsersIcon } from '@heroicons/react/24/outline';
 import DemoPie from '@/app/components/page/Demo/DemoPie';
 import PieItemList from '@/app/components/page/CustomerGraph/PieItemList';
@@ -12,7 +12,7 @@ export default function page() {
 
   return (
     <>
-      <Breadcrumbs>customers graph</Breadcrumbs>
+      <BreadcrumbsDemo>customers graph</BreadcrumbsDemo>
       <div className="flex flex-col justify-center items-center mx-auto z-0 px-6 max-w-4xl mb-7 mt-4">
         <div className="flex flex-col sm:flex-row w-full max-w-lg bg-white rounded-t-md shadow-t-sm">
           <div className="flex flex-col md:flex-row text-sm text-gray-500 pl-5 mt-6">

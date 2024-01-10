@@ -1,4 +1,4 @@
-import Breadcrumbs from '@/app/components/ui/Breadcrumbs'
+import { Breadcrumbs } from '@/app/components/ui/Breadcrumbs'
 import PieItemList from '@/app/components/page/CustomerGraph/PieItemList'
 import CustomersPie from '@/app/components/page/CustomerGraph/CustomersPie';
 import RecordedDate from '@/app/components/page/CustomerGraph/RecordedDate';
