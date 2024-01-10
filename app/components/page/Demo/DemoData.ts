@@ -170,6 +170,31 @@ export const jobsListDemo = jobsRecordsDemo.map(record => record.job);
 // 客層タイプ集計
 export const customersRecordsDemo = {"1":10,"2":6,"3":4,"4":5,"7":2,"8":8};
 
+// 週間目標の一覧
+export const weeklyTargetsDemo = [
+    {
+        "target": 1000000,
+        "start_date": "2023-12-18",
+        "end_date": "2023-12-24"
+    },
+    {
+        "target": 1000000,
+        "start_date": "2023-12-25",
+        "end_date": "2023-12-31"
+    },
+    {
+        "target": 500000,
+        "start_date": "2024-01-01",
+        "end_date": "2024-01-07"
+    }
+];
+
+// 週間目標の登録週の一覧
+export const registeredTargetRangesDemo =  weeklyTargetsDemo.map(target => ({
+    startDate: target.start_date,
+    endDate: target.end_date
+}));
+
 // 週間レポートの一覧
 export const weeklyReportsDemo = [
     {
@@ -189,6 +214,12 @@ export const weeklyReportsDemo = [
     }
 ];
 
+// 週間レポートの登録週の一覧
+export const registeredReportRangesDemo = weeklyReportsDemo.map(report => ({
+    startDate: report.start_date,
+    endDate: report.end_date
+}));
+
 // 月間レポートの一覧
 export const monthlyReportsDemo = [
     {
@@ -196,4 +227,19 @@ export const monthlyReportsDemo = [
         "month": "2023-12"
     }
 ];
+
+// 今週の目標
+export const targetDemo = 50;
+// 進捗
+export const progressPercentDemo = 65;
+
+// 目標との差分
+export const progressDemo = 175000;
+
+// 今週の現在の売上高
+export const thisWeekAmountDemo = 325000;
+export const thisWeekNumberDemo = 10;
+export const thisWeekCountDemo = 15;
+export const thisWeekSetDemo= 1.5;
+export const thisWeekAverageDemo = 32500;
 
