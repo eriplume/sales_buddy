@@ -1,6 +1,10 @@
 import RouterButton from "../../ui/button/RouterButton"
 
-export default function NotDayRecord() {
+type NotDayRecordProps = {
+  path: string;
+};
+
+export default function NotDayRecord({path} :NotDayRecordProps ) {
   return (
     <>
       <div className="p-4 border-t-4">
@@ -8,7 +12,7 @@ export default function NotDayRecord() {
           <p>売上データがありません。</p>
           <p>売上を登録しますか？</p>
         </div>
-        <RouterButton size="sm" path="/dairyrecord">登録する</RouterButton>
+        <RouterButton size="sm" path={path}>登録する</RouterButton>
       </div>
     </>
   )

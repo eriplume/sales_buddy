@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { useFetchForWeekly } from '@/lib/useFetchData';
+import { useFetchForWeekly } from '@/lib/useFetch';
 import axios from 'axios'
 import useWeeklyStore from '@/store/weeklyStore';
 import useDashboardStore from '@/store/dashboardStore';
@@ -22,22 +22,6 @@ export default function StepForm() {
   const { fetchWeeklyTarget } = useDashboardStore((state) => ({fetchWeeklyTarget: state.fetchWeeklyTarget}));
   const { fetchWeeklyReport } = useDashboardStore((state) => ({fetchWeeklyReport: state.fetchWeeklyReport}));
   const [active, setActive] = useState(0);
-
-  function validateContentStep() {
-    const validationResult = validateContent();
-    if (!validationResult.success) {
-      return { success: false, errorMessage: validationResult.error?.issues[0].message };
-    }
-    return { success: true, errorMessage: '' };
-  }
-
-  function validateTargetStep() {
-  const validationResult = validateTarget();
-  if (!validationResult.success) {
-    return { success: false, errorMessage: validationResult.error?.issues[0].message };
-  }
-  return { success: true, errorMessage: '' };
-}
 
   function validateStep(step :number) {
     let validationResult;

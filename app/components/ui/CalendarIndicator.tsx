@@ -12,7 +12,7 @@ export default function CalendarIndicator({ date, rendarDate, color }:JobsIndica
   const isSaleDay = rendarDate.includes(dateString);
 
   return (
-    <Indicator size={6} color={color} offset={-5} disabled={!isSaleDay} position="top-center">
+    <Indicator size={6} color={color} offset={-5} disabled={!isSaleDay} position="top-center" className='z-10'>
       {date.getDate()}
     </Indicator>
   )

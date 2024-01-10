@@ -1,5 +1,5 @@
 import MonthlyArchive from "@/app/components/page/Archive/MonthlyArchive"
-import Breadcrumbs from "@/app/components/ui/Breadcrumbs"
+import { Breadcrumbs } from "@/app/components/ui/Breadcrumbs"
 
 export default function Archive() {
 

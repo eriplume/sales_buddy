@@ -1,14 +1,16 @@
 "use client"
 import useCalculationStore from '@/store/calculationStore';
-import useDashboardStore from '@/store/dashboardStore';
+import { formatDate } from '@/utils/dateUtils';
 import { DatePickerInput } from '@mantine/dates';
 import { rem } from '@mantine/core';
 import { CalendarIcon } from "@heroicons/react/24/outline";
-import { formatDate } from '@/utils/dateUtils';
 
-export default function Datepicker() {
+type DatepickerProps = {
+  salesDates : string[];
+}
+
+export default function Datepicker({salesDates}: DatepickerProps ) {
   const { count, selectedDate, setSelectedDate } = useCalculationStore();
-  const { salesDates } = useDashboardStore((state) => ({ salesDates: state.salesDates }));
 
   const isDataEntered = count !== 0;
 

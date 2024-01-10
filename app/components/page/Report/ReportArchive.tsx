@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from 'next/navigation'
 import { formatDateYM } from "@/utils/dateUtils";
-import { useFetchForReport } from "@/lib/useFetchData";
+import { useFetchForReport } from "@/lib/useFetch";
 import useDashboardStore from "@/store/dashboardStore";
 import { TriangleIcon } from "../../ui/icon/Triangle"
 import MonthPicker from "../../ui/MonthPicker"
