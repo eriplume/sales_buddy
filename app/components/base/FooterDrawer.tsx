@@ -1,15 +1,15 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { NavLink } from '@mantine/core';
-import { navigationItems } from './navigationItems';
 
 type DrawerContentsProps = {
   active: number;
   setActive: (index: number) => void;
   onClose: () => void;
+  navigationItems: any[];
 };
 
-export default function FooterDrawer({ active, setActive, onClose }: DrawerContentsProps) {
+export default function FooterDrawer({ active, setActive, onClose, navigationItems }: DrawerContentsProps) {
   const router = useRouter()
 
   const handleNavLinkClick = (index: number, path: string) => {

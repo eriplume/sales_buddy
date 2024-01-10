@@ -2,6 +2,7 @@
 import { useSession } from "next-auth/react";
 import Loading from "../ui/Loading";
 import UserImage from "../ui/UserImage";
+import DefaultUserImage from "../ui/DefaultUserImage";
 
 export default function FooterUserStatus() {
   const { data: session, status } = useSession();
@@ -18,6 +19,8 @@ export default function FooterUserStatus() {
       />
     </div>
   ) : (
-    null
+    <div className="flex items-center md:mr-4 mr-1">
+      <DefaultUserImage />
+  </div>
   )
 }

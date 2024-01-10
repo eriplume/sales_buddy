@@ -1,6 +1,6 @@
-import FooterMenu from "../components/base/FooterMenu"
 import Footer from "../components/base/Footer"
 import AlertDemo from "../components/ui/AlertDemo"
+import DemoFooterMenu from "../components/page/Demo/DemoFooterMenu"
 
 export default function UnauthenticatedLayout({
   children,
@@ -13,7 +13,7 @@ export default function UnauthenticatedLayout({
       <AlertDemo/>
       {children}
       <Footer />
-      <FooterMenu/>
+      <DemoFooterMenu />
     </>
   )
 }

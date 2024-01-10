@@ -4,13 +4,13 @@ import { useDisclosure } from '@mantine/hooks';
 import { Drawer } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import { UsersIcon, HomeIcon, PencilIcon, Cog8ToothIcon } from "@heroicons/react/24/outline";
-import FooterUserStatus from "./FooterUserStatus";
-import FooterDrawer from './FooterDrawer';
-import ProfileDrawer from './ProfileDrawer';
-import { navigationItems } from './navigationItems';
+import FooterUserStatus from '../../base/FooterUserStatus';
+import { navigationItemsDemo } from '../../base/navigationItems';
+import FooterDrawer from '../../base/FooterDrawer';
+import ProfileDrawer from '../../base/ProfileDrawer';
 
-export default function FooterMenu() {
-  const [opened, { open, close }] = useDisclosure(false);
+export default function DemoFooterMenu() {
+    const [opened, { open, close }] = useDisclosure(false);
   const [openedUser, { open: openUser, close: closeUser }] = useDisclosure(false);
   const [active, setActive] = useState(0); 
   const router = useRouter()
@@ -18,7 +18,7 @@ export default function FooterMenu() {
   const handleClick = () => {
     setActive(-1);
     close();
-    router.push('/dashboard');
+    router.push('/dashboard_s');
   }
 
   const title = () => {
@@ -77,7 +77,7 @@ export default function FooterMenu() {
       </footer>
 
       <Drawer opened={opened} onClose={close} size="40%" position="bottom" title={title()} zIndex={5}>
-        <FooterDrawer active={active} setActive={setActive} onClose={close} navigationItems={navigationItems}/>
+        <FooterDrawer active={active} setActive={setActive} onClose={close} navigationItems={navigationItemsDemo}/>
       </Drawer >
 
       <Drawer opened={openedUser} onClose={closeUser} size="40%" position="bottom" title={titleUser()} zIndex={5}>

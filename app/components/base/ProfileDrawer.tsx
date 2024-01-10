@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react";
 import { signOut } from 'next-auth/react';
 import { NavLink } from '@mantine/core';
 import { BellAlertIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
@@ -11,7 +12,8 @@ type DrawerContentsProps = {
 };
 
 export default function ProfileDrawer({ active, setActive, onClose }: DrawerContentsProps) {
-  const router = useRouter()
+  const router = useRouter();
+  const { data: session } = useSession();
 
   const handleNavLinkClick = (index: number, path: string) => {
     setActive(index);
@@ -19,7 +21,7 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
     router.push(path);
   };
 
-  return (
+  return session ? (
     <>
       <NavLink
         active={-2 === active}
@@ -35,5 +37,15 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         onClick={() => signOut()} 
       />
     </>
-  );
+  ) : (
+    <>
+      <NavLink
+        active={-2 === active}
+        label="通知設定"
+        color="gray"
+        leftSection={<BellAlertIcon className="w-4 h-4 ml-4" />}
+        onClick={() => handleNavLinkClick(-2, '/setting_s')} 
+      />
+    </>
+  )
 }
