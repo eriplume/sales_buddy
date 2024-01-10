@@ -4,7 +4,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Drawer } from '@mantine/core';
 import { useRouter } from 'next/navigation';
 import { UsersIcon, HomeIcon, PencilIcon, Cog8ToothIcon } from "@heroicons/react/24/outline";
-import FooterUserStatus from '../../base/FooterUserStatus';
+import FooterUserStatus from '../../base/UserStatus';
 import { navigationItemsDemo } from '../../base/navigationItems';
 import FooterDrawer from '../../base/FooterDrawer';
 import ProfileDrawer from '../../base/ProfileDrawer';
@@ -12,13 +12,19 @@ import ProfileDrawer from '../../base/ProfileDrawer';
 export default function DemoFooterMenu() {
     const [opened, { open, close }] = useDisclosure(false);
   const [openedUser, { open: openUser, close: closeUser }] = useDisclosure(false);
-  const [active, setActive] = useState(0); 
+  const [active, setActive] = useState(-1); 
   const router = useRouter()
 
   const handleClick = () => {
     setActive(-1);
     close();
     router.push('/dashboard_s');
+  }
+
+  const handleClickTeam = () => {
+    setActive(-3);
+    close();
+    router.push('/teams');
   }
 
   const title = () => {
@@ -63,7 +69,7 @@ export default function DemoFooterMenu() {
           </div>
         </div>
         <div className="w-1/4 p-2">
-          <div className='flex flex-col justify-center items-center text-gray-400'>
+          <div className='flex flex-col justify-center items-center text-gray-400' onClick={handleClickTeam}>
             <UsersIcon className="w-7 h-8" />
             <div className='text-xs text-gray-600 mt-1'>group</div>
           </div>

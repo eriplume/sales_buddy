@@ -27,13 +27,13 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         active={-2 === active}
         label="通知設定"
         color="gray"
-        leftSection={<BellAlertIcon className="w-4 h-4 ml-4" />}
+        leftSection={<BellAlertIcon className="w-5 h-5 ml-4" />}
         onClick={() => handleNavLinkClick(-2, '/setting')} 
       />
       <NavLink
         label='ログアウト'
         color="gray"
-        leftSection={<ArrowRightOnRectangleIcon className="w-4 h-4 ml-4" />}
+        leftSection={<ArrowRightOnRectangleIcon className="w-5 h-5 ml-4" />}
         onClick={() => signOut()} 
       />
     </>
@@ -43,7 +43,7 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         active={-2 === active}
         label="通知設定"
         color="gray"
-        leftSection={<BellAlertIcon className="w-4 h-4 ml-4" />}
+        leftSection={<BellAlertIcon className="w-5 h-5 ml-4" />}
         onClick={() => handleNavLinkClick(-2, '/setting_s')} 
       />
     </>
