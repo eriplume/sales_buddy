@@ -60,7 +60,7 @@ export default function DrawerContents({ active, setActive, onClose, dashboardPa
       />
 
       <NavLink
-        label="設定"
+        label="設定　|　その他"
         leftSection={<UserStatus />}
         defaultOpened
         className='mt-10'

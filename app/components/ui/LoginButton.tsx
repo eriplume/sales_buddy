@@ -5,7 +5,7 @@ import localImage from "../../../public/btn_login_base.png";
 
 export default function LoginButton() {
   return(
-    <button onClick={() => signIn('line')} >
+    <button onClick={() => signIn('line', { callbackUrl: '/dashboard' })} >
       <Image 
         src={localImage}
         alt="Login with LINE"

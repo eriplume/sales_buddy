@@ -16,7 +16,7 @@ export default function RequireAuth ({
   useEffect(() => {
     if (status === 'unauthenticated') {
       showNotification({
-        message: 'ログインが必要です',
+        message: '機能のご利用にはログインが必要です',
         color: 'red',
       });
       router.push('/');
@@ -25,7 +25,7 @@ export default function RequireAuth ({
 
   if (status === "loading") {
     return (
-        <Loading size="md" />
+        <Loading size="lg" />
     )
   }
 

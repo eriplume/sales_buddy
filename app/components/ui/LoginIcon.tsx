@@ -12,7 +12,7 @@ export default function LoginIcon() {
         color="#e2e8f0"
         aria-label="Settings" 
         className="shadow-md hover:text-sky-700"
-        onClick={() => signIn('line')}
+        onClick={() => signIn('line', { callbackUrl: '/dashboard' })}
       >
         <ArrowLeftOnRectangleIcon className="w-9 h-9 text-gray-400 hover:text-sky-700"/>
       </ActionIcon>

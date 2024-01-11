@@ -2,8 +2,9 @@
 import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
 import { signOut } from 'next-auth/react';
+import { showSuccessNotification } from '@/utils/notifications';
 import { NavLink } from '@mantine/core';
-import { BellAlertIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
+import { BellAlertIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
 type DrawerContentsProps = {
   active: number;
@@ -21,6 +22,13 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
     router.push(path);
   };
 
+  const handleLogout = () => {
+    showSuccessNotification("ログアウトしました")
+    setTimeout(() => {
+      signOut();
+    }, 1000);
+  };
+
   return session ? (
     <>
       <NavLink
@@ -31,10 +39,17 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         onClick={() => handleNavLinkClick(-2, '/setting')} 
       />
       <NavLink
+        active={-4 === active}
+        label="このアプリについて"
+        color="gray"
+        leftSection={<QuestionMarkCircleIcon className="w-5 h-5 ml-4" />}
+        onClick={() => handleNavLinkClick(-4, '/about')} 
+      />
+      <NavLink
         label='ログアウト'
         color="gray"
         leftSection={<ArrowRightOnRectangleIcon className="w-5 h-5 ml-4" />}
-        onClick={() => signOut()} 
+        onClick={handleLogout}
       />
     </>
   ) : (
@@ -45,6 +60,13 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         color="gray"
         leftSection={<BellAlertIcon className="w-5 h-5 ml-4" />}
         onClick={() => handleNavLinkClick(-2, '/setting_s')} 
+      />
+      <NavLink
+        active={-4 === active}
+        label="このアプリについて"
+        color="gray"
+        leftSection={<QuestionMarkCircleIcon className="w-5 h-5 ml-4" />}
+        onClick={() => handleNavLinkClick(-4, '/about')} 
       />
     </>
   )

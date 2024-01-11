@@ -82,11 +82,11 @@ export default function FooterMenu() {
         </div>
       </footer>
 
-      <Drawer opened={opened} onClose={close} size="40%" position="bottom" title={title()} zIndex={5}>
+      <Drawer opened={opened} onClose={close} size="40%" position="bottom" title={title()} zIndex={10}>
         <FooterDrawer active={active} setActive={setActive} onClose={close} navigationItems={navigationItems}/>
       </Drawer >
 
-      <Drawer opened={openedUser} onClose={closeUser} size="40%" position="bottom" title={titleUser()} zIndex={5}>
+      <Drawer opened={openedUser} onClose={closeUser} size="40%" position="bottom" title={titleUser()} zIndex={10}>
         <ProfileDrawer active={active} setActive={setActive} onClose={closeUser}/>
       </Drawer>
     </>
