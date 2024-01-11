@@ -61,13 +61,6 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         leftSection={<BellAlertIcon className="w-5 h-5 ml-4" />}
         onClick={() => handleNavLinkClick(-2, '/setting_s')} 
       />
-      <NavLink
-        active={-4 === active}
-        label="このアプリについて"
-        color="gray"
-        leftSection={<QuestionMarkCircleIcon className="w-5 h-5 ml-4" />}
-        onClick={() => handleNavLinkClick(-4, '/about')} 
-      />
     </>
   )
 }
