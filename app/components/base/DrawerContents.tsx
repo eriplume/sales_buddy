@@ -55,12 +55,12 @@ export default function DrawerContents({ active, setActive, onClose, dashboardPa
         color="gray"
         leftSection={<UserGroupIcon className="w-6 h-6 ml-1 text-gray-500" />}
         active={active === -3}
-        onClick={() => handleNavLinkClick(-2, teamsPath)}
+        onClick={() => handleNavLinkClick(-3, teamsPath)}
         className='mt-1'
       />
 
       <NavLink
-        label="設定"
+        label="設定　|　その他"
         leftSection={<UserStatus />}
         defaultOpened
         className='mt-10'
