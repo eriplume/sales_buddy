@@ -48,6 +48,7 @@ export default function RecordInputForm () {
             max={30}
             suffix="点"
             size="xs"
+            type="tel"
           />
           <NumberInput
             {...form.getInputProps('amount')}
@@ -60,6 +61,7 @@ export default function RecordInputForm () {
             thousandSeparator=","
             size="xs"
             hideControls
+            type="tel"
           />
           <Select
             key={form.values.customer}
