@@ -25,7 +25,7 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
   const handleLogout = () => {
     showSuccessNotification("ログアウトしました")
     setTimeout(() => {
-      signOut();
+      signOut({ callbackUrl: '/' });
     }, 1000);
   };
 
