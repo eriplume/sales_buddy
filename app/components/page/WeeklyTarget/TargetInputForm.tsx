@@ -19,6 +19,7 @@ export default function TargetInputForm() {
             withAsterisk
             min={0}
             max={200}
+            type="tel"
           />
         </div>
       </div>
