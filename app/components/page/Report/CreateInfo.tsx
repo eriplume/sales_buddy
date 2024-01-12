@@ -71,7 +71,7 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
     <>
       <div className="flex flex-col justify-center items-center px-7 md:px-12">
 
-        {summaryData === null ? (
+        {summaryData === null && isLoading == false ? (
           <div className="flex flex-row justify-center items-center px-7 md:px-12">
             <Button 
               variant="outline" 
@@ -88,9 +88,14 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
         )}
 
         <div className="flex flex-row justify-center items-center px-2 md:px-7 mt-3">
-          {isLoading && <Loading size="sm" /> }
+          {isLoading &&
+          <div className="flex flex-row items-center">
+            <div className="text-gray-500 mr-1">作成中です</div>
+            <Loading size="sm" /> 
+          </div>
+          }
         </div>
-
+        
       </div>
     </>
   )
