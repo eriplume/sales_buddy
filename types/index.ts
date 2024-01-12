@@ -20,6 +20,7 @@ export type WeeklyReport = {
 };
 
 export type MonthlyReport = {
+  id: number;
   content: string;
   month: string;
 };

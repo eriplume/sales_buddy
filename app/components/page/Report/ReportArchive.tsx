@@ -63,7 +63,7 @@ export default function ReportArchive() {
             <TriangleIcon className="w-4 h-4 mr-1 ml-4 text-blue-300" />
             <div className='text-sm text-gray-800 mr-2'>月間まとめ</div>
           </div>
-          <MonthlySummary content={selectedMonthReport.content}/>
+          <MonthlySummary content={selectedMonthReport.content} id={selectedMonthReport.id}/>
         </>
       ) : (
         <>
