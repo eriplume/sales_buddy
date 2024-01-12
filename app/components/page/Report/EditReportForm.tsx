@@ -57,11 +57,16 @@ export default function EditReportForm({content, id, edit, setEdit} : ReportCont
     <>
       <form onSubmit={form.onSubmit(handleUpdate)} className='w-full'>
         <div className='flex justify-end items-center pr-2 pb-2'>
-          <Tooltip label="更新" arrowOffset={50} position="right" arrowSize={5} withArrow>
-            <button type="submit" className='p-1 hover:bg-gray-200'>
-              <ArrowPathIcon className="w-6 h-6 text-gray-500"/>
-            </button>
-          </Tooltip>
+          { id > 0 ? 
+            (
+              <Tooltip label="更新" arrowOffset={50} position="right" arrowSize={5} withArrow>
+                <button type="submit" className='p-1 hover:bg-gray-200'>
+                  <ArrowPathIcon className="w-6 h-6 text-gray-500"/>
+                </button>
+              </Tooltip>
+            ):(
+              null
+            )}
           <CancelActionIcon edit={edit} setEdit={setEdit}/>
         </div>
         <div className="p-4 bg-white rounded-sm">
