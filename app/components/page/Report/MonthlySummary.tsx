@@ -1,12 +1,13 @@
 import { Accordion } from '@mantine/core';
 import { FolderIcon } from "@heroicons/react/24/outline";
-import ReportContent from './ReportContent';
+import SummaryContentArea from './SummaryContentArea';
 
 type MonthlySummaryProps = {
   content: string;
+  id: number;
 }
 
-export default function MonthlySummary({content} :MonthlySummaryProps) {
+export default function MonthlySummary({content, id} :MonthlySummaryProps) {
   return (
     <>
     <div className="px-7 md:px-14">
@@ -18,7 +19,7 @@ export default function MonthlySummary({content} :MonthlySummaryProps) {
             まとめ
           </Accordion.Control>
           <Accordion.Panel>
-            <ReportContent content={content}/>
+            <SummaryContentArea content={content} id={id}/>
           </Accordion.Panel>
         </Accordion.Item>
       </Accordion>

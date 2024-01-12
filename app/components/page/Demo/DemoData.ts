@@ -224,7 +224,8 @@ export const registeredReportRangesDemo = weeklyReportsDemo.map(report => ({
 export const monthlyReportsDemo = [
     {
         "content": "今月はVIP会員様の来店が増加、ランクアップも見られ、またライト層で話し込む人がいたなど店舗への集客、購買も取れた。アウターのプラス提案を意識した接客を行ない客単価アップを図り、会話もケースバイケースで工夫を凝らした。しかし提案の内容の伝達や可愛さを伝えられるような言い回し術などのフォローは引き続きスキルアップが必要なことを強く感じた。",
-        "month": "2023-12"
+        "month": "2023-12",
+        "id":-100
     }
 ];
 
