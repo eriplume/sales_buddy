@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { getServerSession } from "next-auth/next"
-import { options } from '@/lib/options';
 import { fetchDataFromApi } from '@/lib/fetchDataFromApi';
 import { getJwt } from '@/lib/getJwt';
-import { type NextRequest } from 'next/server';
+import { NextRequest } from 'next/server';
 
 const endpoint = "job_records";
+const apiUrl = process.env.RAILS_API_URL
 
 export async function GET(req: NextRequest) {
-  const accessToken = await getJwt(req); // JWTトークンの取得
+  const { accessToken } = await getJwt(req);
 
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
@@ -37,11 +36,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(request: Request) {
-
-  const session = await getServerSession(options);
+export async function POST(req: NextRequest) {
+  const { accessToken, userId } = await getJwt(req);
     
-  if (!session) {
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -50,8 +48,9 @@ export async function POST(request: Request) {
     });
   }
 
-  const data = await request.json();
+  const data = await req.json();
   const job_record = data.job_record;
+  job_record.user_id = userId;
 
   if (!job_record){
     return new Response(JSON.stringify({ error: 'job_recordがありません' }), {
@@ -62,12 +61,14 @@ export async function POST(request: Request) {
     });
   }
 
-  job_record.user_id = session.user.userId;
-  const apiUrl = process.env.RAILS_API_URL
-
   try {
     const response = await axios.post(`${apiUrl}/${endpoint}`, { 
       job_record
+    }, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        }
     });
       return new Response(JSON.stringify(response.data), {
         status: 200,

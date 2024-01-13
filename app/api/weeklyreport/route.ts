@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { getServerSession } from "next-auth/next"
-import { options } from '@/lib/options';
+import { NextRequest } from 'next/server';
 import { fetchDataFromApi } from '@/lib/fetchDataFromApi';
 import { getJwt } from '@/lib/getJwt';
-import { type NextRequest } from 'next/server';
 
 const endpoint = "weekly_reports";
+const apiUrl = process.env.RAILS_API_URL;
 
 export async function GET(req: NextRequest) {
-  const accessToken = await getJwt(req); // JWTトークンの取得
+  const { accessToken } = await getJwt(req);
 
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
@@ -38,11 +37,10 @@ export async function GET(req: NextRequest) {
 }
 
 
-export async function POST(request: Request) {
-
-  const session = await getServerSession(options);
-    
-  if (!session) {
+export async function POST(req: NextRequest) {
+  const { accessToken, userId } = await getJwt(req);
+  
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -51,8 +49,9 @@ export async function POST(request: Request) {
     });
   }
 
-  const data = await request.json();
+  const data = await req.json();
   const weekly_report = data.weekly_report;
+  weekly_report.user_id = userId;
 
   if (!weekly_report){
     return new Response(JSON.stringify({ error: 'weekly_reportがありません' }), {
@@ -63,12 +62,14 @@ export async function POST(request: Request) {
     });
   }
 
-  weekly_report.user_id = session.user.userId;
-  const apiUrl = process.env.RAILS_API_URL
-
   try {
     const response = await axios.post(`${apiUrl}/${endpoint}`, { 
       weekly_report
+    }, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        }
     });
       return new Response(JSON.stringify(response.data), {
         status: 200,

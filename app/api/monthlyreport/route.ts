@@ -6,9 +6,10 @@ import { getJwt } from '@/lib/getJwt';
 import { type NextRequest } from 'next/server';
 
 const endpoint = "monthly_reports";
+const apiUrl = process.env.RAILS_API_URL
 
 export async function GET(req: NextRequest) {
-  const accessToken = await getJwt(req);
+  const { accessToken } = await getJwt(req);
 
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
@@ -37,11 +38,10 @@ export async function GET(req: NextRequest) {
   }
 }
 
-export async function POST(request: Request) {
-
-  const session = await getServerSession(options);
+export async function POST(req: NextRequest) {
+  const { accessToken, userId } = await getJwt(req);
       
-  if (!session) {
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -50,8 +50,9 @@ export async function POST(request: Request) {
     });
   }
 
-  const data = await request.json();
+  const data = await req.json();
   const monthly_report = data.monthly_report;
+  monthly_report.user_id = userId;
   
   if (!monthly_report){
     return new Response(JSON.stringify({ error: 'monthly_reportがありません' }), {
@@ -62,12 +63,14 @@ export async function POST(request: Request) {
     });
   }
 
-  monthly_report.user_id = session.user.userId;
-  const apiUrl = process.env.RAILS_API_URL
-
   try {
     const response = await axios.post(`${apiUrl}/${endpoint}`, { 
       monthly_report
+    }, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        }
     });
     return new Response(JSON.stringify(response.data), {
       status: 200,
@@ -86,11 +89,10 @@ export async function POST(request: Request) {
   }
 }
 
-export async function PATCH(request: Request) {
-
-  const session = await getServerSession(options);
+export async function PATCH(req: NextRequest) {
+  const { accessToken, userId } = await getJwt(req);
     
-  if (!session) {
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -99,10 +101,9 @@ export async function PATCH(request: Request) {
     });
   }
 
-  const data = await request.json();
+  const data = await req.json();
   const monthly_report = data.monthly_report;
   const reportId = data.monthly_report.id;
-  const apiUrl = process.env.RAILS_API_URL
   
   if (!monthly_report){
     return new Response(JSON.stringify({ error: 'monthly_reportがありません' }), {
@@ -114,8 +115,13 @@ export async function PATCH(request: Request) {
   }
 
   try {
-    const response = await axios.patch(`${apiUrl}/monthly_reports/${reportId}`, { 
+    const response = await axios.patch(`${apiUrl}/${endpoint}/${reportId}`, { 
       monthly_report
+    }, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        }
     });
       return new Response(JSON.stringify(response.data), {
         status: 200,

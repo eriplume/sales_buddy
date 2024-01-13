@@ -53,7 +53,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   fetchSalesRecord: async (force = false) => {
     if (force || get().salesRecords.length === 0) {
       try {
-        const response = await fetch(`/api/salesrecord`);
+        const response = await fetch(`/api/dairyrecord`);
         const data: SalesRecord[] = await response.json();
         const dates = data.map(record => record.date);
         const { start, end } = getThisWeekRange();

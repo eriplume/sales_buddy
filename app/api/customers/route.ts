@@ -5,7 +5,7 @@ import { type NextRequest } from 'next/server';
 const endpoint = "customer_records";
 
 export async function GET(req: NextRequest) {
-  const accessToken = await getJwt(req); // JWTトークンの取得
+  const { accessToken } = await getJwt(req);
 
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
