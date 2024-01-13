@@ -15,7 +15,7 @@ export async function GET() {
     });
   }
 
-  const userId = session.user.railsId;
+  const userId = session.user.userId;
   const apiUrl = process.env.RAILS_API_URL
 
   try {
@@ -52,7 +52,7 @@ export async function PATCH(request: Request) {
 
   const data = await request.json();
   const user = data.user;
-  const userId = session.user.railsId; 
+  const userId = session.user.userId; 
   const apiUrl = process.env.RAILS_API_URL
 
   try {
