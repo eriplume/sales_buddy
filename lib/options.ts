@@ -14,7 +14,7 @@ export const options : NextAuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account }) {
-	  if (!account) return false; // accountがnullの場合はfalseを返す
+	  if (!account) return false;
 
       try {
 		const apiToken = process.env.API_TOKEN;
@@ -34,12 +34,11 @@ export const options : NextAuthOptions = {
 			  }
 			}
 		);
-
-		// ここでレスポンスをログ出力
 		console.log("Rails response data:", response.data);
 
 		if (response.status === 200) {
-		  user.railsId = response.data.user.id;
+		  user.userId = response.data.user.user_id;
+		  user.accessToken = response.data.user.token;
 		  return true;
 		} else {
 		  return false;
@@ -47,22 +46,21 @@ export const options : NextAuthOptions = {
 	  } catch (error) {
 		return false;
 	  }
+	  
 	},
-	async jwt({ token, user }) {
-	  if (user) {
-	    if (user && typeof user.railsId === 'number'){
-		  token.railsId = user.railsId;
-		}
+	async jwt({ token, account, user }) {
+	  if (account && user) {
+		token.accessToken = user.accessToken;
+		token.userId = user.userId;
 	  }
-	  console.log("JWT token:", token); // トークンの内容ログ出力
+	  console.log("JWT token:", token);
 	  return token;
 	},
 	async session({ session, token }): Promise<Session> {
-	  if (session.user && token.railsId) {
-		session.user.railsId = token.railsId as number;
+	  if (session.user && token.userId) {
 		return session;
 	  }
-	return session;
+	  return session;
 	}
   },
 };

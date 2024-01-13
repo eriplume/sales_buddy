@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { getServerSession } from "next-auth/next"
-import { options } from '@/lib/options';
+import { NextRequest } from 'next/server';
+import { fetchDataFromApi } from '@/lib/fetchDataFromApi';
+import { getJwt } from '@/lib/getJwt';
 
-export async function GET() {
-
-  const session = await getServerSession(options);
+export async function GET(req: NextRequest) {
+  const { accessToken, userId } = await getJwt(req);
     
-  if (!session) {
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -15,12 +15,9 @@ export async function GET() {
     });
   }
 
-  const userId = session.user.railsId;
-  const apiUrl = process.env.RAILS_API_URL
-
   try {
-    const response = await axios.get(`${apiUrl}/users/${userId}/notifications`);
-    return new Response(JSON.stringify(response.data), {
+    const data = await fetchDataFromApi(`users/${userId}/notifications`, accessToken);
+    return new Response(JSON.stringify(data), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
@@ -37,11 +34,10 @@ export async function GET() {
   }
 }
 
-export async function PATCH(request: Request) {
+export async function PATCH(req: NextRequest) {
+  const { accessToken, userId } = await getJwt(req);
 
-  const session = await getServerSession(options);
-    
-  if (!session) {
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -50,14 +46,18 @@ export async function PATCH(request: Request) {
     });
   }
 
-  const data = await request.json();
+  const data = await req.json();
   const user = data.user;
-  const userId = session.user.railsId; 
   const apiUrl = process.env.RAILS_API_URL
 
   try {
     const response = await axios.patch(`${apiUrl}/users/${userId}/update_notifications`, { 
       user
+    }, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        }
     });
       return new Response(JSON.stringify(response.data), {
         status: 200,

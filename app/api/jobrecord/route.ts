@@ -1,12 +1,15 @@
 import axios from 'axios';
-import { getServerSession } from "next-auth/next"
-import { options } from '@/lib/options';
+import { fetchDataFromApi } from '@/lib/fetchDataFromApi';
+import { getJwt } from '@/lib/getJwt';
+import { NextRequest } from 'next/server';
 
-export async function GET()  {
+const endpoint = "job_records";
+const apiUrl = process.env.RAILS_API_URL
 
-  const session = await getServerSession(options);
-    
-  if (!session) {
+export async function GET(req: NextRequest) {
+  const { accessToken } = await getJwt(req);
+
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -15,24 +18,15 @@ export async function GET()  {
     });
   }
 
-  const railsUserId = session.user.railsId;
-  const apiUrl = process.env.RAILS_API_URL
-
   try {
-    const response = await axios.get(`${apiUrl}/job_records`, {
-      headers: {
-        'user': `${railsUserId}`,
-        'Content-Type': 'application/json',
-      },
-    });
-    return new Response(JSON.stringify(response.data), {
+    const data = await fetchDataFromApi(endpoint, accessToken);
+    return new Response(JSON.stringify(data), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
       },
     });
   } catch (error) {
-    console.error(error);
     return new Response(JSON.stringify({ error:'予期せぬエラーが発生しました' }), {
       status: 500,
       headers: {
@@ -42,11 +36,10 @@ export async function GET()  {
   }
 }
 
-export async function POST(request: Request) {
-
-  const session = await getServerSession(options);
+export async function POST(req: NextRequest) {
+  const { accessToken, userId } = await getJwt(req);
     
-  if (!session) {
+  if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
       headers: {
@@ -55,8 +48,9 @@ export async function POST(request: Request) {
     });
   }
 
-  const data = await request.json();
+  const data = await req.json();
   const job_record = data.job_record;
+  job_record.user_id = userId;
 
   if (!job_record){
     return new Response(JSON.stringify({ error: 'job_recordがありません' }), {
@@ -67,12 +61,14 @@ export async function POST(request: Request) {
     });
   }
 
-  job_record.user_id = session.user.railsId;
-  const apiUrl = process.env.RAILS_API_URL
-
   try {
-    const response = await axios.post(`${apiUrl}/job_records`, { 
+    const response = await axios.post(`${apiUrl}/${endpoint}`, { 
       job_record
+    }, {
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+        }
     });
       return new Response(JSON.stringify(response.data), {
         status: 200,
