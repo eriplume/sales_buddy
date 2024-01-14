@@ -30,16 +30,3 @@ export function BreadcrumbsDemo({ children }: BreadcrumbsProps) {
     </div>
   )
 }
-
-export function BreadcrumbsRoot({ children }: BreadcrumbsProps) {
-  return (
-    <div className='flex flex-row items-center px-2 pt-4 max-w-xs md:max-w-lg'>
-      <Link href='/' className='flex flex-row text-gray-400 items-center hover:underline hover:text-sky-800 cursor-pointer'>
-        <HomeIcon className="w-4 h-4 mr-1" />
-        <div>トップに戻る</div>
-      </Link>
-      <div className='text-xs text-gray-400 mx-2'>＜</div>
-      <div className='text-sky-700 cursor-pointer'>{children}</div>
-    </div>
-  )
-}

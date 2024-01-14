@@ -8,7 +8,7 @@ import LoginButton from "../../ui/LoginButton";
 
 export default function Welcome() {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   
   return (
     <>
@@ -32,7 +32,7 @@ export default function Welcome() {
               :  <LoginButton/>
             }
             <button
-              onClick={() => router.push('/dashboard_s')}
+              onClick={() => router.push('/sample/dashboard')}
               className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-1 px-6 focus:outline-none hover:bg-gray-200 rounded-lg text-md items-center"
             >
               お試し

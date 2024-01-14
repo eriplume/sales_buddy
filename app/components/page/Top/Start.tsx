@@ -8,7 +8,7 @@ import LoginButton from '../../ui/LoginButton';
 
 export default function Start() {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function Start() {
           </div>
           <div className="flex justify-center mb-3 md:ml-5">
             <button 
-              onClick={() => router.push('/dashboard_s')}
+              onClick={() => router.push('/sample/dashboard')}
               className="inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-7 focus:outline-none hover:bg-gray-200 rounded-lg text-sm items-center"
             >
               お試しページへ
