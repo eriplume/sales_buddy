@@ -23,7 +23,7 @@ export default function DemoSalesCalendar() {
   };
 
   const renderModalContent = () => {
-    return selectedSalesRecord ? <DayRecord record={selectedSalesRecord} /> : <NotDayRecord path="/dairyrecord_s"/>;
+    return selectedSalesRecord ? <DayRecord record={selectedSalesRecord} /> : <NotDayRecord path="/sample/dairyrecord"/>;
   };
 
   const selectedSalesRecord = useMemo(() => {
