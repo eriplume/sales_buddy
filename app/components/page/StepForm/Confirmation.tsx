@@ -19,13 +19,13 @@ export default function Confirmation() {
         <span className="mx-1 text-sm text-gray-700">入力内容を確認して登録</span>
       </div>
       <div className="flex flex-row justify-center items-center w-full py-2">
-        <div className="flex flex-col w-full p-2 mx-auto justify-center">
+        <div className="flex flex-col w-full py-2 justify-center">
           <div className='flex flex-row ml-1 items-center mb-2'>
             <div className='text-sm text-gray-700 mr-1'>週間レポート :</div>
             <CalendarIcon className="w-4 h-4 text-gray-500 mx-1"/>
             <div className='text-sm text-gray-700'>{reportStartDate} ~ {reportEndDate}</div>
           </div>
-          <div className="bg-white border w-60 md:w-full h-32 overflow-auto text-xs p-2">
+          <div className="bg-white border md:w-full text-xs lg:text-sm p-2 h-32 overflow-auto">
             {weekly_report.content}
           </div>
         </div>

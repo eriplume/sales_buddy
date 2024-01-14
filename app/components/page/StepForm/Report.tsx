@@ -23,7 +23,7 @@ export default function Report() {
       <Achievements/>
       <div className="flex flex-row justify-center items-center w-full">
         <div className="flex w-full py-2 justify-center">
-          <div className="w-full h-48 overflow-auto">
+          <div className="w-full h-48">
             <ReportInputForm/>
           </div>
         </div>
