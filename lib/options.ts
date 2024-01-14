@@ -12,6 +12,9 @@ export const options : NextAuthOptions = {
       clientSecret: process.env.LINE_CLIENT_SECRET ?? '',
     }),
   ],
+  pages: {
+	signIn: '/login',
+  },
   callbacks: {
     async signIn({ user, account }) {
 	  if (!account) return false;
