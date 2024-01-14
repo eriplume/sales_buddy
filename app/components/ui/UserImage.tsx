@@ -1,7 +1,7 @@
-import { UserImageProps } from '@/types/user';
+import { UserImage } from '@/types';
 import Image from 'next/image';
 
-const UserImage = ({ image, name }: UserImageProps) => {
+const UserImage = ({ image, name }: UserImage) => {
   const imageUrl = image ?? '/default_profile.png'; // デフォルト画像のパス
   const userName = name ?? 'Unknown User';
 

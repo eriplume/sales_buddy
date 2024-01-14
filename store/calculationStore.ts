@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { formatDate } from '@/utils/dateUtils';
 import { Option } from '@/types';
+import { showErrorNotification } from '@/utils/notifications';
 
 type CustomerCounts = Record<string, number>;
 
@@ -41,7 +42,7 @@ type CalculationState = {
 const useCalculationStore = create<CalculationState>((set, get) => ({
   totalAmount: 0,
   totalNumber: 0,
-  count: 0, // 客数カウンター
+  count: 0,
   customerTypeCounts: {}, // 各顧客タイプごとの選択回数 { '1': 2, '2': 1 } 
   customers: [], // 選択された客層 ['1', '2', '1'] 
   customerLabels: '', // 表示用に変換 "主婦: 2、 OL: 1"
@@ -52,6 +53,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   setSelectedDate: (date: Date) => {
     set({ selectedDate: date });
   },
+
   // 加算アクション
   addToTotal: ({ amount, number, customer }: AddToTotalParams) => {
     set((state) => {
@@ -83,25 +85,21 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
       date: formattedDate,
     };
     const customer_counts = customerTypeCounts;
-
     return { dairy_record, customer_counts };
   },
 
   fetchOptions: async () => {
     if (get().options.length === 0) {
-    try {
-      const response = await fetch(`/api/customer_types`);
-
-      if (!response.ok) { throw new Error('サーバーエラー'); }
-
-      const optionsData = await response.json();
-      set({ options: optionsData });
-      
-    } catch (error) {
-      console.error("Failed to fetch options", error);
+      try {
+        const response = await fetch(`/api/customer_types`);
+        if (!response.ok) { throw new Error('サーバーエラー'); }
+        const optionsData = await response.json();
+        set({ options: optionsData });
+      } catch (error) {
+        showErrorNotification('データの取得に失敗しました');
+      }
     }
-  }
-},
+  },
 
   // customers配列を集計
   calculateCustomerCounts(customers: string[]): CustomerCounts {

@@ -55,3 +55,8 @@ export type Option = {
   value: number;
   label: string;
 };
+
+export type UserImage = {
+  image?: string;
+  name?: string;
+};
