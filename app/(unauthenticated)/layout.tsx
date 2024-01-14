@@ -11,7 +11,7 @@ export default function UnauthenticatedLayout({
 
   return (
     <>
-      <div className="w-full z-30">
+      <div className="sticky top-0 w-full z-30">
         <AlertDemo/>
       </div>
       <div className="md:sticky top-12 w-full z-30">

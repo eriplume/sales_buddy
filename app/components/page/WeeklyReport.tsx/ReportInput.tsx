@@ -1,8 +1,21 @@
+"use client"
+import { useState } from 'react';
 import useWeeklyStore from '@/store/weeklyStore';
 import { Textarea } from '@mantine/core';
 
 export default function ReportInputForm() {
+  const [charCountError, setCharCountError] = useState('');
   const { content, setContent } = useWeeklyStore();
+
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputContent = e.currentTarget.value;
+    if (inputContent.length > 300) {
+      setCharCountError('300文字以内で入力してください');
+    } else {
+      setCharCountError('');
+    }
+    setContent(inputContent);
+  };
 
   return (
     <>
@@ -10,11 +23,12 @@ export default function ReportInputForm() {
         <form className='w-full'>
           <Textarea
             value={content}
-            onChange={(e) => setContent(e.currentTarget.value)}
+            onChange={handleContentChange}
             placeholder="今週の振り返り"
             description="300字以内で入力してください"
             label="週間レポート"
             size="xs"
+            error={charCountError} 
             withAsterisk
             autosize
             minRows={7}

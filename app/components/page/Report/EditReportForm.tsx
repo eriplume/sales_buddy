@@ -1,5 +1,6 @@
 "use client"
 import axios from 'axios'
+import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
@@ -25,7 +26,7 @@ const schema  = z.object({
 });
 
 export default function EditReportForm({content, id, edit, setEdit} : ReportContentProps) {
-  
+  const [charCountError, setCharCountError] = useState('');
   const fetchMonthlyReport = useDashboardStore((state) => state.fetchMonthlyReport);
 
   const form = useForm({
@@ -34,6 +35,16 @@ export default function EditReportForm({content, id, edit, setEdit} : ReportCont
     },
     validate: zodResolver(schema),
   });
+
+  const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputContent = event.target.value;
+    if (inputContent.length > 300) {
+      setCharCountError('300文字以内で入力してください');
+    } else {
+      setCharCountError('');
+    }
+    form.setFieldValue('newContent', inputContent);
+  };
 
   const handleUpdate = async (values: FormValues) => {
     if (values.newContent.trim() !== content.trim()) {
@@ -76,6 +87,8 @@ export default function EditReportForm({content, id, edit, setEdit} : ReportCont
             autosize
             minRows={14}
             maxRows={14}
+            onChange={handleContentChange}
+            error={charCountError} // エラーメッセージの表示
           />
         </div>
       </form>
