@@ -10,6 +10,7 @@ import { progressDemo, progressPercentDemo, targetDemo, thisWeekAmountDemo, this
 export default function DemoArchive() {
 
   const [opened, { open, close }] = useDisclosure(false);
+  
   const modalTitle = () => {
     const { start, end } = getThisWeekRange();
     return (

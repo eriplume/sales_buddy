@@ -4,8 +4,8 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 type EditActionProps = {
   edit: boolean;
-  setEdit: any
-}
+  setEdit: any;
+};
 
 export default function CancelActionIcon({edit, setEdit}: EditActionProps) {
   return (

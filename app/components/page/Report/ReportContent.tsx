@@ -1,6 +1,6 @@
 type ReportContentProps = {
   content: string;
-}
+};
 
 export default function ReportContent({content} : ReportContentProps) {
   return (

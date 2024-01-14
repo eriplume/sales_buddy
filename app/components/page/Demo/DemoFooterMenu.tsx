@@ -1,16 +1,16 @@
 'use client'
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer } from '@mantine/core';
-import { useRouter } from 'next/navigation';
 import { UsersIcon, HomeIcon, PencilIcon, Cog8ToothIcon } from "@heroicons/react/24/outline";
-import FooterUserStatus from '../../base/UserStatus';
 import { navigationItemsDemo } from '../../base/navigationItems';
+import FooterUserStatus from '../../base/UserStatus';
 import FooterDrawer from '../../base/FooterDrawer';
 import ProfileDrawer from '../../base/ProfileDrawer';
 
 export default function DemoFooterMenu() {
-    const [opened, { open, close }] = useDisclosure(false);
+  const [opened, { open, close }] = useDisclosure(false);
   const [openedUser, { open: openUser, close: closeUser }] = useDisclosure(false);
   const [active, setActive] = useState(-1); 
   const router = useRouter()
@@ -18,13 +18,13 @@ export default function DemoFooterMenu() {
   const handleClick = () => {
     setActive(-1);
     close();
-    router.push('/dashboard_s');
+    router.push('/sample/dashboard');
   }
 
   const handleClickTeam = () => {
     setActive(-3);
     close();
-    router.push('/teams_s');
+    router.push('/sample/teams');
   }
 
   const title = () => {

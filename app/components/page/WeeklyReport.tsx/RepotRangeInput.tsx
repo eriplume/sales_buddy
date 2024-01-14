@@ -5,7 +5,6 @@ import useWeeklyStore from '@/store/weeklyStore';
 import WeekPicker from '../../ui/WeekPicker';
 
 export default function ReportRangeInput() {
-
   const { contentDateRange, setContentDateRange } = useWeeklyStore();
   const { registeredReportRanges } = useDashboardStore((state) => ({ registeredReportRanges: state.registeredReportRanges }));
 

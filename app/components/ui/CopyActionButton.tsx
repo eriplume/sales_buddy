@@ -4,7 +4,7 @@ import { DocumentDuplicateIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 type CopyProps = {
   value: string;
-}
+};
 
 export default function CopyActionButton({value}: CopyProps) {
   return (

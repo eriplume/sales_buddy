@@ -1,6 +1,6 @@
 "use client"
-import { useState } from 'react';
 import axios from 'axios'
+import { useState } from 'react';
 import useDashboardStore from '@/store/dashboardStore';
 import { formatDate } from '@/utils/dateUtils';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
@@ -12,7 +12,7 @@ import { CheckCircleIcon } from "@heroicons/react/24/solid";
 type  NotJobRecordProps = {
   selectedDate: Date | null;
   close: () => void;
-}
+};
 
 export default function NotJobRecord({ selectedDate, close } :NotJobRecordProps) {
   const [ jobs, setJobs ] = useState<string[]>([]);
@@ -34,7 +34,6 @@ export default function NotJobRecord({ selectedDate, close } :NotJobRecordProps)
         setJobs([]);
       } catch (error) {
         showErrorNotification('登録に失敗しました');
-        console.error("Failed to send weekly target", error);
       }
     }
   };

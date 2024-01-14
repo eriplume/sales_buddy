@@ -14,18 +14,15 @@ export default function RecordList({monthRecords} :WeeklyRecordProps) {
   const weeklyData = monthRecords.reduce<Record<string, WeeklyRecord>>((acc, record) => {
     const weekHead = getWeekHead(record.date);
     const weekEnd = getweekEndDate(weekHead);
-
     if (!acc[weekHead]) {
       acc[weekHead] = { amount: 0, number: 0, count: 0, setRate: 0, average: 0, weekEnd: '' };
     }
     acc[weekHead].amount += record.total_amount;
     acc[weekHead].number += record.total_number;
     acc[weekHead].count += record.count;
-        
     acc[weekHead].setRate = calculateSetRate(acc[weekHead].number, acc[weekHead].count)
     acc[weekHead].average = calculateAverage(acc[weekHead].amount, acc[weekHead].count)
     acc[weekHead].weekEnd = weekEnd;
-    
     return acc;
   }, {});
 

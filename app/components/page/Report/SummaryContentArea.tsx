@@ -8,7 +8,7 @@ import EditReportForm from './EditReportForm';
 type SummaryContentProps = {
   content: string;
   id: number;
-}
+};
 
 export default function SummaryContentArea({content, id} :  SummaryContentProps) {
   const [ edit, setEdit ] = useState(false);

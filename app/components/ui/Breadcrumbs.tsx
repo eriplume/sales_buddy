@@ -3,7 +3,7 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 
 type BreadcrumbsProps = {
   children: string;
-}
+};
 
 export function Breadcrumbs({ children }: BreadcrumbsProps) {
   return (

@@ -17,7 +17,6 @@ export default function TargetInput({close} :TargetInputProps) {
   const { start, end } = getThisWeekRange();
 
   const handleSubmit = async () => {
-
     if (target !== 0) {
       try {
         await axios.post(`/api/weeklytarget`, {
@@ -33,7 +32,6 @@ export default function TargetInput({close} :TargetInputProps) {
         clearData();
       } catch (error) {
         showErrorNotification('目標の登録に失敗しました');
-        console.error("Failed to send weekly target", error);
       }
     } else {
       showErrorNotification('目標を入力してください');

@@ -1,11 +1,11 @@
 "use client"
-import { useState, useEffect, useCallback } from "react";
 import axios from 'axios'
+import { useState, useEffect, useCallback } from "react";
 import { WeeklyReport } from '@/types';
 import useDashboardStore from "@/store/dashboardStore";
+import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import { Button } from '@mantine/core';
 import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
-import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import Loading from "../../ui/Loading";
 
 type CreateInfoProps = {
@@ -15,7 +15,7 @@ type CreateInfoProps = {
 
 type SummaryData = {
   text: string;
-}
+};
 
 export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,12 +29,10 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
       setIsLoading(true);
       try {
         const response = await axios.post(`/api/summary`, { prompt: combinedReportsContent });
-        console.log((response.data))
         setSummaryData(response.data as SummaryData);
         setIsLoading(false);
       } catch (error) {
         showErrorNotification('作成に失敗しました');
-        console.error("Failed", error);
       }
     } else {
       showErrorNotification('レポートが３週分以上必要です');
@@ -55,7 +53,6 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
         fetchMonthlyReport(true);
       } catch(error) {
         showErrorNotification('保存に失敗しました。');
-        console.error("Failed to send weekly report", error);
         return;
       }
     };
@@ -70,7 +67,6 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
   return (
     <>
       <div className="flex flex-col justify-center items-center px-7 md:px-12">
-
         {summaryData === null && isLoading == false ? (
           <div className="flex flex-row justify-center items-center px-7 md:px-12">
             <Button 
@@ -86,16 +82,14 @@ export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) 
         ) : (
           null
         )}
-
         <div className="flex flex-row justify-center items-center px-2 md:px-7 mt-3">
           {isLoading &&
-          <div className="flex flex-row items-center">
-            <div className="text-gray-500 mr-1">作成中です</div>
-            <Loading size="sm" /> 
-          </div>
+            <div className="flex flex-row items-center">
+              <div className="text-gray-500 mr-1">作成中です</div>
+              <Loading size="sm" /> 
+            </div>
           }
         </div>
-        
       </div>
     </>
   )

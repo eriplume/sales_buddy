@@ -1,14 +1,14 @@
 "use client"
 import { DatePickerInput } from '@mantine/dates';
-import { CalendarIcon } from "@heroicons/react/24/outline";
 import { rem } from '@mantine/core';
+import { CalendarIcon } from "@heroicons/react/24/outline";
 
 type WeekPickerProps = {
   value: [Date, Date];
   handleChange: (newValue: [Date | null, Date | null]) => void;
   excludeDate: (date: Date) => boolean;
   maxDate?: Date;
-}
+};
 
 export default function WeekPicker({ value, excludeDate, handleChange, maxDate }:WeekPickerProps) {
 

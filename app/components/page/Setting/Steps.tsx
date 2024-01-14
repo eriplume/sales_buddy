@@ -19,7 +19,6 @@ export default function Steps() {
         setChecked(data.notifications);
         setCurrentSetting(data.notifications);
       } catch (error) {
-        console.error('通知設定の取得に失敗しました', error);
       }
     };
     fetchNotifications();
@@ -37,7 +36,6 @@ export default function Steps() {
         setCurrentSetting(checked);
       } catch (error) {
         showErrorNotification('更新に失敗しました');
-        console.error("Failed to send weekly target", error);
       }
     } else {
       showCautionNotification('設定されています')
@@ -70,7 +68,7 @@ export default function Steps() {
             </a>
           </div>
           <div className="flex py-5 pl-4">
-            <AlertSelect handleUpdate={handleUpdate} checked={checked} setChecked={setChecked} currentSetting={currentSetting}/>
+            <AlertSelect handleUpdate={handleUpdate} checked={checked} setChecked={setChecked}/>
           </div>
         </div>
       </div>  

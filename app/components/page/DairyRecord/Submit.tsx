@@ -40,7 +40,6 @@ export default function Submit() {
       clearData();
     } catch (error) {
       showErrorNotification('送信に失敗しました。もう一度お試しください。');
-      console.error("Failed to fetch", error);
     }
   };
 
@@ -58,7 +57,6 @@ export default function Submit() {
             <div className="flex flex-col px-2 pb-3 pt-5 space-y-5 w-full">
               <CurrentDate/>
               <CurrentData/>
-              {/* md以上のみ表示 */}
               <div className="hidden md:block"> 
                 <CustomersList />
               </div>
