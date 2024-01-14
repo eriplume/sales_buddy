@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { SalesRecord, WeeklyTarget, WeeklyReport, ProgressData, ResisteredDateRange, JobRecord, CustomersRecord, MonthlyReport } from '@/types';
 import { getThisWeekRange } from '@/utils/dateUtils';
 import { calculateTotal, calculateSetRate, calculateAverage } from '@/utils/calculateUtils';
+import { showErrorNotification } from '@/utils/notifications';
 
 type DashboardState = {
   salesRecords: SalesRecord[];
@@ -76,7 +77,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
           thisWeekAverage,
         });
       } catch (error) {
-        console.error("Failed to fetch", error);
+        showErrorNotification('データの取得に失敗しました');
       }
     }
   },
@@ -100,7 +101,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
         thisWeekTarget: thisWeekTarget ? thisWeekTarget.target : 0
       });
       } catch (error) {
-        console.error("Failed to fetch", error);
+        showErrorNotification('データの取得に失敗しました');
       }
     }
   },
@@ -115,7 +116,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
         }));
         set({ weeklyReports: data, registeredReportRanges});
       } catch (error) {
-        console.error("Failed to fetch", error);
+        showErrorNotification('データの取得に失敗しました');
       }
     }
   },
@@ -142,7 +143,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
           jobsList: jobs,
         });
       } catch (error) {
-        console.error("Failed to fetch", error);
+        showErrorNotification('データの取得に失敗しました');
       }
     }
   },
@@ -155,7 +156,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
           customersRecord: data
         });
       } catch (error) {
-        console.error("Failed to fetch", error);
+        showErrorNotification('データの取得に失敗しました');
       }
     }
   },
@@ -166,7 +167,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
         const data: MonthlyReport[] = await response.json();
         set({ monthlyReports: data});
       } catch (error) {
-        console.error("Failed to fetch", error);
+        showErrorNotification('データの取得に失敗しました');
       }
     }
   },

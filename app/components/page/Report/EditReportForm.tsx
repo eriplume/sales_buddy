@@ -1,12 +1,12 @@
 "use client"
 import axios from 'axios'
-import useDashboardStore from '@/store/dashboardStore';
 import { z } from 'zod';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
+import useDashboardStore from '@/store/dashboardStore';
+import { showSuccessNotification, showErrorNotification } from '@/utils/notifications';
 import { Textarea, Tooltip } from '@mantine/core';
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { showSuccessNotification, showErrorNotification } from '@/utils/notifications';
 import CancelActionIcon from '../../ui/CancelActionIcon';
 
 type ReportContentProps = {
@@ -14,7 +14,7 @@ type ReportContentProps = {
   id: number;
   edit: boolean;
   setEdit: any;
-}
+};
 
 type FormValues = {
   newContent: string;
@@ -25,6 +25,7 @@ const schema  = z.object({
 });
 
 export default function EditReportForm({content, id, edit, setEdit} : ReportContentProps) {
+  
   const fetchMonthlyReport = useDashboardStore((state) => state.fetchMonthlyReport);
 
   const form = useForm({
@@ -48,7 +49,6 @@ export default function EditReportForm({content, id, edit, setEdit} : ReportCont
         fetchMonthlyReport(true);
       } catch (error) {
         showErrorNotification('更新に失敗しました');
-        console.error("Failed to send weekly target", error);
       }
     }
   }
@@ -57,7 +57,7 @@ export default function EditReportForm({content, id, edit, setEdit} : ReportCont
     <>
       <form onSubmit={form.onSubmit(handleUpdate)} className='w-full'>
         <div className='flex justify-end items-center pr-2 pb-2'>
-          { id > 0 ? 
+          {id > 0 ? 
             (
               <Tooltip label="更新" arrowOffset={50} position="right" arrowSize={5} withArrow>
                 <button type="submit" className='p-1 hover:bg-gray-200'>

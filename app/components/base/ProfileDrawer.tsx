@@ -43,7 +43,7 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         label="このアプリについて"
         color="gray"
         leftSection={<QuestionMarkCircleIcon className="w-5 h-5 ml-4" />}
-        onClick={() => handleNavLinkClick(-4, '/about')} 
+        onClick={() => handleNavLinkClick(-1, '/about')} 
       />
       <NavLink
         label='ログアウト'
@@ -59,7 +59,7 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
         label="通知設定"
         color="gray"
         leftSection={<BellAlertIcon className="w-5 h-5 ml-4" />}
-        onClick={() => handleNavLinkClick(-2, '/setting_s')} 
+        onClick={() => handleNavLinkClick(-2, '/sample/setting')} 
       />
     </>
   )

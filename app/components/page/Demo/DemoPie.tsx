@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import { useFetchForDemo } from '@/lib/useFetch';
-import { customersRecordsDemo } from './DemoData';
 import useCalculationStore from '@/store/calculationStore';
+import { customersRecordsDemo } from './DemoData';
 
 type PieProps = {
   colors: string[];
-}
+};
 
 const renderActiveShape = (props :any) => {
   const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill, payload, percent, value } = props;

@@ -12,7 +12,6 @@ export default function HelpPage() {
           <p>登録した過去の週間レポートを月毎に表示します。</p>
           <p>各レポートはコピーボタンでコピー可能です。</p>
         </div>
-
         <div className="flex items-center text-gray-700 underline border-t pt-2">
           <CheckBadgeIcon className="w-6 h-6 text-blue-300 mr-2 font-bold" />
           月間レポートの作成について

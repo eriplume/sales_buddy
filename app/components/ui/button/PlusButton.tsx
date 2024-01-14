@@ -1,12 +1,12 @@
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import { Button } from '@mantine/core';
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
 
 type PlusButtonProps = {
   size: "xs" | "sm" | "md" | "lg" | "xl";
   children: string;
   type?: "submit";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
+};
 
 export default function PlusButton({ size, type, onClick, children }: PlusButtonProps) {
   return (

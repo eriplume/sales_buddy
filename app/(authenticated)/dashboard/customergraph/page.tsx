@@ -8,7 +8,7 @@ const pieColors = ['#0284c7','#3b82f6','#60a5fa', '#93c5fd','#bfdbfe', '#cbd5e1'
 export default function page() {
   return (
     <>
-      <Breadcrumbs>customers graph</Breadcrumbs>
+      <Breadcrumbs>客層タイプグラフ</Breadcrumbs>
       <div className="flex flex-col justify-center items-center mx-auto z-0 px-6 max-w-4xl mb-7 mt-4">
 
         <div className="flex flex-col sm:flex-row w-full max-w-lg bg-white rounded-t-md shadow-t-sm">

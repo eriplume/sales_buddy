@@ -5,7 +5,7 @@ import { PencilSquareIcon } from "@heroicons/react/24/outline";
 type EditActionProps = {
   edit: boolean;
   setEdit: (edit: boolean) => void;
-}
+};
 
 export default function EditActionIcon({edit, setEdit}: EditActionProps) {
   return (

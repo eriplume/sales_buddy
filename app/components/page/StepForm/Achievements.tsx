@@ -8,10 +8,10 @@ import { CalendarIcon } from "@heroicons/react/24/outline";
 import AchievementsDetail from "./AchievementsDetail";
 
 export default function Achievements() {
-
   const { thisWeekTarget, thisWeekAmount, thisWeekNumber, thisWeekCount, thisWeekSet, thisWeekAverage } = useDashboardStore();
   const { progressPercent, progress } = useDashboardStore((state) => state.getThisWeekProgress());
   const [opened, { open, close }] = useDisclosure(false);
+
   const modalTitle = () => {
     const { start, end } = getThisWeekRange();
       return (

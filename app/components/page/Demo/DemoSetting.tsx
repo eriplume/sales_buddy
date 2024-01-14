@@ -44,7 +44,7 @@ export default function DemoSetting() {
             </a>
           </div>
           <div className="flex py-5 pl-4">
-            <AlertSelect handleUpdate={handleUpdate} checked={checked} setChecked={setChecked} currentSetting={currentSetting}/>
+            <AlertSelect handleUpdate={handleUpdate} checked={checked} setChecked={setChecked}/>
           </div>
         </div>
       </div>  

@@ -1,6 +1,6 @@
+import { PencilIcon } from '@heroicons/react/24/outline';
 import ReportRangeInput from '../WeeklyReport.tsx/RepotRangeInput';
 import ReportInputForm from '../WeeklyReport.tsx/ReportInput';
-import { PencilIcon } from '@heroicons/react/24/outline';
 import Achievements from './Achievements';
 import HelpMordal from '../../ui/HelpMordal';
 import HelpPage from './HelpPage';

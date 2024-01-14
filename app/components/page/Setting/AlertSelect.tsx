@@ -1,15 +1,14 @@
 import { Radio, Group, Button} from '@mantine/core';
-import { TriangleIcon } from '../../ui/icon/Triangle';
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
+import { TriangleIcon } from '../../ui/icon/Triangle';
 
 type AlertSelectProps = {
   handleUpdate: () => Promise<void>;
   checked: boolean;
   setChecked: (checked: boolean) => void;
-  currentSetting: boolean;
-}
+};
 
-export default function AlertSelect({handleUpdate, checked, setChecked, currentSetting} :AlertSelectProps) {
+export default function AlertSelect({handleUpdate, checked, setChecked} :AlertSelectProps) {
 
   const label = () => {
     return (

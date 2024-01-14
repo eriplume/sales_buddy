@@ -21,15 +21,17 @@ export default function Caluculator() {
               <Tabs.Tab value="sales" leftSection={<TriangleIcon className="w-4 h-4 ml-2 text-blue-300"/>}>
                 <div className='flex flex-row mt-1 mr-2'>
                   <div className="text-xs mr-1">STEP1.</div>
-                  <div className="text-xs text-gray-800 mr-16">日付を選択</div>
+                  <div className="text-xs text-gray-800 mr-12">日付を選択</div>
                 </div>
               </Tabs.Tab>
             </div>
             <div className="bg-white text-gray-500"></div>
-            <div className="flex justify-end mt-1 ml-6">
+            <div className="flex justify-end items-center my-1 ml-3 md:ml-6">
               <HelpMordal>
                 <HelpPage />
               </HelpMordal>
+              <div className='text-sm text-gray-600 ml-1 mt-1 hidden lg:block'>使い方をみる</div>
+              <div className='text-xs text-gray-600 ml-1 mr-2 lg:hidden'>使い方</div>
             </div>
           </Tabs.List>
           <Tabs.Panel value="sales">

@@ -1,7 +1,7 @@
 "use client"
-import SalesCalender from "./SalesCalendar"
 import { Tabs } from '@mantine/core';
 import { TriangleIcon } from "../../ui/icon/Triangle";
+import SalesCalender from "./SalesCalendar"
 import JobsCalender from "./JobsCalendar";
 import HelpMordal from "../../ui/HelpMordal";
 import HelpPage from "./HelpPage";
@@ -26,25 +26,24 @@ export default function CalenderArea() {
           </HelpMordal>
         </div>
       </Tabs.List>
-
-    <Tabs.Panel value="sales">
-      <div className="bg-white px-7 pt-4 pb-7 shadow-md rounded-b-md border-x flex flex-col">
-        <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
-          <span className="text-xs text-blue-300 mr-1">⚫︎</span>
-          <span className="text-xs">売上を記録した日</span>
+      <Tabs.Panel value="sales">
+        <div className="bg-white px-7 pt-4 pb-7 shadow-md rounded-b-md border-x flex flex-col">
+          <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
+            <span className="text-xs text-blue-300 mr-1">⚫︎</span>
+            <span className="text-xs">売上を記録した日</span>
+          </div>
+          <SalesCalender/>
         </div>
-        <SalesCalender/>
-      </div>
-    </Tabs.Panel>
-    <Tabs.Panel value="jobs">
-      <div className="bg-white px-7 pt-4 pb-7 shadow-md rounded-b-md border-x flex flex-col">
-        <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
-          <span className="text-xs text-yellow-300 mr-1">⚫︎</span>
-          <span className="text-xs">業務を記録した日</span>
+      </Tabs.Panel>
+      <Tabs.Panel value="jobs">
+        <div className="bg-white px-7 pt-4 pb-7 shadow-md rounded-b-md border-x flex flex-col">
+          <div className="flex flex-row justify-end items-center w-full text-gray-400 px-2 mb-2">
+            <span className="text-xs text-yellow-300 mr-1">⚫︎</span>
+            <span className="text-xs">業務を記録した日</span>
+          </div>
+          <JobsCalender/>
         </div>
-        <JobsCalender/>
-      </div>
-    </Tabs.Panel>
-  </Tabs>
+      </Tabs.Panel>
+    </Tabs>
   )
 }

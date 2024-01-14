@@ -1,8 +1,8 @@
 "use client"
+import axios from 'axios'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import { useFetchForWeekly } from '@/lib/useFetch';
-import axios from 'axios'
 import useWeeklyStore from '@/store/weeklyStore';
 import useDashboardStore from '@/store/dashboardStore';
 import { showErrorNotification, showSuccessNotification, showCautionNotification } from '@/utils/notifications';
@@ -71,7 +71,6 @@ export default function StepForm() {
       await axios.post(`/api/weeklyreport`, { weekly_report });
     } catch(error) {
       showErrorNotification('レポートの登録に失敗しました。もう一度お試しください。');
-      console.error("Failed to send weekly report", error);
       return;
     }
 
@@ -82,7 +81,6 @@ export default function StepForm() {
       } catch (error) {
         showSuccessNotification(`レポートを登録しました`);  
         showErrorNotification('お手数ですが目標設定ページより再度登録してください', '目標の登録に失敗しました');
-        console.error("Failed to send weekly target", error);
       }
     } else {
       showSuccessNotification(`登録しました`);

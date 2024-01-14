@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { useRouter } from 'next/navigation'
+import Link from "next/link";
 import { formatDateYM } from "@/utils/dateUtils";
 import { useFetchForReport } from "@/lib/useFetch";
 import useDashboardStore from "@/store/dashboardStore";
@@ -15,7 +15,6 @@ import MonthlySummary from "./MonthlySummary";
 
 export default function ReportArchive() {
   useFetchForReport();
-  const router = useRouter();
 
   const { weeklyReports, monthlyReports } = useDashboardStore();
   const [value, setValue] = useState<Date | null>(new Date());
@@ -33,10 +32,10 @@ export default function ReportArchive() {
     <div className="flex flex-col justify-center w-full max-w-lg pt-4 pb-7 md:py-7 bg-white rounded-md">
 
       <div className='flex justify-end pr-5 pb-2'>
-        <div className='flex flex-row text-gray-600 text-sm items-center underline hover:text-sky-800 cursor-pointer' onClick={() => router.push('/weekly')}>
+        <Link href='/weekly' className='flex flex-row text-gray-600 text-sm items-center underline hover:text-sky-800 cursor-pointer'>
           <div>週間レポートの登録はこちら</div>
           <ArrowRightCircleIcon className="w-4 h-4 mr-1" />
-        </div>
+        </Link>
       </div>
 
       <div className="flex flex-row justify-start px-7 pt-2 md:px-12">

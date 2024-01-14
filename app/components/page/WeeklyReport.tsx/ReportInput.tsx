@@ -1,8 +1,7 @@
-import { Textarea } from '@mantine/core';
 import useWeeklyStore from '@/store/weeklyStore';
+import { Textarea } from '@mantine/core';
 
 export default function ReportInputForm() {
-
   const { content, setContent } = useWeeklyStore();
 
   return (
