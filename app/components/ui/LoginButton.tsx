@@ -1,11 +1,11 @@
 "use client"
 import Image from 'next/image'
-import { signIn } from "next-auth/react"
+import { handleLogin } from '@/utils/authHelpers';
 import localImage from "../../../public/btn_login_base.png";
 
 export default function LoginButton() {
   return(
-    <button onClick={() => signIn('line', { callbackUrl: '/dashboard' })} >
+    <button onClick={handleLogin} >
       <Image 
         src={localImage}
         alt="Login with LINE"

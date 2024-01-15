@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import Introduction from "../../components/page/Top/Introduction";
+
+export const metadata: Metadata = {
+  title: 'about',
+}
 
 export default function page() {
   return (

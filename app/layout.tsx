@@ -5,8 +5,27 @@ import { MantineProviderWrapper } from '../providers/MantineProvider';
 import Header from './components/base/Header';
 import './globals.css'
 
+const siteName= 'sales buddy';
+const description = 'アパレルスタッフの自己記録管理をサポートするアプリです';
+const url = 'https://sbuddy-apparel.com/';
+
 export const metadata: Metadata = {
-  title: 'sales buddy',
+  metadataBase: new URL('https://www.sbuddy-apparel.com/'),
+  title: {
+    template: `%s | ${siteName}`,
+    default: siteName,
+  },
+  openGraph: {
+    title: siteName,
+    description,
+    url,
+    siteName,
+  },
+  twitter: {
+		card: 'summary_large_image',
+    title: siteName,
+    description,
+	},
 }
 
 export const viewport: Viewport = {

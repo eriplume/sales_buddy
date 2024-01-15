@@ -1,12 +1,10 @@
-import Steps from '@/app/components/page/Setting/Steps'
-import React from 'react'
+import { Metadata } from "next"
+import Setting from "@/app/components/page/Setting/Setting"
 
-export default function Setting() {
-  return (
-    <>
-      <div className="flex flex-col justify-center items-center mx-auto px-6 z-0 max-w-4xl my-20">
-        <Steps/>
-      </div>
-    </>
-  )
+export const metadata: Metadata = {
+  title: 'setting',
+}
+
+export default function page() {
+  return <Setting />
 }
