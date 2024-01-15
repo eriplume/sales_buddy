@@ -1,8 +1,7 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
-import { signOut } from 'next-auth/react';
-import { showSuccessNotification } from '@/utils/notifications';
+import { handleLogout } from '@/utils/authHelpers';
 import { NavLink } from '@mantine/core';
 import { BellAlertIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
@@ -20,13 +19,6 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
     setActive(index);
     onClose();
     router.push(path);
-  };
-
-  const handleLogout = () => {
-    showSuccessNotification("ログアウトしました")
-    setTimeout(() => {
-      signOut({ callbackUrl: '/' });
-    }, 1000);
   };
 
   return session ? (

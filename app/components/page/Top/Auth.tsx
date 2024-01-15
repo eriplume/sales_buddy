@@ -1,8 +1,9 @@
 "use client"
-import Loading from "@/app/components/ui/Loading";
+import { useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+import { checkLogutStatus } from "@/utils/authNotification";
+import Loading from "@/app/components/ui/Loading";
 import Introduction from "@/app/components/page/Top/Introduction";
 
 export default function Auth () {
@@ -15,6 +16,10 @@ export default function Auth () {
       router.push('/dashboard');
     } 
   }, [status, router]);
+
+  useEffect(() => {
+    checkLogutStatus();
+  }, []);
   
   if (status === "loading" || status === 'authenticated')  return <Loading size="md"/>;
 
