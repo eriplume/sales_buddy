@@ -1,5 +1,9 @@
-import React from 'react'
+import { Metadata } from 'next'
 import PrivacyPolicy from '../components/base/PrivacyPolicy'
+
+export const metadata: Metadata = {
+  title: 'privacy policy',
+}
 
 export default function page() {
   return (

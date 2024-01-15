@@ -1,4 +1,9 @@
+import { Metadata } from 'next'
 import TermsOfService from '../components/base/TermsOfService'
+
+export const metadata: Metadata = {
+  title: 'terms of service',
+}
 
 export default function page() {
   return (
