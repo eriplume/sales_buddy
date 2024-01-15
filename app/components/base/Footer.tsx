@@ -15,9 +15,9 @@ export default function Footer() {
 
         {/* 2行目: リンク */}
         <div className="flex justify-center items-center mt-2 sm:mt-0">
-          <Link href="terms_of_service" className="text-gray-900 text-xs underline sm:ml-1 hover:text-sky-800">terms of service</Link>
+          <Link href="/terms_of_service" className="text-gray-900 text-xs underline sm:ml-1 hover:text-sky-800">terms of service</Link>
           <span className="mx-1">/</span>
-          <Link href="privacy_policy" className="text-gray-900 text-xs underline sm:ml-1 hover:text-sky-800">privacy policy</Link>
+          <Link href="/privacy_policy" className="text-gray-900 text-xs underline sm:ml-1 hover:text-sky-800">privacy policy</Link>
           <span className="mx-1">/</span>
           <Link href="https://docs.google.com/forms/d/e/1FAIpQLSelZ0KYUju7cveV32wRg-IHfzDjYK4Utv708s3-F7k36C-gTQ/viewform?usp=sf_link" className="text-gray-900 text-xs underline sm:ml-1 hover:text-sky-800">contact</Link>
         </div>

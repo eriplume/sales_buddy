@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import { getStartOfWeek, getEndOfWeek, isDateInRanges } from '@/utils/dateUtils';
-import { registeredReportRangesDemo } from './DemoData';
+import { registeredReportRangesDemo } from "@/const/demoData";
 import useWeeklyStore from '@/store/weeklyStore';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import ReportInputForm from '../WeeklyReport.tsx/ReportInput';
@@ -43,7 +43,7 @@ export default function DemoReportStep() {
       <DemoArchive />
       <div className="flex flex-row justify-center items-center w-full">
         <div className="flex w-full py-2 justify-center">
-          <div className="w-full h-48 overflow-auto">
+          <div className="w-full h-48">
             <ReportInputForm />
           </div>
         </div>

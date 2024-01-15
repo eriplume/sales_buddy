@@ -7,7 +7,7 @@ import useWeeklyStore from '@/store/weeklyStore';
 import useDashboardStore from '@/store/dashboardStore';
 import { showErrorNotification, showSuccessNotification, showCautionNotification } from '@/utils/notifications';
 import Target from './Target';
-import Report from './Report';
+import ReportStep from './ReportStep';
 import Confirmation from './Confirmation';
 import StepperIcon from './StepperIcon';
 import BackButton from '../../ui/button/BackButton';
@@ -102,7 +102,7 @@ export default function StepForm() {
         <div>
           {active === 0 && (
             <div className='flex flex-col justify-center'>
-              <Report/>
+              <ReportStep/>
             </div>
           )}
           {active === 1 && (

@@ -1,6 +1,6 @@
 "use client"
 import { useFetchForDemo } from '@/lib/useFetch';
-import { salesDatesDemo } from './DemoData';
+import { salesDatesDemo } from "@/const/demoData";
 import { Tabs } from '@mantine/core';
 import { TriangleIcon } from '../../ui/icon/Triangle';
 import HelpMordal from '../../ui/HelpMordal';

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { showErrorNotification } from '@/utils/notifications';
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { jobsListDemo } from './DemoData';
+import { jobsListDemo } from "@/const/demoData";
 import JobsInput from '../DashBoard/JobsInput';
 import SubmitButton from '../../ui/button/SubmitButton';
 

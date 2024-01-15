@@ -4,7 +4,7 @@ import { formatDateYM } from "@/utils/dateUtils";
 import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import MonthPicker from "../../ui/MonthPicker";
 import { TriangleIcon } from "../../ui/icon/Triangle";
-import { salesRecordsDemo } from "./DemoData";
+import { salesRecordsDemo } from "@/const/demoData";
 import MonthlyRecord from "../Archive/MonthlyRecord";
 import RecordList from "../Archive/RecordList";
 

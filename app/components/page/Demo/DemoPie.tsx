@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
 import { useFetchForDemo } from '@/lib/useFetch';
 import useCalculationStore from '@/store/calculationStore';
-import { customersRecordsDemo } from './DemoData';
+import { customersRecordsDemo } from "@/const/demoData";
 
 type PieProps = {
   colors: string[];

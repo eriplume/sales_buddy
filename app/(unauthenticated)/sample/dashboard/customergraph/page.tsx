@@ -1,4 +1,4 @@
-import { salesDatesDemo, customersRecordsDemo } from '@/app/components/page/Demo/DemoData';
+import { salesDatesDemo, customersRecordsDemo } from "@/const/demoData";
 import { BreadcrumbsDemo } from '@/app/components/ui/Breadcrumbs'
 import { PencilIcon, UsersIcon } from '@heroicons/react/24/outline';
 import DemoPie from '@/app/components/page/Demo/DemoPie';

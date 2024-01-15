@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { formatDateYM } from "@/utils/dateUtils";
-import { weeklyReportsDemo, monthlyReportsDemo } from "./DemoData";
+import { weeklyReportsDemo, monthlyReportsDemo } from "@/const/demoData";
 import { showErrorNotification } from "@/utils/notifications";
 import { Button } from "@mantine/core";
 import { PaperAirplaneIcon, ArrowRightCircleIcon  } from "@heroicons/react/24/outline";
