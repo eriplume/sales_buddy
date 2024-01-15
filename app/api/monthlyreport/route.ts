@@ -1,9 +1,7 @@
 import axios from 'axios';
-import { getServerSession } from "next-auth/next"
-import { options } from '@/lib/options';
 import { fetchDataFromApi } from '@/lib/fetchDataFromApi';
 import { getJwt } from '@/lib/getJwt';
-import { type NextRequest } from 'next/server';
+import { NextRequest } from 'next/server';
 
 const endpoint = "monthly_reports";
 const apiUrl = process.env.RAILS_API_URL
@@ -90,7 +88,7 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-  const { accessToken, userId } = await getJwt(req);
+  const { accessToken } = await getJwt(req);
     
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
