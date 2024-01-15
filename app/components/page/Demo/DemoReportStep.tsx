@@ -27,7 +27,7 @@ export default function DemoReportStep() {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-lg bg-white px-10 pb-10 pt-6 shadow-sm rounded">
+    <div className="flex flex-col w-full max-w-lg bg-white px-10 py-6 shadow-sm rounded">
       <div className="flex flex-row justify-center items-center w-full border-b pb-2 mb-2 md:hidden">
         <PencilIcon className="w-6 h-6 text-gray-500 mr-2"/>
         <span className="mx-1 mb-1 text-sm text-gray-700">今週の振り返りを入力</span>
@@ -41,9 +41,9 @@ export default function DemoReportStep() {
         <WeekPicker value={contentDateRange} handleChange={handleChange} excludeDate={excludeDate} maxDate={maxDate}/>
       </div>
       <DemoArchive />
-      <div className="flex flex-row justify-center items-center w-full">
+      <div className="flex flex-row justify-center items-center w-full mt-3">
         <div className="flex w-full py-2 justify-center">
-          <div className="w-full h-48">
+          <div className="w-full">
             <ReportInputForm />
           </div>
         </div>

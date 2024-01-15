@@ -20,7 +20,7 @@ export default function WeekPicker({ value, excludeDate, handleChange, maxDate }
         leftSection={icon}
         label="週の選択"
         type="range"
-        size="xs"
+        size="sm"
         placeholder="Pick dates range"
         valueFormat= "MM / DD   (ddd)"
         value={value}

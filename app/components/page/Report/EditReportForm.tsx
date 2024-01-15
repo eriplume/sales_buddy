@@ -22,7 +22,7 @@ type FormValues = {
 };
 
 const schema  = z.object({
-  newContent: z.string().min(1, "レポートを入力してください").max(300, "300文字以内で入力してください").refine(newContent => newContent.trim().length > 0, "空白は無効です"),
+  newContent: z.string().min(1, "レポートを入力してください").max(400, "400文字以内で入力してください").refine(newContent => newContent.trim().length > 0, "空白は無効です"),
 });
 
 export default function EditReportForm({content, id, edit, setEdit} : ReportContentProps) {
@@ -38,8 +38,8 @@ export default function EditReportForm({content, id, edit, setEdit} : ReportCont
 
   const handleContentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputContent = event.target.value;
-    if (inputContent.length > 300) {
-      setCharCountError('300文字以内で入力してください');
+    if (inputContent.length > 400) {
+      setCharCountError('400文字以内で入力してください');
     } else {
       setCharCountError('');
     }

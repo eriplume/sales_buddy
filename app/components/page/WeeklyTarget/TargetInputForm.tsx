@@ -15,7 +15,7 @@ export default function TargetInputForm() {
             placeholder="100万円"
             description="1~200で入力してください"
             suffix="万円"
-            size="xs"
+            size="sm"
             withAsterisk
             min={0}
             max={200}

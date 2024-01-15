@@ -27,12 +27,12 @@ export default function ReportInputForm() {
             placeholder="今週の振り返り"
             description="300字以内で入力してください"
             label="週間レポート"
-            size="xs"
+            size="sm"
             error={charCountError} 
             withAsterisk
             autosize
-            minRows={7}
-            maxRows={7}
+            minRows={8}
+            maxRows={14}
           />
         </form>
       </div>
