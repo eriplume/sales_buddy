@@ -2,7 +2,7 @@
 import { useMemo, useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { formatDate } from '@/utils/dateUtils';
-import { jobsRecordsDemo, jobsDatesDemo } from './DemoData';
+import { jobsRecordsDemo, jobsDatesDemo } from "@/const/demoData";
 import { DatePicker } from '@mantine/dates';
 import CalendarIndicator from '../../ui/CalendarIndicator';
 import CalendarModal from '../DashBoard/CalendarModal';

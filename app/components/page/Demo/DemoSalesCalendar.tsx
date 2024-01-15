@@ -1,6 +1,6 @@
 "use client"
 import { useMemo } from 'react';
-import { salesRecordsDemo, salesDatesDemo } from './DemoData';
+import { salesRecordsDemo, salesDatesDemo } from "@/const/demoData";
 import { formatDate } from '@/utils/dateUtils';
 import useCalculationStore from '@/store/calculationStore';
 import { useDisclosure } from '@mantine/hooks';

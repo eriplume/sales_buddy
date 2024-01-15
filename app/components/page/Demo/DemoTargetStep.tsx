@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import { getStartOfWeek, getEndOfWeek, isDateInRanges } from '@/utils/dateUtils';
 import useWeeklyStore from '@/store/weeklyStore';
-import { registeredTargetRangesDemo } from './DemoData';
+import { registeredTargetRangesDemo } from "@/const/demoData";
 import { FireIcon } from '@heroicons/react/24/outline';
 import TargetInputForm from '../WeeklyTarget/TargetInputForm';
 import WeekPicker from '../../ui/WeekPicker';

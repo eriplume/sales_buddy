@@ -1,4 +1,4 @@
-import { targetDemo, progressDemo, thisWeekAmountDemo, progressPercentDemo } from "./DemoData";
+import { targetDemo, progressDemo, thisWeekAmountDemo, progressPercentDemo } from "@/const/demoData";
 import { formatCurrency } from "@/utils/currencyUtils";
 import { ForwardIcon } from "@heroicons/react/24/outline";
 import WeeklyRingProgress from "../DashBoard/WeeklyRingProgress";

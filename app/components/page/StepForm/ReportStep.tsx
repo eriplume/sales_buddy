@@ -5,7 +5,7 @@ import Achievements from './Achievements';
 import HelpMordal from '../../ui/HelpMordal';
 import HelpPage from './HelpPage';
 
-export default function Report() {
+export default function ReportStep() {
   return (
     <div className="flex flex-col w-full max-w-lg bg-white px-10 pb-10 pt-6 shadow-sm rounded">
       <div className="flex flex-row justify-center items-center w-full border-b pb-2 mb-2 md:hidden">

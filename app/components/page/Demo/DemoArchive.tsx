@@ -5,7 +5,7 @@ import { ActionIcon, Modal } from '@mantine/core';
 import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import AchievementsDetail from "../StepForm/AchievementsDetail";
-import { progressDemo, progressPercentDemo, targetDemo, thisWeekAmountDemo, thisWeekNumberDemo, thisWeekCountDemo, thisWeekAverageDemo, thisWeekSetDemo  } from "./DemoData";
+import { progressDemo, progressPercentDemo, targetDemo, thisWeekAmountDemo, thisWeekNumberDemo, thisWeekCountDemo, thisWeekAverageDemo,thisWeekSetDemo } from "@/const/demoData";
 
 export default function DemoArchive() {
 
