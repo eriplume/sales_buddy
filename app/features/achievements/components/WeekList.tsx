@@ -3,13 +3,13 @@ import { getWeekHead, getweekEndDate, sortData, formatDateLayoutMD } from "@/uti
 import { calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import { Accordion } from '@mantine/core';
 import { ClipboardDocumentListIcon } from "@heroicons/react/24/outline";
-import RecordContents from "./RecordContents";
+import WeekContents from "./WeekContents";
 
 type WeeklyRecordProps = {
   monthRecords: SalesRecord[];
 };
 
-export default function RecordList({monthRecords} :WeeklyRecordProps) {
+export default function WeekList({monthRecords} :WeeklyRecordProps) {
 
   const weeklyData = monthRecords.reduce<Record<string, WeeklyRecord>>((acc, record) => {
     const weekHead = getWeekHead(record.date);
@@ -41,7 +41,7 @@ export default function RecordList({monthRecords} :WeeklyRecordProps) {
                   {formatDateLayoutMD(weekKey)} 〜 {formatDateLayoutMD(weeklyData[weekKey].weekEnd)}
                 </Accordion.Control>
                 <Accordion.Panel>
-                  <RecordContents 
+                  <WeekContents 
                     amount={weeklyData[weekKey].amount} 
                     number={weeklyData[weekKey].number}
                     count={weeklyData[weekKey].count}

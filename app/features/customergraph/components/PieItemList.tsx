@@ -1,6 +1,6 @@
 "use client"
 import useCalculationStore from "@/store/calculationStore";
-import SquareIcon from "../../ui/icon/SquareIcon";
+import SquareIcon from "../../../components/ui/icon/SquareIcon";
 
 type PieProps = {
   colors: string[]

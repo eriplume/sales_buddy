@@ -1,7 +1,7 @@
-import { Breadcrumbs } from "../../ui/Breadcrumbs"
-import RecordedDate from "./RecordedDate"
-import CustomersPie from "./CustomersPie"
-import PieItemList from "./PieItemList"
+import { Breadcrumbs } from "../../ui/Breadcrumbs";
+import RecordedDate from "@/app/features/customergraph/components/RecordedDate";
+import CustomersPie from "@/app/features/customergraph/components/CustomersPie";
+import PieItemList from "@/app/features/customergraph/components/PieItemList";
 
 export default function CustomerGraph() {
 

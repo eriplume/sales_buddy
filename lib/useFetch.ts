@@ -34,23 +34,7 @@ export const useFetchJobs = () => {
   }, [fetchJobsRecord]);
 }
 
-export const useFetchForCustomersGraph = () => {
-  const fetchCustomersRecord = useDashboardStore((state) => state.fetchCustomersRecord);
-  const fetchOptions = useCalculationStore((state) => state.fetchOptions); 
-  const fetchSalesRecord = useDashboardStore((state) => state.fetchSalesRecord);
-  useEffect(() => {
-    fetchOptions();
-    fetchCustomersRecord();
-    fetchSalesRecord();
-  }, [fetchCustomersRecord, fetchOptions, fetchSalesRecord])
-}
 
-export const useFetchForArchive = () => {
-  const fetchSalesRecord = useDashboardStore((state) => state.fetchSalesRecord);
-  useEffect(() => {
-    fetchSalesRecord();
-  }, [fetchSalesRecord]);
-}
 
 export const useFetchForWeekly = () => {
   const fetchSalesRecord = useDashboardStore((state) => state.fetchSalesRecord);

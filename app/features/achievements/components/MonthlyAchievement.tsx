@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/utils/currencyUtils";
 import { UserIcon,ShoppingBagIcon, CurrencyYenIcon } from "@heroicons/react/24/outline";
 import { UsersIcon } from "@heroicons/react/24/solid";
-import { SolidShirtIcon } from "../../ui/icon/ShirtIcon";
+import { SolidShirtIcon } from "../../../components/ui/icon/ShirtIcon";
 
 type MonthlyRecordProps = {
   amount: number;
@@ -12,7 +12,7 @@ type MonthlyRecordProps = {
   days: number;
 };
 
-export default function MonthlyRecord({amount, number, count, setRate, average, days} :MonthlyRecordProps) {
+export default function MonthlyAchievement({amount, number, count, setRate, average, days} :MonthlyRecordProps) {
   return (
     <>
       <div className="flex flex-row justify-center items-center px-7 md:px-12">

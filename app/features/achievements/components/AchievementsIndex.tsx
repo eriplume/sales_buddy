@@ -1,16 +1,16 @@
 "use client"
 import { useState } from "react";
-import { useFetchForArchive } from "@/lib/useFetch";
+import { useFetch } from "@/app/features/achievements/hooks/useAchievements";
 import { formatDateYM } from "@/utils/dateUtils";
 import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
 import useDashboardStore from "@/store/dashboardStore";
-import MonthlyRecord from "./MonthlyRecord";
-import RecordList from "./RecordList";
-import MonthPicker from "../../ui/MonthPicker";
-import { TriangleIcon } from "../../ui/icon/Triangle";
+import MonthlyAchievement from "./MonthlyAchievement";
+import WeekList from "./WeekList";
+import MonthPicker from "../../../components/ui/MonthPicker";
+import { TriangleIcon } from "../../../components/ui/icon/Triangle";
 
-export default function MonthlyArchive() {
-  useFetchForArchive();
+export default function AchievementsIndex() {
+  useFetch();
 
   const { salesRecords } = useDashboardStore();
   const [value, setValue] = useState<Date | null>(new Date());
@@ -42,12 +42,12 @@ export default function MonthlyArchive() {
             <MonthPicker value={value} setValue={setValue} />
           </div>
         </div>
-        <MonthlyRecord amount={monthlyAmount} number={monthlyNumber} count={monthlyCount} setRate={monthlySetRate} average={monthlyAverage} days={numberOfDays}/>
+        <MonthlyAchievement amount={monthlyAmount} number={monthlyNumber} count={monthlyCount} setRate={monthlySetRate} average={monthlyAverage} days={numberOfDays}/>
         <div className="flex flex-row justify-start px-7 pt-5 pb-2 md:px-12">
           <TriangleIcon className="w-4 h-4 mr-1 ml-4 text-blue-300" />
           <div className='text-sm text-gray-800'>各週のデータ</div>
         </div>
-        <RecordList monthRecords={filteredSalesRecords} />
+        <WeekList monthRecords={filteredSalesRecords} />
       </div>    
     </>
   )

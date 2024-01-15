@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/utils/currencyUtils";
 import { UserIcon,ShoppingBagIcon, CurrencyYenIcon } from "@heroicons/react/24/outline";
 import { UsersIcon } from "@heroicons/react/24/solid";
-import { SolidShirtIcon } from "../../ui/icon/ShirtIcon";
+import { SolidShirtIcon } from "../../../components/ui/icon/ShirtIcon";
 
 type WeeklyRecordContents = {
   amount: number;
@@ -11,7 +11,7 @@ type WeeklyRecordContents = {
   average: number;
 }
 
-export default function RecordContents({ amount, number, count, setRate, average}: WeeklyRecordContents) {
+export default function WeekContent({ amount, number, count, setRate, average}: WeeklyRecordContents) {
   return (
     <div className="p-2">
       <div className="flex items-center text-gray-700">

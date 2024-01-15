@@ -2,7 +2,7 @@ import { salesDatesDemo, customersRecordsDemo } from "@/const/demoData";
 import { BreadcrumbsDemo } from '@/app/components/ui/Breadcrumbs'
 import { PencilIcon, UsersIcon } from '@heroicons/react/24/outline';
 import DemoPie from '@/app/components/page/Demo/DemoPie';
-import PieItemList from '@/app/components/page/CustomerGraph/PieItemList';
+import PieItemList from '@/app/features/customergraph/components/PieItemList';
 
 const pieColors = ['#0284c7','#3b82f6','#60a5fa', '#93c5fd','#bfdbfe', '#cbd5e1', '#94a3b8', '#075985', '#0369a1'];
 

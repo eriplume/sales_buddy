@@ -5,8 +5,8 @@ import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calc
 import MonthPicker from "../../ui/MonthPicker";
 import { TriangleIcon } from "../../ui/icon/Triangle";
 import { salesRecordsDemo } from "@/const/demoData";
-import MonthlyRecord from "../Archive/MonthlyRecord";
-import RecordList from "../Archive/RecordList";
+import MonthlyRecord from "../../../features/achievements/components/MonthlyAchievement";
+import RecordList from "../../../features/achievements/components/WeekList";
 
 export default function DemoMonthlyArchive() {
   const [value, setValue] = useState<Date | null>(new Date());

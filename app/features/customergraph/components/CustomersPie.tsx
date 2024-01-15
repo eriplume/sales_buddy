@@ -1,7 +1,7 @@
 "use client"
 import { useState } from 'react';
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
-import { useFetchForCustomersGraph } from '@/lib/useFetch';
+import { useFetch } from '../hooks/useCustomerGraph';
 import useDashboardStore from '@/store/dashboardStore';
 import useCalculationStore from '@/store/calculationStore';
 
@@ -45,7 +45,7 @@ const renderActiveShape = (props :any) => {
 };
 
 export default function CustomersPie({colors} :PieProps ) {
-  useFetchForCustomersGraph();
+  useFetch();
 
   const [activeIndex, setActiveIndex] = useState(0);
   const { options } = useCalculationStore();
