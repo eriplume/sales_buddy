@@ -1,7 +1,12 @@
+import { Metadata } from "next"
 import Footer from "../components/base/Footer"
 import AlertDemo from "../components/ui/AlertDemo"
 import DemoFooterMenu from "../components/page/Demo/DemoFooterMenu"
 import DemoMenu from "../components/page/Demo/DemoMenu"
+
+export const metadata: Metadata = {
+  title: 'sample',
+}
 
 export default function UnauthenticatedLayout({
   children,

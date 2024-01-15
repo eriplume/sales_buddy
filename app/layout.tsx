@@ -6,7 +6,10 @@ import Header from './components/base/Header';
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'sales buddy',
+  title: {
+    template: '%s | sales buddy',
+    default: 'sales buddy',
+  },
 }
 
 export const viewport: Viewport = {

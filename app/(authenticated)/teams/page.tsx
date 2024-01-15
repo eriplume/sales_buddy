@@ -1,4 +1,9 @@
+import { Metadata } from "next"
 import { WrenchIcon } from "@heroicons/react/24/outline"
+
+export const metadata: Metadata = {
+  title: 'teams',
+}
 
 export default function page() {
   return (
