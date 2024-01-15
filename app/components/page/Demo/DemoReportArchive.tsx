@@ -8,10 +8,10 @@ import { Button } from "@mantine/core";
 import { PaperAirplaneIcon, ArrowRightCircleIcon  } from "@heroicons/react/24/outline";
 import { TriangleIcon } from "../../ui/icon/Triangle"
 import HelpMordal from "../../ui/HelpMordal";
-import HelpPage from "../Report/HelpPage";
+import HelpPage from "../../../features/report/components/HelpPage";
 import MonthPicker from "../../ui/MonthPicker";
-import ReportList from "../Report/ReportList";
-import MonthlySummary from "../Report/MonthlySummary";
+import ReportList from "../../../features/report/components/WeekList";
+import MonthlySummary from "../../../features/report/components/MonthlySummary";
 
 export default function DemoReportArchive() {
   const [value, setValue] = useState<Date | null>(new Date());

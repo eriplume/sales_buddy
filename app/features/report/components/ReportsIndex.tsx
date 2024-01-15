@@ -2,19 +2,19 @@
 import { useState } from "react";
 import Link from "next/link";
 import { formatDateYM } from "@/utils/dateUtils";
-import { useFetchForReport } from "@/lib/useFetch";
 import useDashboardStore from "@/store/dashboardStore";
-import { TriangleIcon } from "../../ui/icon/Triangle"
-import MonthPicker from "../../ui/MonthPicker"
-import ReportList from "./ReportList";
-import CreateInfo from "./CreateInfo";
+import { TriangleIcon } from "../../../components/ui/icon/Triangle"
+import MonthPicker from "../../../components/ui/MonthPicker"
+import WeekList from "./WeekList";
+import CreateSummary from "./CreateSummary";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
-import HelpMordal from "../../ui/HelpMordal";
+import HelpMordal from "../../../components/ui/HelpMordal";
 import HelpPage from "./HelpPage";
 import MonthlySummary from "./MonthlySummary";
+import { useFetch } from "../hooks/useReport";
 
-export default function ReportArchive() {
-  useFetchForReport();
+export default function ReportsIndex() {
+  useFetch();
 
   const { weeklyReports, monthlyReports } = useDashboardStore();
   const [value, setValue] = useState<Date | null>(new Date());
@@ -54,7 +54,7 @@ export default function ReportArchive() {
         <div className='text-sm text-gray-800'>各週のデータ</div>
       </div>
 
-      <ReportList reportsList={filteredWeeklyReports} />
+      <WeekList reportsList={filteredWeeklyReports} />
 
       {selectedMonthReport ? (
         <>
@@ -73,7 +73,7 @@ export default function ReportArchive() {
               <HelpPage/>
             </HelpMordal>
           </div>
-          <CreateInfo reportsList={filteredWeeklyReports} targetMonth={targetMonth}/>
+          <CreateSummary reportsList={filteredWeeklyReports} targetMonth={targetMonth}/>
         </>
       )}
       

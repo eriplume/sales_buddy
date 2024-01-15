@@ -47,14 +47,7 @@ export const useFetchForWeekly = () => {
   }, [fetchSalesRecord, fetchWeeklyReport, fetchWeeklyTarget]);
 }
 
-export const useFetchForReport = () => {
-  const fetchWeeklyReport = useDashboardStore((state) => state.fetchWeeklyReport);
-  const fetchMonthlyReport = useDashboardStore((state) => state.fetchMonthlyReport);
-  useEffect(() => {
-    fetchWeeklyReport();
-    fetchMonthlyReport();
-  }, [fetchWeeklyReport, fetchMonthlyReport]);
-}
+
 
 export const useFetchForDemo = () => {
   const fetchOptions = useCalculationStore((state) => state.fetchOptions);

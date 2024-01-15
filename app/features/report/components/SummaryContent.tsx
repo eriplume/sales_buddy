@@ -1,8 +1,8 @@
 "use client"
 import { useState } from 'react';
-import CopyActionButton from "../../ui/CopyActionButton"
-import EditActionIcon from "../../ui/EditActionIcon";
-import ReportContent from './ReportContent';
+import CopyActionButton from "../../../components/ui/CopyActionButton"
+import EditActionIcon from "../../../components/ui/EditActionIcon";
+import Content from './ReportContent';
 import EditReportForm from './EditReportForm';
 
 type SummaryContentProps = {
@@ -10,7 +10,7 @@ type SummaryContentProps = {
   id: number;
 };
 
-export default function SummaryContentArea({content, id} :  SummaryContentProps) {
+export default function SummaryContent({content, id}: SummaryContentProps) {
   const [ edit, setEdit ] = useState(false);
 
   return edit ? (
@@ -23,7 +23,7 @@ export default function SummaryContentArea({content, id} :  SummaryContentProps)
         <CopyActionButton value={content}/>
         <EditActionIcon edit={edit} setEdit={setEdit}/>
       </div>
-      <ReportContent content={content}/>
+      <Content content={content}/>
     </div>
   )
 }

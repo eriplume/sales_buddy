@@ -8,7 +8,7 @@ import useDashboardStore from '@/store/dashboardStore';
 import { showSuccessNotification, showErrorNotification } from '@/utils/notifications';
 import { Textarea, Tooltip } from '@mantine/core';
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import CancelActionIcon from '../../ui/CancelActionIcon';
+import CancelActionIcon from '../../../components/ui/CancelActionIcon';
 
 type ReportContentProps = {
   content: string;

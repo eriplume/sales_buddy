@@ -6,7 +6,7 @@ import useDashboardStore from "@/store/dashboardStore";
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import { Button } from '@mantine/core';
 import { PaperAirplaneIcon } from '@heroicons/react/24/outline';
-import Loading from "../../ui/Loading";
+import Loading from "../../../components/ui/Loading";
 
 type CreateInfoProps = {
   reportsList: WeeklyReport[];
@@ -17,7 +17,7 @@ type SummaryData = {
   text: string;
 };
 
-export default function CreateInfo({reportsList, targetMonth}: CreateInfoProps) {
+export default function CreateSummary({reportsList, targetMonth}: CreateInfoProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [summaryData, setSummaryData] = useState<SummaryData | null>(null);
   const fetchMonthlyReport = useDashboardStore((state) => state.fetchMonthlyReport);

@@ -3,13 +3,13 @@ import { formatDateLayoutMD } from '@/utils/dateUtils';
 import { Accordion } from '@mantine/core';
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
 import ReportContent from './ReportContent';
-import CopyActionButton from '../../ui/CopyActionButton';
+import CopyActionButton from '../../../components/ui/CopyActionButton';
 
 type WeeklyRecordProps = {
   reportsList: WeeklyReport[];
 };
 
-export default function ReportList({reportsList}: WeeklyRecordProps) {
+export default function WeekList({reportsList}: WeeklyRecordProps) {
   return (
     <>
       <div className="px-7 md:px-14">

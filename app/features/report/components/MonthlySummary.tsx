@@ -1,6 +1,6 @@
 import { Accordion } from '@mantine/core';
 import { FolderIcon } from "@heroicons/react/24/outline";
-import SummaryContentArea from './SummaryContentArea';
+import SummaryContent from './SummaryContent';
 
 type MonthlySummaryProps = {
   content: string;
@@ -19,7 +19,7 @@ export default function MonthlySummary({content, id} :MonthlySummaryProps) {
               まとめ
             </Accordion.Control>
             <Accordion.Panel>
-              <SummaryContentArea content={content} id={id}/>
+              <SummaryContent content={content} id={id}/>
             </Accordion.Panel>
           </Accordion.Item>
         </Accordion>
