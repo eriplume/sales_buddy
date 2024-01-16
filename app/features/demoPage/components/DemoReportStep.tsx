@@ -44,7 +44,7 @@ export default function DemoReportStep() {
       <div className="flex flex-row justify-center items-center w-full mt-3">
         <div className="flex w-full py-2 justify-center">
           <div className="w-full">
-            <ReportInputForm />
+            <ReportInputForm registeredReportRanges={registeredReportRangesDemo}/>
           </div>
         </div>
       </div>

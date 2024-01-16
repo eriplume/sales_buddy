@@ -1,8 +1,24 @@
-import { NumberInput } from '@mantine/core';
+"use client"
+import { useState, useEffect } from 'react';
+import { ResisteredDateRange } from '@/types';
+import { isDateInRanges } from '@/utils/dateUtils';
 import useWeeklyStore from '@/store/weeklyStore';
+import { NumberInput } from '@mantine/core';
 
-export default function TargetInputForm() {
+type TargetInputFormProps = {
+  registeredTargetRanges: ResisteredDateRange[];
+};
+
+export default function TargetInputForm({registeredTargetRanges}: TargetInputFormProps) {
   const { target, setTarget } = useWeeklyStore();
+  const { targetDateRange } = useWeeklyStore();
+  const [isFormDisabled, setFormDisabled] = useState(
+    isDateInRanges(targetDateRange[0], registeredTargetRanges)
+  );
+
+  useEffect(() => {
+    setFormDisabled(isDateInRanges(targetDateRange[0], registeredTargetRanges));
+  }, [targetDateRange, registeredTargetRanges]);
 
   return (
     <>
@@ -20,6 +36,7 @@ export default function TargetInputForm() {
             min={0}
             max={200}
             type="tel"
+            disabled={isFormDisabled}
           />
         </div>
       </div>

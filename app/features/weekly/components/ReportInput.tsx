@@ -1,11 +1,21 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ResisteredDateRange } from '@/types';
 import useWeeklyStore from '@/store/weeklyStore';
 import { Textarea } from '@mantine/core';
+import { isDateInRanges } from '@/utils/dateUtils';
 
-export default function ReportInputForm() {
-  const [charCountError, setCharCountError] = useState('');
+type ReportInputFormProps = {
+  registeredReportRanges: ResisteredDateRange[];
+};
+
+export default function ReportInputForm({registeredReportRanges}: ReportInputFormProps) {
   const { content, setContent } = useWeeklyStore();
+  const { contentDateRange } = useWeeklyStore();
+  const [isFormDisabled, setFormDisabled] = useState(
+    isDateInRanges(contentDateRange[0], registeredReportRanges)
+  );
+  const [charCountError, setCharCountError] = useState('');
 
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputContent = e.currentTarget.value;
@@ -16,6 +26,10 @@ export default function ReportInputForm() {
     }
     setContent(inputContent);
   };
+
+  useEffect(() => {
+    setFormDisabled(isDateInRanges(contentDateRange[0], registeredReportRanges));
+  }, [contentDateRange, registeredReportRanges]);
 
   return (
     <>
@@ -33,6 +47,7 @@ export default function ReportInputForm() {
             autosize
             minRows={8}
             maxRows={14}
+            disabled={isFormDisabled}
           />
         </form>
       </div>
