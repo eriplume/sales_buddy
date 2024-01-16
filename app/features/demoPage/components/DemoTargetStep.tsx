@@ -4,7 +4,7 @@ import useWeeklyStore from '@/store/weeklyStore';
 import { registeredTargetRangesDemo } from "@/const/demoData";
 import { FireIcon } from '@heroicons/react/24/outline';
 import TargetInputForm from '@/app/features/weekly/components/TargetInputForm';
-import WeekPicker from '../../ui/WeekPicker';
+import WeekPicker from '../../../components/ui/WeekPicker';
 
 export default function DemoTargetStep() {
   const { targetDateRange, setTargetDateRange } = useWeeklyStore();

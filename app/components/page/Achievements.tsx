@@ -1,4 +1,4 @@
-import { Breadcrumbs } from "../../ui/Breadcrumbs"
+import { Breadcrumbs } from "../ui/Breadcrumbs"
 import AchievementsIndex from "@/app/features/achievements/components/AchievementsIndex"
 
 export default function Achievements() {

@@ -5,7 +5,7 @@ import { PencilIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { jobsListDemo } from "@/const/demoData";
 import JobsInput from '@/app/features/calender/components/JobsInput';
-import SubmitButton from '../../ui/button/SubmitButton';
+import SubmitButton from '../../../components/ui/button/SubmitButton';
 
 type  NotJobRecordProps = {
   selectedDate: Date | null;

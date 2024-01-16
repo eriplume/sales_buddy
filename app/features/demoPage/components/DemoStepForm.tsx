@@ -3,10 +3,10 @@ import { useState } from "react";
 import useWeeklyStore from "@/store/weeklyStore";
 import { showErrorNotification, showCautionNotification } from "@/utils/notifications";
 import DemoStepper from "./DemoStepper";
-import SkipButton from "../../ui/button/SkipButton";
-import BackButton from "../../ui/button/BackButton";
-import NextButton from "../../ui/button/NextButton";
-import SubmitButton from "../../ui/button/SubmitButton";
+import SkipButton from "../../../components/ui/button/SkipButton";
+import BackButton from "../../../components/ui/button/BackButton";
+import NextButton from "../../../components/ui/button/NextButton";
+import SubmitButton from "../../../components/ui/button/SubmitButton";
 
 export default function DemoStepForm() {
   const { setTarget, validateTarget, validateContent } = useWeeklyStore();

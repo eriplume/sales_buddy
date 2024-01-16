@@ -4,10 +4,10 @@ import { useRouter } from 'next/navigation';
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer } from '@mantine/core';
 import { UsersIcon, HomeIcon, PencilIcon, Cog8ToothIcon } from "@heroicons/react/24/outline";
-import { navigationItemsDemo } from '../../base/navigationItems';
-import FooterUserStatus from '../../base/UserStatus';
-import FooterDrawer from '../../base/FooterDrawer';
-import ProfileDrawer from '../../base/ProfileDrawer';
+import { navigationItemsDemo } from '../../../components/base/navigationItems';
+import FooterUserStatus from '../../../components/base/UserStatus';
+import FooterDrawer from '../../../components/base/FooterDrawer';
+import ProfileDrawer from '../../../components/base/ProfileDrawer';
 
 export default function DemoFooterMenu() {
   const [opened, { open, close }] = useDisclosure(false);

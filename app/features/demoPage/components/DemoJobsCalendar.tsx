@@ -4,7 +4,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { formatDate } from '@/utils/dateUtils';
 import { jobsRecordsDemo, jobsDatesDemo } from "@/const/demoData";
 import { DatePicker } from '@mantine/dates';
-import CalendarIndicator from '../../ui/CalendarIndicator';
+import CalendarIndicator from '../../../components/ui/CalendarIndicator';
 import CalendarModal from '@/app/features/calender/components/CalendarModal';
 import JobRecord from '@/app/features/calender/components/JobRecord';
 import DemoNotJobRecord from './DemoNotJobRecord';

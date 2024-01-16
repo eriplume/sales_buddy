@@ -1,6 +1,6 @@
 "use client"
-import DrawerMenu from '../../base/DrawerMenu'
-import { navigationItemsDemo } from '../../base/navigationItems'
+import DrawerMenu from '../../../components/base/DrawerMenu'
+import { navigationItemsDemo } from '../../../components/base/navigationItems'
 
 export default function DemoMenu() {
   return (

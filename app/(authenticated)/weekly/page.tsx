@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import Weekly from '@/app/components/page/Weekly/Weekly';
+import Weekly from '@/app/components/page/Weekly';
 
 export const metadata: Metadata = {
   title: 'weekly',

@@ -5,7 +5,7 @@ import { formatDate } from '@/utils/dateUtils';
 import useCalculationStore from '@/store/calculationStore';
 import { useDisclosure } from '@mantine/hooks';
 import { DatePicker } from '@mantine/dates';
-import CalendarIndicator from '../../ui/CalendarIndicator';
+import CalendarIndicator from '../../../components/ui/CalendarIndicator';
 import CalendarModal from '@/app/features/calender/components/CalendarModal';
 import DayRecord from '@/app/features/calender/components/DayRecord';
 import NotDayRecord from '@/app/features/calender/components/NotDayRecord';

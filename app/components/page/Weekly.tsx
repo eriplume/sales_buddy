@@ -1,4 +1,4 @@
-import StepForm from "../../../features/weekly/components/StepForm"
+import StepForm from "../../features/weekly/components/StepForm"
 
 export default function Weekly() {
   return (

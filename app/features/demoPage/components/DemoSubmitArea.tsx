@@ -1,9 +1,9 @@
 "use client"
 import useCalculationStore from "@/store/calculationStore";
 import { showErrorNotification } from "@/utils/notifications";
-import { TriangleIcon } from "../../ui/icon/Triangle";
-import SubmitButton from "../../ui/button/SubmitButton";
-import ClearButton from "../../ui/button/ClearButton";
+import { TriangleIcon } from "../../../components/ui/icon/Triangle";
+import SubmitButton from "../../../components/ui/button/SubmitButton";
+import ClearButton from "../../../components/ui/button/ClearButton";
 import CurrentData from "@/app/features/dairyrecord/components/CurrentData";
 import CurrentDate from "@/app/features/dairyrecord/components/CurrentDate";
 import CustomersList from "@/app/features/dairyrecord/components/CustomersList";

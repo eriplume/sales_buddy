@@ -6,12 +6,12 @@ import { weeklyReportsDemo, monthlyReportsDemo } from "@/const/demoData";
 import { showErrorNotification } from "@/utils/notifications";
 import { Button } from "@mantine/core";
 import { PaperAirplaneIcon, ArrowRightCircleIcon  } from "@heroicons/react/24/outline";
-import { TriangleIcon } from "../../ui/icon/Triangle"
-import HelpMordal from "../../ui/HelpMordal";
-import HelpPage from "../../../features/report/components/HelpPage";
-import MonthPicker from "../../ui/MonthPicker";
-import ReportList from "../../../features/report/components/WeekList";
-import MonthlySummary from "../../../features/report/components/MonthlySummary";
+import { TriangleIcon } from "../../../components/ui/icon/Triangle"
+import HelpMordal from "../../../components/ui/HelpMordal";
+import HelpPage from "../../report/components/HelpPage";
+import MonthPicker from "../../../components/ui/MonthPicker";
+import ReportList from "../../report/components/WeekList";
+import MonthlySummary from "../../report/components/MonthlySummary";
 
 export default function DemoReportArchive() {
   const [value, setValue] = useState<Date | null>(new Date());

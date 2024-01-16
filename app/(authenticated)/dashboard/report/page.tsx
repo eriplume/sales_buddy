@@ -1,4 +1,4 @@
-import Report from "@/app/components/page/Report/Report"
+import Report from "@/app/components/page/Report"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {

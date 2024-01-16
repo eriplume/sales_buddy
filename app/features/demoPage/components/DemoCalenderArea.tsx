@@ -1,7 +1,7 @@
 "use client"
 import { Tabs } from '@mantine/core';
-import { TriangleIcon } from "../../ui/icon/Triangle";
-import HelpMordal from "../../ui/HelpMordal";
+import { TriangleIcon } from "../../../components/ui/icon/Triangle";
+import HelpMordal from "../../../components/ui/HelpMordal";
 import HelpPage from '@/app/features/dashboard/components/HelpPage';
 import DemoSalesCalendar from './DemoSalesCalendar';
 import DemoJobsCalendar from './DemoJobsCalendar';

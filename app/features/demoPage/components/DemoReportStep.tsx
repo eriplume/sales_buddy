@@ -3,10 +3,10 @@ import { getStartOfWeek, getEndOfWeek, isDateInRanges } from '@/utils/dateUtils'
 import { registeredReportRangesDemo, progressDemo, progressPercentDemo, targetDemo, thisWeekAmountDemo, thisWeekNumberDemo, thisWeekCountDemo, thisWeekAverageDemo,thisWeekSetDemo } from "@/const/demoData";
 import useWeeklyStore from '@/store/weeklyStore';
 import { PencilIcon } from '@heroicons/react/24/outline';
-import ReportInputForm from '../../../features/weekly/components/ReportInput';
-import HelpMordal from '../../ui/HelpMordal';
+import ReportInputForm from '../../weekly/components/ReportInput';
+import HelpMordal from '../../../components/ui/HelpMordal';
 import HelpPage from '@/app/features/weekly/components/HelpPage';
-import WeekPicker from '../../ui/WeekPicker';
+import WeekPicker from '../../../components/ui/WeekPicker';
 import ThisWeekAchievements from '@/app/features/weekly/components/ThisWeekAchievements';
 
 export default function DemoReportStep() {

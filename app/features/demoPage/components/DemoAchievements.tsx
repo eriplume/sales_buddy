@@ -2,13 +2,13 @@
 import { useState } from "react";
 import { formatDateYM } from "@/utils/dateUtils";
 import { calculateTotal, calculateSetRate, calculateAverage } from "@/utils/calculateUtils";
-import MonthPicker from "../../ui/MonthPicker";
-import { TriangleIcon } from "../../ui/icon/Triangle";
+import MonthPicker from "../../../components/ui/MonthPicker";
+import { TriangleIcon } from "../../../components/ui/icon/Triangle";
 import { salesRecordsDemo } from "@/const/demoData";
-import MonthlyRecord from "../../../features/achievements/components/MonthlyAchievement";
-import RecordList from "../../../features/achievements/components/WeekList";
+import MonthlyRecord from "../../achievements/components/MonthlyAchievement";
+import RecordList from "../../achievements/components/WeekList";
 
-export default function DemoMonthlyArchive() {
+export default function DemoAchievements() {
   const [value, setValue] = useState<Date | null>(new Date());
   const targetMonth = formatDateYM(value);
   

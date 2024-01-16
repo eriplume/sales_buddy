@@ -1,4 +1,4 @@
-import Top from "../components/page/Top/Top"
+import Top from "../components/page/Top"
 import Footer from "../components/base/Footer"
 
 export default function page() {
@@ -6,6 +6,6 @@ export default function page() {
     <>
       <Top />
       <Footer />
-  </>
+    </>
   )
 }

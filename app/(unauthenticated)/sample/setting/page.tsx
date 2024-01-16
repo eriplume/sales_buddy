@@ -1,11 +1,5 @@
-import DemoSetting from '@/app/components/page/Demo/DemoSetting'
+import SettingDemo from '@/app/components/page/Sample/SettingDemo'
 
 export default function page() {
-  return (
-    <>
-      <div className="flex flex-col justify-center items-center mx-auto px-6 z-0 max-w-4xl my-20">
-        <DemoSetting />
-      </div>
-    </>
-  )
+  return <SettingDemo />
 }

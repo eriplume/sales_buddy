@@ -1,5 +1,5 @@
-import DemoCalenderArea from "../Demo/DemoCalenderArea"
-import DemoProgressArea from "../Demo/DemoProgressArea"
+import DemoCalenderArea from "@/app/features/demoPage/components/DemoCalenderArea"
+import DemoProgressArea from "@/app/features/demoPage/components/DemoProgressArea"
 
 export default function DashboardDemo() {
   return (

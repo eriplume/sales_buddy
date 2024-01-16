@@ -1,4 +1,4 @@
-import { Breadcrumbs } from "../../ui/Breadcrumbs"
+import { Breadcrumbs } from "../ui/Breadcrumbs"
 import ReportsIndex from "@/app/features/report/components/ReportsIndex"
 
 export default function Report() {
