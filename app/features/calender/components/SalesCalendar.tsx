@@ -1,19 +1,16 @@
 "use client"
 import { useMemo } from 'react';
-import { useFetchData } from '@/lib/useFetch';
 import { formatDate } from '@/utils/dateUtils';
 import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
 import { useDisclosure } from '@mantine/hooks';
 import { DatePicker } from '@mantine/dates';
-import CalendarIndicator from '../../ui/CalendarIndicator';
+import CalendarIndicator from '../../../components/ui/CalendarIndicator';
 import DayRecord from './DayRecord';
 import NotDayRecord from './NotDayRecord';
 import CalendarModal from './CalendarModal';
 
 export default function SalesCalender() {
-  useFetchData();
-  
   const [opened, { open, close }] = useDisclosure(false);
   const { selectedDate, setSelectedDate } = useCalculationStore();
   const { salesRecords } = useDashboardStore((state) => ({ salesRecords: state.salesRecords }));

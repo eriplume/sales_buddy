@@ -1,9 +1,9 @@
 import { targetDemo, progressDemo, thisWeekAmountDemo, progressPercentDemo } from "@/const/demoData";
 import { formatCurrency } from "@/utils/currencyUtils";
 import { ForwardIcon } from "@heroicons/react/24/outline";
-import WeeklyRingProgress from "../DashBoard/WeeklyRingProgress";
-import WeeklyProgress from "../DashBoard/WeeklyProgress";
-import { ContentsLinkDemo } from "../DashBoard/ContentsLink";
+import WeeklyRingProgress from "@/app/features/weekProgress/components/WeeklyRingProgress";
+import WeeklyProgress from "@/app/features/weekProgress/components/WeeklyProgress";
+import { ContentsLinkDemo } from "@/app/features/dashboard/components/ContentsLink";
 
 export default function DemoProgressArea() {
   return (

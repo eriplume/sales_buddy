@@ -5,8 +5,8 @@ import { formatDate } from '@/utils/dateUtils';
 import { jobsRecordsDemo, jobsDatesDemo } from "@/const/demoData";
 import { DatePicker } from '@mantine/dates';
 import CalendarIndicator from '../../ui/CalendarIndicator';
-import CalendarModal from '../DashBoard/CalendarModal';
-import JobRecord from '../DashBoard/JobRecord';
+import CalendarModal from '@/app/features/calender/components/CalendarModal';
+import JobRecord from '@/app/features/calender/components/JobRecord';
 import DemoNotJobRecord from './DemoNotJobRecord';
 
 export default function DemoJobsCalendar() {

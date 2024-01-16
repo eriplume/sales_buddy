@@ -6,9 +6,9 @@ import useCalculationStore from '@/store/calculationStore';
 import { useDisclosure } from '@mantine/hooks';
 import { DatePicker } from '@mantine/dates';
 import CalendarIndicator from '../../ui/CalendarIndicator';
-import CalendarModal from '../DashBoard/CalendarModal';
-import DayRecord from '../DashBoard/DayRecord';
-import NotDayRecord from '../DashBoard/NotDayRecord';
+import CalendarModal from '@/app/features/calender/components/CalendarModal';
+import DayRecord from '@/app/features/calender/components/DayRecord';
+import NotDayRecord from '@/app/features/calender/components/NotDayRecord';
 
 export default function DemoSalesCalendar() {
 

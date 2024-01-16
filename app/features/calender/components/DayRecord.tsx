@@ -2,7 +2,7 @@ import { SalesRecord } from "@/types";
 import { formatCurrency } from "@/utils/currencyUtils";
 import {  CurrencyYenIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon,UserIcon,UsersIcon } from "@heroicons/react/24/solid";
-import { SolidShirtIcon } from "../../ui/icon/ShirtIcon";
+import { SolidShirtIcon } from "../../../components/ui/icon/ShirtIcon";
 
 type DayRecordProps = {
   record: SalesRecord;

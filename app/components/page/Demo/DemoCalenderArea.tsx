@@ -2,7 +2,7 @@
 import { Tabs } from '@mantine/core';
 import { TriangleIcon } from "../../ui/icon/Triangle";
 import HelpMordal from "../../ui/HelpMordal";
-import HelpPage from '../DashBoard/HelpPage';
+import HelpPage from '@/app/features/dashboard/components/HelpPage';
 import DemoSalesCalendar from './DemoSalesCalendar';
 import DemoJobsCalendar from './DemoJobsCalendar';
 

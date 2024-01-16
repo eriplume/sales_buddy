@@ -5,7 +5,7 @@ import useDashboardStore from '@/store/dashboardStore';
 import { formatDate } from '@/utils/dateUtils';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import JobsInput from "./JobsInput";
-import SubmitButton from '../../ui/button/SubmitButton';
+import SubmitButton from '../../../components/ui/button/SubmitButton';
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 

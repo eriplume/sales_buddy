@@ -1,10 +1,10 @@
 "use client"
 import { Tabs } from '@mantine/core';
-import { TriangleIcon } from "../../ui/icon/Triangle";
+import { TriangleIcon } from "../../../components/ui/icon/Triangle";
 import SalesCalender from "./SalesCalendar"
 import JobsCalender from "./JobsCalendar";
-import HelpMordal from "../../ui/HelpMordal";
-import HelpPage from "./HelpPage";
+import HelpMordal from "../../../components/ui/HelpMordal";
+import HelpPage from "../../dashboard/components/HelpPage";
 
 export default function CalenderArea() {
   return (

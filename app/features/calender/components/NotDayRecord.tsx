@@ -1,4 +1,4 @@
-import RouterButton from "../../ui/button/RouterButton"
+import RouterButton from "../../../components/ui/button/RouterButton"
 
 type NotDayRecordProps = {
   path: string;

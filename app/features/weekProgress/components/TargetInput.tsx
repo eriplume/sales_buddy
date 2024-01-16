@@ -4,8 +4,8 @@ import { showSuccessNotification, showErrorNotification } from "@/utils/notifica
 import useWeeklyStore from '@/store/weeklyStore';
 import useDashboardStore from "@/store/dashboardStore";
 import { CalendarIcon } from "@heroicons/react/24/outline";
-import SubmitButton from "../../ui/button/SubmitButton"
-import TargetInputForm from "../../../features/weekly/components/TargetInputForm"
+import SubmitButton from "../../../components/ui/button/SubmitButton"
+import TargetInputForm from "../../weekly/components/TargetInputForm"
 
 type TargetInputProps = {
   close: () => void;

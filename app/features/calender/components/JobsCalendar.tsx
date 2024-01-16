@@ -1,18 +1,15 @@
 "use client"
 import { useMemo, useState } from 'react';
-import { useFetchJobs } from '@/lib/useFetch';
 import { formatDate } from '@/utils/dateUtils';
 import useDashboardStore from '@/store/dashboardStore';
 import { useDisclosure } from '@mantine/hooks';
 import { DatePicker } from '@mantine/dates';
-import CalendarIndicator from '../../ui/CalendarIndicator';
+import CalendarIndicator from '../../../components/ui/CalendarIndicator';
 import CalendarModal from './CalendarModal';
 import JobRecord from './JobRecord';
 import NotJobRecord from './NotJobRecord';
 
-export default function JobsCalender() {
-  useFetchJobs();
-  
+export default function JobsCalender() {  
   const [ opened, { open, close } ] = useDisclosure(false);
   const [ selectedDate, setSelectedDate ] = useState<Date | null>(null);
   const { jobsRecords } = useDashboardStore((state) => ({ jobsRecords: state.jobsRecords }));

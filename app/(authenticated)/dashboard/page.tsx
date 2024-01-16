@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Dashboard from "@/app/components/page/DashBoard/Dashboard";
+import Dashboard from "@/app/components/page/Dashboard";
 
 export const metadata: Metadata = {
   title: 'dashboard',
