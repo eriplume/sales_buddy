@@ -33,7 +33,7 @@ export default function DemoTargetStep() {
       <div className="flex flex-row justify-center items-center w-full">
         <div className="flex w-full p-2 mx-aut justify-center">
           <div className="w-60 md:w-full overflow-auto">
-            <TargetInputForm />
+            <TargetInputForm registeredTargetRanges={registeredTargetRangesDemo}/>
           </div>
         </div>
       </div>

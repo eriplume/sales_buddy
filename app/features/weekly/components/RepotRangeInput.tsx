@@ -6,7 +6,7 @@ import WeekPicker from '../../../components/ui/WeekPicker';
 
 export default function ReportRangeInput() {
   const { contentDateRange, setContentDateRange } = useWeeklyStore();
-  const { registeredReportRanges } = useDashboardStore((state) => ({ registeredReportRanges: state.registeredReportRanges }));
+  const { registeredReportRanges } = useDashboardStore();
 
   const handleChange = (newValue: [Date | null, Date | null]) => {
     // 新しい週の範囲を計算してセットする

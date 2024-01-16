@@ -13,6 +13,7 @@ type TargetInputProps = {
 
 export default function TargetInput({close} :TargetInputProps) {
   const { target, clearData } = useWeeklyStore();
+  const { registeredTargetRanges } = useDashboardStore();
   const { fetchWeeklyTarget } = useDashboardStore((state) => ({fetchWeeklyTarget: state.fetchWeeklyTarget}));
   const { start, end } = getThisWeekRange();
 
@@ -47,7 +48,7 @@ export default function TargetInput({close} :TargetInputProps) {
         </div>
       </div>
       <div className="flex p-2 mx-5 justify-center">
-        <TargetInputForm />
+        <TargetInputForm registeredTargetRanges={registeredTargetRanges}/>
       </div>
       <div className="flex p-2 mr-5 justify-end mt-2">
         <SubmitButton size="sm" type="submit" onClick={handleSubmit} />

@@ -7,7 +7,7 @@ import HelpMordal from '../../../components/ui/HelpMordal';
 import HelpPage from './HelpPage';
 
 export default function ReportStep() {
-  const { thisWeekTarget, thisWeekAmount, thisWeekNumber, thisWeekCount, thisWeekSet, thisWeekAverage } = useDashboardStore();
+  const { thisWeekTarget, thisWeekAmount, thisWeekNumber, thisWeekCount, thisWeekSet, thisWeekAverage, registeredReportRanges } = useDashboardStore();
   const { progressPercent, progress } = useDashboardStore((state) => state.getThisWeekProgress());
 
   return (
@@ -28,7 +28,7 @@ export default function ReportStep() {
       <div className="flex flex-row justify-center items-center w-full mt-3">
         <div className="flex w-full py-2 justify-center">
           <div className="w-full">
-            <ReportInputForm/>
+            <ReportInputForm registeredReportRanges={registeredReportRanges}/>
           </div>
         </div>
       </div>
