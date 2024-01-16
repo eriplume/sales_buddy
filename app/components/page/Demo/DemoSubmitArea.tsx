@@ -4,9 +4,9 @@ import { showErrorNotification } from "@/utils/notifications";
 import { TriangleIcon } from "../../ui/icon/Triangle";
 import SubmitButton from "../../ui/button/SubmitButton";
 import ClearButton from "../../ui/button/ClearButton";
-import CurrentData from "../DairyRecord/CurrentData";
-import CurrentDate from "../DairyRecord/CurrentDate";
-import CustomersList from "../DairyRecord/CustomersList";
+import CurrentData from "@/app/features/dairyrecord/components/CurrentData";
+import CurrentDate from "@/app/features/dairyrecord/components/CurrentDate";
+import CustomersList from "@/app/features/dairyrecord/components/CustomersList";
 
 export default function DemoSubmitArea() {
   const { clearData, submitData } = useCalculationStore();

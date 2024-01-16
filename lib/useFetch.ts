@@ -18,14 +18,7 @@ export const useFetchData = () => {
   }, [fetchSalesRecord, fetchWeeklyTarget, fetchWeeklyReport, fetchOptions, fetchCustomersRecord]);
 }
 
-export const useFetchForCalculator = () => {
-  const fetchSalesRecord = useDashboardStore((state) => state.fetchSalesRecord);
-  const fetchOptions = useCalculationStore((state) => state.fetchOptions);
-  useEffect(() => {
-    fetchSalesRecord();
-    fetchOptions();
-  }, [fetchSalesRecord,fetchOptions]);
-}
+
 
 export const useFetchJobs = () => {
   const fetchJobsRecord = useDashboardStore((state) => state.fetchJobsRecord);

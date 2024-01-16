@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/utils/currencyUtils";
 import useCalculationStore from '@/store/calculationStore';
 import { UserIcon, CurrencyYenIcon } from "@heroicons/react/24/outline";
-import { ShirtIcon } from '../../ui/icon/ShirtIcon';
+import { ShirtIcon } from '../../../components/ui/icon/ShirtIcon';
 import CustomersHoverCard from './CustomersHoverCard';
 
 export default function CurrentData() {

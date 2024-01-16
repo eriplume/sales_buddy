@@ -5,13 +5,13 @@ import useCalculationStore from '@/store/calculationStore';
 import useDashboardStore from '@/store/dashboardStore';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import CurrentData from './CurrentData';
-import ClearButton from '../../ui/button/ClearButton';
-import SubmitButton from '../../ui/button/SubmitButton';
+import ClearButton from '../../../components/ui/button/ClearButton';
+import SubmitButton from '../../../components/ui/button/SubmitButton';
 import CurrentDate from './CurrentDate';
 import CustomersList from './CustomersList';
-import { TriangleIcon } from '../../ui/icon/Triangle';
+import { TriangleIcon } from '../../../components/ui/icon/Triangle';
 
-export default function Submit() {
+export default function SubmitArea() {
   const router = useRouter()
   const { clearData, submitData } = useCalculationStore();
   const { fetchSalesRecord } = useDashboardStore((state) => ({fetchSalesRecord: state.fetchSalesRecord,}));

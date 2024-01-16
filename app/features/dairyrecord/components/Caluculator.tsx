@@ -1,16 +1,16 @@
 "use client"
-import { useFetchForDemo } from '@/lib/useFetch';
-import { salesDatesDemo } from "@/const/demoData";
 import { Tabs } from '@mantine/core';
-import { TriangleIcon } from '../../ui/icon/Triangle';
-import HelpMordal from '../../ui/HelpMordal';
-import Datepicker from '../DairyRecord/DatePicker';
-import HelpPage from '../DairyRecord/HelpPage';
-import RecordInputForm from '../DairyRecord/RecordInputForm';
+import { TriangleIcon } from '../../../components/ui/icon/Triangle';
+import HelpMordal from '../../../components/ui/HelpMordal';
+import RecordInputForm from './RecordInputForm';
+import Datepicker from './DatePicker';
+import HelpPage from './HelpPage';
 
-export default function DemoCaluculator() {
-  useFetchForDemo();
+type CaluculatorProps = {
+  salesDates: string[];
+}
 
+export default function Caluculator({salesDates}: CaluculatorProps) {
   return (
     <>
       <div className="flex flex-col w-full max-w-lg">
@@ -36,7 +36,7 @@ export default function DemoCaluculator() {
           <Tabs.Panel value="sales">
             <div className="bg-white px-7 pb-3 shadow-md rounded-b-sm border-x flex flex-col">
               <div className="w-full px-3 pb-2 pt-4">
-                <Datepicker salesDates={salesDatesDemo}/>
+                <Datepicker salesDates={salesDates} />
               </div>
             </div>
           </Tabs.Panel>

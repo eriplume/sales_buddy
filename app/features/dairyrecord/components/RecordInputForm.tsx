@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import useCalculationStore from '@/store/calculationStore';
 import { NumberInput, Select } from '@mantine/core';
-import PlusButton from '../../ui/button/PlusButton';
+import PlusButton from '../../../components/ui/button/PlusButton';
 
 type FormValues = {
   number: number;
