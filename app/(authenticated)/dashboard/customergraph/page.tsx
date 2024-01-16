@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import CustomerGraph from '@/app/components/page/CustomerGraph/CustomerGraph';
+import CustomerGraph from '@/app/components/page/CustomerGraph';
 
 export const metadata: Metadata = {
   title: 'graph',

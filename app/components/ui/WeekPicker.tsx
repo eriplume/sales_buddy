@@ -4,7 +4,7 @@ import { rem } from '@mantine/core';
 import { CalendarIcon } from "@heroicons/react/24/outline";
 
 type WeekPickerProps = {
-  value: [Date, Date];
+  value: [Date | null, Date | null];
   handleChange: (newValue: [Date | null, Date | null]) => void;
   excludeDate: (date: Date) => boolean;
   maxDate?: Date;
@@ -20,7 +20,7 @@ export default function WeekPicker({ value, excludeDate, handleChange, maxDate }
         leftSection={icon}
         label="週の選択"
         type="range"
-        size="xs"
+        size="sm"
         placeholder="Pick dates range"
         valueFormat= "MM / DD   (ddd)"
         value={value}

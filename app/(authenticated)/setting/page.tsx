@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import Setting from "@/app/components/page/Setting/Setting"
+import Setting from "@/app/components/page/Setting"
 
 export const metadata: Metadata = {
   title: 'setting',
