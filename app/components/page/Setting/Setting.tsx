@@ -1,4 +1,4 @@
-import Steps from "./Steps"
+import Steps from "@/app/features/setting/components/Steps"
 
 export default function Setting() {
   return (

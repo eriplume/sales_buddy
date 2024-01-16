@@ -6,5 +6,9 @@ type LoadingProps = {
 };
 
 export default function Loading({ size }: LoadingProps) {
-  return <Loader color="gray" type="dots" size={size}/>;
+  return(
+    <div className="flex justify-center items-center">
+      <Loader color="gray" type="dots" size={size}/>
+    </div>
+  ) 
 }

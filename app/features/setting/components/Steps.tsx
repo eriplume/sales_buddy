@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import axios from 'axios'
 import { showSuccessNotification, showErrorNotification, showCautionNotification } from "@/utils/notifications";
-import { TriangleIcon } from "../../ui/icon/Triangle"
+import { TriangleIcon } from "../../../components/ui/icon/Triangle"
 import { BellAlertIcon } from "@heroicons/react/24/outline";
 import AlertSelect from "./AlertSelect";
 

@@ -1,6 +1,6 @@
 import { Radio, Group, Button} from '@mantine/core';
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
-import { TriangleIcon } from '../../ui/icon/Triangle';
+import { TriangleIcon } from '../../../components/ui/icon/Triangle';
 
 type AlertSelectProps = {
   handleUpdate: () => Promise<void>;
