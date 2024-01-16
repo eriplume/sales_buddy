@@ -3,7 +3,7 @@ import { getStartOfWeek, getEndOfWeek, isDateInRanges } from '@/utils/dateUtils'
 import useWeeklyStore from '@/store/weeklyStore';
 import { registeredTargetRangesDemo } from "@/const/demoData";
 import { FireIcon } from '@heroicons/react/24/outline';
-import TargetInputForm from '../WeeklyTarget/TargetInputForm';
+import TargetInputForm from '@/app/features/weekly/components/TargetInputForm';
 import WeekPicker from '../../ui/WeekPicker';
 
 export default function DemoTargetStep() {

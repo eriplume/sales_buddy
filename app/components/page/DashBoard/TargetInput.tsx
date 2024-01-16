@@ -5,7 +5,7 @@ import useWeeklyStore from '@/store/weeklyStore';
 import useDashboardStore from "@/store/dashboardStore";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import SubmitButton from "../../ui/button/SubmitButton"
-import TargetInputForm from "../WeeklyTarget/TargetInputForm"
+import TargetInputForm from "../../../features/weekly/components/TargetInputForm"
 
 type TargetInputProps = {
   close: () => void;

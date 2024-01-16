@@ -1,13 +1,13 @@
 import dayjs from 'dayjs';
 import { getStartOfWeek, getEndOfWeek, isDateInRanges } from '@/utils/dateUtils';
-import { registeredReportRangesDemo } from "@/const/demoData";
+import { registeredReportRangesDemo, progressDemo, progressPercentDemo, targetDemo, thisWeekAmountDemo, thisWeekNumberDemo, thisWeekCountDemo, thisWeekAverageDemo,thisWeekSetDemo } from "@/const/demoData";
 import useWeeklyStore from '@/store/weeklyStore';
 import { PencilIcon } from '@heroicons/react/24/outline';
-import ReportInputForm from '../WeeklyReport.tsx/ReportInput';
+import ReportInputForm from '../../../features/weekly/components/ReportInput';
 import HelpMordal from '../../ui/HelpMordal';
-import HelpPage from '../StepForm/HelpPage';
-import DemoArchive from './DemoArchive';
+import HelpPage from '@/app/features/weekly/components/HelpPage';
 import WeekPicker from '../../ui/WeekPicker';
+import ThisWeekAchievements from '@/app/features/weekly/components/ThisWeekAchievements';
 
 export default function DemoReportStep() {
   const { contentDateRange, setContentDateRange } = useWeeklyStore();
@@ -40,7 +40,7 @@ export default function DemoReportStep() {
       <div className="flex space-y-3 w-full px-1">
         <WeekPicker value={contentDateRange} handleChange={handleChange} excludeDate={excludeDate} maxDate={maxDate}/>
       </div>
-      <DemoArchive />
+      <ThisWeekAchievements target={targetDemo} amount={thisWeekAmountDemo} number={thisWeekNumberDemo} count={thisWeekCountDemo} set={thisWeekSetDemo} average={thisWeekAverageDemo} progressPercent={progressPercentDemo} progress={progressDemo}/>
       <div className="flex flex-row justify-center items-center w-full mt-3">
         <div className="flex w-full py-2 justify-center">
           <div className="w-full">

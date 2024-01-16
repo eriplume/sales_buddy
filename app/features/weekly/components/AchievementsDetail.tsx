@@ -1,7 +1,7 @@
 import { formatCurrency } from "@/utils/currencyUtils";
 import { CurrencyYenIcon } from "@heroicons/react/24/outline";
 import { ShoppingBagIcon,UserIcon,UsersIcon, FlagIcon, PlusIcon, MinusIcon } from "@heroicons/react/24/solid";
-import { SolidShirtIcon } from "../../ui/icon/ShirtIcon";
+import { SolidShirtIcon } from "../../../components/ui/icon/ShirtIcon";
 
 type AchievementsDetailProps = {
   target: number | null;

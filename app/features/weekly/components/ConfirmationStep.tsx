@@ -2,7 +2,7 @@ import useWeeklyStore from '@/store/weeklyStore';
 import { formatDateMD } from '@/utils/dateUtils';
 import { CheckBadgeIcon, CalendarIcon } from "@heroicons/react/24/outline";
 
-export default function Confirmation() {
+export default function ConfirmationStep() {
   const { target, getWeeklyReportData, getWeeklyTargetData } = useWeeklyStore();
   const { weekly_report } = getWeeklyReportData();
   const { weekly_target } = getWeeklyTargetData();

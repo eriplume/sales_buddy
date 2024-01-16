@@ -2,21 +2,18 @@
 import axios from 'axios'
 import { useState } from 'react';
 import { useRouter } from 'next/navigation'
-import { useFetchForWeekly } from '@/lib/useFetch';
+import { useFetch } from '../hooks/useWeekly';
 import useWeeklyStore from '@/store/weeklyStore';
 import useDashboardStore from '@/store/dashboardStore';
 import { showErrorNotification, showSuccessNotification, showCautionNotification } from '@/utils/notifications';
-import Target from './Target';
-import ReportStep from './ReportStep';
-import Confirmation from './Confirmation';
-import StepperIcon from './StepperIcon';
-import BackButton from '../../ui/button/BackButton';
-import NextButton from '../../ui/button/NextButton';
-import SkipButton from '../../ui/button/SkipButton';
-import SubmitButton from '../../ui/button/SubmitButton';
+import Stepper from './Stepper';
+import BackButton from '../../../components/ui/button/BackButton';
+import NextButton from '../../../components/ui/button/NextButton';
+import SkipButton from '../../../components/ui/button/SkipButton';
+import SubmitButton from '../../../components/ui/button/SubmitButton';
 
 export default function StepForm() {
-  useFetchForWeekly();
+  useFetch();
   const router = useRouter()
   const { target, setTarget, clearData, validateTarget, validateContent, getWeeklyReportData, getWeeklyTargetData } = useWeeklyStore();
   const { fetchWeeklyTarget } = useDashboardStore((state) => ({fetchWeeklyTarget: state.fetchWeeklyTarget}));
@@ -93,51 +90,27 @@ export default function StepForm() {
   };
 
   return (
-    <>
-      <div>
-        {/* ステッパー */}
-        <StepperIcon active={active}/>
-
-        {/* コンテンツ */}
-        <div>
-          {active === 0 && (
-            <div className='flex flex-col justify-center'>
-              <ReportStep/>
-            </div>
-          )}
-          {active === 1 && (
-            <div className='flex flex-col justify-center'>
-              <Target />
-            </div>
-          )}
-          {active === 2 && (
-            <div className='flex flex-col justify-center'>
-              <Confirmation/>
-            </div>
-          )}
-        </div>
-
-        {/* ボタン */}
-        <div className='flex flex-col md:flex-row justify-center pt-2'>
-          { active == 1 && (
-            <div className="flex justify-center md:justify-end mt-4">
-              <SkipButton size='sm' onClick={handleSkip}>
-                目標設定をスキップする
-              </SkipButton>
-            </div>
-          )}
-          <div className="flex flex-row justify-center mt-4 gap-3 md:px-4">
-            { active > 0 && (
-              <BackButton size='sm' onClick={prevStep}/>
-            )}
-            {active < 2 ? (
-              <NextButton size='sm' onClick={nextStep}/>
-            ) : (
-              <SubmitButton size='sm' onClick={handleSubmit}/>
-            )}
+    <div>
+      <Stepper active={active}/>
+      <div className='flex flex-col md:flex-row justify-center pt-2'>
+        { active == 1 && (
+          <div className="flex justify-center md:justify-end mt-4">
+            <SkipButton size='sm' onClick={handleSkip}>
+              目標設定をスキップする
+            </SkipButton>
           </div>
+        )}
+        <div className="flex flex-row justify-center mt-4 gap-3 md:px-4">
+          { active > 0 && (
+            <BackButton size='sm' onClick={prevStep}/>
+          )}
+          {active < 2 ? (
+            <NextButton size='sm' onClick={nextStep}/>
+          ) : (
+            <SubmitButton size='sm' onClick={handleSubmit}/>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 }

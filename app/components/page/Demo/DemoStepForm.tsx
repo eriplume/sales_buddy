@@ -2,14 +2,11 @@
 import { useState } from "react";
 import useWeeklyStore from "@/store/weeklyStore";
 import { showErrorNotification, showCautionNotification } from "@/utils/notifications";
-import StepperIcon from "../StepForm/StepperIcon";
+import DemoStepper from "./DemoStepper";
 import SkipButton from "../../ui/button/SkipButton";
 import BackButton from "../../ui/button/BackButton";
 import NextButton from "../../ui/button/NextButton";
 import SubmitButton from "../../ui/button/SubmitButton";
-import Confirmation from "../StepForm/Confirmation";
-import DemoReportStep from "./DemoReportStep";
-import DemoTargetStep from "./DemoTargetStep";
 
 export default function DemoStepForm() {
   const { setTarget, validateTarget, validateContent } = useWeeklyStore();
@@ -62,24 +59,7 @@ export default function DemoStepForm() {
   return (
     <>
       <div>
-        <StepperIcon active={active}/>
-          <div>
-            {active === 0 && (
-              <div className='flex flex-col justify-center'>
-                <DemoReportStep />
-              </div>
-            )}
-            {active === 1 && (
-              <div className='flex flex-col justify-center'>
-                <DemoTargetStep />
-              </div>
-            )}
-            {active === 2 && (
-              <div className='flex flex-col justify-center'>
-                <Confirmation/>
-              </div>
-            )}
-          </div>
+        <DemoStepper active={active}/>
           <div className='flex flex-col md:flex-row justify-center pt-2'>
             { active == 1 && (
               <div className="flex justify-center md:justify-end mt-4">

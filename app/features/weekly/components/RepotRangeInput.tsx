@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { getStartOfWeek, getEndOfWeek, isDateInRanges } from '@/utils/dateUtils';
 import useDashboardStore from '@/store/dashboardStore';
 import useWeeklyStore from '@/store/weeklyStore';
-import WeekPicker from '../../ui/WeekPicker';
+import WeekPicker from '../../../components/ui/WeekPicker';
 
 export default function ReportRangeInput() {
   const { contentDateRange, setContentDateRange } = useWeeklyStore();

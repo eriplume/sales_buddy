@@ -1,15 +1,24 @@
 'use client'
 import { getThisWeekRange, formatDateMD } from "@/utils/dateUtils";
-import useDashboardStore from "@/store/dashboardStore";
 import { useDisclosure } from '@mantine/hooks';
 import { ActionIcon, Modal } from '@mantine/core';
 import { CursorArrowRaysIcon } from "@heroicons/react/24/solid";
 import { CalendarIcon } from "@heroicons/react/24/outline";
 import AchievementsDetail from "./AchievementsDetail";
 
-export default function Achievements() {
-  const { thisWeekTarget, thisWeekAmount, thisWeekNumber, thisWeekCount, thisWeekSet, thisWeekAverage } = useDashboardStore();
-  const { progressPercent, progress } = useDashboardStore((state) => state.getThisWeekProgress());
+type ThisWeekProps = {
+  target: number;
+  amount: number;
+  number: number;
+  count: number;
+  set: number;
+  average: number;
+  progress: number;
+  progressPercent: number;
+}
+
+export default function ThisWeekAchievements({target, amount, number, count, set, average, progress, progressPercent}: ThisWeekProps) {
+
   const [opened, { open, close }] = useDisclosure(false);
 
   const modalTitle = () => {
@@ -56,12 +65,12 @@ export default function Achievements() {
       </div>
       <Modal opened={opened} onClose={close} title={modalTitle()} centered >
         <AchievementsDetail
-          target={thisWeekTarget}
-          amount={thisWeekAmount}
-          number={thisWeekNumber}
-          count={thisWeekCount}
-          set={thisWeekSet}
-          average={thisWeekAverage}
+          target={target}
+          amount={amount}
+          number={number}
+          count={count}
+          set={set}
+          average={average}
           progressPercent={progressPercent}
           progress={progress}
         />

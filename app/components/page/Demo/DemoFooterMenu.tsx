@@ -71,7 +71,7 @@ export default function DemoFooterMenu() {
         <div className="w-1/4 p-2">
           <div className='flex flex-col justify-center items-center text-gray-400' onClick={handleClickTeam}>
             <UsersIcon className="w-7 h-8" />
-            <div className='text-xs text-gray-600 mt-1'>group</div>
+            <div className='text-xs text-gray-600 mt-1'>team</div>
           </div>
         </div>
         <div className="w-1/4 p-2">

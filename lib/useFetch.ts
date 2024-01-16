@@ -36,16 +36,7 @@ export const useFetchJobs = () => {
 
 
 
-export const useFetchForWeekly = () => {
-  const fetchSalesRecord = useDashboardStore((state) => state.fetchSalesRecord);
-  const fetchWeeklyReport = useDashboardStore((state) => state.fetchWeeklyReport);
-  const fetchWeeklyTarget = useDashboardStore((state) => state.fetchWeeklyTarget);
-  useEffect(() => {
-    fetchSalesRecord();
-    fetchWeeklyReport();
-    fetchWeeklyTarget();
-  }, [fetchSalesRecord, fetchWeeklyReport, fetchWeeklyTarget]);
-}
+
 
 
 
