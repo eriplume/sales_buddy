@@ -1,5 +1,5 @@
 export { default } from "next-auth/middleware";
 
 export const config = {
-  matcher: ["/(dashboard|about|dairyrecord|setting|teams|weekly)/:path*"],
+  matcher: ["/(dashboard|about|dairyrecord|setting|teams|dm_temas|weekly)/:path*"],
 };
