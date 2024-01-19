@@ -1,4 +1,3 @@
-"use client"
 import { UsersIcon } from "@heroicons/react/24/outline"
 import Form from "@/app/features/teamJoin/components/Form"
 
@@ -12,7 +11,7 @@ export default function OrganizeTeam() {
           <span className="mx-1 text-lg text-gray-700">チームを作る</span>
         </div>
         <div className="flex space-y-4 w-full p-2 mx-auto">
-          <Form />
+          <Form apiEndpoint="createTeam"/>
         </div>
       </div>
     </div>

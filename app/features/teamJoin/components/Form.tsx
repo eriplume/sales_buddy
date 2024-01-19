@@ -1,6 +1,7 @@
 "use client"
 import axios from 'axios'
 import { z } from 'zod';
+import { useRouter } from 'next/navigation';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { TextInput, PasswordInput } from "@mantine/core"
@@ -10,7 +11,7 @@ import { TriangleIcon } from '@/app/components/ui/icon/Triangle';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 
 type FormProps = {
-  onSubmit: () => void;
+  apiEndpoint: string
 }
 
 type FormValues = {
@@ -26,7 +27,10 @@ const schema  = z.object({
             .regex(/^[A-Za-z0-9]+$/, { message: '半角英数で入力してください' }),
 });
 
-export default function Form() {
+export default function Form({apiEndpoint}: FormProps) {
+  const router = useRouter();
+  const endpoint = apiEndpoint;
+
   const form = useForm({
     initialValues: {
       name: '',
@@ -59,13 +63,14 @@ export default function Form() {
 
   const handleSubmit = async (values: FormValues) => { 
     try {
-      await axios.post(`/features/teamJoin/api`, {
+      await axios.post(`/features/teamJoin/api/${endpoint}`, {
         group: {
           name: values.name,
           password: values.keyword,
         },
       });
       showSuccessNotification(`登録しました`);
+      router.push('/teams')
     } catch (error) {
       showErrorNotification('登録に失敗しました');
     }

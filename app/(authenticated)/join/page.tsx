@@ -1,3 +1,4 @@
+import JoinTeam from "@/app/components/page/JoinTeam"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -5,7 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function page() {
-  return (
-    <div>page</div>
-  )
+  return <JoinTeam/>
 }
