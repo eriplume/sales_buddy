@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { showErrorNotification, showCautionNotification } from "@/utils/notifications";
 import { TriangleIcon } from "../../../components/ui/icon/Triangle"
 import { BellAlertIcon } from "@heroicons/react/24/outline";
-import AlertSelect from '@/app/features/setting/components/AlertSelect';
+import AlertSelect from '@/app/features/user/setting/components/AlertSelect';
 
 export default function DemoSetting() {
   const [checked, setChecked] = useState(false);
