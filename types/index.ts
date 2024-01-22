@@ -60,3 +60,8 @@ export type UserImage = {
   image?: string;
   name?: string;
 };
+
+export type TeamInfo = {
+  name: string;
+  keyword: string;
+};
