@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getJwt } from '@/lib/getJwt';
 import { NextRequest } from 'next/server';
 
-const endpoint = "groups";
+const endpoint = "groups/join";
 const apiUrl = process.env.RAILS_API_URL
 
 export async function POST(req: NextRequest) {

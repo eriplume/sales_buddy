@@ -2,30 +2,27 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import axios from 'axios'
+import useUserStore from '@/store/userStore';
 import { showSuccessNotification, showErrorNotification, showCautionNotification } from "@/utils/notifications";
-import { TriangleIcon } from "../../../components/ui/icon/Triangle"
+import { TriangleIcon } from "../../../../components/ui/icon/Triangle"
 import { BellAlertIcon } from "@heroicons/react/24/outline";
 import AlertSelect from "./AlertSelect";
+import useFetchUser from '../../hooks/useUser';
 
 export default function Steps() {
+  useFetchUser();
+
+  const { notifications, setNotifications } = useUserStore();
   const [checked, setChecked] = useState(false);
-  const [currentSetting, setCurrentSetting] = useState(false);
 
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const response = await fetch(`/api/setting`);
-        const data = await response.json();
-        setChecked(data.notifications);
-        setCurrentSetting(data.notifications);
-      } catch (error) {
-      }
-    };
-    fetchNotifications();
-  }, []);
-
+    if (notifications !== undefined) {
+      setChecked(notifications);
+    }
+  }, [notifications]);
+  
   const handleUpdate = async () => {
-    if (checked !== currentSetting) {
+    if (checked !== notifications) {
       try {
         await axios.patch(`/api/setting`, {
           user: {
@@ -33,7 +30,7 @@ export default function Steps() {
           },
         });
         showSuccessNotification(`更新しました`);
-        setCurrentSetting(checked);
+        setNotifications(checked);
       } catch (error) {
         showErrorNotification('更新に失敗しました');
       }
@@ -49,7 +46,7 @@ export default function Steps() {
           <div className='flex flex-row text-gray-600 text-sm items-center'>
             <BellAlertIcon className="w-4 h-4 mr-1" />
             <div>現在の設定：</div>
-            <div className='text-gray-700 font-bold'>{currentSetting ? 'ON' : 'OFF'}</div>
+            <div className='text-gray-700 font-bold'>{notifications ? 'ON' : 'OFF'}</div>
           </div>
         </div>
         <div className="bg-white rounded-md py-7 pl-7">

@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const data = await fetchDataFromApi(`users/${userId}/notifications`, accessToken);
+    const data = await fetchDataFromApi(`users/${userId}/`, accessToken);
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: {

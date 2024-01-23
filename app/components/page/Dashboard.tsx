@@ -5,9 +5,11 @@ import ThisWeek from "@/app/features/weekProgress/components/ThisWeek";
 import { ContentsLink } from "@/app/features/dashboard/components/ContentsLink";
 import CalenderArea from "@/app/features/calender/components/CalenderArea";
 import { useFetchData } from "@/app/features/dashboard/hooks/useFetchData";
+import useFetchUser from "@/app/features/user/hooks/useUser";
 
 export default function Dashboard() {
   useFetchData();
+  useFetchUser();
 
   useEffect(() => {
   if (localStorage.getItem("justLoggedIn") === "true") {
