@@ -15,6 +15,9 @@ import PlusButton from '@/app/components/ui/button/PlusButton';
 
 type InputFormProps = {
   endpoint: string;
+  initialValues: FormValues;
+  taskId? :number;
+  close: () => void;
 }
 
 type FormValues = {
@@ -31,33 +34,35 @@ const schema  = z.object({
   deadline: z.date().refine(val => val !== undefined, { message: "期限の設定は必須です" }),  
 });
 
-export default function InputForm({endpoint}: InputFormProps) {
-  const { setTasks } = useTaskStore(); 
+export default function InputForm({endpoint, initialValues, taskId, close}: InputFormProps) {
+  const { setTeamTasks, setUserTasks } = useTaskStore(); 
   const { teamId } = useUserStore();
 
   const form = useForm({
-    initialValues: {
-      isTeamTask: '',
-      title: '',
-      importance: 0,
-      deadline: new Date(),
-    },
+    initialValues: initialValues,
     validate: zodResolver(schema),
   });
 
   const handleSubmit = async(values: FormValues) => {
+    const payload = {
+      task: {
+        is_group_task: values.isTeamTask === 'true',
+        title: values.title,
+        importance: values.importance,
+        deadline: formatDate(values.deadline),
+        group_id: teamId,
+        ...(taskId ? { id: taskId } : {}), 
+      },
+    };
     try {
-      await axios.post(`/features/teamTask/api/${endpoint}`, {
-        task: {
-          is_group_task: values.isTeamTask === 'true',
-          title: values.title,
-          importance: values.importance - 1,
-          deadline: formatDate(values.deadline),
-          group_id: teamId,
-        },
-      });
+      if (endpoint === 'createTask') {
+        await axios.post(`/features/teamTask/api/${endpoint}`, payload);
+      } else if (endpoint === 'editTask') {
+        await axios.patch(`/features/teamTask/api/${endpoint}`, payload);
+      }
       showSuccessNotification(`登録しました`);
-      fetchTasks(setTasks);
+      fetchTasks({setTeamTasks, setUserTasks});
+      close();
       form.reset();
     } catch (error) {
       showErrorNotification('登録に失敗しました。');

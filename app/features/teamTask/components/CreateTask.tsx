@@ -20,9 +20,16 @@ export default function CreateTask() {
     );
   };
 
+  const initialValues = {
+    isTeamTask: '',
+    title: '',
+    importance: 0,
+    deadline: new Date(),
+  }
+
   return (
     <>
-      <div className='flex flex-row items-center pb-3'>
+      <div className='flex flex-row items-center pb-3 mb-2'>
         <div className='text-sm text-gray-600 mr-2'>タスクを追加する</div>
         <ActionIcon variant="outline" color="#94a3b8" size="md" onClick={open} className="shadow-md hover:text-sky-700 transition-transform">
           <PlusIcon className='w-12 h-12 p-1' />
@@ -37,7 +44,7 @@ export default function CreateTask() {
         title={renderModalTitle()}
       >
         <div className="flex w-full px-6 py-4">
-          <InputForm endpoint='createTask'/>
+          <InputForm endpoint='createTask' initialValues={initialValues} close={close}/>
         </div>
       </Modal>
     </>
