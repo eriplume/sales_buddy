@@ -65,3 +65,14 @@ export type TeamInfo = {
   name: string;
   keyword: string;
 };
+
+export type Task = {
+  id: number;
+  title: string;
+  isGroupTask: boolean;
+  importance: number;
+  deadline: Date;
+  userId: number;
+  teamId: number;
+  userName: string;
+};
