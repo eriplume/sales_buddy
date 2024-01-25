@@ -18,6 +18,7 @@ type InputFormProps = {
   initialValues: FormValues;
   taskId? :number;
   close: () => void;
+  label: string;
 }
 
 type FormValues = {
@@ -30,11 +31,11 @@ type FormValues = {
 const schema  = z.object({
   isTeamTask: z.string().refine(val => val !== undefined, { message: "グループの選択は必須です" }),
   title: z.string().min(1,  { message: '1~20文字で入力してください' }).max(20, { message: '1~20文字で入力してください' }),
-  importance: z.number().refine(val => val !== undefined, { message: "重要度の選択は必須です" }),
+  importance: z.number().refine(val => val !== undefined),
   deadline: z.date().refine(val => val !== undefined, { message: "期限の設定は必須です" }),  
 });
 
-export default function InputForm({endpoint, initialValues, taskId, close}: InputFormProps) {
+export default function InputForm({endpoint, initialValues, taskId, close, label}: InputFormProps) {
   const { setTeamTasks, setUserTasks } = useTaskStore(); 
   const { teamId } = useUserStore();
 
@@ -51,21 +52,24 @@ export default function InputForm({endpoint, initialValues, taskId, close}: Inpu
         importance: values.importance,
         deadline: formatDate(values.deadline),
         group_id: teamId,
-        ...(taskId ? { id: taskId } : {}), 
       },
     };
     try {
       if (endpoint === 'createTask') {
         await axios.post(`/features/teamTask/api/${endpoint}`, payload);
-      } else if (endpoint === 'editTask') {
-        await axios.patch(`/features/teamTask/api/${endpoint}`, payload);
+        showSuccessNotification(`登録しました`);
+        fetchTasks({setTeamTasks, setUserTasks});
+        close();
+        form.reset();
+      } else {
+        await axios.patch(`/features/teamTask/api/updateTask/${taskId}`, payload);
+        showSuccessNotification(`更新しました`);
+        fetchTasks({setTeamTasks, setUserTasks});
+        close();
+        form.reset();
       }
-      showSuccessNotification(`登録しました`);
-      fetchTasks({setTeamTasks, setUserTasks});
-      close();
-      form.reset();
     } catch (error) {
-      showErrorNotification('登録に失敗しました。');
+      showErrorNotification('失敗しました。もう一度お試しください');
     }
   };
     
@@ -74,8 +78,9 @@ export default function InputForm({endpoint, initialValues, taskId, close}: Inpu
       <div className="flex flex-col justify-center items-center w-full">
         <form onSubmit={form.onSubmit(handleSubmit)} className='w-full'>
           <div className="flex flex-row items-center">
-            <TriangleIcon className="w-4 h-4 mr-2 text-sky-800" />
+            <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
           <div className='text-gray-800'>タスクの種類</div>
+          <div className='text-xs text-red-400 ml-1'>＊</div>
         </div>
         <Radio.Group
           {...form.getInputProps('isTeamTask')}
@@ -89,8 +94,9 @@ export default function InputForm({endpoint, initialValues, taskId, close}: Inpu
         </Radio.Group>
 
         <div className="flex flex-row items-center">
-          <TriangleIcon className="w-4 h-4 mr-2 text-sky-800" />
+          <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
           <div className='text-gray-800'>タスク名</div>
+          <div className='text-xs text-red-400 ml-1'>＊</div>
         </div>
         <TextInput
           {...form.getInputProps('title')}
@@ -101,14 +107,15 @@ export default function InputForm({endpoint, initialValues, taskId, close}: Inpu
         />
 
         <div className="flex flex-row items-center">
-          <TriangleIcon className="w-4 h-4 mr-2 text-sky-800" />
+          <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
           <div className='text-gray-800'>優先度</div>
         </div>
         <Rating count={3} size="lg" className='mt-2 mb-5' {...form.getInputProps('importance')}/>
 
         <div className="flex flex-row items-center">
-          <TriangleIcon className="w-4 h-4 mr-2 text-sky-800" />
+          <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
           <div className='text-gray-800'>期限</div>
+          <div className='text-xs text-red-400 ml-1'>＊</div>
         </div>
         <DatePickerInput
           {...form.getInputProps('deadline')}
@@ -117,7 +124,7 @@ export default function InputForm({endpoint, initialValues, taskId, close}: Inpu
         />
 
         <div className="flex justify-center w-full mt-4">
-          <PlusButton size="sm" type="submit">追加する</PlusButton>
+          <PlusButton size="sm" type="submit">{label}</PlusButton>
         </div>
       </form>
     </div>

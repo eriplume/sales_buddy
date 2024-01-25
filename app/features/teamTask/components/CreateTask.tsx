@@ -1,6 +1,6 @@
 "use client"
 import { useDisclosure } from '@mantine/hooks';
-import { ActionIcon, Modal } from '@mantine/core';
+import { Modal, Button } from '@mantine/core';
 import { PlusIcon, PencilIcon } from "@heroicons/react/24/outline"
 import InputForm from './InputForm';
 
@@ -29,11 +29,11 @@ export default function CreateTask() {
 
   return (
     <>
-      <div className='flex flex-row items-center pb-3 mb-2'>
-        <div className='text-sm text-gray-600 mr-2'>タスクを追加する</div>
-        <ActionIcon variant="outline" color="#94a3b8" size="md" onClick={open} className="shadow-md hover:text-sky-700 transition-transform">
-          <PlusIcon className='w-12 h-12 p-1' />
-        </ActionIcon>
+      <div className='flex flex-row items-center bg-white'>
+        <Button size="sm" variant="outline" color="#9ca3af" onClick={open}>
+          NEW
+          <PlusIcon className="w-5 h-5 ml-1 text-sky-700" />
+        </Button>
       </div>
 
       <Modal
@@ -44,7 +44,7 @@ export default function CreateTask() {
         title={renderModalTitle()}
       >
         <div className="flex w-full px-6 py-4">
-          <InputForm endpoint='createTask' initialValues={initialValues} close={close}/>
+          <InputForm endpoint='createTask' initialValues={initialValues} close={close} label="追加する"/>
         </div>
       </Modal>
     </>
