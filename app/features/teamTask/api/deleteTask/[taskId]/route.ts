@@ -5,9 +5,10 @@ import { NextRequest } from 'next/server';
 const endpoint = "tasks";
 const apiUrl = process.env.RAILS_API_URL
 
-export async function POST(req: NextRequest) {
-  const { accessToken, userId } = await getJwt(req);
-        
+export async function DELETE(req: NextRequest, { params }: { params: { taskId: string } } ) {
+  const { accessToken } = await getJwt(req);
+  const id = params.taskId
+      
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
       status: 401,
@@ -16,12 +17,8 @@ export async function POST(req: NextRequest) {
       },
     });
   }
-
-  const data = await req.json();
-  const task = data.task;
-  task.user_id = userId;
-    
-  if (!task){
+  
+  if (!id){
     return new Response(JSON.stringify({ error: 'taskがありません' }), {
       status: 400,
       headers: {
@@ -31,18 +28,16 @@ export async function POST(req: NextRequest) {
   }
   
   try {
-    const response = await axios.post(`${apiUrl}/${endpoint}`, { 
-      task
-    }, {
+    const response = await axios.delete(`${apiUrl}/${endpoint}/${id}`, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       }
     });
-    return new Response(JSON.stringify(response.data), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
+      return new Response(JSON.stringify(response.data), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
       },
     });
   } catch (error) {

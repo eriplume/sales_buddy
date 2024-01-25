@@ -5,8 +5,9 @@ import { NextRequest } from 'next/server';
 const endpoint = "tasks";
 const apiUrl = process.env.RAILS_API_URL
 
-export async function PATCH(req: NextRequest) {
+export async function PATCH(req: NextRequest, { params }: { params: { taskId: string } }) {
   const { accessToken } = await getJwt(req);
+  const id = params.taskId
       
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
@@ -19,10 +20,9 @@ export async function PATCH(req: NextRequest) {
   
   const data = await req.json();
   const task = data.task;
-  const taskId = data.task.id;
     
   if (!task){
-    return new Response(JSON.stringify({ error: 'monthly_reportがありません' }), {
+    return new Response(JSON.stringify({ error: 'taskがありません' }), {
       status: 400,
       headers: {
         "Content-Type": "application/json"
@@ -31,14 +31,8 @@ export async function PATCH(req: NextRequest) {
   }
   
   try {
-    const response = await axios.patch(`${apiUrl}/${endpoint}/${taskId}`, { 
-      task:{
-        is_group_task: data.task.is_group_task,
-        title: data.task.title,
-        importance: data.task.importance,
-        deadline: data.task.deadline,
-        group_id: data.task.group_id,
-      }
+    const response = await axios.patch(`${apiUrl}/${endpoint}/${id}`, { 
+      task
     }, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
