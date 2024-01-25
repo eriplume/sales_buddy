@@ -1,16 +1,38 @@
 "use client"
-import { useState } from 'react';
 import { Switch } from '@mantine/core';
 
-export default function SwithTask() {
-  const [checked, setChecked] = useState(false);
+type SwitchProps = {
+  checked: boolean;
+  setChecked: (checked: boolean) => void;
+}
+
+export default function SwithTask({ checked, setChecked }: SwitchProps) {
+
+  const offLabel = () => {
+    return (
+      <div className='px-1'>
+        未完了タスク
+      </div>
+    );
+  };
+
+  const onLabel = () => {
+    return (
+      <div className='px-1'>
+        完了済み
+      </div>
+    );
+  };
+
   return (
     <div className='flex flex-row ml-5 items-center'>
-      <div className='text-xs mr-2'>完了タスクを表示</div>
       <Switch
         checked={checked}
         onChange={(event) => setChecked(event.currentTarget.checked)}
-        size="md"
+        size="lg"
+        color="#94a3b8"
+        onLabel={onLabel()}
+        offLabel={offLabel()}
       />
     </div>
   );

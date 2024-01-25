@@ -17,6 +17,11 @@ type IndexProps = {
 export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentEditingTask, setCurrentEditingTask] =  useState<Task | null>(null);
+  const [checked, setChecked] = useState(false);
+
+  const filteredTasks = checked
+  ? taskList.filter(task => task.isCompleted)
+  : taskList.filter(task => !task.isCompleted);
 
   const renderModalTitle = () => {
     return (
@@ -32,13 +37,13 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
   return (
     <>
       <div className="container py-4 mx-auto md:min-w-[600px]">
-        <div className='flex flex-row items-center my-3'>
+        <div className='flex flex-row items-center my-3 ml-2'>
           <CreateTask />
-          <SwithTask />
+          <SwithTask checked={checked} setChecked={setChecked}/>
         </div>
         <div className="flex flex-wrap">
-          {taskList.length > 0 ? (
-            taskList.map((task) =>(
+          {filteredTasks.length > 0 ? (
+            filteredTasks.map((task) =>(
               <div className="p-1 md:w-1/2 w-full" key={task.id}>
                 <TaskCard 
                   task={task} 
@@ -50,7 +55,7 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
               </div>
             ))
           ) : (
-            <div className="text-center text-gray-500 py-5">タスクが登録されていません</div>
+            <div className="text-center text-gray-500 py-5">タスクがありません</div>
           )}
         </div>
       </div>

@@ -42,7 +42,7 @@ export default function TaskActions({ task, setCurrentEditingTask, open, close }
       <div className='flex pr-1 items-center'>
         <ActionIcon 
           variant="outline"
-          color="#cbd5e1" 
+          color="#94a3b8" 
           size="md" 
           className="shadow-md hover:text-gray-500 transition-transform"
           onClick={() => handleEditButtonClick(task)}
@@ -52,7 +52,7 @@ export default function TaskActions({ task, setCurrentEditingTask, open, close }
 
         <ActionIcon 
           variant="outline" 
-          color="#cbd5e1" 
+          color="#94a3b8" 
           size="md" 
           className="shadow-md hover:text-gray-500 transition-transform ml-2"
           onClick={() => handleDelete(task.id)}

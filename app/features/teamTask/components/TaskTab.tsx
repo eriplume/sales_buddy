@@ -8,6 +8,7 @@ import { FolderIcon } from '@heroicons/react/24/outline';
 export default function TaskTab() {
   const { teamTasks, userTasks } = useTaskStore();
   const onlyTeamTasks = teamTasks.filter(task => task.isGroupTask);
+  const currentUserTasks = userTasks.filter(task => !task.isGroupTask)
   const userTaskIds = userTasks.map(task => task.id);
 
   return (
@@ -20,7 +21,7 @@ export default function TaskTab() {
           <Tabs.Tab value="personal" leftSection={<TriangleIcon className="w-4 h-4 text-blue-300"/>}>
             TEAM
           </Tabs.Tab>
-          <Tabs.Tab value="share" leftSection={<TriangleIcon className="w-4 h-4 text-orange-300"/>} color="#fdba74">
+          <Tabs.Tab value="share" leftSection={<TriangleIcon className="w-4 h-4 text-sky-700"/>} color="#0369a1">
             MINE
           </Tabs.Tab>
         </Tabs.List>
@@ -34,7 +35,7 @@ export default function TaskTab() {
         </Tabs.Panel>
 
         <Tabs.Panel value="share">
-          <TaskIndex taskList={userTasks} editableTaskIds={userTaskIds}/>
+          <TaskIndex taskList={currentUserTasks} editableTaskIds={userTaskIds}/>
         </Tabs.Panel>
       </Tabs>
     </div>
