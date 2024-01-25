@@ -1,230 +1,92 @@
 "use client"
 import { useState } from 'react';
-import { ActionIcon, Checkbox, Tooltip, Rating } from "@mantine/core"
-import { CheckIcon, TrashIcon, PencilSquareIcon, ClockIcon } from '@heroicons/react/24/outline';
-import UserStatus from "@/app/components/base/UserStatus"
-import DefaultUserImage from "@/app/components/ui/DefaultUserImage"
+import { Task } from '@/types';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from "@mantine/core"
+import { PencilIcon } from '@heroicons/react/24/outline';
+import CreateTask from './CreateTask';
+import InputForm from './InputForm';
+import TaskCard from './TaskCard';
+import SwithTask from './Switch';
 
-export default function TaskIndex() {
+type IndexProps = {
+  taskList: Task[];
+  editableTaskIds: number[];
+}
+
+export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
+  const [opened, { open, close }] = useDisclosure(false);
+  const [currentEditingTask, setCurrentEditingTask] =  useState<Task | null>(null);
   const [checked, setChecked] = useState(false);
-  const [value, setValue] = useState(0);
+
+  const filteredTasks = checked
+  ? taskList.filter(task => task.isCompleted)
+  : taskList.filter(task => !task.isCompleted);
+
+  const renderModalTitle = () => {
+    return (
+      <div className='flex flex-row items-start w-full pt-4 pr-22 mr-16 mb-1 text-md font-bold text-gray-600'>
+        <div className='flex w-full ml-2 items-center'>
+          <PencilIcon className="w-8 h-8 text-gray-500 mr-2" />
+          タスクを編集する
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
-        <div className="container py-4 mx-auto">
-          <div className="flex flex-wrap -m-2">
-            <div className="p-2 md:w-1/2 w-full">
-              <div className="h-full flex items-center p-4 rounded-lg bg-white shadow-md border-4 border-blue-100">
-                <UserStatus />
-                <div className="flex-grow">
-                  <h2 className="text-gray-600 font-bold ml-2 lg:ml-4">月末業務タスク</h2>
-                  <div className='flex flex-row items-center'>
-                    <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
-                    <div className="text-gray-600 mr-3 lg:mr-5">12/30</div>
-                    <Rating defaultValue={2} size="sm" count={3} color="#93c5fd" value={value} onChange={setValue}/>
-                  </div>
-                </div>
-                <div className='flex ml-2'>
-                <Tooltip label="DONE?" arrowOffset={50} arrowSize={5} withArrow>
-                  <Checkbox
-                    size='lg'
-                    color="#93c5fd"
-                    checked={checked}
-                    onChange={(event) => setChecked(event.currentTarget.checked)}
-                    className="shadow-md"
-                    variant="outline"
-                  />
-                </Tooltip>
-                </div>
-                <div className='flex ml-2'>
-                  <ActionIcon variant="outline" color="#cbd5e1" size="md" className="shadow-md hover:text-gray-500 transition-transform">
-                    <PencilSquareIcon className='w-8 h-8 p-1' />
-                  </ActionIcon>
-                </div>
-              </div>
-            </div>
-            <div className="p-2 md:w-1/2 w-full">
-              <div className="h-full flex items-center p-4 rounded-lg bg-white shadow-md border-4 border-orange-100">
-                <UserStatus />
-                <div className="flex-grow">
-                  <h2 className="text-gray-600 font-bold ml-2 lg:ml-4">ストック整理</h2>
-                  <div className='flex flex-row items-center'>
-                    <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
-                    <div className="text-red-400 mr-3 lg:mr-5">12/30</div>
-                    <Rating defaultValue={2} size="sm" count={3} color="#93c5fd" value={value} onChange={setValue}/>
-                  </div>
-                </div>
-                <div className='flex ml-2'>
-                <Tooltip label="DONE?" arrowOffset={50} arrowSize={5} withArrow>
-                  <Checkbox
-                    size='lg'
-                    color="#93c5fd"
-                    checked={checked}
-                    onChange={(event) => setChecked(event.currentTarget.checked)}
-                    className="shadow-md"
-                    variant="outline"
-                  />
-                </Tooltip>
-                </div>
-                <div className='flex ml-2'>
-                  <ActionIcon variant="outline" color="#cbd5e1" size="md" className="shadow-md hover:text-gray-500 transition-transform">
-                    <PencilSquareIcon className='w-8 h-8 p-1' />
-                  </ActionIcon>
-                </div>
-              </div>
-            </div>
-            <div className="p-2 md:w-1/2 w-full">
-              <div className="h-full flex items-center p-4 rounded-lg bg-white shadow-md">
-                <UserStatus />
-                <div className="flex-grow">
-                  <h2 className="text-gray-600 font-bold ml-2 lg:ml-4">倉庫整理</h2>
-                  <div className='flex flex-row items-center'>
-                    <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
-                    <div className="text-red-400 mr-3 lg:mr-5">12/30</div>
-                    <Rating defaultValue={2} size="sm" count={3} color="#93c5fd" value={value} onChange={setValue}/>
-                  </div>
-                </div>
-                <div className='flex ml-2'>
-                <Tooltip label="DONE?" arrowOffset={50} arrowSize={5} withArrow>
-                  <Checkbox
-                    size='lg'
-                    color="#93c5fd"
-                    checked={checked}
-                    onChange={(event) => setChecked(event.currentTarget.checked)}
-                    className="shadow-md"
-                    variant="outline"
-                  />
-                </Tooltip>
-                </div>
-                <div className='flex ml-2'>
-                  <ActionIcon variant="outline" color="#cbd5e1" size="md" className="shadow-md hover:text-gray-500 transition-transform">
-                    <PencilSquareIcon className='w-8 h-8 p-1' />
-                  </ActionIcon>
-                </div>
-              </div>
-            </div>
-            <div className="p-2 md:w-1/2 w-full">
-              <div className="h-full flex items-center p-4 rounded-lg bg-white shadow-md">
-                <UserStatus />
-                <div className="flex-grow">
-                  <h2 className="text-gray-600 font-bold ml-2 lg:ml-4">スタイリング撮りだめ</h2>
-                  <div className='flex flex-row items-center'>
-                    <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
-                    <div className="text-red-400 mr-3 lg:mr-5">12/30</div>
-                    <Rating defaultValue={2} size="sm" count={3} color="#93c5fd" value={value} onChange={setValue}/>
-                  </div>
-                </div>
-                <div className='flex ml-2'>
-                <Tooltip label="DONE?" arrowOffset={50} arrowSize={5} withArrow>
-                  <Checkbox
-                    size='lg'
-                    color="#93c5fd"
-                    checked={checked}
-                    onChange={(event) => setChecked(event.currentTarget.checked)}
-                    className="shadow-md"
-                    variant="outline"
-                  />
-                </Tooltip>
-                </div>
-                <div className='flex ml-2'>
-                  <ActionIcon variant="outline" color="#cbd5e1" size="md" className="shadow-md hover:text-gray-500 transition-transform">
-                    <PencilSquareIcon className='w-8 h-8 p-1' />
-                  </ActionIcon>
-                </div>
-              </div>
-            </div>
-            <div className="p-2 md:w-1/2 w-full">
-              <div className="h-full flex items-center p-4 rounded-lg bg-white shadow-md">
-                <UserStatus />
-                <div className="flex-grow">
-                  <h2 className="text-gray-600 font-bold ml-2 lg:ml-4">入力作業</h2>
-                  <div className='flex flex-row items-center'>
-                    <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
-                    <div className="text-red-400 mr-3 lg:mr-5">12/30</div>
-                    <Rating defaultValue={2} size="sm" count={3} color="#93c5fd" value={value} onChange={setValue}/>
-                  </div>
-                </div>
-                <div className='flex ml-2'>
-                <Tooltip label="DONE?" arrowOffset={50} arrowSize={5} withArrow>
-                  <Checkbox
-                    size='lg'
-                    color="#93c5fd"
-                    checked={checked}
-                    onChange={(event) => setChecked(event.currentTarget.checked)}
-                    className="shadow-md"
-                    variant="outline"
-                  />
-                </Tooltip>
-                </div>
-                <div className='flex ml-2'>
-                  <ActionIcon variant="outline" color="#cbd5e1" size="md" className="shadow-md hover:text-gray-500 transition-transform">
-                    <PencilSquareIcon className='w-8 h-8 p-1' />
-                  </ActionIcon>
-                </div>
-              </div>
-            </div>
-            <div className="p-2 md:w-1/2 w-full">
-              <div className="h-full flex items-center p-4 rounded-lg bg-white shadow-md">
-                <UserStatus />
-                <div className="flex-grow">
-                  <h2 className="text-gray-600 font-bold ml-2 lg:ml-4">月末業務タスクだヨヨ</h2>
-                  <div className='flex flex-row items-center'>
-                    <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
-                    <div className="text-red-400 mr-3 lg:mr-5">12/30</div>
-                    <Rating defaultValue={2} size="sm" count={3} color="#93c5fd" value={value} onChange={setValue}/>
-                  </div>
-                </div>
-                <div className='flex ml-2'>
-                <Tooltip label="DONE?" arrowOffset={50} arrowSize={5} withArrow>
-                  <Checkbox
-                    size='lg'
-                    color="#93c5fd"
-                    checked={checked}
-                    onChange={(event) => setChecked(event.currentTarget.checked)}
-                    className="shadow-md"
-                    variant="outline"
-                  />
-                </Tooltip>
-                </div>
-                <div className='flex ml-2'>
-                  <ActionIcon variant="outline" color="#cbd5e1" size="md" className="shadow-md hover:text-gray-500 transition-transform">
-                    <PencilSquareIcon className='w-8 h-8 p-1' />
-                  </ActionIcon>
-                </div>
-              </div>
-            </div>
-            <div className="p-2 md:w-1/2 w-full">
-              <div className="h-full flex items-center p-4 rounded-lg bg-white shadow-md">
-                <UserStatus />
-                <div className="flex-grow">
-                  <h2 className="text-gray-600 font-bold ml-2 lg:ml-4">月末業務タスクだヨヨ</h2>
-                  <div className='flex flex-row items-center'>
-                    <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
-                    <div className="text-red-400 mr-3 lg:mr-5">12/30</div>
-                    <Rating defaultValue={2} size="sm" count={3} color="#93c5fd" value={value} onChange={setValue}/>
-                  </div>
-                </div>
-                <div className='flex ml-2'>
-                <Tooltip label="DONE?" arrowOffset={50} arrowSize={5} withArrow>
-                  <Checkbox
-                    size='xl'
-                    color="#93c5fd"
-                    checked={checked}
-                    onChange={(event) => setChecked(event.currentTarget.checked)}
-                    className="shadow-md"
-                    variant="outline"
-                  />
-                </Tooltip>
-                </div>
-                <div className='flex ml-2'>
-                  <ActionIcon variant="outline" color="#cbd5e1" size="lg" className="shadow-md hover:text-gray-500 transition-transform">
-                    <PencilSquareIcon className='w-8 h-8 p-1' />
-                  </ActionIcon>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="container py-4 mx-auto md:min-w-[600px]">
+        <div className='flex flex-row items-center my-3 ml-2'>
+          <CreateTask />
+          <SwithTask checked={checked} setChecked={setChecked}/>
         </div>
+        <div className="flex flex-wrap">
+          {filteredTasks.length > 0 ? (
+            filteredTasks.map((task) =>(
+              <div className="p-1 md:w-1/2 w-full" key={task.id}>
+                <TaskCard 
+                  task={task} 
+                  editableTaskIds={editableTaskIds} 
+                  setCurrentEditingTask={setCurrentEditingTask} 
+                  open={open} 
+                  close={close}
+                />
+              </div>
+            ))
+          ) : (
+            <div className="text-center text-gray-500 py-5">タスクがありません</div>
+          )}
+        </div>
+      </div>
 
+      {opened && (
+        <Modal
+          opened={opened}
+          onClose={() => {
+            close();
+            setCurrentEditingTask(null);
+          }}
+          centered
+          size="md"
+          title={renderModalTitle()}
+        >
+          <div className="flex w-full px-6 py-4">
+            <InputForm 
+              endpoint='updateTask'
+              initialValues={{
+                title: currentEditingTask?.title ?? '',
+                isTeamTask: currentEditingTask?.isGroupTask ? "true" : "false",
+                importance: currentEditingTask?.importance ?? 0,
+                deadline: currentEditingTask ? new Date(currentEditingTask.deadline) : new Date(),
+              }}
+              taskId={currentEditingTask?.id}
+              close={close}
+              label="更新する"
+            />
+          </div>
+        </Modal>
+      )}
     </>
   )
 }

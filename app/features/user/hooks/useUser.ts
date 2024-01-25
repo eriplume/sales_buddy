@@ -4,17 +4,18 @@ import useUserStore from "@/store/userStore";
 import { showErrorNotification } from "@/utils/notifications";
 
 const useFetchUser = () => {
-  const { notifications, team} = useUserStore();
+  const { notifications, teamId, teamName} = useUserStore();
 
   useEffect(() => {
-    if (notifications === undefined || team === undefined) {
+    if (notifications === undefined || teamId === undefined || teamName === undefined) {
       const fetchUser = async () => {
         try {
           const response = await fetch(`/api/setting`);
           const data = await response.json();
           useUserStore.setState({
             notifications: data.notifications,
-            team: data.group_name
+            teamId: data.group_id,
+            teamName: data.group_name
           });
         } catch (error) {
           console.error(error);
@@ -23,7 +24,7 @@ const useFetchUser = () => {
       };
       fetchUser();
     }
-  }, [notifications, team]);
+  }, [notifications, teamId, teamName]);
 };
 
 export default useFetchUser;

@@ -9,7 +9,7 @@ const UserImage = ({ image, name }: UserImage) => {
     <div className="flex items-center cursor-pointer">
       <Image
         src={imageUrl}
-        className="w-8 h-8 rounded-full"
+        className="rounded-full"
         alt={userName}
         width={32}
         height={32}
