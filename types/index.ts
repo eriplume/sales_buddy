@@ -78,3 +78,9 @@ export type Task = {
   isCompleted: boolean;
   completedByName: string | null;
 };
+
+export type Member = {
+  id: number;
+  name: string;
+  imageUrl: string;
+}

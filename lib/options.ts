@@ -28,6 +28,7 @@ export const options : NextAuthOptions = {
 			  "user": {
 				"line_id": account.providerAccountId,
 				"name": user.name,
+				"image_url": user.image,
 			  }
 			},
 			{
