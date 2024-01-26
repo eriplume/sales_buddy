@@ -10,7 +10,7 @@ const useFetchTeams = () => {
 
   useEffect(() => {
     if (teamId !== 1 && (members?.length === 0 || !members)) {
-    const fetchTeams = async () => {
+      const fetchTeams = async () => {
         try {
           const response = await fetch(`/features/teamJoin/api/getTeamMembers`);
           const data = await response.json();
@@ -19,10 +19,10 @@ const useFetchTeams = () => {
           console.error(error);
           showErrorNotification('データの取得に失敗しました');
         }
+      }
+      fetchTeams();
     }
-    fetchTeams();
-  }
-  }, [members?.length, teamId, setMembers]);
+  }, [members, teamId, setMembers]);
 };
 
 export default useFetchTeams;
