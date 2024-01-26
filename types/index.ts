@@ -75,6 +75,13 @@ export type Task = {
   userId: number;
   teamId: number;
   userName: string;
+  userImageUrl: string;
   isCompleted: boolean;
   completedByName: string | null;
 };
+
+export type Member = {
+  id: number;
+  name: string;
+  imageUrl: string;
+}

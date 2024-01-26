@@ -1,4 +1,4 @@
-import Teams from "@/app/components/page/Teams"
+import TeamTasks from "@/app/components/page/TeamTasks"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -6,5 +6,5 @@ export const metadata: Metadata = {
 }
 
 export default function page() {
-  return <Teams/>
+  return <TeamTasks />
 }

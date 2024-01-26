@@ -10,8 +10,8 @@ import { formatDate } from '@/utils/dateUtils';
 import { useForm } from '@mantine/form';
 import { DatePickerInput } from '@mantine/dates';
 import { TextInput, Radio, Group, Rating } from "@mantine/core"
-import { TriangleIcon } from '@/app/components/ui/icon/Triangle';
 import PlusButton from '@/app/components/ui/button/PlusButton';
+import { FormLabelAsterisk, FormLabel } from './FormLabel';
 
 type InputFormProps = {
   endpoint: string;
@@ -74,14 +74,10 @@ export default function InputForm({endpoint, initialValues, taskId, close, label
   };
     
   return (
-    <>
-      <div className="flex flex-col justify-center items-center w-full">
-        <form onSubmit={form.onSubmit(handleSubmit)} className='w-full'>
-          <div className="flex flex-row items-center">
-            <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
-          <div className='text-gray-800'>タスクの種類</div>
-          <div className='text-xs text-red-400 ml-1'>＊</div>
-        </div>
+    <div className="flex flex-col justify-center items-center w-full">
+      <form onSubmit={form.onSubmit(handleSubmit)} className='w-full'>
+
+        <FormLabelAsterisk>タスクの種類</FormLabelAsterisk>
         <Radio.Group
           {...form.getInputProps('isTeamTask')}
           name="isTeamTask"
@@ -93,11 +89,7 @@ export default function InputForm({endpoint, initialValues, taskId, close, label
           </Group>
         </Radio.Group>
 
-        <div className="flex flex-row items-center">
-          <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
-          <div className='text-gray-800'>タスク名</div>
-          <div className='text-xs text-red-400 ml-1'>＊</div>
-        </div>
+        <FormLabelAsterisk>タスク名</FormLabelAsterisk>
         <TextInput
           {...form.getInputProps('title')}
           name="title" 
@@ -106,17 +98,10 @@ export default function InputForm({endpoint, initialValues, taskId, close, label
           className='mb-5'
         />
 
-        <div className="flex flex-row items-center">
-          <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
-          <div className='text-gray-800'>優先度</div>
-        </div>
+        <FormLabel>優先度</FormLabel>
         <Rating count={3} size="lg" className='mt-2 mb-5' {...form.getInputProps('importance')}/>
 
-        <div className="flex flex-row items-center">
-          <TriangleIcon className="w-4 h-4 mr-2 mb-1 text-sky-800" />
-          <div className='text-gray-800'>期限</div>
-          <div className='text-xs text-red-400 ml-1'>＊</div>
-        </div>
+        <FormLabelAsterisk>期限</FormLabelAsterisk>
         <DatePickerInput
           {...form.getInputProps('deadline')}
           placeholder="完了したい日付の選択"
@@ -128,6 +113,5 @@ export default function InputForm({endpoint, initialValues, taskId, close, label
         </div>
       </form>
     </div>
-  </>
   )
 }

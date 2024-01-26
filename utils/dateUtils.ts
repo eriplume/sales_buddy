@@ -61,6 +61,12 @@ export const getThisWeekRange = () => {
   return { start, end };
 };
 
+export const isDeadlineSoon = (date: Date) => {
+  const deadlineDate = dayjs(date);
+  const today = dayjs();
+  return deadlineDate.diff(today, 'day') <= 3;
+};
+
 // string型で受け取る
 export const getWeekHead = (date :string) => {
   return dayjs(date).startOf('isoWeek').format('YYYY-MM-DD');
