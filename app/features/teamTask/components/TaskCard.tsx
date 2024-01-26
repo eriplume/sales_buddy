@@ -6,9 +6,10 @@ import useTaskStore from '@/store/taskStore';
 import { formatDateLayoutMMDD, isDeadlineSoon } from '@/utils/dateUtils';
 import { showSuccessNotification, showErrorNotification } from '@/utils/notifications';
 import { Checkbox, Tooltip, Rating } from "@mantine/core"
-import { CheckIcon, ClockIcon, MegaphoneIcon, UserIcon } from '@heroicons/react/24/outline';
-import TaskActions from './TaskActions';
+import { CheckIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { fetchTasks } from '../hooks/fetchTask';
+import TaskActions from './TaskActions';
+import MemberIcon from '../../teamJoin/components/MemberIcon';
 
 type TaskCardProps = {
   task: Task;
@@ -69,9 +70,10 @@ export default function TaskCard({ task, editableTaskIds, setCurrentEditingTask,
           </Tooltip>
         </div>
         <div className="flex-grow">
-          <div className="text-gray-600 text-md font-bold ml-2 lg:ml-4 mb-1">{task.title}</div>
-          <div className='flex flex-row items-center border-t pt-2'>
-            <ClockIcon className='w-5 h-5 text-gray-500 ml-2 lg:ml-4 mr-1' />
+          <div className="text-gray-600 text-md font-bold ml-2 lg:ml-4 mb-2">{task.title}</div>
+          <div className='flex flex-row items-center border-t pt-3'>
+            <MemberIcon imageUrl={task.userImageUrl} userName={task.userName}/>
+            <ClockIcon className='w-5 h-5 text-gray-500 ml-3 mr-1' />
             {isDeadlineSoon(task.deadline) ? 
               <div className="text-red-400 text-sm mr-3 lg:mr-5">{formatDateLayoutMMDD(task.deadline)}</div>
             :
@@ -79,31 +81,15 @@ export default function TaskCard({ task, editableTaskIds, setCurrentEditingTask,
             }
             <Rating size="sm" count={3} color={taskColorClass} value={task.importance} readOnly/>
           </div>
-          <div className='flex flex-row justify-between items-center pt-1 mt-1'> 
+
+          <div className='flex flex-row justify-end items-center pt-1 mt-1'> 
             <div className='flex flex-row items-center'>
-              {task.isCompleted ? 
+              {task.isCompleted && 
                 <>
                   <CheckIcon className='w-5 h-5 ml-2 lg:ml-4 mr-1 text-gray-400' />
                   <div className="text-gray-600 text-sm mr-3 lg:mr-5">{task.completedByName}</div>
                 </> 
-              : 
-              <>
-                {task.isGroupTask ? 
-                  <div className='flex flex-col md:flex-row'>
-                    <div className='flex flex-row'>
-                      <MegaphoneIcon className='w-5 h-5 ml-2 lg:ml-4 mr-1 text-gray-400' />
-                      <div className="text-gray-600 text-sm">from</div>
-                    </div>
-                    <div className="text-gray-600 font-bold text-sm ml-8 md:ml-3">{task.userName}さん</div>
-                  </div>
-                :  
-                  <>
-                    <UserIcon className='w-5 h-5 ml-2 lg:ml-4 mr-1 text-gray-400' />
-                    <div className="text-gray-600 font-bold text-sm mr-3 lg:mr-5">{task.userName}</div>
-                  </>            
-                }
-              </>
-            }
+              }
             </div>
             {editableTaskIds.includes(task.id) && 
               <TaskActions task={task} setCurrentEditingTask={setCurrentEditingTask} open={open} close={close}/>

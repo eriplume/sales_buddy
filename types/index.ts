@@ -75,6 +75,7 @@ export type Task = {
   userId: number;
   teamId: number;
   userName: string;
+  userImageUrl: string;
   isCompleted: boolean;
   completedByName: string | null;
 };
