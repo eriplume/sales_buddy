@@ -3,6 +3,7 @@ import Footer from "../components/base/Footer"
 import AlertDemo from "../components/ui/AlertDemo"
 import DemoFooterMenu from "../features/demoPage/components/DemoFooterMenu"
 import DemoMenu from "../features/demoPage/components/DemoMenu"
+import Header from "../components/base/Header"
 
 export const metadata: Metadata = {
   title: 'sample',
@@ -16,6 +17,7 @@ export default function UnauthenticatedLayout({
 
   return (
     <>
+    <Header/>
       <div className="sticky top-0 w-full z-30">
         <AlertDemo/>
       </div>

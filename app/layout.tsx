@@ -46,7 +46,6 @@ export default function RootLayout({
         <NextAuthProvider>
           <MantineProviderWrapper>
             <div className="flex flex-col h-screen">
-              <Header />
               <main className='bg-gray-100'>
                 {children}
               </main>
