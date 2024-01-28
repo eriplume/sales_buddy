@@ -1,5 +1,4 @@
 "use client"
-import useFetchUser from "@/app/features/user/hooks/useUser";
 import useUserStore from "@/store/userStore";
 import TaskTab from "@/app/features/teamTask/components/TaskTab";
 import TeamIntroduction from "./TeamIntroduction";
