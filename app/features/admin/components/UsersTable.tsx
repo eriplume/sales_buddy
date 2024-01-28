@@ -1,19 +1,13 @@
 "use client"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { UserStatus } from '@/types';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import { Table, NativeSelect } from '@mantine/core';
 import EditIcon from './EditIcon';
 
-type User = {
-  id: number;
-  name: string;
-  groupId: number;
-  roleValue: number;
-}
-
 export default function UsersTable() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserStatus[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [value, setValue] = useState('');
 
@@ -22,6 +16,12 @@ export default function UsersTable() {
     1: 'leader',
     2: 'admin'
   };
+
+  const datas = [
+    { label: 'general', value: '0' },
+    { label: 'leader', value: '1' },
+    { label: 'admin', value: '2' },
+  ]
 
   const fetchUsers = async () => {
     try {
@@ -53,6 +53,21 @@ export default function UsersTable() {
       }
     };
   }
+
+  const handleDelete = async(id: number) => {
+    const isConfirmed = confirm("削除しますか？");
+    if (!isConfirmed) {
+      return;
+    }
+    try {
+      await axios.delete(`/features/admin/api/users/${id}`);
+      showSuccessNotification(`削除しました`);
+      fetchUsers()
+      setEditingId(null)
+    } catch (error) {
+      showErrorNotification('削除に失敗しました。');
+    }
+  };
   
   const rows = users && users.map((user) => (
     <Table.Tr key={user.id}>
@@ -78,10 +93,12 @@ export default function UsersTable() {
         <EditIcon 
           editingId={editingId} 
           setEditingId={setEditingId} 
-          userId={user.id} 
+          id={user.id} 
           handleUpdate={handleUpdate}
+          handleDelete={handleDelete}
           value={value}
-          /></Table.Td>
+          />
+      </Table.Td>
     </Table.Tr>
   ));
 
