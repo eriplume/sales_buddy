@@ -1,8 +1,7 @@
-import FooterMenu from "../components/base/FooterMenu"
-import Footer from "../components/base/Footer"
 import Header from "../components/base/Header"
+import Footer from "../components/base/Footer"
 
-export default function AuthenticatedLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode
@@ -13,7 +12,6 @@ export default function AuthenticatedLayout({
       <Header />
       {children}
       <Footer />
-      <FooterMenu/>
     </>
   )
 }
