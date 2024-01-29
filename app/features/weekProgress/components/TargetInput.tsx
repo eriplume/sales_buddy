@@ -20,7 +20,7 @@ export default function TargetInput({close} :TargetInputProps) {
   const handleSubmit = async () => {
     if (target !== 0) {
       try {
-        await axios.post(`/api/weeklytarget`, {
+        await axios.post(`/features/weekProgress/api/createTarget`, {
           weekly_target: {
             target: target * 10000,
             start_date: start,

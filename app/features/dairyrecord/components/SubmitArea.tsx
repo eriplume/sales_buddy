@@ -27,7 +27,7 @@ export default function SubmitArea() {
     }
     
     try {
-      const response = await axios.post(`/api/dairyrecord`, { 
+      const response = await axios.post(`/features/dairyrecord/api/createRecord`, { 
         dairy_record,
         customer_counts
       });

@@ -22,7 +22,7 @@ export default function NotJobRecord({ selectedDate, close } :NotJobRecordProps)
   const handleSubmit = async () => {
     if (selectedDate !== null && jobs.length !== 0 && jobs.length < 4 ) {
       try {
-        await axios.post(`/api/jobrecord`, {
+        await axios.post(`/features/calender/api/createJobs`, {
           job_record: {
             date: formatDate(selectedDate),
             jobs,

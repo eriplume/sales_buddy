@@ -54,7 +54,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   fetchSalesRecord: async (force = false) => {
     if (force || get().salesRecords.length === 0) {
       try {
-        const response = await fetch(`/api/dairyrecord`);
+        const response = await fetch(`/features/dairyrecord/api/getRecord`);
         const data: SalesRecord[] = await response.json();
         const dates = data.map(record => record.date);
         const { start, end } = getThisWeekRange();
@@ -84,7 +84,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   fetchWeeklyTarget: async (force = false) => {
     if (force || get().weeklyTargets.length === 0) {
       try {
-        const response = await fetch(`/api/weeklytarget`);
+        const response = await fetch(`/features/weekProgress/api/getTarget`);
         const data: WeeklyTarget[] = await response.json();
         const registeredTargetRanges = data.map(target => ({
           startDate: target.start_date,
@@ -108,7 +108,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   fetchWeeklyReport: async (force = false) => {
     if (force || get().weeklyReports.length === 0) {
       try {
-        const response = await fetch(`/api/weeklyreport`);
+        const response = await fetch(`/features/weekly/api/getWeeklyReport`);
         const data: WeeklyReport[] = await response.json();
         const registeredReportRanges = data.map(report => ({
           startDate: report.start_date,
@@ -133,7 +133,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   fetchJobsRecord: async (force = false) => {
     if (force || get().jobsRecords.length === 0) {
       try {
-        const response = await fetch(`/api/jobrecord`);
+        const response = await fetch(`/features/calender/api/getJobs`);
         const data: JobRecord[] = await response.json();
         const dates = data.map(record => record.date);
         const jobs = data.map(record => record.job);
@@ -150,7 +150,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   fetchCustomersRecord: async (force = false) => {
     if (force || Object.keys(get().customersRecord).length === 0)  {
       try {
-        const response = await fetch(`/api/customers`);
+        const response = await fetch(`/features/customergraph/api/getCustomerRecord`);
         const data: CustomersRecord = await response.json();
         set({
           customersRecord: data
@@ -163,7 +163,7 @@ const useDashboardStore = create<DashboardState>((set, get) => ({
   fetchMonthlyReport: async (force = false) => {
     if (force || get().monthlyReports.length === 0) {
       try {
-        const response = await fetch(`/api/monthlyreport`);
+        const response = await fetch(`/features/report/api/getMonthlyReport`);
         const data: MonthlyReport[] = await response.json();
         set({ monthlyReports: data});
       } catch (error) {

@@ -91,7 +91,7 @@ const useCalculationStore = create<CalculationState>((set, get) => ({
   fetchOptions: async () => {
     if (get().options.length === 0) {
       try {
-        const response = await fetch(`/api/customer_types`);
+        const response = await fetch(`/features/dairyrecord/api/getCustomerOptions`);
         if (!response.ok) { throw new Error('サーバーエラー'); }
         const optionsData = await response.json();
         set({ options: optionsData });

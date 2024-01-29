@@ -24,7 +24,7 @@ export default function Steps() {
   const handleUpdate = async () => {
     if (checked !== notifications) {
       try {
-        await axios.patch(`/api/setting`, {
+        await axios.patch('/features/user/api/updateNotification', {
           user: {
             notifications: checked,
           },
