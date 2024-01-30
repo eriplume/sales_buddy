@@ -28,7 +28,7 @@ export default function CreateSummary({reportsList, targetMonth}: CreateInfoProp
     if (reportsList.length >= 3) {
       setIsLoading(true);
       try {
-        const response = await axios.post(`/api/summary`, { prompt: combinedReportsContent });
+        const response = await axios.post(`/features/report/api/createSummary`, { prompt: combinedReportsContent });
         setSummaryData(response.data as SummaryData);
         setIsLoading(false);
       } catch (error) {
@@ -42,7 +42,7 @@ export default function CreateSummary({reportsList, targetMonth}: CreateInfoProp
   const saveSummary = useCallback(async () => {
     if (summaryData !== null) {
       try {
-        await axios.post(`/api/monthlyreport`, {
+        await axios.post(`/features/report/api/createMonthlyReport`, {
           monthly_report: {
             content: summaryData.text,
             month: targetMonth,

@@ -10,7 +10,7 @@ const useFetchUser = () => {
     if (notifications === undefined || teamId === undefined || teamName === undefined) {
       const fetchUser = async () => {
         try {
-          const response = await fetch(`/api/setting`);
+          const response = await fetch('/features/user/api/getCurrentSetting');
           const data = await response.json();
           useUserStore.setState({
             notifications: data.notifications,

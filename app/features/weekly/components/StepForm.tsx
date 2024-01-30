@@ -65,7 +65,7 @@ export default function StepForm() {
     const { weekly_target } = getWeeklyTargetData();
     
     try {
-      await axios.post(`/api/weeklyreport`, { weekly_report });
+      await axios.post(`/features/weekly/api/createWeeklyReport`, { weekly_report });
     } catch(error) {
       showErrorNotification('レポートの登録に失敗しました。もう一度お試しください。');
       return;
@@ -73,7 +73,7 @@ export default function StepForm() {
 
     if (target !== 0) {
       try {
-        await axios.post(`/api/weeklytarget`, { weekly_target });
+        await axios.post(`/features/weekProgress/api/createTarget`, { weekly_target });
         showSuccessNotification(`登録しました`);
       } catch (error) {
         showSuccessNotification(`レポートを登録しました`);  
