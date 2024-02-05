@@ -2,13 +2,13 @@
 import { useState } from 'react';
 import { Task } from '@/types';
 import { useDisclosure } from '@mantine/hooks';
-import { Pagination } from '@mantine/core';
-import { Modal } from "@mantine/core"
+import { Pagination, Modal  } from '@mantine/core';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import CreateTask from './CreateTask';
 import InputForm from './InputForm';
-import TaskCard from './TaskCard';
 import SwithTask from './Switch';
+import TaskForPc from './TaskForPc';
+import TaskForMb from './TaskForMb';
 
 type IndexProps = {
   taskList: Task[];
@@ -55,21 +55,25 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
           <CreateTask />
           <SwithTask checked={checked} setChecked={setChecked}/>
         </div>
-        <div className="flex flex-wrap">
-          {chunkedTasks.length > 0 && chunkedTasks[activePage - 1].map((task) => (
-            <div className="p-1 md:w-1/2 w-full" key={task.id}>
-              <TaskCard 
-                task={task} 
-                editableTaskIds={editableTaskIds} 
-                setCurrentEditingTask={setCurrentEditingTask} 
-                open={open} 
-                close={close}
-              />
-            </div>
-          ))}
-          {chunkedTasks.length === 0 && (
-            <div className="text-center text-gray-500 py-5">タスクがありません</div>
-          )}
+        <div className='hidden md:block'>
+          <TaskForPc
+            chunkedTasks={chunkedTasks} 
+            editableTaskIds={editableTaskIds} 
+            activePage={activePage} 
+            setCurrentEditingTask={setCurrentEditingTask} 
+            open={open} 
+            close={close}
+          />
+        </div>
+        <div className='md:hidden'>
+          <TaskForMb
+            chunkedTasks={chunkedTasks} 
+            editableTaskIds={editableTaskIds} 
+            activePage={activePage} 
+            setCurrentEditingTask={setCurrentEditingTask}
+            open={open} 
+            close={close}
+          />
         </div>
         <Pagination total={chunkedTasks.length} value={activePage} onChange={setActivePage} mt="sm" color="#60a5fa" />
       </div>
