@@ -3,10 +3,9 @@ import axios from 'axios'
 import { z } from 'zod';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
-import { Textarea } from '@mantine/core';
+import { Textarea, Button } from '@mantine/core';
 import useTaskStore from '@/store/taskStore';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
-import PlusButton from "@/app/components/ui/button/PlusButton"
 import { fetchTasks } from '../hooks/fetchTask';
 
 type FormValues = {
@@ -15,31 +14,44 @@ type FormValues = {
 
 type CommentProps = {
   taskId: number;
+  commentId? :number;
+  endpoint: string;
+  initialValues: FormValues;
+  label: string;
+  icon: JSX.Element;
+  setCurrentEditingComment?: (comment: Comment | null) => void;
 }
 
 const schema  = z.object({
   content: z.string().min(1,  { message: '1~100文字で入力してください' }).max(100, { message: '1~100文字で入力してください' }).refine(content => content.trim().length > 0, "空白は無効です"),
 });
 
-export default function CommentForm({taskId}: CommentProps) {
+export default function CommentForm({taskId, commentId, endpoint, initialValues, label, icon}: CommentProps) {
   const { setTeamTasks, setUserTasks } = useTaskStore(); 
 
   const form = useForm({
-    initialValues: {
-      content: '',
-    },
+    initialValues: initialValues,
     validate: zodResolver(schema),
   });
 
   const handleSubmit = async (values: FormValues) => {
+    const payload = {
+      comment: {
+        content: values.content 
+      },
+    };
     try {
-      await axios.post(`/features/teamTask/api/${taskId}/createComment`, {
-        comment: {
-          content: values.content,
-        },
-      });
-      showSuccessNotification(`登録しました`);
-      fetchTasks({setTeamTasks, setUserTasks});
+      if (endpoint === 'createComment') {
+        await axios.post(`/features/teamTask/api/${taskId}/${endpoint}`, payload);
+        showSuccessNotification(`登録しました`);
+        form.reset();
+        fetchTasks({setTeamTasks, setUserTasks});
+      } else{
+        await axios.patch(`/features/teamTask/api/${taskId}/${endpoint}/${commentId}`, payload);
+        showSuccessNotification(`更新しました`);
+        form.reset();
+        fetchTasks({setTeamTasks, setUserTasks});
+      }
     } catch (error) {
       showErrorNotification('登録に失敗しました。');
     }
@@ -55,11 +67,13 @@ export default function CommentForm({taskId}: CommentProps) {
           description="100字以内で入力してください"
           withAsterisk
           autosize
-          minRows={3}
-          maxRows={3}
+          minRows={2}
+          maxRows={2}
         />
         <div className="flex justify-end w-full mt-4">
-          <PlusButton size="sm" type="submit">コメントする</PlusButton>
+          <Button size="sm" type="submit" rightSection={icon} variant="outline" color="#9ca3af">
+            {label}
+          </Button>
         </div>
       </form>
     </div>

@@ -4,8 +4,7 @@ import { Task } from '@/types';
 import { showSuccessNotification, showErrorNotification } from '@/utils/notifications';
 import { fetchTasks } from '../hooks/fetchTask';
 import useTaskStore from '@/store/taskStore';
-import { ActionIcon } from "@mantine/core"
-import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline"
+import ActionIcons from './ActionIcons';
 
 type EditButtonsProps = {
   task: Task;
@@ -38,28 +37,8 @@ export default function TaskActions({ task, setCurrentEditingTask, open, close }
   };
 
   return (
-    <>
-      <div className='flex pr-1 items-center'>
-        <ActionIcon 
-          variant="outline"
-          color="#94a3b8" 
-          size="md" 
-          className="shadow-md hover:text-gray-500 transition-transform"
-          onClick={() => handleEditButtonClick(task)}
-        >
-          <PencilSquareIcon className='w-8 h-8 p-1' />
-        </ActionIcon>
-
-        <ActionIcon 
-          variant="outline" 
-          color="#94a3b8" 
-          size="md" 
-          className="shadow-md hover:text-gray-500 transition-transform ml-2"
-          onClick={() => handleDelete(task.id)}
-        >
-          <TrashIcon className='w-8 h-8 p-1' />
-        </ActionIcon>
-      </div>
-    </>
+    <div className='flex pr-1 items-center'>
+      <ActionIcons editAction={() => handleEditButtonClick(task)} deleteAction={() => handleDelete(task.id)}/>
+    </div>
   )
 }

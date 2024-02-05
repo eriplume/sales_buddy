@@ -4,7 +4,7 @@ import useUserStore from "@/store/userStore";
 import { showErrorNotification } from "@/utils/notifications";
 
 const useFetchUser = () => {
-  const { notifications, teamId, teamName} = useUserStore();
+  const { id, notifications, teamId, teamName, setId, setTeamId, setTeamName, setNotifications} = useUserStore();
 
   useEffect(() => {
     if (notifications === undefined || teamId === undefined || teamName === undefined) {
@@ -12,11 +12,10 @@ const useFetchUser = () => {
         try {
           const response = await fetch('/features/user/api/getCurrentSetting');
           const data = await response.json();
-          useUserStore.setState({
-            notifications: data.notifications,
-            teamId: data.group_id,
-            teamName: data.group_name
-          });
+          setId(data.id)
+          setNotifications(data.notifications)
+          setTeamId(data.group_id)
+          setTeamName(data.group_name)
         } catch (error) {
           console.error(error);
           showErrorNotification('データの取得に失敗しました');
@@ -24,7 +23,7 @@ const useFetchUser = () => {
       };
       fetchUser();
     }
-  }, [notifications, teamId, teamName]);
+  }, [id, notifications, teamId, teamName, setId, setTeamId, setNotifications, setTeamName]);
 };
 
 export default useFetchUser;

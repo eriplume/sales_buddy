@@ -1,10 +1,11 @@
 "use client"
+import { Comment } from '@/types';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
-import { ChatBubbleOvalLeftIcon, PencilIcon } from "@heroicons/react/24/outline"
+import { ChatBubbleOvalLeftIcon, ChatBubbleOvalLeftEllipsisIcon } from "@heroicons/react/24/outline"
+import { PlusCircleIcon } from "@heroicons/react/24/solid";
 import Comments from './Comments';
 import CommentForm from './CommentForm';
-import { Comment } from '@/types';
 
 type CommentProps = {
   taskId: number;
@@ -13,6 +14,10 @@ type CommentProps = {
 
 export default function CommentIcon({taskId, comments}: CommentProps) {
   const [opened, { open, close }] = useDisclosure(false);
+
+  const initialValues = {
+    content: '',
+  }
 
   const renderModalTitle = () => {
     return (
@@ -27,11 +32,24 @@ export default function CommentIcon({taskId, comments}: CommentProps) {
     );
   };
 
+  const icon = <PlusCircleIcon className="w-5 h-5 text-blue-400" />;
+
   return (
     <>
       <div className='flex mr-2 items-center'>
-        <ChatBubbleOvalLeftIcon className='w-7 h-7 text-gray-400' />
-        <div className="text-md text-sky-800 underline cursor-pointer" onClick={open}>({comments.length})</div>
+
+      <button 
+        onClick={open}
+        className="inline-flex bg-white border border-gray-400 px-2 shadow-md hover:text-gray-500 transition-transform focus:outline-none hover:bg-gray-50 rounded-md text-sm items-center cursor-pointer"
+      >
+        <ChatBubbleOvalLeftEllipsisIcon className='w-5 h-5 text-gray-400 my-1' />
+        <div className="text-md text-gray-500">({comments.length})</div>
+      </button>
+
+
+
+        {/* <ChatBubbleOvalLeftEllipsisIcon className='w-6 h-6 text-gray-400' />
+        <div className="text-lg text-gray-500 underline cursor-pointer" onClick={open}>({comments.length})</div> */}
       </div>
 
       <Modal
@@ -42,8 +60,14 @@ export default function CommentIcon({taskId, comments}: CommentProps) {
         title={renderModalTitle()}
       >
         <div className="flex flex-col p-2 ">
-          <CommentForm taskId={taskId}/>
-          <Comments comments={comments}/>
+          <CommentForm 
+            taskId={taskId} 
+            initialValues={initialValues} 
+            endpoint='createComment' 
+            label="追加する"
+            icon={icon}
+          />
+          <Comments comments={comments} taskId={taskId}/>
         </div>
       </Modal>
     </>
