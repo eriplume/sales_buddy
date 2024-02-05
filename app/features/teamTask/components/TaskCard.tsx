@@ -10,6 +10,7 @@ import { CheckIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { fetchTasks } from '../hooks/fetchTask';
 import TaskActions from './TaskActions';
 import MemberIcon from '../../teamJoin/components/MemberIcon';
+import CommentIcon from './CommentIcon';
 
 type TaskCardProps = {
   task: Task;
@@ -84,6 +85,7 @@ export default function TaskCard({ task, editableTaskIds, setCurrentEditingTask,
 
           <div className='flex flex-row justify-end items-center pt-1 mt-1'> 
             <div className='flex flex-row items-center'>
+              <CommentIcon taskId={task.id} comments={task.comments}/>
               {task.isCompleted && 
                 <>
                   <CheckIcon className='w-5 h-5 ml-2 lg:ml-4 mr-1 text-gray-400' />

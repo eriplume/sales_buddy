@@ -78,7 +78,15 @@ export type Task = {
   userImageUrl: string;
   isCompleted: boolean;
   completedByName: string | null;
+  comments: Comment[];
 };
+
+export type Comment = {
+  id: number;
+  content: string;
+  user_id: number;
+  created_at: Date;
+}
 
 export type Member = {
   id: number;

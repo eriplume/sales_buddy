@@ -36,7 +36,7 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
 
   return (
     <>
-      <div className="container py-4 mx-auto md:min-w-[600px]">
+      <div className="container py-4 mx-auto md:min-w-[700px]">
         <div className='flex flex-row items-center my-3 ml-2'>
           <CreateTask />
           <SwithTask checked={checked} setChecked={setChecked}/>

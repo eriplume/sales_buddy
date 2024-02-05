@@ -4,8 +4,8 @@ import { UserIcon } from "@heroicons/react/24/solid";
 import UserImage from "@/app/components/ui/UserImage";
 
 type MemberIconProps = {
-  imageUrl: string;
-  userName: string;
+  imageUrl?: string;
+  userName?: string;
 };
 
 export default function MemberIcon({imageUrl, userName}: MemberIconProps) {
