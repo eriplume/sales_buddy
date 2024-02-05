@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Task } from '@/types';
 import { useDisclosure } from '@mantine/hooks';
+import { Pagination } from '@mantine/core';
 import { Modal } from "@mantine/core"
 import { PencilIcon } from '@heroicons/react/24/outline';
 import CreateTask from './CreateTask';
@@ -18,10 +19,23 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentEditingTask, setCurrentEditingTask] =  useState<Task | null>(null);
   const [checked, setChecked] = useState(false);
+  const [activePage, setActivePage] = useState(1);
 
   const filteredTasks = checked
   ? taskList.filter(task => task.isCompleted)
   : taskList.filter(task => !task.isCompleted);
+
+  function chunk<T>(array: T[], size: number): T[][] {
+    if (!array.length) {
+      return [];
+    }
+    const head = array.slice(0, size);
+    const tail = array.slice(size);
+    return [head, ...chunk(tail, size)];
+  }
+
+  const tasksPerPage = 8; // 一ページあたりのタスク数
+  const chunkedTasks = chunk(filteredTasks, tasksPerPage);   // taskをチャンクに分割
 
   const renderModalTitle = () => {
     return (
@@ -42,22 +56,22 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
           <SwithTask checked={checked} setChecked={setChecked}/>
         </div>
         <div className="flex flex-wrap">
-          {filteredTasks.length > 0 ? (
-            filteredTasks.map((task) =>(
-              <div className="p-1 md:w-1/2 w-full" key={task.id}>
-                <TaskCard 
-                  task={task} 
-                  editableTaskIds={editableTaskIds} 
-                  setCurrentEditingTask={setCurrentEditingTask} 
-                  open={open} 
-                  close={close}
-                />
-              </div>
-            ))
-          ) : (
+          {chunkedTasks.length > 0 && chunkedTasks[activePage - 1].map((task) => (
+            <div className="p-1 md:w-1/2 w-full" key={task.id}>
+              <TaskCard 
+                task={task} 
+                editableTaskIds={editableTaskIds} 
+                setCurrentEditingTask={setCurrentEditingTask} 
+                open={open} 
+                close={close}
+              />
+            </div>
+          ))}
+          {chunkedTasks.length === 0 && (
             <div className="text-center text-gray-500 py-5">タスクがありません</div>
           )}
         </div>
+        <Pagination total={chunkedTasks.length} value={activePage} onChange={setActivePage} mt="sm" color="#60a5fa" />
       </div>
 
       {opened && (
