@@ -8,7 +8,7 @@ import { ActionIcon } from "@mantine/core"
 import MemberIcon from "../../teamJoin/components/MemberIcon"
 import CommentActions from "./CommentActions"
 import CommentForm from "./CommentForm"
-import { XMarkIcon, PlusCircleIcon, ArrowPathIcon } from "@heroicons/react/24/outline"
+import { XMarkIcon, ArrowPathIcon } from "@heroicons/react/24/outline"
 
 type CommentsProps = {
   comments: Comment[];
