@@ -1,10 +1,9 @@
 "use client"
 import { useRouter } from 'next/navigation';
 import { NavLink } from '@mantine/core';
-import { HomeIcon, PencilIcon, UserGroupIcon } from "@heroicons/react/24/outline";
+import { HomeIcon, PencilIcon, UserGroupIcon, DocumentCheckIcon } from "@heroicons/react/24/outline";
 import UserStatus from './UserStatus';
 import ProfileDrawer from './ProfileDrawer';
-import TeamDrawer from './TeamDrawer';
 
 type DrawerContentsProps = {
   active: number;
@@ -12,10 +11,9 @@ type DrawerContentsProps = {
   onClose: () => void;
   navigationItems: any[];
   dashboardPath: string;
-  teamsPath: string;
 };
 
-export default function DrawerContents({ active, setActive, onClose, dashboardPath, teamsPath, navigationItems }: DrawerContentsProps) {
+export default function DrawerContents({ active, setActive, onClose, dashboardPath, navigationItems }: DrawerContentsProps) {
   const router = useRouter()
 
   const handleNavLinkClick = (index: number, path: string) => {
@@ -40,7 +38,7 @@ export default function DrawerContents({ active, setActive, onClose, dashboardPa
         defaultOpened
         className='mt-1'
       >
-      {navigationItems.map((item, index) => (
+      {navigationItems.slice(0, 3).map((item, index) => (
         <NavLink
           key={item.label}
           active={index === active}
@@ -58,7 +56,14 @@ export default function DrawerContents({ active, setActive, onClose, dashboardPa
         defaultOpened
         className='mt-1'
       >
-        <TeamDrawer active={active} setActive={setActive} onClose={()=> onClose()}/>
+        <NavLink
+          key={navigationItems[3].label}
+          active={navigationItems[3].index === active}
+          label={navigationItems[3].label}
+          color="gray"
+          leftSection={<DocumentCheckIcon className="w-5 h-5 ml-4 text-gray-500" />}
+          onClick={() => handleNavLinkClick(navigationItems[3].index, navigationItems[3].path)} 
+        />
       </NavLink>
 
       <NavLink

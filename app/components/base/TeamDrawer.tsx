@@ -37,7 +37,7 @@ export default function TeamDrawer({ active, setActive, onClose }: DrawerContent
         label="チームタスク管理"
         color="gray"
         leftSection={<DocumentCheckIcon className="w-5 h-5 ml-4" />}
-        onClick={() => handleNavLinkClick(-6, '/sample/teams')} 
+        onClick={() => handleNavLinkClick(-6, '/sample/team')} 
       />
     </>
   )

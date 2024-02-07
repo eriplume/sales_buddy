@@ -24,7 +24,7 @@ export default function DemoFooterMenu() {
   const handleClickTeam = () => {
     setActive(-3);
     close();
-    router.push('/sample/teams');
+    router.push('/sample/team');
   }
 
   const title = () => {

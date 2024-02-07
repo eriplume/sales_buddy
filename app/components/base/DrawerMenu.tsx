@@ -17,7 +17,7 @@ export default function DrawerMenu({navigationItems, dashboardPath, teamsPath}: 
   return (
     <>
       <Drawer opened={opened} onClose={toggle}>
-        <DrawerContents active={active} setActive={setActive} onClose={toggle} navigationItems={navigationItems} dashboardPath={dashboardPath} teamsPath={teamsPath} />
+        <DrawerContents active={active} setActive={setActive} onClose={toggle} navigationItems={navigationItems} dashboardPath={dashboardPath} />
       </Drawer>
       <Burger opened={opened} onClick={toggle} className="w-6 h-6 mr-2 ml-1 md:ml-4" aria-label="Toggle navigation"/>
     </>
