@@ -1,8 +1,11 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image"
+import { useRouter } from 'next/navigation'
 import LineIcon from "@/public/btn_base.png";
 import { TeamInfo } from "@/types";
+import useUserStore from "@/store/userStore";
+import { fetchUser } from "../../user/hooks/fetchUser";
 import { UserGroupIcon, KeyIcon, CursorArrowRaysIcon } from '@heroicons/react/24/solid';
 import CopyActionButton from "@/app/components/ui/CopyActionButton";
 import createCopyText from "@/utils/createCopyText";
@@ -12,9 +15,12 @@ type CopyProps = {
 }
 
 export default function CopyInfo({TeamInfo}: CopyProps) {
+  const { setId, setTeamId, setTeamName, setNotifications} = useUserStore();
+  const router = useRouter();
 
   const handleClick = () => {
-    window.location.reload();
+    fetchUser({setId, setTeamId, setTeamName, setNotifications})
+    router.push('/team/task')
   }
 
   return (
