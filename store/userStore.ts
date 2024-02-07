@@ -1,22 +1,28 @@
 import { create } from 'zustand';
 
 type UserState = {
+  id: number | undefined;
   notifications: boolean | undefined;
   teamId: number | undefined;
   teamName: string | undefined;
   admin: boolean | undefined;
+  setId: (id: number) => void;
   setNotifications: (force: boolean) => void;
-  setTeam: (team: string) => void;
+  setTeamId: (teamId: number) => void;
+  setTeamName: (teamName: string) => void;
   setAdmin: (force: boolean) => void;
 };
 
 const useUserStore = create<UserState>((set) => ({
+  id: undefined,
   notifications: undefined,
   teamId: undefined,
   teamName: undefined,
   admin: undefined,
+  setId: (id) => set(() => ({ id })),
   setNotifications: (notifications) => set(() => ({ notifications })),
-  setTeam: (teamName) => set(() => ({ teamName })),
+  setTeamId: (teamId) => set(() => ({ teamId })),
+  setTeamName: (teamName) => set(() => ({ teamName })),
   setAdmin: (admin) => set(() => ({admin})),
 }))
 

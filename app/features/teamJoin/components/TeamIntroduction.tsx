@@ -1,8 +1,7 @@
 import Image from "next/image"
 import teamImage from "@/public/teams.png";
-import { ChevronDoubleDownIcon, ChatBubbleLeftRightIcon, ClockIcon, FaceSmileIcon } from "@heroicons/react/24/outline";
-import CreateButton from "@/app/features/teamJoin/components/CreateButton";
-import JoinButton from "@/app/features/teamJoin/components/JoinButton";
+import { ChatBubbleLeftRightIcon, ClockIcon, FaceSmileIcon } from "@heroicons/react/24/outline";
+import TeamButtons from "./TeamButtons";
 
 export default function TeamIntroduction() {
   return (
@@ -24,35 +23,15 @@ export default function TeamIntroduction() {
             <ClockIcon className='h-5 w-5 text-md text-gray-500 ml-1'/>
           </div>
           <div className='flex flex-row items-center'>
-            <p className="text-md text-gray-600 border-b-4 border-blue-50 font-bold">チャット機能</p>
+            <p className="text-md text-gray-600 border-b-4 border-blue-50 font-bold">コメント, 通知機能</p>
             <p className="text-sm md:text-md ml-1">を併用して</p>
           </div>
           <div className='flex flex-row items-center mb-5'>
-            <p className="text-sm md:text-md">簡単な業務連絡もさくさく</p>
+            <p className="text-sm md:text-md">チーム業務を漏れなくこなそう</p>
             <FaceSmileIcon className='h-5 w-5 text-md text-gray-500 ml-1'/>
             <ChatBubbleLeftRightIcon className='h-5 w-5 text-md text-gray-500'/>
           </div>
-          <div className="flex flex-col md:flex-row">
-            <div className="flex flex-col">
-              <div className='flex flex-row mb-2 items-center'>
-                <ChevronDoubleDownIcon className='h-5 w-5 text-md text-gray-500 mr-1'/>
-                <p className="text-sm md:text-md font-bold text-gray-500 hidden md:block">チームを作る</p>
-                <p className="text-sm md:text-md text-gray-500 font-bold md:hidden">チームを作成して始める</p>
-              </div>
-              <div className="flex justify-center mb-3">
-                <CreateButton/>
-              </div>
-            </div>
-            <div className="flex flex-col md:ml-4 ">
-              <div className='flex flex-row mb-2 items-center'>
-                <ChevronDoubleDownIcon className='h-5 w-5 text-md text-gray-500 mr-1'/>
-                <p className="text-sm md:text-md text-gray-500 font-bold">招待されていますか？</p>
-              </div>
-              <div className="flex justify-center mb-3 md:ml-2">
-                <JoinButton/>
-              </div>
-            </div>
-          </div>
+          <TeamButtons/>
         </div>
       </div>
     </>

@@ -11,7 +11,7 @@ export default function SwithTask({ checked, setChecked }: SwitchProps) {
   const offLabel = () => {
     return (
       <div className='px-1'>
-        未完了タスク
+        未完了
       </div>
     );
   };
@@ -19,13 +19,13 @@ export default function SwithTask({ checked, setChecked }: SwitchProps) {
   const onLabel = () => {
     return (
       <div className='px-1'>
-        完了済み
+        完了
       </div>
     );
   };
 
   return (
-    <div className='flex flex-row ml-5 items-center'>
+    <div className='flex flex-row mx-2 items-center'>
       <Switch
         checked={checked}
         onChange={(event) => setChecked(event.currentTarget.checked)}

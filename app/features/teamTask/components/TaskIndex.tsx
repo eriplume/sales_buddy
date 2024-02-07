@@ -2,12 +2,13 @@
 import { useState } from 'react';
 import { Task } from '@/types';
 import { useDisclosure } from '@mantine/hooks';
-import { Modal } from "@mantine/core"
+import { Pagination, Modal } from '@mantine/core';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import CreateTask from './CreateTask';
 import InputForm from './InputForm';
-import TaskCard from './TaskCard';
 import SwithTask from './Switch';
+import TaskForPc from './TaskForPc';
+import TaskForMb from './TaskForMb';
 
 type IndexProps = {
   taskList: Task[];
@@ -15,13 +16,26 @@ type IndexProps = {
 }
 
 export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
-  const [opened, { open, close }] = useDisclosure(false);
+  const [activePage, setActivePage] = useState(1);
   const [currentEditingTask, setCurrentEditingTask] =  useState<Task | null>(null);
   const [checked, setChecked] = useState(false);
+  const [opened, { open, close }] = useDisclosure(false);
 
   const filteredTasks = checked
   ? taskList.filter(task => task.isCompleted)
   : taskList.filter(task => !task.isCompleted);
+
+  function chunk<T>(array: T[], size: number): T[][] {
+    if (!array.length) {
+      return [];
+    }
+    const head = array.slice(0, size);
+    const tail = array.slice(size);
+    return [head, ...chunk(tail, size)];
+  }
+
+  const tasksPerPage = 8; // 一ページあたりのタスク数
+  const chunkedTasks = chunk(filteredTasks, tasksPerPage);   // taskをチャンクに分割
 
   const renderModalTitle = () => {
     return (
@@ -36,28 +50,34 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
 
   return (
     <>
-      <div className="container py-4 mx-auto md:min-w-[600px]">
-        <div className='flex flex-row items-center my-3 ml-2'>
+      <div className="container py-4 mx-auto min-w-[300px] md:min-w-[700px] md:max-w-[700px]">
+        <div className='flex flex-row items-center justify-between my-3 px-2'>
           <CreateTask />
-          <SwithTask checked={checked} setChecked={setChecked}/>
+          <div className='flex flex-row items-center'>
+            <SwithTask checked={checked} setChecked={setChecked}/>
+          </div>
         </div>
-        <div className="flex flex-wrap">
-          {filteredTasks.length > 0 ? (
-            filteredTasks.map((task) =>(
-              <div className="p-1 md:w-1/2 w-full" key={task.id}>
-                <TaskCard 
-                  task={task} 
-                  editableTaskIds={editableTaskIds} 
-                  setCurrentEditingTask={setCurrentEditingTask} 
-                  open={open} 
-                  close={close}
-                />
-              </div>
-            ))
-          ) : (
-            <div className="text-center text-gray-500 py-5">タスクがありません</div>
-          )}
+        <div className='hidden md:block'>
+          <TaskForPc
+            chunkedTasks={chunkedTasks} 
+            editableTaskIds={editableTaskIds} 
+            activePage={activePage} 
+            setCurrentEditingTask={setCurrentEditingTask} 
+            open={open} 
+            close={close}
+          />
         </div>
+        <div className='md:hidden w-full'>
+          <TaskForMb
+            chunkedTasks={chunkedTasks} 
+            editableTaskIds={editableTaskIds} 
+            activePage={activePage} 
+            setCurrentEditingTask={setCurrentEditingTask}
+            open={open} 
+            close={close}
+          />
+        </div>
+        <Pagination total={chunkedTasks.length} value={activePage} onChange={setActivePage} mt="sm" color="#60a5fa" />
       </div>
 
       {opened && (

@@ -12,7 +12,7 @@ export default function TaskTab() {
   const userTaskIds = userTasks.map(task => task.id);
 
   return (
-    <div className="flex flex-col justify-center items-center mx-auto px-6 z-0 max-w-4xl mb-7 mt-4">
+    <div className="flex flex-col justify-center items-center mx-auto px-4 z-0 max-w-4xl mb-7 mt-4">
       <Tabs color="#93c5fd" defaultValue="all">
         <Tabs.List>
           <Tabs.Tab value="all" leftSection={<FolderIcon className="w-5 h-5 text-slate-400 font-bold"/>} color="#94a3b8">

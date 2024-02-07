@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
 import { handleLogout } from '@/utils/authHelpers';
 import { NavLink } from '@mantine/core';
-import { BellAlertIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
+import { BellAlertIcon, ArrowRightOnRectangleIcon, QuestionMarkCircleIcon, UsersIcon } from '@heroicons/react/24/outline';
 
 type DrawerContentsProps = {
   active: number;
@@ -32,10 +32,17 @@ export default function ProfileDrawer({ active, setActive, onClose }: DrawerCont
       />
       <NavLink
         active={-4 === active}
+        label="チーム設定"
+        color="gray"
+        leftSection={<UsersIcon className="w-5 h-5 ml-4" />}
+        onClick={() => handleNavLinkClick(-4, '/team/setting')} 
+      />
+      <NavLink
+        active={-5 === active}
         label="このアプリについて"
         color="gray"
         leftSection={<QuestionMarkCircleIcon className="w-5 h-5 ml-4" />}
-        onClick={() => handleNavLinkClick(-1, '/about')} 
+        onClick={() => handleNavLinkClick(-5, '/about')} 
       />
       <NavLink
         label='ログアウト'
