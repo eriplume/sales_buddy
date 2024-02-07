@@ -15,11 +15,11 @@ type CopyProps = {
 }
 
 export default function CopyInfo({TeamInfo}: CopyProps) {
-  const { setId, setTeamId, setTeamName, setNotifications} = useUserStore();
+  const { setId, setTeamId, setTeamName, setNotifications, setTaskNotifications} = useUserStore();
   const router = useRouter();
 
   const handleClick = () => {
-    fetchUser({setId, setTeamId, setTeamName, setNotifications})
+    fetchUser({setId, setTeamId, setTeamName, setNotifications, setTaskNotifications})
     router.push('/team/task')
   }
 
