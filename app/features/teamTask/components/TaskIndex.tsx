@@ -9,6 +9,8 @@ import InputForm from './InputForm';
 import SwithTask from './Switch';
 import TaskForPc from './TaskForPc';
 import TaskForMb from './TaskForMb';
+import HelpMordal from '@/app/components/ui/HelpMordal';
+import TaskHelpPage from './TaskHelpPage';
 
 type IndexProps = {
   taskList: Task[];
@@ -55,6 +57,7 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
           <CreateTask />
           <div className='flex flex-row items-center'>
             <SwithTask checked={checked} setChecked={setChecked}/>
+            <HelpMordal><TaskHelpPage/></HelpMordal>
           </div>
         </div>
         <div className='hidden md:block'>
