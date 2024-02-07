@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Task } from '@/types';
 import { useDisclosure } from '@mantine/hooks';
-import { Pagination, Modal  } from '@mantine/core';
+import { Pagination, Modal } from '@mantine/core';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import CreateTask from './CreateTask';
 import InputForm from './InputForm';
@@ -16,10 +16,10 @@ type IndexProps = {
 }
 
 export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
-  const [opened, { open, close }] = useDisclosure(false);
+  const [activePage, setActivePage] = useState(1);
   const [currentEditingTask, setCurrentEditingTask] =  useState<Task | null>(null);
   const [checked, setChecked] = useState(false);
-  const [activePage, setActivePage] = useState(1);
+  const [opened, { open, close }] = useDisclosure(false);
 
   const filteredTasks = checked
   ? taskList.filter(task => task.isCompleted)
@@ -50,10 +50,12 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
 
   return (
     <>
-      <div className="container py-4 mx-auto md:min-w-[700px]">
-        <div className='flex flex-row items-center my-3 ml-2'>
+      <div className="container py-4 mx-auto min-w-[300px] md:min-w-[700px] md:max-w-[700px]">
+        <div className='flex flex-row items-center justify-between my-3 px-2'>
           <CreateTask />
-          <SwithTask checked={checked} setChecked={setChecked}/>
+          <div className='flex flex-row items-center'>
+            <SwithTask checked={checked} setChecked={setChecked}/>
+          </div>
         </div>
         <div className='hidden md:block'>
           <TaskForPc
@@ -65,7 +67,7 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
             close={close}
           />
         </div>
-        <div className='md:hidden'>
+        <div className='md:hidden w-full'>
           <TaskForMb
             chunkedTasks={chunkedTasks} 
             editableTaskIds={editableTaskIds} 

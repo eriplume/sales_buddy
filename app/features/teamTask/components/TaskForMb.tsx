@@ -25,7 +25,7 @@ export default function TaskForMb({chunkedTasks, activePage, editableTaskIds, se
     <div className="p-1">
       <Accordion variant="contained" className='bg-white'>
         {chunkedTasks.length > 0 && chunkedTasks[activePage - 1].map((task) => (
-          <Accordion.Item key={task.id} value={task.userName}>
+          <Accordion.Item key={task.id} value={task.title}>
             <Accordion.Control className='bg-white'>
               <div className='flex flex-row items-center'>
                 <CompleteCheckBox task={task} />
