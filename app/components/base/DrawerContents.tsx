@@ -4,6 +4,7 @@ import { NavLink } from '@mantine/core';
 import { HomeIcon, PencilIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import UserStatus from './UserStatus';
 import ProfileDrawer from './ProfileDrawer';
+import TeamDrawer from './TeamDrawer';
 
 type DrawerContentsProps = {
   active: number;
@@ -54,10 +55,11 @@ export default function DrawerContents({ active, setActive, onClose, dashboardPa
         label="チームメニュー"
         color="gray"
         leftSection={<UserGroupIcon className="w-6 h-6 ml-1 text-gray-500" />}
-        active={active === -3}
-        onClick={() => handleNavLinkClick(-3, teamsPath)}
+        defaultOpened
         className='mt-1'
-      />
+      >
+        <TeamDrawer active={active} setActive={setActive} onClose={()=> onClose()}/>
+      </NavLink>
 
       <NavLink
         label="設定　|　その他"
