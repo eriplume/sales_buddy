@@ -105,7 +105,7 @@ export default function Form({apiEndpoint, buttonLabel, isCreatingGroup, isCreat
               name="keyword" 
               label={keywordLabel()}
               placeholder="例：sample123"
-              description="半角英数1~20文字で入力してください"
+              description="半角英数8~20文字で入力してください"
               visibilityToggleIcon={({ reveal }) =>
                 reveal ? (
                   <EyeSlashIcon style={{ width: 'var(--psi-icon-size)', height: 'var(--psi-icon-size)' }} />
