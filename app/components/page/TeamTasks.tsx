@@ -1,7 +1,7 @@
 "use client"
 import useUserStore from "@/store/userStore";
 import TaskTab from "@/app/features/teamTask/components/TaskTab";
-import TeamIntroduction from "./TeamIntroduction";
+import TeamIntroduction from "@/app/features/teamJoin/components/TeamIntroduction";
 import Loading from "../ui/Loading";
 import useFetchTask from "@/app/features/teamTask/hooks/useTeamTask";
 

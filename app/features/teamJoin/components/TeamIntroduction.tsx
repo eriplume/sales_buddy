@@ -24,11 +24,11 @@ export default function TeamIntroduction() {
             <ClockIcon className='h-5 w-5 text-md text-gray-500 ml-1'/>
           </div>
           <div className='flex flex-row items-center'>
-            <p className="text-md text-gray-600 border-b-4 border-blue-50 font-bold">チャット機能</p>
+            <p className="text-md text-gray-600 border-b-4 border-blue-50 font-bold">コメント, 通知機能</p>
             <p className="text-sm md:text-md ml-1">を併用して</p>
           </div>
           <div className='flex flex-row items-center mb-5'>
-            <p className="text-sm md:text-md">簡単な業務連絡もさくさく</p>
+            <p className="text-sm md:text-md">チーム業務を漏れなくこなそう</p>
             <FaceSmileIcon className='h-5 w-5 text-md text-gray-500 ml-1'/>
             <ChatBubbleLeftRightIcon className='h-5 w-5 text-md text-gray-500'/>
           </div>
