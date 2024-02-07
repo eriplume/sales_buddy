@@ -1,12 +1,12 @@
 "use client"
 import Image from 'next/image';
 import startImage from "@/public/login_tap.png";
-import { useAboutHooks } from '../hooks/useAbout';
+import { useSessionUserHooks } from '../../demoPage/hooks/useSessionUser';
 import { ChevronDoubleDownIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
 import LoginButton from '../../../components/ui/LoginButton';
 
 export default function Start() {
-  const { router, session } = useAboutHooks();
+  const { router, session } = useSessionUserHooks();
 
   return (
     <>
