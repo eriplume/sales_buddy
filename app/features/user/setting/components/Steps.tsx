@@ -13,13 +13,21 @@ export default function Steps() {
   useFetchUser();
 
   const { notifications, setNotifications } = useUserStore();
+  const { taskNotifications, setTaskNotifications } = useUserStore();
   const [checked, setChecked] = useState(false);
+  const [checkedTask, setCheckedTask] = useState(false);
 
   useEffect(() => {
     if (notifications !== undefined) {
       setChecked(notifications);
     }
   }, [notifications]);
+
+  useEffect(() => {
+    if (taskNotifications !== undefined) {
+      setCheckedTask(taskNotifications);
+    }
+  }, [taskNotifications]);
   
   const handleUpdate = async () => {
     if (checked !== notifications) {
@@ -39,14 +47,34 @@ export default function Steps() {
     }
   };
 
+  const handleUpdateTask = async () => {
+    if (checkedTask !== taskNotifications) {
+      try {
+        await axios.patch('/features/user/api/updateTaskNotification', {
+          user: {
+            task_notifications: checkedTask,
+          },
+        });
+        showSuccessNotification(`更新しました`);
+        setTaskNotifications(checkedTask);
+      } catch (error) {
+        showErrorNotification('更新に失敗しました');
+      }
+    } else {
+      showCautionNotification('設定されています')
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col justify-center w-full max-w-lg">
         <div className='flex justify-end pr-5 pb-2 pt-4'>
           <div className='flex flex-row text-gray-600 text-sm items-center'>
             <BellAlertIcon className="w-4 h-4 mr-1" />
-            <div>現在の設定：</div>
-            <div className='text-gray-700 font-bold'>{notifications ? 'ON' : 'OFF'}</div>
+            <div>レポート：</div>
+            <div className='text-gray-700 font-bold mr-2'>{notifications ? 'ON' : 'OFF'}</div>
+            <div>タスク：</div>
+            <div className='text-gray-700 font-bold'>{taskNotifications ? 'ON' : 'OFF'}</div>
           </div>
         </div>
         <div className="bg-white rounded-md py-7 pl-7">
@@ -65,7 +93,24 @@ export default function Steps() {
             </a>
           </div>
           <div className="flex py-5 pl-4">
-            <AlertSelect handleUpdate={handleUpdate} checked={checked} setChecked={setChecked}/>
+            <AlertSelect 
+              handleUpdate={handleUpdate} 
+              checked={checked} 
+              setChecked={setChecked} 
+              labelTitle="週間レポート登録をリマインド"
+              description="毎週日曜日にお知らせします"
+              groupName='reportAlert'
+              />
+          </div>
+          <div className="flex py-5 pl-4">
+            <AlertSelect 
+              handleUpdate={handleUpdateTask} 
+              checked={checkedTask} 
+              setChecked={setCheckedTask}
+              labelTitle="タスク登録通知"
+              description="チームタスクが登録されるとお知らせします"
+              groupName='taskAlert'
+              />
           </div>
         </div>
       </div>  

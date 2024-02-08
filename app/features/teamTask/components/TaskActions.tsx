@@ -28,9 +28,8 @@ export default function TaskActions({ task, setCurrentEditingTask, open, close }
     }
     try {
       await axios.delete(`/features/teamTask/api/deleteTask/${taskId}`);
-      showSuccessNotification(`削除しました`);
       fetchTasks({setTeamTasks, setUserTasks});
-      close();
+      showSuccessNotification(`削除しました`);
     } catch (error) {
       showErrorNotification('削除に失敗しました。');
     }
