@@ -44,7 +44,14 @@ export default function DemoSetting() {
             </a>
           </div>
           <div className="flex py-5 pl-4">
-            <AlertSelect handleUpdate={handleUpdate} checked={checked} setChecked={setChecked}/>
+            <AlertSelect 
+              handleUpdate={handleUpdate} 
+              checked={checked} 
+              setChecked={setChecked}
+              labelTitle="週間レポート登録をリマインド"
+              description="毎週日曜日にお知らせします"
+              groupName='reportAlert'
+            />
           </div>
         </div>
       </div>  
