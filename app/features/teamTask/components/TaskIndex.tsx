@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Task } from '@/types';
 import { useDisclosure } from '@mantine/hooks';
-import { Pagination, Modal } from '@mantine/core';
+import { Modal } from '@mantine/core';
 import { PencilIcon } from '@heroicons/react/24/outline';
 import CreateTask from './CreateTask';
 import InputForm from './InputForm';
@@ -11,6 +11,7 @@ import TaskForPc from './TaskForPc';
 import TaskForMb from './TaskForMb';
 import HelpMordal from '@/app/components/ui/HelpMordal';
 import TaskHelpPage from './TaskHelpPage';
+import Pagenation from '@/app/components/ui/Pagenation';
 
 type IndexProps = {
   taskList: Task[];
@@ -80,7 +81,15 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
             close={close}
           />
         </div>
-        <Pagination total={chunkedTasks.length} value={activePage} onChange={setActivePage} mt="sm"/>
+        <div className='p-3 ml-3'>
+          <Pagenation 
+            activePage={activePage} 
+            setActivePage={setActivePage} 
+            chunkedTasks={chunkedTasks} 
+            filteredTasks={filteredTasks} 
+            tasksPerPage={tasksPerPage}
+          />
+        </div>
       </div>
 
       {opened && (
