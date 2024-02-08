@@ -23,7 +23,7 @@ export default function TaskForMb({chunkedTasks, activePage, editableTaskIds, se
 
   return (
     <div className="p-1">
-      <Accordion variant="contained" className='bg-white'>
+      <Accordion variant="contained" className='bg-white rounded-md'>
         {chunkedTasks.length > 0 && chunkedTasks[activePage - 1].map((task) => (
           <Accordion.Item key={task.id} value={task.title}>
             <Accordion.Control className='bg-white'>

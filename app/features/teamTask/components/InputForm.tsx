@@ -29,7 +29,7 @@ type FormValues = {
 };
 
 const schema  = z.object({
-  isTeamTask: z.string().refine(val => val !== undefined, { message: "グループの選択は必須です" }),
+  isTeamTask: z.string().min(1, { message: "選択は必須です" }),
   title: z.string().min(1,  { message: '1~20文字で入力してください' }).max(20, { message: '1~20文字で入力してください' }),
   importance: z.number().refine(val => val !== undefined),
   deadline: z.date().refine(val => val !== undefined, { message: "期限の設定は必須です" }),  
