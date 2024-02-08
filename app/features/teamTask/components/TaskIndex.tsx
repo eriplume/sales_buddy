@@ -80,7 +80,7 @@ export default function TaskIndex({taskList, editableTaskIds}: IndexProps) {
             close={close}
           />
         </div>
-        <Pagination total={chunkedTasks.length} value={activePage} onChange={setActivePage} mt="sm" color="#60a5fa" />
+        <Pagination total={chunkedTasks.length} value={activePage} onChange={setActivePage} mt="sm"/>
       </div>
 
       {opened && (
