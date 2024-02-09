@@ -49,10 +49,9 @@ export default function EditReportForm({content, id, edit, setEdit} : ReportCont
   const handleUpdate = async (values: FormValues) => {
     if (values.newContent.trim() !== content.trim()) {
       try {
-        await axios.patch(`/features/report/api/updateMonthlyReport`, {
+        await axios.patch(`/features/report/api/updateMonthlyReport/${id}`, {
           monthly_report: {
             content: values.newContent,
-            id: id,
           },
         });
         showSuccessNotification(`更新しました`);

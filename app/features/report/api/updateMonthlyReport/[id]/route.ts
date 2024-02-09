@@ -5,8 +5,9 @@ import { NextRequest } from 'next/server';
 const endpoint = "monthly_reports";
 const apiUrl = process.env.RAILS_API_URL
 
-export async function PATCH(req: NextRequest) {
+export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
   const { accessToken } = await getJwt(req);
+  const reportId = params.id
       
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
@@ -19,7 +20,6 @@ export async function PATCH(req: NextRequest) {
 
   const data = await req.json();
   const monthly_report = data.monthly_report;
-  const reportId = data.monthly_report.id;
     
   if (!monthly_report){
     return new Response(JSON.stringify({ error: 'monthly_reportがありません' }), {
