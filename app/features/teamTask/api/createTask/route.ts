@@ -6,7 +6,7 @@ const endpoint = "tasks";
 const apiUrl = process.env.RAILS_API_URL
 
 export async function POST(req: NextRequest) {
-  const { accessToken, userId } = await getJwt(req);
+  const { accessToken } = await getJwt(req);
         
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
@@ -19,7 +19,6 @@ export async function POST(req: NextRequest) {
 
   const data = await req.json();
   const task = data.task;
-  task.user_id = userId;
     
   if (!task){
     return new Response(JSON.stringify({ error: 'taskがありません' }), {

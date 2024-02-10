@@ -6,7 +6,7 @@ const endpoint = "weekly_targets";
 const apiUrl = process.env.RAILS_API_URL
 
 export async function POST(req: NextRequest) {
-  const { accessToken, userId } = await getJwt(req);
+  const { accessToken } = await getJwt(req);
 
   if (!accessToken) {
     return new Response(JSON.stringify({ error: '認証が必要です' }), {
@@ -19,7 +19,6 @@ export async function POST(req: NextRequest) {
 
   const data = await req.json();
   const weekly_target = data.weekly_target;
-  weekly_target.user_id = userId;
 
   if (!weekly_target){
     return new Response(JSON.stringify({ error: 'weekly_targetがありません' }), {
