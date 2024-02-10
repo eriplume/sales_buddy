@@ -14,10 +14,10 @@ export default function HeaderRight () {
 
   return session ? (
     <>
-      <div className="hidden md:block">
+      <div className="hidden md:block xl:hidden">
         <DrawerMenu navigationItems={navigationItems} dashboardPath='/dashboard' teamsPath='/teams'/>
       </div>
-      <div className="md:hidden" style={{ width: 32, height: 32, visibility: 'hidden' }}></div>
+      <div className="md:hidden xl:block" style={{ width: 32, height: 32, visibility: 'hidden' }}></div>
     </>
   ) : (
     <div className="flex items-center mr-3 md:mr-1">

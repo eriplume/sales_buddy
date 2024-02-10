@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Viewport } from 'next'
 import { NextAuthProvider } from '../providers/NextAuth'
 import { MantineProviderWrapper } from '../providers/MantineProvider';
-import Header from './components/base/Header';
 import './globals.css'
 
 const siteName= 'sales buddy';
