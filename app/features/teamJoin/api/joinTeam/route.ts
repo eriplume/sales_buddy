@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios,  { AxiosError }  from 'axios';
 import { getJwt } from '@/lib/getJwt';
 import { NextRequest } from 'next/server';
 
@@ -45,12 +45,27 @@ export async function POST(req: NextRequest) {
           },
       });
     } catch (error) {
-      console.error(error); 
-      return new Response(JSON.stringify({ error: '予期せぬエラーが発生しました'  }), {
+      if (axios.isAxiosError(error)) {
+        console.error(error);
+        // バックエンドからのエラーメッセージを取得
+        const errorMessage = error.response && error.response.data ? error.response.data.error : '予期せぬエラーが発生しました';
+        const status = error.response ? error.response.status : 500;
+    
+        return new Response(JSON.stringify({ error: errorMessage }), {
+          status: status,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      } else {
+        // その他のエラー
+        console.error('非Axiosエラー', error);
+        return new Response(JSON.stringify({ error: '予期せぬエラーが発生しました' }), {
           status: 500,
           headers: {
             "Content-Type": "application/json",
           },
-      });
+        });
+      }
     }
   }

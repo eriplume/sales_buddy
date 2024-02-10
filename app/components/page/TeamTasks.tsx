@@ -16,7 +16,7 @@ export default function Teams() {
   return (
     <>
       <div className="flex flex-col justify-center items-center mx-auto px-6 z-0 max-w-4xl my-4">
-        {teamId === 1 ? <TeamIntroduction /> : <TaskTab /> }
+        {teamId === 1 || teamId === null ? <TeamIntroduction /> : <TaskTab /> }
       </div>
     </>
   )

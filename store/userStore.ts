@@ -4,14 +4,14 @@ type UserState = {
   id: number | undefined;
   notifications: boolean | undefined;
   taskNotifications: boolean | undefined;
-  teamId: number | undefined;
-  teamName: string | undefined;
+  teamId: number | null | undefined;
+  teamName: string | null | undefined;
   admin: boolean | undefined;
   setId: (id: number) => void;
   setNotifications: (force: boolean) => void;
   setTaskNotifications: (force: boolean) => void;
-  setTeamId: (teamId: number) => void;
-  setTeamName: (teamName: string) => void;
+  setTeamId: (teamId: number | null) => void;
+  setTeamName: (teamName: string | null) => void;
   setAdmin: (force: boolean) => void;
 };
 

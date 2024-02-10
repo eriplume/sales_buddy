@@ -3,11 +3,15 @@ import axios from 'axios'
 import { z } from 'zod';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
+import useTaskStore from '@/store/taskStore';
+import useTeamStore from '@/store/teamStore';
+import { fetchTasks } from '../../teamTask/hooks/fetchTask';
+import { fetchTeamMembers } from '../hooks/fetchTeamMembers';
+import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import { TextInput, PasswordInput } from "@mantine/core"
 import PlusButton from "@/app/components/ui/button/PlusButton"
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import { TriangleIcon } from '@/app/components/ui/icon/Triangle';
-import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import CopyInfo from './CopyInfo';
 
 type FormProps = {
@@ -32,6 +36,8 @@ const schema  = z.object({
 });
 
 export default function Form({apiEndpoint, buttonLabel, isCreatingGroup, isCreationSuccess, setIsCreationSuccess }: FormProps) {
+  const { setMembers } = useTeamStore();
+  const { setTeamTasks, setUserTasks } = useTaskStore();
   const endpoint = apiEndpoint;
   
   const form = useForm({
@@ -77,13 +83,23 @@ export default function Form({apiEndpoint, buttonLabel, isCreatingGroup, isCreat
         },
       });
       showSuccessNotification(`登録しました`);
+      fetchTeamMembers({setMembers})
+      fetchTasks({ setTeamTasks, setUserTasks })
       if (isCreatingGroup) {
         setIsCreationSuccess(true);
       } else {
         window.location.reload();
       }
     } catch (error) {
-      showErrorNotification('登録に失敗しました。');
+      // `error` が AxiosError かどうかを確認
+      if (axios.isAxiosError(error) && error.response) {
+        // エラーレスポンスからメッセージを取得
+        const errorMessage = error.response.data.error || '予期せぬエラーが発生しました';
+        showErrorNotification(errorMessage);
+      } else {
+        // AxiosError 以外のエラーの場合
+        showErrorNotification('予期せぬエラーが発生しました');
+      }
     }
   };
 
