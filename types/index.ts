@@ -97,6 +97,6 @@ export type Member = {
 export type UserStatus = {
   id: number;
   name: string;
-  groupId: number;
+  groupId: number | null;
   roleValue: number;
 };

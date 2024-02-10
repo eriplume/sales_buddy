@@ -17,7 +17,7 @@ export default function TeamMembers() {
     return <Loading size="xs"/>;
   }
 
-  if (teamId === 1) {
+  if (teamId === 1 || teamId === null) {
     return (
       <div className="flex flex-row items-center">
         <MegaphoneIcon className='w-6 h-6 lg:ml-5 mr-2 text-gray-400' />
