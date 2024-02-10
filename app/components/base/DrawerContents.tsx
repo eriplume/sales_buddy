@@ -69,7 +69,6 @@ export default function DrawerContents({ active, setActive, onClose, dashboardPa
       <NavLink
         label="設定　|　その他"
         leftSection={<UserStatus />}
-        defaultOpened
         className='mt-10'
       >
         <ProfileDrawer active={active} setActive={setActive} onClose={()=> onClose()}/>
