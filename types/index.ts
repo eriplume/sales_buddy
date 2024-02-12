@@ -93,15 +93,3 @@ export type Member = {
   name: string;
   imageUrl: string;
 };
-
-export type UserStatus = {
-  id: number;
-  name: string;
-  groupId: number | null;
-  roleValue: number;
-};
-
-export type CustomerType = {
-  id: number;
-  name: string;
-}
