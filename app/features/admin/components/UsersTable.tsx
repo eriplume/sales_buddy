@@ -75,7 +75,7 @@ export default function UsersTable() {
       <Table.Td>{user.name}</Table.Td>
       <Table.Td>{user.groupId}</Table.Td>
       {editingId === user.id?
-        <Table.Td>
+        <Table.Td className="w-32">
           <NativeSelect
             value={value}
             onChange={(event) => setValue(event.currentTarget.value)}
@@ -87,7 +87,7 @@ export default function UsersTable() {
           />
         </Table.Td>
       :
-        <Table.Td>{roleToLabels[user.roleValue]}</Table.Td>
+        <Table.Td className="w-32">{roleToLabels[user.roleValue]}</Table.Td>
       }
       <Table.Td>
         <EditIcon 
@@ -97,6 +97,8 @@ export default function UsersTable() {
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
           value={value}
+          users={users}
+          setValue={setValue}
           />
       </Table.Td>
     </Table.Tr>

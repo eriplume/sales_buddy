@@ -1,19 +1,29 @@
 "use client"
 import { ActionIcon } from "@mantine/core"
 import { PencilSquareIcon, TrashIcon, XMarkIcon, ArrowPathIcon } from "@heroicons/react/24/outline"
+import { UserStatus } from "@/types";
 
 type EditIconProps = {
   id: number;
   editingId: number | null;
   value: string;
+  users: UserStatus[];
   setEditingId: (id: number | null ) => void;
+  setValue: ( value: string ) => void;
   handleUpdate: (value: string) => Promise<void>
   handleDelete: (id: number) => Promise<void>
 }
 
-export default function EditIcon({id, editingId, setEditingId, handleUpdate, handleDelete, value }: EditIconProps) {
+export default function EditIcon({id, editingId, setEditingId, handleUpdate, handleDelete, setValue, value, users }: EditIconProps) {
 
   const handleEdit = (id: number) => {
+    const userToEdit = users.find(user => user.id === id);
+  
+    if (userToEdit) {
+    // 編集中のユーザーの roleValue に基づいて value ステートを更新
+    setValue(userToEdit.roleValue.toString()); // roleValue を文字列に変換
+  }
+
     setEditingId(id);
   };
 
