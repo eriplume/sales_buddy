@@ -2,7 +2,7 @@ import axios from 'axios';
 import { getJwt } from '@/lib/getJwt';
 import { NextRequest } from 'next/server';
 
-const endpoint = "admin/users";
+const endpoint = "admin/customer_types";
 const apiUrl = process.env.RAILS_API_URL
 
 export async function PATCH(req: NextRequest, { params }: { params: { editingId: string } }) {
@@ -19,10 +19,10 @@ export async function PATCH(req: NextRequest, { params }: { params: { editingId:
   }
   
   const data = await req.json();
-  const user = data.user;
+  const customer_type = data.customer_type;
     
-  if (!user){
-    return new Response(JSON.stringify({ error: 'userがありません' }), {
+  if (!customer_type){
+    return new Response(JSON.stringify({ error: '客層タイプがありません' }), {
       status: 400,
       headers: {
         "Content-Type": "application/json"
@@ -32,7 +32,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { editingId:
   
   try {
     const response = await axios.patch(`${apiUrl}/${endpoint}/${id}`, { 
-      user
+      customer_type
     }, {
       headers: {
         'Authorization': `Bearer ${accessToken}`,
@@ -70,7 +70,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { editingId
   }
   
   if (!id){
-    return new Response(JSON.stringify({ error: 'userがありません' }), {
+    return new Response(JSON.stringify({ error: '客層タイプがありません' }), {
       status: 400,
       headers: {
         "Content-Type": "application/json"

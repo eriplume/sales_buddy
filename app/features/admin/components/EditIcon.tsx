@@ -7,15 +7,13 @@ type EditIconProps = {
   editingId: number | null;
   value: string;
   setEditingId: (id: number | null ) => void;
+  setValue: ( value: string ) => void;
   handleUpdate: (value: string) => Promise<void>
   handleDelete: (id: number) => Promise<void>
+  handleEdit: (id: number) => void;
 }
 
-export default function EditIcon({id, editingId, setEditingId, handleUpdate, handleDelete, value }: EditIconProps) {
-
-  const handleEdit = (id: number) => {
-    setEditingId(id);
-  };
+export default function EditIcon({id, editingId, setEditingId, handleUpdate, handleDelete, handleEdit, value }: EditIconProps) {
 
   const handleCancel = () => {
     setEditingId(null);
@@ -24,7 +22,7 @@ export default function EditIcon({id, editingId, setEditingId, handleUpdate, han
   return (
     <div className='flex pr-1 items-center'>
 
-      {editingId ? 
+      {editingId === id ? 
         <>
           <ActionIcon 
             variant="outline"
