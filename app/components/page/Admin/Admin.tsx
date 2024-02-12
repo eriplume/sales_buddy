@@ -1,7 +1,7 @@
 export default function Admin() {
   return (
-    <div>
-      <p>管理画面TOP</p>
+    <div className="flex justify-center items-center h-screen">
+      <div className="text-lg">管理画面TOP</div>
     </div>
   )
 }
