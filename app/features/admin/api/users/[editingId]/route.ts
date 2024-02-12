@@ -22,7 +22,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { editingId:
   const user = data.user;
     
   if (!user){
-    return new Response(JSON.stringify({ error: 'taskがありません' }), {
+    return new Response(JSON.stringify({ error: 'userがありません' }), {
       status: 400,
       headers: {
         "Content-Type": "application/json"
@@ -70,7 +70,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { editingId
   }
   
   if (!id){
-    return new Response(JSON.stringify({ error: 'taskがありません' }), {
+    return new Response(JSON.stringify({ error: 'userがありません' }), {
       status: 400,
       headers: {
         "Content-Type": "application/json"
