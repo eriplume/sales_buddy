@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { UserStatus } from '@/types';
+import { UserStatus } from '../types';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
 import { Table, NativeSelect } from '@mantine/core';
 import EditIcon from './EditIcon';
@@ -36,6 +36,17 @@ export default function UsersTable() {
   useEffect(() => {
     fetchUsers()
   }, []);
+
+  const handleEdit = (id: number) => {
+    const userToEdit = users.find(user => user.id === id);
+  
+    if (userToEdit) {
+    // 編集中のユーザーの roleValue に基づいて value ステートを更新
+    setValue(userToEdit.roleValue.toString()); // roleValue を文字列に変換
+  }
+    setEditingId(id);
+  };
+
 
   const handleUpdate = async(value: string) => {
     if (value) {
@@ -97,8 +108,8 @@ export default function UsersTable() {
           handleUpdate={handleUpdate}
           handleDelete={handleDelete}
           value={value}
-          users={users}
           setValue={setValue}
+          handleEdit={handleEdit}
           />
       </Table.Td>
     </Table.Tr>
