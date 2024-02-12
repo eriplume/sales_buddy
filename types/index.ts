@@ -100,3 +100,8 @@ export type UserStatus = {
   groupId: number | null;
   roleValue: number;
 };
+
+export type CustomerType = {
+  id: number;
+  name: string;
+}
