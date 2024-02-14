@@ -1,5 +1,5 @@
 # sales buddy
-![logo](https://file%2B.vscode-resource.vscode-cdn.net/Users/eri/workspace/my_app/sales_buddy/public/app-logo.jpg?version%3D1707873180905)
+![app_logo](https://github.com/eriplume/sales_buddy/assets/130767973/c4be957e-4682-4d27-94e3-053918c8b69f)
 
 
 ## サービス概要
