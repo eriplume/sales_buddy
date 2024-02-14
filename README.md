@@ -1,8 +1,10 @@
-# seles buddy
+# sales buddy
+![logo](https://file%2B.vscode-resource.vscode-cdn.net/Users/eri/workspace/my_app/sales_buddy/public/app-logo.jpg?version%3D1707873180905)
+
 
 ## サービス概要
 ### [sales buddy](https://www.sbuddy-apparel.com)
-接客を頑張っているアパレルスタッフの自己記録管理をサポートするアプリです
+アパレルスタッフの自己記録管理をサポートするアプリです
 
 ## 想定されるユーザー層
 アパレル店舗で働く人
@@ -14,7 +16,7 @@
 所属店舗での使用を想定したアプリの為チームのメンバーに使用していただきます。
 
 ## サービスコンセプト
-アパレル店舗で働く人の、記録係的ポジションを担いたい。
+アパレル店舗で働く人の、記録係的ポジションを担いたい。  
 自己成長とプチ面倒な業務をサポートをするアプリを考えました。
 
 #### 【　開発するに至った経緯　】
@@ -57,17 +59,18 @@
 - 週間レポート投稿機能
 - 月間レポート作成機能(openAI API を使用)
 - LINE通知機能
-- 接客以外の業務記録機能（オートコンプリート）
+- 業務記録機能（オートコンプリート）
+- サンプルページ（デモログイン）
 
 ### その後の機能
-- テスト機能
+- バックエンドのテスト実施（RSpec）
 - 管理者ユーザー機能
-- グループページ
-  - チャット機能
+- テーム機能
+  - テームの作成・招待機能
   - チームタスク管理機能
 
 ## 使用技術
-- Next.js 14
+- Next.js 14.0.3
 - TypeScript
 
 #### ライブラリ
@@ -89,4 +92,4 @@
 
 #### バックエンド
 - Ruby on Rails 7.0.8 (api)  
-[バックエンド Git hub](https://github.com/eriplume/sales_buddy_backend)
+[バックエンド GitHub](https://github.com/eriplume/sales_buddy_backend)
