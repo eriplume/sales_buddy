@@ -20,7 +20,7 @@ export default function FooterDrawer({ active, setActive, onClose, navigationIte
 
   return (
     <>
-      {navigationItems.map((item, index) => (
+      {navigationItems.slice(0, 3).map((item, index) => (
         <NavLink
           key={item.label}
           active={index === active}

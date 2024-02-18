@@ -41,7 +41,7 @@ export default function FooterMenu() {
       <>
         <div className='flex flex-row items-start w-full text-sm text-gray-700'>
           <div className='flex w-full items-center'>
-            <UserGroupIcon className="w-5 h-5 mx-2" />
+            <Cog8ToothIcon className="w-5 h-5 mx-2" />
             <div>設定</div>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function FooterMenu() {
       <>
         <div className='flex flex-row items-start w-full text-sm text-gray-700'>
           <div className='flex w-full items-center'>
-            <Cog8ToothIcon className="w-5 h-5 mx-2" />
+            <UserGroupIcon className="w-5 h-5 mx-2" />
             <div>チームメニュー</div>
           </div>
         </div>
