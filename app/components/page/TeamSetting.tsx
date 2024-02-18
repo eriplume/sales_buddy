@@ -11,7 +11,7 @@ export default function TeamSetting() {
     return <Loading size="md"/>;
   }
   return (
-    <div className="flex flex-col justify-center items-center mx-auto px-6 z-0 max-w-4xl my-4">
+    <div className="flex flex-col justify-center items-center mx-auto px-6 z-0 max-w-4xl my-20">
       {teamId === 1 || teamId === null ? <TeamIntroduction /> : <EditJoinTeam/> }
     </div>
   )
