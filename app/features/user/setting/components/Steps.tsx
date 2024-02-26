@@ -88,8 +88,8 @@ export default function Steps() {
               <Image
                 src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" 
                 alt="友だち追加"
-                height="100"
-                width="100" />
+                width={100}
+                height={31}/>
             </a>
           </div>
           <div className="flex py-5 pl-4">

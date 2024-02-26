@@ -27,7 +27,7 @@ export default function HelpMordal({children}: any) {
         radius="lg"
         color="#e2e8f0"
         aria-label="Settings" 
-        className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform"
+        className="shadow-md hover:text-sky-700 transition-transform"
         onClick={open}
       >
         <QuestionMarkCircleIcon className="w-7 h-7 text-gray-400 hover:text-sky-700"/>

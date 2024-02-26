@@ -75,7 +75,7 @@ export default function DemoReportArchive() {
               <Button 
                 variant="outline" 
                 color="#9ca3af" 
-                className="shadow-md hover:translate-y-1 hover:text-sky-700 transition-transform"
+                className="shadow-md hover:text-sky-700 transition-transform"
                 onClick={handleSubmit}
               >
                 Create
