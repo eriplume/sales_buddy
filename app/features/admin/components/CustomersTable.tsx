@@ -2,14 +2,18 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { showErrorNotification, showSuccessNotification } from '@/utils/notifications';
-import { Table, TextInput } from '@mantine/core';
+import { Table, TextInput, Button, Modal } from '@mantine/core';
+import { PlusIcon } from "@heroicons/react/24/outline"
 import EditIcon from './EditIcon';
 import { CustomerType } from '../types';
+import { useDisclosure } from '@mantine/hooks';
+import CreateData from './CreateData';
 
 export default function CustomersTable() {
   const [customerTypes, setCustomerTypes] = useState<CustomerType[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [value, setValue] = useState('');
+  const [opened, { open, close }] = useDisclosure();
 
   const fetchCustomerTypes = async () => {
     try {
@@ -48,7 +52,7 @@ export default function CustomersTable() {
       return;
     }
     try {
-      await axios.delete(`/features/admin/api/users/${id}`);
+      await axios.delete(`/features/admin/api/customerTypes/${id}`);
       showSuccessNotification(`削除しました`);
       fetchCustomerTypes()
       setEditingId(null)
@@ -94,16 +98,34 @@ export default function CustomersTable() {
   ));
   
   return (
-    <Table>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th>id</Table.Th>
-          <Table.Th>name</Table.Th>
-          <Table.Th>edit</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+    <>
+      <Table>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th>id</Table.Th>
+            <Table.Th>name</Table.Th>
+            <Table.Th>edit</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+      <div className='flex flex-row items-center mt-2'>
+        <Button size="sm" variant="outline" color="#9ca3af" onClick={open}>
+          客層タイプを追加する
+          <PlusIcon className="w-5 h-5 ml-1 text-sky-700" />
+        </Button>
+      </div>
+      <Modal
+        opened={opened}
+        onClose={close}
+        centered
+        size="md"
+      >
+        <div className="flex w-full px-6 py-4">
+          <CreateData/>
+        </div>
+      </Modal>
+    </>
   )
 }
 
