@@ -13,7 +13,7 @@ type FormValues = {
 };
 
 const schema = z.object({
-  name: z.string().min(1, {message: '入力してください'}).refine(newContent => newContent.trim().length > 0, '入力してください')
+  name: z.string().min(1, '入力してください').refine(name => name.trim().length > 0, '入力してください')
 })
 
 export default function CreateData() {

@@ -17,8 +17,8 @@ export default function JobsInput({data, jobs, setJobs}: JobsInputProps) {
   const uniqueData = Array.from(new Set(data));
   const filteredData = uniqueData.filter(job => !jobs.includes(job));
 
-  const schema = z.string().min(1, "業務を入力してください").max(20, "20文字以内で入力してください")
-  .refine(content => content.trim().length > 0, "空白は無効です");
+  const schema = z.string().min(1, '業務を入力してください').max(20, '20文字以内で入力してください')
+  .refine(job => job.trim().length > 0, '空白は無効です');
   
   const addData = () => {
     const validationResult = schema.safeParse(value);
