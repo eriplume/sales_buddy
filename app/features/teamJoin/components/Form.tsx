@@ -28,11 +28,11 @@ type FormValues = {
 };
 
 const schema  = z.object({
-  name: z.string().min(1,  { message: '1~20文字で入力してください' }).max(20, { message: '1~20文字で入力してください' }),
+  name: z.string().min(1, '1~20文字で入力してください').max(20, '1~20文字で入力してください').refine(name => name.trim().length > 0, '1~20文字で入力してください'),
   keyword: z.string()
-            .min(8, { message: '8文字以上で入力してください' })
-            .max(20, { message: '20文字以内で入力してください' })
-            .regex(/^[A-Za-z0-9]+$/, { message: '半角英数で入力してください' }),
+            .min(8, '8文字以上で入力してください')
+            .max(20, '20文字以内で入力してください')
+            .regex(/^[A-Za-z0-9]+$/, '半角英数で入力してください'),
 });
 
 export default function Form({apiEndpoint, buttonLabel, isCreatingGroup, isCreationSuccess, setIsCreationSuccess }: FormProps) {
