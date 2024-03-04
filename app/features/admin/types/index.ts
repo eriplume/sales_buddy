@@ -23,3 +23,10 @@ export type DairyRecord = {
   userId: number;
 }
 
+export type WeeklyReport = {
+  id: number;
+  startDate: Date;
+  endDate: Date;
+  content: string;
+  userId: number;
+}
