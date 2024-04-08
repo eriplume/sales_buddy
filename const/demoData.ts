@@ -1,174 +1,6 @@
 // 売上記録の一覧
 export const salesRecordsDemo = [
     {
-        "total_amount": 10000,
-        "total_number": 1,
-        "count": 1,
-        "set_rate": 1,
-        "average_spend": 10000,
-        "date": "2023-09-01"
-    },
-    {
-        "total_amount": 10000,
-        "total_number": 1,
-        "count": 1,
-        "set_rate": 1,
-        "average_spend": 10000,
-        "date": "2023-09-04"
-    },
-    {
-        "total_amount": 25000,
-        "total_number": 1,
-        "count": 1,
-        "set_rate": 1,
-        "average_spend": 25000,
-        "date": "2023-11-01"
-    },
-    {
-        "total_amount": 0,
-        "total_number": 0,
-        "count": 0,
-        "set_rate": 0,
-        "average_spend": 0,
-        "date": "2023-12-01"
-    },
-    {
-        "total_amount": 0,
-        "total_number": 0,
-        "count": 0,
-        "set_rate": 0,
-        "average_spend": 0,
-        "date": "2023-12-02"
-    },
-    {
-        "total_amount": 44000,
-        "total_number": 3,
-        "count": 2,
-        "set_rate": 1.5,
-        "average_spend": 14666.666666666666,
-        "date": "2023-12-03"
-    },
-    {
-        "total_amount": 24000,
-        "total_number": 2,
-        "count": 1,
-        "set_rate": 2,
-        "average_spend": 12000,
-        "date": "2023-12-04"
-    },
-    {
-        "total_amount": 0,
-        "total_number": 0,
-        "count": 0,
-        "set_rate": 0,
-        "average_spend": 0,
-        "date": "2023-12-05"
-    },
-    {
-        "total_amount": 59000,
-        "total_number": 5,
-        "count": 2,
-        "set_rate": 2.5,
-        "average_spend": 11800,
-        "date": "2023-12-06"
-    },
-    {
-        "total_amount": 0,
-        "total_number": 0,
-        "count": 0,
-        "set_rate": 0,
-        "average_spend": 0,
-        "date": "2023-12-07"
-    },
-    {
-        "total_amount": 15000,
-        "total_number": 1,
-        "count": 1,
-        "set_rate": 1,
-        "average_spend": 15000,
-        "date": "2023-12-10"
-    },
-    {
-        "total_amount": 59000,
-        "total_number": 3,
-        "count": 2,
-        "set_rate": 1.5,
-        "average_spend": 19666.666666666668,
-        "date": "2023-12-11"
-    },
-    {
-        "total_amount": 69900,
-        "total_number": 5,
-        "count": 4,
-        "set_rate": 1.25,
-        "average_spend": 13980,
-        "date": "2023-12-12"
-    },
-    {
-        "total_amount": 105000,
-        "total_number": 6,
-        "count": 4,
-        "set_rate": 1.5,
-        "average_spend": 17500,
-        "date": "2023-12-13"
-    },
-    {
-        "total_amount": 90600,
-        "total_number": 7,
-        "count": 4,
-        "set_rate": 1.75,
-        "average_spend": 12942.857142857143,
-        "date": "2023-12-14"
-    },
-    {
-        "total_amount": 161999,
-        "total_number": 8,
-        "count": 5,
-        "set_rate": 1.6,
-        "average_spend": 20249.875,
-        "date": "2023-12-18"
-    },
-    {
-        "total_amount": 78000,
-        "total_number": 4,
-        "count": 1,
-        "set_rate": 4,
-        "average_spend": 19500,
-        "date": "2023-12-22"
-    },
-    {
-        "total_amount": 116000,
-        "total_number": 7,
-        "count": 4,
-        "set_rate": 1.75,
-        "average_spend": 16571.428571428572,
-        "date": "2023-12-23"
-    },
-    {
-        "total_amount": 146009,
-        "total_number": 8,
-        "count": 4,
-        "set_rate": 2,
-        "average_spend": 18251.125,
-        "date": "2023-12-25"
-    },
-    {
-        "total_amount": 99919,
-        "total_number": 5,
-        "count": 3,
-        "set_rate": 1.6666666666666667,
-        "average_spend": 19983.8,
-        "date": "2023-12-27"
-    },
-    {
-        "total_amount": 94000,
-        "total_number": 6,
-        "count": 4,
-        "set_rate": 1.5,
-        "average_spend": 15666.666666666666,
-        "date": "2023-12-29"
-    },
-    {
         "total_amount": 98000,
         "total_number": 5,
         "count": 3,
@@ -215,6 +47,14 @@ export const salesRecordsDemo = [
         "set_rate": 1,
         "average_spend": 5000,
         "date": "2024-01-13"
+    },
+    {
+        "total_amount": 2000,
+        "total_number": 1,
+        "count": 1,
+        "set_rate": 1,
+        "average_spend": 2000,
+        "date": "2024-01-17"
     },
     {
         "total_amount": 10000,
@@ -305,6 +145,30 @@ export const salesRecordsDemo = [
         "date": "2024-02-18"
     },
     {
+        "total_amount": 110000,
+        "total_number": 5,
+        "count": 3,
+        "set_rate": 1.6666666666666667,
+        "average_spend": 22000,
+        "date": "2024-02-19"
+    },
+    {
+        "total_amount": 91000,
+        "total_number": 5,
+        "count": 3,
+        "set_rate": 1.6666666666666667,
+        "average_spend": 18200,
+        "date": "2024-02-20"
+    },
+    {
+        "total_amount": 110799,
+        "total_number": 6,
+        "count": 4,
+        "set_rate": 1.5,
+        "average_spend": 18466.5,
+        "date": "2024-02-21"
+    },
+    {
         "total_amount": 10000,
         "total_number": 1,
         "count": 1,
@@ -367,6 +231,126 @@ export const salesRecordsDemo = [
         "set_rate": 1.5,
         "average_spend": 16666.666666666668,
         "date": "2024-03-11"
+    },
+    {
+        "total_amount": 68000,
+        "total_number": 5,
+        "count": 3,
+        "set_rate": 1.6666666666666667,
+        "average_spend": 13600,
+        "date": "2024-03-14"
+    },
+    {
+        "total_amount": 85890,
+        "total_number": 9,
+        "count": 5,
+        "set_rate": 1.8,
+        "average_spend": 9543.333333333334,
+        "date": "2024-03-15"
+    },
+    {
+        "total_amount": 159090,
+        "total_number": 11,
+        "count": 5,
+        "set_rate": 2.2,
+        "average_spend": 14462.727272727272,
+        "date": "2024-03-17"
+    },
+    {
+        "total_amount": 65490,
+        "total_number": 6,
+        "count": 4,
+        "set_rate": 1.5,
+        "average_spend": 10915,
+        "date": "2024-03-19"
+    },
+    {
+        "total_amount": 192000,
+        "total_number": 13,
+        "count": 5,
+        "set_rate": 2.6,
+        "average_spend": 14769.23076923077,
+        "date": "2024-03-20"
+    },
+    {
+        "total_amount": 101460,
+        "total_number": 8,
+        "count": 5,
+        "set_rate": 1.6,
+        "average_spend": 12682.5,
+        "date": "2024-03-22"
+    },
+    {
+        "total_amount": 80000,
+        "total_number": 5,
+        "count": 4,
+        "set_rate": 1.25,
+        "average_spend": 16000,
+        "date": "2024-03-23"
+    },
+    {
+        "total_amount": 12000,
+        "total_number": 1,
+        "count": 1,
+        "set_rate": 1,
+        "average_spend": 12000,
+        "date": "2024-03-25"
+    },
+    {
+        "total_amount": 105999,
+        "total_number": 8,
+        "count": 6,
+        "set_rate": 1.3333333333333333,
+        "average_spend": 13249.875,
+        "date": "2024-03-27"
+    },
+    {
+        "total_amount": 61000,
+        "total_number": 4,
+        "count": 2,
+        "set_rate": 2,
+        "average_spend": 15250,
+        "date": "2024-03-28"
+    },
+    {
+        "total_amount": 35000,
+        "total_number": 3,
+        "count": 2,
+        "set_rate": 1.5,
+        "average_spend": 11666.666666666666,
+        "date": "2024-04-01"
+    },
+    {
+        "total_amount": 80000,
+        "total_number": 5,
+        "count": 3,
+        "set_rate": 1.6666666666666667,
+        "average_spend": 16000,
+        "date": "2024-04-02"
+    },
+    {
+        "total_amount": 43000,
+        "total_number": 4,
+        "count": 3,
+        "set_rate": 1.3333333333333333,
+        "average_spend": 10750,
+        "date": "2024-04-03"
+    },
+    {
+        "total_amount": 61700,
+        "total_number": 4,
+        "count": 2,
+        "set_rate": 2,
+        "average_spend": 15425,
+        "date": "2024-04-06"
+    },
+    {
+        "total_amount": 178053,
+        "total_number": 11,
+        "count": 6,
+        "set_rate": 1.8333333333333333,
+        "average_spend": 16186.636363636364,
+        "date": "2024-04-07"
     }
 ]
 
@@ -375,38 +359,6 @@ export const salesDatesDemo = salesRecordsDemo.map(record => record.date);
 
 // 業務記録の一覧
 export const jobsRecordsDemo = [
-    {
-        "job": "ストック整理",
-        "date": "2023-12-25"
-    },
-    {
-        "job": "店内レイアウト",
-        "date": "2023-12-25"
-    },
-    {
-        "job": "商品説明会",
-        "date": "2023-12-26"
-    },
-    {
-        "job": "DM作成",
-        "date": "2023-12-26"
-    },
-    {
-        "job": "スタイリング撮影",
-        "date": "2023-12-27"
-    },
-    {
-        "job": "MT",
-        "date": "2023-12-12"
-    },
-    {
-        "job": "コスメ説明会",
-        "date": "2023-12-12"
-    },
-    {
-        "job": "商品検討会",
-        "date": "2023-12-12"
-    },
     {
         "job": "スタイリング撮影",
         "date": "2024-01-08"
@@ -438,34 +390,6 @@ export const jobsRecordsDemo = [
     {
         "job": "店内レイアウト",
         "date": "2024-01-11"
-    },
-    {
-        "job": "MT",
-        "date": "2023-12-08"
-    },
-    {
-        "job": "MT",
-        "date": "2023-12-15"
-    },
-    {
-        "job": "MT",
-        "date": "2023-12-22"
-    },
-    {
-        "job": "店内レイアウト",
-        "date": "2023-12-19"
-    },
-    {
-        "job": "ウィンドウレイアウト",
-        "date": "2023-12-19"
-    },
-    {
-        "job": "DM作成",
-        "date": "2023-12-13"
-    },
-    {
-        "job": "ストック整理",
-        "date": "2023-12-04"
     },
     {
         "job": "ストック整理",
@@ -590,6 +514,102 @@ export const jobsRecordsDemo = [
     {
         "job": "スタイリング撮影",
         "date": "2024-03-11"
+    },
+    {
+        "job": "商品説明会",
+        "date": "2024-04-03"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-04-04"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-04-06"
+    },
+    {
+        "job": "MT",
+        "date": "2024-04-06"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-04-08"
+    },
+    {
+        "job": "店内レイアウト",
+        "date": "2024-04-08"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-03-13"
+    },
+    {
+        "job": "MT",
+        "date": "2024-03-15"
+    },
+    {
+        "job": "店内レイアウト",
+        "date": "2024-03-16"
+    },
+    {
+        "job": "ウィンドウレイアウト",
+        "date": "2024-03-16"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-03-19"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-03-20"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-03-26"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-03-28"
+    },
+    {
+        "job": "店内レイアウト",
+        "date": "2024-03-28"
+    },
+    {
+        "job": "店内レイアウト",
+        "date": "2024-03-31"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-02-20"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-02-19"
+    },
+    {
+        "job": "ウィンドウレイアウト",
+        "date": "2024-02-23"
+    },
+    {
+        "job": "店内レイアウト",
+        "date": "2024-02-23"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-02-26"
+    },
+    {
+        "job": "MT",
+        "date": "2024-02-28"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-01-25"
+    },
+    {
+        "job": "スタイリング撮影",
+        "date": "2024-01-22"
     }
 ]
 
@@ -606,13 +626,13 @@ export const customersRecordsDemo = {"1":10,"2":6,"3":4,"4":5,"7":2,"8":8};
 export const weeklyTargetsDemo = [
     {
         "target": 1000000,
-        "start_date": "2023-12-18",
-        "end_date": "2023-12-24"
+        "start_date": "2024-12-18",
+        "end_date": "2024-12-24"
     },
     {
         "target": 1000000,
-        "start_date": "2023-12-25",
-        "end_date": "2023-12-31"
+        "start_date": "2024-12-25",
+        "end_date": "2024-12-31"
     },
     {
         "target": 500000,
@@ -658,7 +678,17 @@ export const weeklyReportsDemo = [
         "content": "アウターの接客を積極的に行い客単価アップに注力した。しかしバタバタと忙しい日が多く、じっくり提案をするのが難しく逃してしまうことが多かったと感じる。素材のこだわり、機能性などのメリット頭に入れていたことで迷わずアピールはできていたものの、袖を通さなくとも惹きつけられるような魅せ方や会話がより必要だと思った。また可愛さが伝わっても気温が高いことがストッパーになる方がやはり多いので、そこもコーディネートや言い回しの工夫で買上に繋げられるような力が必要だと感じた。",
         "start_date": "2024-03-18",
         "end_date": "2024-03-24"
-    }
+    },
+    {
+        "content": "サンプル",
+        "start_date": "2024-03-25",
+        "end_date": "2024-03-31"
+    },
+    {
+        "content": "サンプル",
+        "start_date": "2024-04-01",
+        "end_date": "2024-04-07"
+    },
 ]
 
 // 週間レポートの登録週の一覧
